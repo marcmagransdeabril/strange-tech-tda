@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>1&nbsp; Análisis Topológico de Datos – Tecnologías Extrañas: Análisis Topológico de Datos</title>
+<title>1&nbsp; Introducción – Tecnologías Extrañas: Análisis Topológico de Datos</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -86,8 +86,8 @@ div.csl-indent {
 <script src="site_libs/quarto-search/autocomplete.umd.js"></script>
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<link href="index.html" rel="prev">
+<meta name="quarto:offset" content="./">
+<link href="./index.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -99,11 +99,11 @@ div.csl-indent {
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap-9e09d2eb63ca372e5c6aa0cd7f5bad22.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
-  "location": "sidebar",
+  "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
-  "panel-placement": "start",
-  "type": "textbox",
+  "panel-placement": "end",
+  "type": "overlay",
   "limit": 50,
   "keyboard-shortcut": [
     "f",
@@ -157,52 +157,63 @@ window.Quarto = {
 </script>
 
 <link rel="stylesheet" href="templates/styles.css">
+<link rel="stylesheet" href="templates/standalone-book.css">
 </head>
 
-<body class="nav-sidebar floating quarto-light">
+<body class="nav-sidebar floating nav-fixed quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">Tecnologías Extrañas: Análisis Topológico de Datos</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Buscar"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Navegación de palanca" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./../en/index.html"> 
+<span class="menu-text">English</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="tda.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Análisis Topológico de Datos</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./tda.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introducción</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
-      <button type="button" class="btn quarto-search-button" aria-label="Buscar" onclick="window.quartoOpenSearch();">
-        <i class="bi bi-search"></i>
-      </button>
     </div>
   </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header">
-    <div class="sidebar-title mb-0 py-0">
-      <a href="index.html">Tecnologías Extrañas: Análisis Topológico de Datos</a> 
-    </div>
-      </div>
-        <div class="mt-2 flex-shrink-0 align-items-center">
-        <div class="sidebar-search">
-        <div id="quarto-search" class="" title="Buscar"></div>
-        </div>
-        </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="index.html" class="sidebar-item-text sidebar-link">
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Prefacio</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="tda.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Análisis Topológico de Datos</span></span></a>
+  <a href="./tda.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introducción</span></span></a>
   </div>
 </li>
     </ul>
@@ -210,7 +221,9 @@ window.Quarto = {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar"><div class="quarto-margin-header"><div class="margin-header-item">
+<p><strong>Tecnologías Extrañas: Análisis Topológico de Datos</strong></p>
+</div></div>
         <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">Tabla de contenidos</h2>
    
@@ -262,7 +275,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span id="sec-tda" class="quarto-section-identifier"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Análisis Topológico de Datos</span></span></h1>
+<h1 class="title"><span id="sec-tda" class="quarto-section-identifier"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introducción</span></span></h1>
 </div>
 
 
@@ -307,8 +320,8 @@ window.Quarto = {
 <p><em>“A ver si mañana pongo alguna excusa”, y llegó un poco más tarde. El mundo no se va a acabar si no estoy a las 9 en la oficina. ¿No?</em></p>
 <section id="por-qué-esta-tecnología" class="level2" data-number="1.1">
 <h2 data-number="1.1" class="anchored" data-anchor-id="por-qué-esta-tecnología"><span class="header-section-number">1.1</span> ¿Por qué esta tecnología?</h2>
-<p>El análisis topológico de datos se sitúa en la fase de laboratorio de la tabla de oportunidades del libro: crecimiento considerable en publicaciones y modesta financiación en startups, pero curiosamente sin menciones en Hacker News y un número de proyectos relativamente pequeño en GitHub. Es una tecnología claramente <em>en el laboratorio</em>, con señales débiles en todas las métricas excepto el crecimiento académico.</p>
-<p>Cualitativamente, cumple los seis criterios de selección de la serie Tecnologías Extrañas: (1) tiene tracción empírica incipiente — la homología persistente se usa en análisis de datos biomédicos, materiales y redes de sensores; (2) es <em>extraña</em> — aplicar topología algebraica a nubes de puntos es una de las ideas más sorprendentes del libro; (3) su profundidad Lindy es excepcional — la topología algebraica lleva más de un siglo de desarrollo (Poincaré, 1895), y la homología persistente cristalizó a principios de los 2000; (4) su núcleo matemático — complejos de Vietoris-Rips, números de Betti y diagramas de persistencia — es enseñable con ejemplos geométricos intuitivos; (5) no se solapa con ningún otro capítulo del libro; y (6) no es la apuesta principal del mercado — el mainstream analiza datos con estadística y deep learning, no con topología.</p>
+<p>El análisis topológico de datos se sitúa en la fase de laboratorio de la matriz de oportunidades tecnológicas del libro: crecimiento considerable en publicaciones y modesta financiación en startups, pero curiosamente sin menciones en Hacker News y un número de proyectos relativamente pequeño en GitHub. Es una tecnología claramente <em>en el laboratorio</em>, con señales débiles en todas las métricas excepto el crecimiento académico.</p>
+<p>Cualitativamente, cumple los seis criterios de selección tecnológica del libro: (1) tiene tracción empírica incipiente — la homología persistente se usa en análisis de datos biomédicos, materiales y redes de sensores; (2) es <em>extraña</em> — aplicar topología algebraica a nubes de puntos es una de las ideas más sorprendentes del libro; (3) su profundidad Lindy es excepcional — la topología algebraica lleva más de un siglo de desarrollo (Poincaré, 1895), y la homología persistente cristalizó a principios de los 2000; (4) su núcleo matemático — complejos de Vietoris-Rips, números de Betti y diagramas de persistencia — es enseñable con ejemplos geométricos intuitivos; (5) no se solapa con ningún otro capítulo del libro; y (6) no es la apuesta principal del mercado — el mainstream analiza datos con estadística y deep learning, no con topología.</p>
 </section>
 <section id="breve-historia" class="level2" data-number="1.2">
 <h2 data-number="1.2" class="anchored" data-anchor-id="breve-historia"><span class="header-section-number">1.2</span> Breve historia</h2>
@@ -358,7 +371,7 @@ window.Quarto = {
 <div id="fig-tres-islas" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-tres-islas-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../diagrams/tda/tres-islas.png" class="img-fluid figure-img" style="width:95.0%">
+<img src="diagrams/tda/tres-islas.png" class="img-fluid figure-img" style="width:95.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-tres-islas-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figura&nbsp;1.1: Receta 1: tres clusters gaussianos y tres representaciones equivalentes de su homología <span class="math inline">\(H_0\)</span>. Las tres estrellas rojas en el diagrama corresponden a los 3 clusters. En el paisaje de persistencia, los picos sobrepasan claramente el umbral de hipótesis nula (línea discontinua).
@@ -369,7 +382,7 @@ Figura&nbsp;1.1: Receta 1: tres clusters gaussianos y tres representaciones equi
 <div id="fig-tres-islas-null" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-tres-islas-null-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../diagrams/tda/tres-islas-null.png" class="img-fluid figure-img" style="width:95.0%">
+<img src="diagrams/tda/tres-islas-null.png" class="img-fluid figure-img" style="width:95.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-tres-islas-null-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figura&nbsp;1.2: Control negativo: 150 puntos uniformes (sin estructura). El diagrama, el código de barras y el paisaje de persistencia muestran solo ruido — <span class="math inline">\(\lambda_1\)</span> apenas supera el umbral de hipótesis nula, sin los picos prominentes de la <a href="#fig-tres-islas" class="quarto-xref">Figura&nbsp;<span>1.1</span></a>.
@@ -415,7 +428,7 @@ Figura&nbsp;1.2: Control negativo: 150 puntos uniformes (sin estructura). El dia
 <div id="fig-anillo" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-anillo-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../diagrams/tda/anillo.png" class="img-fluid figure-img" style="width:90.0%">
+<img src="diagrams/tda/anillo.png" class="img-fluid figure-img" style="width:90.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-anillo-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figura&nbsp;1.3: Receta 2: arriba, nube de puntos sobre un círculo con ruido, diagrama de persistencia <span class="math inline">\(H_0\)</span> y diagrama <span class="math inline">\(H_1\)</span> — la estrella rosa es el agujero central, lejos de la diagonal. Abajo, diagramas de paisajes con el umbral de hipótesis nula al 95% de confianza (línea discontinua): en <span class="math inline">\(H_0\)</span>, <span class="math inline">\(\lambda_1\)</span> sobresale (la componente inmortal) pero <span class="math inline">\(\lambda_2\)</span> y <span class="math inline">\(\lambda_3\)</span> no — hay una sola pieza; en <span class="math inline">\(H_1\)</span>, <span class="math inline">\(\lambda_1\)</span> supera claramente el umbral, confirmando que el agujero es señal.
@@ -426,7 +439,7 @@ Figura&nbsp;1.3: Receta 2: arriba, nube de puntos sobre un círculo con ruido, d
 <div id="fig-anillo-invarianza" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-anillo-invarianza-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../diagrams/tda/anillo-invarianza.png" class="img-fluid figure-img" style="width:95.0%">
+<img src="diagrams/tda/anillo-invarianza.png" class="img-fluid figure-img" style="width:95.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-anillo-invarianza-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figura&nbsp;1.4: Invarianza topológica: un óvalo, un cuadrado y una curva aleatoria — tres geometrías distintas con la misma topología. En todos los casos, <span class="math inline">\(H_0\)</span> detecta una componente y <span class="math inline">\(H_1\)</span> detecta un ciclo persistente (estrella). La forma geométrica cambia; la forma topológica, no.
@@ -471,7 +484,7 @@ Figura&nbsp;1.4: Invarianza topológica: un óvalo, un cuadrado y una curva alea
 <div id="fig-ruido" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-ruido-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../diagrams/tda/ruido.png" class="img-fluid figure-img" style="width:90.0%">
+<img src="diagrams/tda/ruido.png" class="img-fluid figure-img" style="width:90.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ruido-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figura&nbsp;1.5: Receta 3 — estabilidad: arriba, el mismo círculo con cuatro niveles de ruido creciente (<span class="math inline">\(\sigma\)</span>); centro, diagrama de persistencia <span class="math inline">\(H_1\)</span> (la estrella marca el agujero principal); abajo, paisaje de persistencia <span class="math inline">\(\lambda_1\)</span> con el umbral 95%. La señal decrece gradualmente — nunca desaparece de golpe.
@@ -511,7 +524,7 @@ Figura&nbsp;1.5: Receta 3 — estabilidad: arriba, el mismo círculo con cuatro 
 <div id="fig-invarianza-dimension" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-invarianza-dimension-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../diagrams/tda/invarianza-dimension.png" class="img-fluid figure-img" style="width:90.0%">
+<img src="diagrams/tda/invarianza-dimension.png" class="img-fluid figure-img" style="width:90.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-invarianza-dimension-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figura&nbsp;1.6: Maldición de la dimensionalidad: círculo de <span class="math inline">\(R = 1.5\)</span> embebido en <span class="math inline">\(\mathbb{R}^2\)</span>, <span class="math inline">\(\mathbb{R}^8\)</span>, <span class="math inline">\(\mathbb{R}^{32}\)</span> y <span class="math inline">\(\mathbb{R}^{128}\)</span> con ruido <span class="math inline">\(\sigma = 0.2\)</span>. Fila 1: proyección <span class="math inline">\((x_1, x_{d/2+1})\)</span> — en alta dimensión, coordenada de ruido puro. Fila 2: PCA 2D — recupera el círculo siempre (escenario ideal para PCA). Fila 3: diagrama <span class="math inline">\(H_1\)</span> — la estrella más persistente se acerca a la diagonal. Fila 4: paisaje <span class="math inline">\(\lambda_1\)</span> — la razón señal/ruido decrece; en <span class="math inline">\(\mathbb{R}^{128}\)</span> los picos de <span class="math inline">\(H_1\)</span> son difícilmente distinguibles del umbral de permutación.
@@ -571,7 +584,7 @@ Figura&nbsp;1.6: Maldición de la dimensionalidad: círculo de <span class="math
 <div id="fig-ciclo-representativo" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-ciclo-representativo-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../diagrams/tda/ciclo-representativo.png" class="img-fluid figure-img" style="width:90.0%">
+<img src="diagrams/tda/ciclo-representativo.png" class="img-fluid figure-img" style="width:90.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ciclo-representativo-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figura&nbsp;1.7: Receta 4: ciclo representativo del agujero principal. Izquierda: los vértices del ciclo (rojo) y sus aristas forman un polígono cerrado que encierra la región vacía central del anillo; los demás puntos aparecen en gris. Derecha: diagrama de persistencia <span class="math inline">\(H_1\)</span> con la estrella marcando la característica extraída.
@@ -679,7 +692,7 @@ Figura&nbsp;1.7: Receta 4: ciclo representativo del agujero principal. Izquierda
 <div id="fig-mapper-heroe" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-mapper-heroe-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../diagrams/tda/mapper-heroe.png" class="img-fluid figure-img" style="width:95.0%">
+<img src="diagrams/tda/mapper-heroe.png" class="img-fluid figure-img" style="width:95.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-mapper-heroe-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figura&nbsp;1.8: Receta 5: hipergrafo en espiral de nueve novelas clásicas. Cada nodo es un cluster semántico; su área es proporcional a la fracción de pasajes que contiene, y su posición en la espiral refleja el orden narrativo (centro = inicio, exterior = final). Flechas azules: recorrido cronológico. Flechas rojas: camino de retorno por aristas semánticas. El ratio <span class="math inline">\(d/\text{trav}\)</span> mide el coste relativo del retorno.
@@ -883,7 +896,7 @@ Tabla&nbsp;1.1: Distancia de retorno en el grafo Mapper para nueve novelas. <spa
 <div id="fig-ciencia-h0" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-ciencia-h0-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../diagrams/tda/ciencia-h0.png" class="img-fluid figure-img" style="width:95.0%">
+<img src="diagrams/tda/ciencia-h0.png" class="img-fluid figure-img" style="width:95.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ciencia-h0-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figura&nbsp;1.9: Análisis <span class="math inline">\(H_0\)</span> del corpus multi-campo (8.085 artículos de arXiv 2025, 29 categorías). Izquierda: diagrama de persistencia — todos los puntos cerca de la diagonal, ninguna barra supera el umbral del 95%. Derecha: paisaje <span class="math inline">\(\lambda_1\)</span> con umbral nulo (línea discontinua). La ciencia arXiv es una única componente conexa a nivel de significación estadística.
@@ -912,7 +925,7 @@ Nota
 <div id="fig-mapper-ciencia-lentes" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-mapper-ciencia-lentes-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../diagrams/tda/mapper-ciencia-lentes.png" class="img-fluid figure-img" style="width:100.0%">
+<img src="diagrams/tda/mapper-ciencia-lentes.png" class="img-fluid figure-img" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-mapper-ciencia-lentes-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figura&nbsp;1.10: Comparación de lentes Mapper sobre el corpus arXiv 2025 (8.085 artículos). Izquierda: lente PCA 1D — árbol de 10 nodos y 9 aristas, sin ciclos. Derecha: lente PCA 2D — red de 88 nodos y 296 aristas con ciclos interdisciplinares. La misma paleta de colores que en la <a href="#fig-mapper-ciencia" class="quarto-xref">Figura&nbsp;<span>1.11</span></a>.
@@ -948,7 +961,7 @@ Figura&nbsp;1.10: Comparación de lentes Mapper sobre el corpus arXiv 2025 (8.08
 <div id="fig-mapper-ciencia" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-mapper-ciencia-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../diagrams/tda/mapper-ciencia.png" class="img-fluid figure-img" style="width:95.0%">
+<img src="diagrams/tda/mapper-ciencia.png" class="img-fluid figure-img" style="width:95.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-mapper-ciencia-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figura&nbsp;1.11: Grafo Mapper del corpus multi-campo arXiv 2025 (8.085 artículos, 88 nodos, lente PCA 2D). Cada nodo se dibuja como un pastel de sectores proporcionales a la composición de campos (azul = Informática, rojo = Física, verde = Matemáticas, naranja = Estadística, violeta = Biología, marrón = Economía). El tamaño es proporcional al número de papers. Los nodos de un único color son monodisciplinares; los de varios colores son puentes interdisciplinares.
@@ -1077,7 +1090,7 @@ Tabla&nbsp;1.2: Receta 7: aplicación del protocolo de tres pasos al toro (<span
 <div id="fig-umap-toro" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-umap-toro-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../diagrams/tda/umap-toro.png" class="img-fluid figure-img" style="width:95.0%">
+<img src="diagrams/tda/umap-toro.png" class="img-fluid figure-img" style="width:95.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-umap-toro-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figura&nbsp;1.12: Receta 7: reducción de un toro (<span class="math inline">\(\beta_1 = 2\)</span>) desde <span class="math inline">\(\mathbb{R}^{50}\)</span> a <span class="math inline">\(\mathbb{R}^3\)</span> con PCA (columna central) y UMAP (columna derecha), con el toro original en <span class="math inline">\(\mathbb{R}^3\)</span> como referencia (columna izquierda). Fila superior: nubes 3D coloreadas por <span class="math inline">\(\theta\)</span> — PCA puede parecer geométricamente limpia, UMAP suele verse distorsionada: ambas apariencias son engañosas. Fila central: diagrama de persistencia <span class="math inline">\(H_1\)</span>, estrellas rojas = ciclos persistentes; PCA detecta 1, UMAP detecta 2. Fila inferior: paisaje de persistencia con capas <span class="math inline">\(\lambda_1\)</span> (rojo) y <span class="math inline">\(\lambda_2\)</span> (azul), umbral nulo al 95% (línea discontinua) — solo UMAP tiene ambas capas sobre el umbral, confirmando <span class="math inline">\(\beta_1 = 2\)</span>.
@@ -1140,7 +1153,7 @@ Figura&nbsp;1.12: Receta 7: reducción de un toro (<span class="math inline">\(\
 <div id="fig-mapper-heroe-umap" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-mapper-heroe-umap-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../diagrams/tda/mapper-heroe-umap.png" class="img-fluid figure-img" style="width:95.0%">
+<img src="diagrams/tda/mapper-heroe-umap.png" class="img-fluid figure-img" style="width:95.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-mapper-heroe-umap-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figura&nbsp;1.13: Receta 8 (camino del héroe): hipergrafo en espiral con lente UMAP 2D y DBSCAN con distancia coseno sobre los embeddings originales en <span class="math inline">\(\mathbb{R}^{384}\)</span>. La lente no lineal organiza los parches del Mapper; los nodos se colocan en la espiral según su posición narrativa media (centro = inicio, exterior = final). Las flechas rojas (retorno) siguen cruzando casi todo el grafo, confirmando que el inicio y el final están semánticamente alejados en todas las novelas.
@@ -1173,7 +1186,7 @@ Figura&nbsp;1.13: Receta 8 (camino del héroe): hipergrafo en espiral con lente 
 <div id="fig-mapper-ciencia-umap" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-mapper-ciencia-umap-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../diagrams/tda/mapper-ciencia-umap.png" class="img-fluid figure-img" style="width:100.0%">
+<img src="diagrams/tda/mapper-ciencia-umap.png" class="img-fluid figure-img" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-mapper-ciencia-umap-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figura&nbsp;1.14: Receta 8 (árbol de la ciencia): comparación de lentes Mapper sobre el corpus arXiv 2025. Izquierda: lente PCA 2D con clustering PCA 20D — 88 nodos y 296 aristas. Derecha: lente UMAP 2D con DBSCAN coseno sobre <span class="math inline">\(\mathbb{R}^{384}\)</span> — 101 nodos y 236 aristas. Con UMAP, las disciplinas se agrupan geográficamente según la variedad no lineal del corpus: los campos con vocabulario más similar aparecen contiguos, y los nodos multicolor (puentes interdisciplinares) se concentran en las zonas de transición.
@@ -1346,7 +1359,7 @@ Tabla&nbsp;1.3: Validación topológica interna de los dos nervios Mapper del co
 <div id="fig-vr-filtration" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-vr-filtration-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../diagrams/tda/vietoris-rips-filtration.png" class="img-fluid figure-img" style="width:95.0%">
+<img src="diagrams/tda/vietoris-rips-filtration.png" class="img-fluid figure-img" style="width:95.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-vr-filtration-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figura&nbsp;1.15: Filtración de Vietoris-Rips sobre un anillo ruidoso de 30 puntos a cuatro escalas <span class="math inline">\(\varepsilon\)</span> crecientes. Izquierda: puntos aislados (<span class="math inline">\(H_0\)</span> máximo). Centro-izquierda: primeras aristas; las tres componentes del anillo se conectan (<span class="math inline">\(H_0\)</span> decrece). Centro-derecha: el anillo es visible como un ciclo persistente en <span class="math inline">\(H_1\)</span> (rojo). Derecha: triángulos rellenan el interior; el ciclo muere. El código de barras inferior muestra los eventos de nacimiento y muerte correspondientes.
@@ -1374,7 +1387,7 @@ Figura&nbsp;1.15: Filtración de Vietoris-Rips sobre un anillo ruidoso de 30 pun
 <div id="fig-h0-filtration" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-h0-filtration-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../diagrams/tda/h0-filtration.png" class="img-fluid figure-img" style="width:99.0%">
+<img src="diagrams/tda/h0-filtration.png" class="img-fluid figure-img" style="width:99.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-h0-filtration-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figura&nbsp;1.16: Filtración de Vietoris-Rips sobre cinco puntos (arriba), dendrograma de enlace simple (centro) y código de barras de <span class="math inline">\(H_0\)</span> (abajo), alineados por la misma escala <span class="math inline">\(\varepsilon\)</span>. Cada fotograma muestra la arista que provoca la fusión (en rojo); el número <span class="math inline">\(\beta_0\)</span> indica cuántas componentes conexas quedan activas entre eventos. La barra inmortal (flecha) es la componente que persiste para siempre.
@@ -1631,7 +1644,7 @@ Figura&nbsp;1.16: Filtración de Vietoris-Rips sobre cinco puntos (arriba), dend
 <div id="fig-filtracion-barcode" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-filtracion-barcode-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../diagrams/tda/filtracion-a-barcode.png" class="img-fluid figure-img" style="width:95.0%">
+<img src="diagrams/tda/filtracion-a-barcode.png" class="img-fluid figure-img" style="width:95.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-filtracion-barcode-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figura&nbsp;1.17: Cuatro fotogramas de la filtración sincronizados con el código de barras. <span class="math inline">\(\varepsilon_2\)</span>: las aristas forman una cadena (<span class="math inline">\(\beta_0 = 1\)</span>, <span class="math inline">\(\beta_1 = 0\)</span>). <span class="math inline">\(\varepsilon_3\)</span>: la arista roja cierra el bucle — <span class="math inline">\(H_1\)</span> nace (<span class="math inline">\(\beta_1 = 1\)</span>). <span class="math inline">\(\varepsilon_4\)</span>: cuando <span class="math inline">\(\varepsilon\)</span> alcanza el diámetro (<span class="math inline">\(2r\)</span>), los triángulos en abanico —formados solo por puntos del anillo, sin punto central— rellenan el interior y <span class="math inline">\(H_1\)</span> muere (<span class="math inline">\(\beta_1 = 0\)</span>). El diámetro (línea roja gruesa) es la cuerda crítica.
@@ -1657,7 +1670,7 @@ Figura&nbsp;1.17: Cuatro fotogramas de la filtración sincronizados con el códi
 <div id="fig-barcode-vs-pd" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-barcode-vs-pd-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../diagrams/tda/barcode-vs-pd.png" class="img-fluid figure-img" style="width:99.0%">
+<img src="diagrams/tda/barcode-vs-pd.png" class="img-fluid figure-img" style="width:99.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-barcode-vs-pd-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figura&nbsp;1.18: Izquierda: cinco puntos dispuestos en un pentágono regular a escala <span class="math inline">\(\varepsilon \approx 0.4\)</span> — las aristas (rojo) forman un bucle cerrado y el interior sombreado es el agujero que origina la característica <span class="math inline">\(H_1\)</span>. Centro: código de barras de la nube; las cuatro barras azules cortas son <span class="math inline">\(H_0\)</span> de ruido (componentes que se fusionan rápido), la barra azul larga con flecha es el <span class="math inline">\(H_0\)</span> inmortal, la barra roja larga es la señal <span class="math inline">\(H_1\)</span> (el agujero) y la barra roja muy corta es ruido <span class="math inline">\(H_1\)</span>. Derecha: diagrama de persistencia; los puntos azules pequeños cerca de la diagonal son ruido <span class="math inline">\(H_0\)</span>, el punto rojo grande alejado de la diagonal es la señal <span class="math inline">\(H_1\)</span>, y el punto rojo pequeño junto a la diagonal es el ruido <span class="math inline">\(H_1\)</span>. La distancia al eje diagonal mide la persistencia: señal arriba, ruido abajo. Las flechas muestran la correspondencia barra ↔︎ punto.
@@ -1686,7 +1699,7 @@ Figura&nbsp;1.18: Izquierda: cinco puntos dispuestos en un pentágono regular a 
 <div id="fig-bottleneck" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-bottleneck-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../diagrams/tda/bottleneck-matching.png" class="img-fluid figure-img" style="width:90.0%">
+<img src="diagrams/tda/bottleneck-matching.png" class="img-fluid figure-img" style="width:90.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-bottleneck-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figura&nbsp;1.19: Ilustración del teorema de estabilidad en tres pasos. <strong>Izquierda</strong>: nube original <span class="math inline">\(X\)</span> (puntos azules). <strong>Centro</strong>: nube perturbada <span class="math inline">\(Y = X + \eta\)</span>; el punto pálido muestra la posición original; la flecha naranja marca el peor desplazamiento <span class="math inline">\(\delta = d_H(X,Y)\)</span>. <strong>Derecha</strong>: diagramas de persistencia <span class="math inline">\(D(X)\)</span> (círculos) y <span class="math inline">\(D(Y)\)</span> (cuadrados) superpuestos; las líneas grises muestran el emparejamiento bottleneck óptimo; la flecha naranja acota el mayor desplazamiento en el espacio de PDs, que no puede superar <span class="math inline">\(W_\infty \leq 2\delta\)</span>.
@@ -1810,7 +1823,7 @@ Tabla&nbsp;1.4: Viabilidad del TDA por dominio según la fórmula de Niyogi et a
 <div id="fig-pd-paisaje" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-pd-paisaje-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../diagrams/tda/pd-a-paisaje.png" class="img-fluid figure-img" style="width:90.0%">
+<img src="diagrams/tda/pd-a-paisaje.png" class="img-fluid figure-img" style="width:90.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pd-paisaje-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figura&nbsp;1.20: De diagrama de persistencia a paisaje. Cada punto <span class="math inline">\((b_i, d_i)\)</span> del PD genera una tienda de campaña <span class="math inline">\(\Lambda_i\)</span> (panel izquierdo, coloreada por persistencia). El paisaje <span class="math inline">\(\lambda_k\)</span> toma el <span class="math inline">\(k\)</span>-ésimo máximo a cada escala <span class="math inline">\(t\)</span> (panel derecho). Los niveles <span class="math inline">\(\lambda_1\)</span>, <span class="math inline">\(\lambda_2\)</span>, <span class="math inline">\(\lambda_3\)</span> capturan señal de persistencia decreciente: <span class="math inline">\(\lambda_1\)</span> refleja la característica dominante, <span class="math inline">\(\lambda_2\)</span> la secundaria.
@@ -1820,7 +1833,7 @@ Figura&nbsp;1.20: De diagrama de persistencia a paisaje. Cada punto <span class=
 <div id="fig-bootstrap-paisaje" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-bootstrap-paisaje-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../diagrams/tda/bootstrap-paisaje.png" class="img-fluid figure-img" style="width:95.0%">
+<img src="diagrams/tda/bootstrap-paisaje.png" class="img-fluid figure-img" style="width:95.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-bootstrap-paisaje-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figura&nbsp;1.21: Tres muestras del mismo proceso (filas 1–3) producen diagramas de persistencia con barras de distinta longitud y paisajes con picos de distinta altura. La fila inferior superpone los tres paisajes individuales (rojo) para obtener el <strong>paisaje medio</strong> (azul), la <strong>banda bootstrap 5%–95%</strong> (naranja, banda de variabilidad de remuestras del dataset original) y la <strong>línea nula</strong> (verde, percentil 95% de paisajes de datos permutados). El pico azul supera la línea nula — señal estadísticamente significativa — y queda dentro de la banda bootstrap — señal reproducible.
@@ -1849,7 +1862,7 @@ Figura&nbsp;1.21: Tres muestras del mismo proceso (filas 1–3) producen diagram
 <div id="fig-mapper-pipeline" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-mapper-pipeline-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../diagrams/tda/mapper-pipeline.png" class="img-fluid figure-img" style="width:95.0%">
+<img src="diagrams/tda/mapper-pipeline.png" class="img-fluid figure-img" style="width:95.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-mapper-pipeline-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figura&nbsp;1.22: Pipeline de Mapper en cuatro pasos. (1) Nube de datos coloreada por valor de la lente (coordenada <span class="math inline">\(x\)</span>). (2) Cubierta de 5 intervalos solapados sobre el eje de la lente. (3) Pull-back y clustering local en cada intervalo; los puntos solapantes (verde) pertenecen a dos clusters. (4) Grafo nervio con nodos coloreados por lente y aristas entre clusters con puntos en común.
@@ -1945,7 +1958,7 @@ Figura&nbsp;1.22: Pipeline de Mapper en cuatro pasos. (1) Nube de datos coloread
 <div id="fig-takens" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-takens-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../diagrams/tda/takens-embedding.png" class="img-fluid figure-img" style="width:85.0%">
+<img src="diagrams/tda/takens-embedding.png" class="img-fluid figure-img" style="width:85.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-takens-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figura&nbsp;1.23: Embedding de retardos de <span class="math inline">\(s(t) = \sin(t)\)</span> con retardo <span class="math inline">\(\tau = \pi/2\)</span>. Izquierda: la señal escalar <span class="math inline">\(s(t)\)</span> vs.&nbsp;<span class="math inline">\(t\)</span>. Derecha: la trayectoria <span class="math inline">\((s(t),\, s(t{+}\tau))\)</span> en <span class="math inline">\(\mathbb{R}^2\)</span> traza un círculo limpio. El mini-barcode inferior muestra una componente inmortal en <span class="math inline">\(H_0\)</span> y un ciclo muy persistente en <span class="math inline">\(H_1\)</span> — la firma topológica de la periodicidad.
@@ -1966,7 +1979,7 @@ Figura&nbsp;1.23: Embedding de retardos de <span class="math inline">\(s(t) = \s
 <p>Por un lado, la topología es un campo intuitivo: básicamente lidia con el espacio y las formas, algo que los humanos conocemos bien gracias a nuestro maravilloso sentido de la visión. Pero, desafortunadamente, entender un texto de topología o de análisis topológico de datos resulta especialmente abstracto y complejo.</p>
 <p>Teniendo en cuenta esta contradicción fundamental, y la dificultad a la que nos enfrentamos, el punto de entrada más accesible al campo es <span class="citation" data-cites="ghrist2008barcodes">Ghrist (<a href="tda.html#ref-ghrist2008barcodes" role="doc-biblioref">2008</a>)</span>: en doce páginas, Ghrist explica la homología persistente mediante la metáfora de los códigos de barras con una claridad excepcional — es la lectura recomendada antes de enfrentarse a ningún código. Para quien quiera profundizar en los fundamentos matemáticos y ver el TDA aplicado a problemas reales de datos, <span class="citation" data-cites="carlsson2009topology">Carlsson (<a href="tda.html#ref-carlsson2009topology" role="doc-biblioref">2009</a>)</span> es el artículo de referencia que lanzó el campo; accesible para alguien con álgebra lineal, sin exigir topología algebraica formal.</p>
 <p>Para situar el TDA en el paisaje más amplio del análisis de datos — y entender <em>cuándo</em> y <em>por qué</em> usarlo frente a alternativas como el clustering, la estimación de densidad o la reducción de dimensión — <span class="citation" data-cites="chazal2021introduction">Chazal y Michel (<a href="tda.html#ref-chazal2021introduction" role="doc-biblioref">2021</a>)</span> es la referencia más orientadora: escrita explícitamente para científicos de datos sin formación en topología algebraica, explica cómo integrar la homología persistente y Mapper en pipelines de ML y en qué casos capturan algo que los métodos estadísticos convencionales no pueden.</p>
-<p>Finalmente, el TDA y el aprendizaje profundo son campos hermanos que se están mezclando dentro del aprendizaje geométrico profundo: mientras el TDA estudia la topología de los <em>datos</em>, las arquitecturas del aprendizaje geométrico profundo aprenden funciones que respetan esa misma estructura. Explorar ambos campos en conjunto da una visión coherente de cómo la geometría y la topología están transformando el ML moderno.</p>
+<p>Finalmente, el TDA y el aprendizaje profundo son campos hermanos que se están mezclando dentro del aprendizaje geométrico profundo: mientras el TDA estudia la topología de los <em>datos</em>, las arquitecturas del aprendizaje profundo geométrico aprenden funciones que respetan esa misma estructura. Leer ambos capítulos en conjunto da una visión coherente de cómo la geometría y la topología están transformando el ML moderno.</p>
 </section>
 <section id="referencias" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="referencias">Referencias</h2>
@@ -2458,7 +2471,7 @@ Data.”</span> <em>Bulletin of the American Mathematical Society</em> 45
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="index.html" class="pagination-link" aria-label="Prefacio">
+      <a href="./index.html" class="pagination-link" aria-label="Prefacio">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Prefacio</span>
       </a>          
   </div>

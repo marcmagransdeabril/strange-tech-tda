@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>1&nbsp; Topological Data Analysis – Strange Tech: Topological Data Analysis</title>
+<title>1&nbsp; Introduction – Strange Tech: Topological Data Analysis</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -86,8 +86,8 @@ div.csl-indent {
 <script src="site_libs/quarto-search/autocomplete.umd.js"></script>
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<link href="index.html" rel="prev">
+<meta name="quarto:offset" content="./">
+<link href="./index.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -99,11 +99,11 @@ div.csl-indent {
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap-9e09d2eb63ca372e5c6aa0cd7f5bad22.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
-  "location": "sidebar",
+  "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
-  "panel-placement": "start",
-  "type": "textbox",
+  "panel-placement": "end",
+  "type": "overlay",
   "limit": 50,
   "keyboard-shortcut": [
     "f",
@@ -157,52 +157,63 @@ window.Quarto = {
 </script>
 
 <link rel="stylesheet" href="templates/styles.css">
+<link rel="stylesheet" href="templates/standalone-book.css">
 </head>
 
-<body class="nav-sidebar floating quarto-light">
+<body class="nav-sidebar floating nav-fixed quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">Strange Tech: Topological Data Analysis</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./../es/index.html"> 
+<span class="menu-text">Español</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="tda.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Topological Data Analysis</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./tda.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
-      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
-        <i class="bi bi-search"></i>
-      </button>
     </div>
   </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header">
-    <div class="sidebar-title mb-0 py-0">
-      <a href="index.html">Strange Tech: Topological Data Analysis</a> 
-    </div>
-      </div>
-        <div class="mt-2 flex-shrink-0 align-items-center">
-        <div class="sidebar-search">
-        <div id="quarto-search" class="" title="Search"></div>
-        </div>
-        </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="index.html" class="sidebar-item-text sidebar-link">
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Preface</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="tda.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Topological Data Analysis</span></span></a>
+  <a href="./tda.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
   </div>
 </li>
     </ul>
@@ -210,7 +221,9 @@ window.Quarto = {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar"><div class="quarto-margin-header"><div class="margin-header-item">
+<p><strong>Strange Tech: Topological Data Analysis</strong></p>
+</div></div>
         <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">Table of contents</h2>
    
@@ -262,7 +275,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span id="sec-tda" class="quarto-section-identifier"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Topological Data Analysis</span></span></h1>
+<h1 class="title"><span id="sec-tda" class="quarto-section-identifier"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></h1>
 </div>
 
 
@@ -307,8 +320,8 @@ window.Quarto = {
 <p><em>“Let’s see if tomorrow I come up with some excuse,” and she arrived a little later. The world isn’t going to end if I’m not at the office by 9. Right?</em></p>
 <section id="why-this-technology" class="level2" data-number="1.1">
 <h2 data-number="1.1" class="anchored" data-anchor-id="why-this-technology"><span class="header-section-number">1.1</span> Why this technology?</h2>
-<p>Topological Data Analysis sits in the phase of the book’s opportunity table: +11% CAGR in publications, no mentions on Hacker News, 982 GitHub stars, and $106M in funding. It is clearly a technology <em>in the lab</em>, with weak signals across all metrics except academic growth.</p>
-<p>Qualitatively, it meets the six selection criteria of the Strange Tech series: (1) it has incipient empirical traction — persistent homology is used in biomedical data analysis, materials science, and sensor networks; (2) it is <em>strange</em> — applying algebraic topology to point clouds is one of the most surprising ideas in this book; (3) its Lindy depth is exceptional — algebraic topology has over a century of development (Poincaré, 1895), and persistent homology crystallized in the early 2000s; (4) its mathematical core — Vietoris-Rips complexes, Betti numbers, and persistence diagrams — is teachable with intuitive geometric examples; (5) it does not overlap with any other chapter in the book; and (6) it is not the market’s main bet — the mainstream analyzes data with statistics and deep learning, not topology.</p>
+<p>Topological Data Analysis sits in the phase of the book’s technology-opportunity matrix: +11% CAGR in publications, no mentions on Hacker News, 982 GitHub stars, and $106M in funding. It is clearly a technology <em>in the lab</em>, with weak signals across all metrics except academic growth.</p>
+<p>Qualitatively, it meets the book’s six technology-selection criteria: (1) it has incipient empirical traction — persistent homology is used in biomedical data analysis, materials science, and sensor networks; (2) it is <em>strange</em> — applying algebraic topology to point clouds is one of the most surprising ideas in this book; (3) its Lindy depth is exceptional — algebraic topology has over a century of development (Poincaré, 1895), and persistent homology crystallized in the early 2000s; (4) its mathematical core — Vietoris-Rips complexes, Betti numbers, and persistence diagrams — is teachable with intuitive geometric examples; (5) it does not overlap with any other chapter in the book; and (6) it is not the market’s main bet — the mainstream analyzes data with statistics and deep learning, not topology.</p>
 </section>
 <section id="brief-history" class="level2" data-number="1.2">
 <h2 data-number="1.2" class="anchored" data-anchor-id="brief-history"><span class="header-section-number">1.2</span> Brief history</h2>
@@ -360,7 +373,7 @@ window.Quarto = {
 <div id="fig-tres-islas" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-tres-islas-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../diagrams/tda/tres-islas.png" class="img-fluid figure-img" style="width:95.0%">
+<img src="diagrams/tda/tres-islas.png" class="img-fluid figure-img" style="width:95.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-tres-islas-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;1.1: Recipe 1: three Gaussian clusters and three equivalent representations of their <span class="math inline">\(H_0\)</span> homology. The three red stars in the diagram correspond to the 3 clusters. In the persistence landscape, the peaks clearly surpass the null threshold (dashed line).
@@ -371,7 +384,7 @@ Figure&nbsp;1.1: Recipe 1: three Gaussian clusters and three equivalent represen
 <div id="fig-tres-islas-null" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-tres-islas-null-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../diagrams/tda/tres-islas-null.png" class="img-fluid figure-img" style="width:95.0%">
+<img src="diagrams/tda/tres-islas-null.png" class="img-fluid figure-img" style="width:95.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-tres-islas-null-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;1.2: Negative control: 150 uniform points (no structure). The diagram, barcode, and persistence landscape show only noise — <span class="math inline">\(\lambda_1\)</span> barely surpasses the null threshold, without the prominent peaks from <a href="#fig-tres-islas" class="quarto-xref">Figure&nbsp;<span>1.1</span></a>.
@@ -417,7 +430,7 @@ Figure&nbsp;1.2: Negative control: 150 uniform points (no structure). The diagra
 <div id="fig-anillo" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-anillo-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../diagrams/tda/anillo.png" class="img-fluid figure-img" style="width:90.0%">
+<img src="diagrams/tda/anillo.png" class="img-fluid figure-img" style="width:90.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-anillo-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;1.3: Recipe 2: above, point cloud on a circle with noise, <span class="math inline">\(H_0\)</span> persistence diagram and <span class="math inline">\(H_1\)</span> diagram — the pink star is the central hole, far from the diagonal. Below, landscapes with the 95% threshold (dashed line): in <span class="math inline">\(H_0\)</span>, <span class="math inline">\(\lambda_1\)</span> stands out (the immortal component) but <span class="math inline">\(\lambda_2\)</span> and <span class="math inline">\(\lambda_3\)</span> don’t — there’s a single piece; in <span class="math inline">\(H_1\)</span>, <span class="math inline">\(\lambda_1\)</span> clearly surpasses the threshold, confirming that the hole is signal.
@@ -428,7 +441,7 @@ Figure&nbsp;1.3: Recipe 2: above, point cloud on a circle with noise, <span clas
 <div id="fig-anillo-invarianza" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-anillo-invarianza-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../diagrams/tda/anillo-invarianza.png" class="img-fluid figure-img" style="width:95.0%">
+<img src="diagrams/tda/anillo-invarianza.png" class="img-fluid figure-img" style="width:95.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-anillo-invarianza-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;1.4: Topological invariance: an oval, a square, and a random curve — three different geometries with the same topology. In all cases, <span class="math inline">\(H_0\)</span> detects one component and <span class="math inline">\(H_1\)</span> detects a persistent cycle (star). The geometric shape changes; the topological shape does not.
@@ -473,7 +486,7 @@ Figure&nbsp;1.4: Topological invariance: an oval, a square, and a random curve �
 <div id="fig-ruido" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-ruido-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../diagrams/tda/ruido.png" class="img-fluid figure-img" style="width:90.0%">
+<img src="diagrams/tda/ruido.png" class="img-fluid figure-img" style="width:90.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ruido-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;1.5: Recipe 3 — stability: above, the same circle with four increasing noise levels (<span class="math inline">\(\sigma\)</span>); middle, <span class="math inline">\(H_1\)</span> persistence diagram (the star marks the main hole); below, persistence landscape <span class="math inline">\(\lambda_1\)</span> with the 95% threshold. The signal decreases gradually — it never disappears abruptly.
@@ -513,7 +526,7 @@ Figure&nbsp;1.5: Recipe 3 — stability: above, the same circle with four increa
 <div id="fig-invarianza-dimension" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-invarianza-dimension-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../diagrams/tda/invarianza-dimension.png" class="img-fluid figure-img" style="width:90.0%">
+<img src="diagrams/tda/invarianza-dimension.png" class="img-fluid figure-img" style="width:90.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-invarianza-dimension-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;1.6: Curse of dimensionality: circle of <span class="math inline">\(R = 1.5\)</span> embedded in <span class="math inline">\(\mathbb{R}^2\)</span>, <span class="math inline">\(\mathbb{R}^8\)</span>, <span class="math inline">\(\mathbb{R}^{32}\)</span>, and <span class="math inline">\(\mathbb{R}^{128}\)</span> with noise <span class="math inline">\(\sigma = 0.2\)</span>. Row 1: projection <span class="math inline">\((x_1, x_{d/2+1})\)</span> — in high dimension, a coordinate of pure noise. Row 2: PCA 2D — recovers the circle in all cases (ideal scenario for PCA). Row 3: <span class="math inline">\(H_1\)</span> diagram — the most persistent star approaches the diagonal. Row 4: <span class="math inline">\(\lambda_1\)</span> landscape — the signal-to-noise ratio decreases; in <span class="math inline">\(\mathbb{R}^{128}\)</span> the <span class="math inline">\(H_1\)</span> peaks are barely distinguishable from the permutation threshold.
@@ -573,7 +586,7 @@ Figure&nbsp;1.6: Curse of dimensionality: circle of <span class="math inline">\(
 <div id="fig-ciclo-representativo" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-ciclo-representativo-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../diagrams/tda/ciclo-representativo.png" class="img-fluid figure-img" style="width:90.0%">
+<img src="diagrams/tda/ciclo-representativo.png" class="img-fluid figure-img" style="width:90.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ciclo-representativo-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;1.7: Recipe 4: representative cycle of the main hole. Left: the cycle’s vertices (red) and their edges form a closed polygon enclosing the empty central region of the ring; the other points appear in gray. Right: <span class="math inline">\(H_1\)</span> persistence diagram with the star marking the extracted feature.
@@ -666,7 +679,7 @@ Figure&nbsp;1.7: Recipe 4: representative cycle of the main hole. Left: the cycl
 <div id="fig-mapper-heroe" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-mapper-heroe-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../diagrams/tda/mapper-heroe.png" class="img-fluid figure-img" style="width:95.0%">
+<img src="diagrams/tda/mapper-heroe.png" class="img-fluid figure-img" style="width:95.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-mapper-heroe-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;1.8: Recipe 5: spiral hypergraph of nine classic novels. Each node is a semantic cluster; its area is proportional to the fraction of passages it contains, and its position on the spiral reflects narrative order (center = beginning, outer = end). Blue arrows: chronological traversal. Red arrows: return path via semantic edges. The ratio <span class="math inline">\(d/\text{trav}\)</span> measures the relative cost of the return.
@@ -870,7 +883,7 @@ Table&nbsp;1.1: Return distance in the Mapper graph for nine novels. <span class
 <div id="fig-ciencia-h0" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-ciencia-h0-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../diagrams/tda/ciencia-h0.png" class="img-fluid figure-img" style="width:95.0%">
+<img src="diagrams/tda/ciencia-h0.png" class="img-fluid figure-img" style="width:95.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ciencia-h0-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;1.9: <span class="math inline">\(H_0\)</span> analysis of the multi-field corpus (8,085 arXiv 2025 articles, 29 categories). Left: persistence diagram — all points near the diagonal, no bar exceeds the 95% threshold. Right: <span class="math inline">\(\lambda_1\)</span> landscape with null threshold (dashed line). ArXiv science is a single connected component at the level of statistical significance.
@@ -899,7 +912,7 @@ Note
 <div id="fig-mapper-ciencia-lentes" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-mapper-ciencia-lentes-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../diagrams/tda/mapper-ciencia-lentes.png" class="img-fluid figure-img" style="width:100.0%">
+<img src="diagrams/tda/mapper-ciencia-lentes.png" class="img-fluid figure-img" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-mapper-ciencia-lentes-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;1.10: Comparison of Mapper lenses on the arXiv 2025 corpus (8,085 articles). Left: 1D PCA lens — tree with 10 nodes and 9 edges, no cycles. Right: 2D PCA lens — network with 88 nodes and 296 edges with interdisciplinary cycles. Same color palette as in <a href="#fig-mapper-ciencia" class="quarto-xref">Figure&nbsp;<span>1.11</span></a>.
@@ -935,7 +948,7 @@ Figure&nbsp;1.10: Comparison of Mapper lenses on the arXiv 2025 corpus (8,085 ar
 <div id="fig-mapper-ciencia" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-mapper-ciencia-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../diagrams/tda/mapper-ciencia.png" class="img-fluid figure-img" style="width:95.0%">
+<img src="diagrams/tda/mapper-ciencia.png" class="img-fluid figure-img" style="width:95.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-mapper-ciencia-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;1.11: Mapper graph of the multi-field arXiv 2025 corpus (8,085 articles, 88 nodes, 2D PCA lens). Each node is drawn as a pie chart with sectors proportional to the field composition (blue = Computer Science, red = Physics, green = Mathematics, orange = Statistics, purple = Biology, brown = Economics). Size is proportional to the number of papers. Single-color nodes are monodisciplinary; multi-color nodes are interdisciplinary bridges.
@@ -1064,7 +1077,7 @@ Table&nbsp;1.2: Recipe 7: application of the three-step protocol to the torus (<
 <div id="fig-umap-toro" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-umap-toro-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../diagrams/tda/umap-toro.png" class="img-fluid figure-img" style="width:95.0%">
+<img src="diagrams/tda/umap-toro.png" class="img-fluid figure-img" style="width:95.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-umap-toro-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;1.12: Recipe 7: reduction of a torus (<span class="math inline">\(\beta_1 = 2\)</span>) from <span class="math inline">\(\mathbb{R}^{50}\)</span> to <span class="math inline">\(\mathbb{R}^3\)</span> with PCA (center column) and UMAP (right column), with the original torus in <span class="math inline">\(\mathbb{R}^3\)</span> as reference (left column). Top row: 3D point clouds colored by <span class="math inline">\(\theta\)</span> — PCA may look geometrically clean, UMAP often looks distorted: both appearances are misleading. Middle row: <span class="math inline">\(H_1\)</span> persistence diagram, red stars = persistent cycles; PCA detects 1, UMAP detects 2. Bottom row: persistence landscape with layers <span class="math inline">\(\lambda_1\)</span> (red) and <span class="math inline">\(\lambda_2\)</span> (blue), 95% null threshold (dashed line) — only UMAP has both layers above the threshold, confirming <span class="math inline">\(\beta_1 = 2\)</span>.
@@ -1132,7 +1145,7 @@ Figure&nbsp;1.12: Recipe 7: reduction of a torus (<span class="math inline">\(\b
 <div id="fig-mapper-heroe-umap" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-mapper-heroe-umap-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../diagrams/tda/mapper-heroe-umap.png" class="img-fluid figure-img" style="width:95.0%">
+<img src="diagrams/tda/mapper-heroe-umap.png" class="img-fluid figure-img" style="width:95.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-mapper-heroe-umap-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;1.13: Recipe 8 (hero’s journey): spiral hypergraph with 2D UMAP lens and 10D UMAP clustering, both reductions independent. The non-linear lens groups within each patch passages that PCA would separate; nodes are placed on the spiral according to their mean narrative position (center = beginning, outer edge = end). The red arrows (return) still cross nearly the entire graph, confirming that the beginning and end are semantically distant in all nine novels.
@@ -1172,7 +1185,7 @@ Figure&nbsp;1.13: Recipe 8 (hero’s journey): spiral hypergraph with 2D UMAP le
 <div id="fig-mapper-ciencia-umap" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-mapper-ciencia-umap-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../diagrams/tda/mapper-ciencia-umap.png" class="img-fluid figure-img" style="width:100.0%">
+<img src="diagrams/tda/mapper-ciencia-umap.png" class="img-fluid figure-img" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-mapper-ciencia-umap-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;1.14: Recipe 8 (tree of science): comparison of Mapper lenses on the arXiv 2025 corpus. Left: 2D PCA lens with 20D PCA clustering — 88 nodes and 296 edges. Right: 2D UMAP lens with 10D UMAP clustering — 106 nodes and 267 edges. With UMAP, disciplines cluster geographically according to the non-linear manifold of the corpus: fields with more similar vocabulary appear adjacent, and multicolored nodes (interdisciplinary bridges) concentrate in the transition zones.
@@ -1249,7 +1262,7 @@ Table&nbsp;1.3: Internal validation of the two Mapper nerves for the arXiv corpu
 <div id="fig-validacion-nervio" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-validacion-nervio-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../diagrams/tda/validacion-nervio-ciencia.png" class="img-fluid figure-img" style="width:100.0%">
+<img src="diagrams/tda/validacion-nervio-ciencia.png" class="img-fluid figure-img" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-validacion-nervio-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;1.15: Internal validation of the two Mapper nerves on the arXiv corpus. Each panel shows the mean persistence landscape (lines) with the 5–95% bootstrap band (shading) and the 95% null line (dashed gray) for <span class="math inline">\(H_0\)</span> and <span class="math inline">\(H_1\)</span>. <span class="math inline">\(H_2\)</span> is not computed: with a 2D lens it is structurally zero (see <a href="#sec-validacion-mapper" class="quarto-xref"><span>Section 1.6.8</span></a>). The legend in each row includes <span class="math inline">\(\bar{J}\)</span>, <span class="math inline">\(\bar{S}\)</span>, and <span class="math inline">\(\rho\)</span> (mean density of the bootstrap nerve, parameter of the null binomial model used to compute the z-score of <span class="math inline">\(\bar{S}\)</span>).
@@ -1435,7 +1448,7 @@ Table&nbsp;1.4: TDA application domains in arXiv (2021–2026, approximate count
 <div id="fig-vr-filtration" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-vr-filtration-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../diagrams/tda/vietoris-rips-filtration.png" class="img-fluid figure-img" style="width:95.0%">
+<img src="diagrams/tda/vietoris-rips-filtration.png" class="img-fluid figure-img" style="width:95.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-vr-filtration-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;1.16: Vietoris-Rips filtration over a noisy ring of 30 points at four increasing scales <span class="math inline">\(\varepsilon\)</span>. Left: isolated points (maximum <span class="math inline">\(H_0\)</span>). Center-left: first edges; the three components of the ring connect (<span class="math inline">\(H_0\)</span> decreases). Center-right: the ring is visible as a persistent cycle in <span class="math inline">\(H_1\)</span> (red). Right: triangles fill the interior; the cycle dies. The barcode below shows the corresponding birth and death events.
@@ -1463,7 +1476,7 @@ Figure&nbsp;1.16: Vietoris-Rips filtration over a noisy ring of 30 points at fou
 <div id="fig-h0-filtration" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-h0-filtration-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../diagrams/tda/h0-filtration.png" class="img-fluid figure-img" style="width:99.0%">
+<img src="diagrams/tda/h0-filtration.png" class="img-fluid figure-img" style="width:99.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-h0-filtration-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;1.17: Vietoris-Rips filtration over five points (top), single-linkage dendrogram (middle), and <span class="math inline">\(H_0\)</span> barcode (bottom), aligned on the same scale <span class="math inline">\(\varepsilon\)</span>. Each frame shows the edge that triggers the merge (in red); the number <span class="math inline">\(\beta_0\)</span> indicates how many connected components remain active between events. The immortal bar (arrow) is the component that persists forever.
@@ -1714,7 +1727,7 @@ Figure&nbsp;1.17: Vietoris-Rips filtration over five points (top), single-linkag
 <div id="fig-filtracion-barcode" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-filtracion-barcode-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../diagrams/tda/filtracion-a-barcode.png" class="img-fluid figure-img" style="width:95.0%">
+<img src="diagrams/tda/filtracion-a-barcode.png" class="img-fluid figure-img" style="width:95.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-filtracion-barcode-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;1.18: Four frames of the filtration synchronized with the barcode. <span class="math inline">\(\varepsilon_2\)</span>: edges form a chain (<span class="math inline">\(\beta_0 = 1\)</span>, <span class="math inline">\(\beta_1 = 0\)</span>). <span class="math inline">\(\varepsilon_3\)</span>: the red edge closes the loop — <span class="math inline">\(H_1\)</span> is born (<span class="math inline">\(\beta_1 = 1\)</span>). <span class="math inline">\(\varepsilon_4\)</span>: when <span class="math inline">\(\varepsilon\)</span> reaches the diameter (<span class="math inline">\(2r\)</span>), the fan-shaped triangles — formed using only ring points, with no central point — fill the interior and <span class="math inline">\(H_1\)</span> dies (<span class="math inline">\(\beta_1 = 0\)</span>). The diameter (thick red line) is the critical chord.
@@ -1740,7 +1753,7 @@ Figure&nbsp;1.18: Four frames of the filtration synchronized with the barcode. <
 <div id="fig-barcode-vs-pd" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-barcode-vs-pd-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../diagrams/tda/barcode-vs-pd.png" class="img-fluid figure-img" style="width:99.0%">
+<img src="diagrams/tda/barcode-vs-pd.png" class="img-fluid figure-img" style="width:99.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-barcode-vs-pd-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;1.19: Left: five points arranged in a regular pentagon at scale <span class="math inline">\(\varepsilon \approx 0.4\)</span> — the edges (red) form a closed loop and the shaded interior is the hole that gives rise to the <span class="math inline">\(H_1\)</span> feature. Center: barcode of the point cloud; the four short blue bars are <span class="math inline">\(H_0\)</span> noise (components that merge quickly), the long blue bar with an arrow is the immortal <span class="math inline">\(H_0\)</span>, the long red bar is the <span class="math inline">\(H_1\)</span> signal (the hole), and the very short red bar is <span class="math inline">\(H_1\)</span> noise. Right: persistence diagram; the small blue points near the diagonal are <span class="math inline">\(H_0\)</span> noise, the large red point far from the diagonal is the <span class="math inline">\(H_1\)</span> signal, and the small red point next to the diagonal is <span class="math inline">\(H_1\)</span> noise. Distance to the diagonal axis measures persistence: signal above, noise below. Arrows show the bar ↔︎ point correspondence.
@@ -1769,7 +1782,7 @@ Figure&nbsp;1.19: Left: five points arranged in a regular pentagon at scale <spa
 <div id="fig-bottleneck" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-bottleneck-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../diagrams/tda/bottleneck-matching.png" class="img-fluid figure-img" style="width:90.0%">
+<img src="diagrams/tda/bottleneck-matching.png" class="img-fluid figure-img" style="width:90.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-bottleneck-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;1.20: Illustration of the stability theorem in three steps. <strong>Left</strong>: original point cloud <span class="math inline">\(X\)</span> (blue points). <strong>Center</strong>: perturbed point cloud <span class="math inline">\(Y = X + \eta\)</span>; the faded point shows the original position; the orange arrow marks the worst displacement <span class="math inline">\(\delta = d_H(X,Y)\)</span>. <strong>Right</strong>: persistence diagrams <span class="math inline">\(D(X)\)</span> (circles) and <span class="math inline">\(D(Y)\)</span> (squares) overlaid; the gray lines show the optimal bottleneck matching; the orange arrow bounds the largest displacement in PD space, which cannot exceed <span class="math inline">\(W_\infty \leq 2\delta\)</span>.
@@ -1888,7 +1901,7 @@ Table&nbsp;1.5: TDA viability by domain according to the Niyogi et al.&nbsp;(200
 <div id="fig-pd-paisaje" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-pd-paisaje-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../diagrams/tda/pd-a-paisaje.png" class="img-fluid figure-img" style="width:90.0%">
+<img src="diagrams/tda/pd-a-paisaje.png" class="img-fluid figure-img" style="width:90.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pd-paisaje-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;1.21: From persistence diagram to landscape. Each point <span class="math inline">\((b_i, d_i)\)</span> in the PD generates a tent function <span class="math inline">\(\Lambda_i\)</span> (left panel, colored by persistence). The landscape <span class="math inline">\(\lambda_k\)</span> takes the <span class="math inline">\(k\)</span>-th maximum at each scale <span class="math inline">\(t\)</span> (right panel). Levels <span class="math inline">\(\lambda_1\)</span>, <span class="math inline">\(\lambda_2\)</span>, <span class="math inline">\(\lambda_3\)</span> capture signal of decreasing persistence: <span class="math inline">\(\lambda_1\)</span> reflects the dominant feature, <span class="math inline">\(\lambda_2\)</span> the secondary one.
@@ -1898,7 +1911,7 @@ Figure&nbsp;1.21: From persistence diagram to landscape. Each point <span class=
 <div id="fig-bootstrap-paisaje" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-bootstrap-paisaje-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../diagrams/tda/bootstrap-paisaje.png" class="img-fluid figure-img" style="width:95.0%">
+<img src="diagrams/tda/bootstrap-paisaje.png" class="img-fluid figure-img" style="width:95.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-bootstrap-paisaje-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;1.22: Three samples from the same process (rows 1–3) produce persistence diagrams with bars of different lengths and landscapes with peaks of different heights. The bottom row overlays the three individual landscapes (red) to obtain the <strong>mean landscape</strong> (blue), the <strong>bootstrap band 5%–95%</strong> (orange, variability band from resamples of the original dataset), and the <strong>null line</strong> (green, 95th percentile of landscapes from permuted data). The blue peak exceeds the null line — statistically significant signal — and stays within the bootstrap band — reproducible signal.
@@ -1927,7 +1940,7 @@ Figure&nbsp;1.22: Three samples from the same process (rows 1–3) produce persi
 <div id="fig-mapper-pipeline" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-mapper-pipeline-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../diagrams/tda/mapper-pipeline.png" class="img-fluid figure-img" style="width:95.0%">
+<img src="diagrams/tda/mapper-pipeline.png" class="img-fluid figure-img" style="width:95.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-mapper-pipeline-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;1.23: Mapper pipeline in four steps. (1) Point cloud colored by lens value (<span class="math inline">\(x\)</span> coordinate). (2) Cover of 5 overlapping intervals along the lens axis. (3) Pull-back and local clustering within each interval; overlapping points (green) belong to two clusters. (4) Nerve graph with nodes colored by lens value and edges between clusters that share points.
@@ -2023,7 +2036,7 @@ Figure&nbsp;1.23: Mapper pipeline in four steps. (1) Point cloud colored by lens
 <div id="fig-takens" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-takens-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../diagrams/tda/takens-embedding.png" class="img-fluid figure-img" style="width:85.0%">
+<img src="diagrams/tda/takens-embedding.png" class="img-fluid figure-img" style="width:85.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-takens-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;1.24: Delay embedding of <span class="math inline">\(s(t) = \sin(t)\)</span> with delay <span class="math inline">\(\tau = \pi/2\)</span>. Left: the scalar signal <span class="math inline">\(s(t)\)</span> vs.&nbsp;<span class="math inline">\(t\)</span>. Right: the trajectory <span class="math inline">\((s(t),\, s(t{+}\tau))\)</span> in <span class="math inline">\(\mathbb{R}^2\)</span> traces a clean circle. The mini-barcode below shows an immortal component in <span class="math inline">\(H_0\)</span> and a highly persistent cycle in <span class="math inline">\(H_1\)</span> — the topological signature of periodicity.
@@ -2522,7 +2535,7 @@ Data.”</span> <em>Bulletin of the American Mathematical Society</em> 45
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="index.html" class="pagination-link" aria-label="Preface">
+      <a href="./index.html" class="pagination-link" aria-label="Preface">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Preface</span>
       </a>          
   </div>
