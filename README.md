@@ -16,15 +16,15 @@ practical use to moderately sized datasets.
 
 | Language | Preface | Chapter |
 |----------|---------|---------|
-| English  | [Preface](book/en/index.html) | [Topological Data Analysis](book/en/tda.html) |
-| Español  | [Prefacio](book/es/index.html) | [Análisis Topológico de Datos](book/es/tda.html) |
+| English  | [Preface](https://marcmagransdeabril.github.io/strange-tech-tda/book/en/index.html) | [Topological Data Analysis](https://marcmagransdeabril.github.io/strange-tech-tda/book/en/tda.html) |
+| Español  | [Prefacio](https://marcmagransdeabril.github.io/strange-tech-tda/book/es/index.html) | [Análisis Topológico de Datos](https://marcmagransdeabril.github.io/strange-tech-tda/book/es/tda.html) |
 
 ## Download
 
 | Language | PDF | EPUB |
 |----------|-----|------|
-| English  | [strange-tech-tda.en.pdf](book/en/strange-tech-tda.en.pdf) | [strange-tech-tda.en.epub](book/en/strange-tech-tda.en.epub) |
-| Español  | [strange-tech-tda.es.pdf](book/es/strange-tech-tda.es.pdf) | [strange-tech-tda.es.epub](book/es/strange-tech-tda.es.epub) |
+| English  | [strange-tech-tda.en.pdf](https://raw.githubusercontent.com/marcmagransdeabril/strange-tech-tda/main/book/en/strange-tech-tda.en.pdf) | [strange-tech-tda.en.epub](https://raw.githubusercontent.com/marcmagransdeabril/strange-tech-tda/main/book/en/strange-tech-tda.en.epub) |
+| Español  | [strange-tech-tda.es.pdf](https://raw.githubusercontent.com/marcmagransdeabril/strange-tech-tda/main/book/es/strange-tech-tda.es.pdf) | [strange-tech-tda.es.epub](https://raw.githubusercontent.com/marcmagransdeabril/strange-tech-tda/main/book/es/strange-tech-tda.es.epub) |
 
 ## Code Examples
 

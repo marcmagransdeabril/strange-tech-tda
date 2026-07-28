@@ -9,3 +9,4 @@ kmapper
 ripser
 umap-learn
 pytest
+pypdf
