@@ -1,0 +1,11 @@
+jupyter
+matplotlib
+networkx
+numpy
+requests
+scikit-learn
+scipy
+kmapper
+ripser
+umap-learn
+pytest
