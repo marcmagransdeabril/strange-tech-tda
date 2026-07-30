@@ -6,9 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Marc Magrans de Abril">
 
-<title>Tecnologías Extrañas: Análisis Topológico de Datos</title>
+<title>1&nbsp; Introducción – Tecnologías Extrañas: Análisis Topológico de Datos</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -24,7 +23,26 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -34,7 +52,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./00-prologo.html" rel="next">
+<link href="./02.html" rel="next">
+<link href="./00-prologo.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -110,7 +129,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Prefacio</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./01.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introducción</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -124,7 +143,7 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Prefacio</span></a>
   </div>
 </li>
@@ -136,7 +155,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./01.html" class="sidebar-item-text sidebar-link">
+  <a href="./01.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introducción</span></span></a>
   </div>
 </li>
@@ -194,7 +213,8 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Tabla de contenidos</h2>
    
   <ul>
-  <li><a href="#prefacio" id="toc-prefacio" class="nav-link active" data-scroll-target="#prefacio">Prefacio</a></li>
+  <li><a href="#por-qué-esta-tecnología" id="toc-por-qué-esta-tecnología" class="nav-link active" data-scroll-target="#por-qué-esta-tecnología"><span class="header-section-number">1.1</span> ¿Por qué esta tecnología?</a></li>
+  <li><a href="#breve-historia" id="toc-breve-historia" class="nav-link" data-scroll-target="#breve-historia"><span class="header-section-number">1.2</span> Breve historia</a></li>
   </ul>
 </nav>
     </div>
@@ -203,20 +223,13 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Tecnologías Extrañas: Análisis Topológico de Datos</h1>
-<p class="subtitle lead">Apuestas asimétricas para ingenieros curiosos</p>
+<h1 class="title"><span id="sec-tda" class="quarto-section-identifier"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introducción</span></span></h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Autor/a</div>
-    <div class="quarto-title-meta-contents">
-             <p>Marc Magrans de Abril </p>
-          </div>
-  </div>
     
   
     
@@ -227,11 +240,25 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="prefacio" class="level1 unnumbered">
-<h1 class="unnumbered">Prefacio</h1>
-<p>Este libro forma parte de la serie <strong>Tecnologías Extrañas</strong>: pequeños libros independientes sobre tecnologías avanzadas que la mayoría de ingenieros no conoce pero que podrían necesitar. Cada libro mezcla experiencias personales con análisis técnico riguroso.</p>
+<p>El análisis topológico de datos (<em>Topological Data Analysis</em>, TDA) aplica herramientas de la topología algebraica para descubrir la «forma» de los datos — componentes conexas, agujeros, cavidades — a múltiples escalas simultáneamente. Su aportación principal es que estas características son invariantes bajo deformaciones continuas y matemáticamente estables frente a perturbaciones, lo que las convierte en descriptores robustos donde la estadística clásica y el deep learning solo ven nubes de puntos. El precio: construir las estructuras topológicas escala pobremente con la dimensión y el número de puntos, lo que limita su uso práctico a datasets de tamaño moderado.</p>
+<section id="por-qué-esta-tecnología" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="por-qué-esta-tecnología"><span class="header-section-number">1.1</span> ¿Por qué esta tecnología?</h2>
+<p>El análisis topológico de datos se sitúa en la fase de laboratorio de la tabla de oportunidades de cola larga del capítulo introductorio: crecimiento considerable en publicaciones y modesta financiación en startups, pero curiosamente sin menciones en Hacker News y un número de proyectos relativamente pequeño en GitHub. Es una tecnología claramente <em>en el laboratorio</em>, con señales débiles en todas las métricas excepto el crecimiento académico.</p>
+<p>Cualitativamente, cumple los seis criterios del capítulo introductorio sobre tecnologías extrañas: (1) tiene tracción empírica incipiente — la homología persistente se usa en análisis de datos biomédicos, materiales y redes de sensores; (2) es <em>extraña</em> — aplicar topología algebraica a nubes de puntos es una de las ideas más sorprendentes del libro; (3) su profundidad Lindy es excepcional — la topología algebraica lleva más de un siglo de desarrollo (Poincaré, 1895), y la homología persistente cristalizó a principios de los 2000; (4) su núcleo matemático — complejos de Vietoris-Rips, números de Betti y diagramas de persistencia — es enseñable con ejemplos geométricos intuitivos; (5) no se solapa con ningún otro capítulo del libro; y (6) no es la apuesta principal del mercado — el mainstream analiza datos con estadística y deep learning, no con topología.</p>
+</section>
+<section id="breve-historia" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="breve-historia"><span class="header-section-number">1.2</span> Breve historia</h2>
+<p>En 1895, Henri Poincaré inventó la homología para clasificar superficies sin recurrir a coordenadas: en lugar de describir una figura con ecuaciones, la describía contando sus rasgos estructurales — cuántas piezas separadas la componen, cuántos túneles la atraviesan, cuántas cavidades encierra. Son los mismos conteos que Mireia llamaba agujeros y bucles; la diferencia es que Poincaré los concibió como herramienta de matemática pura, sin ningún dato a la vista. Durante el siglo siguiente, la topología algebraica floreció en abstracto: demostrar propiedades de espacios, clasificar variedades, estudiar grupos de homotopía. Preciso y profundo, pero sin capacidad para analizar una nube de puntos en formato digital.</p>
+<p>Esa pregunta llegó en 2002. El problema con aplicar homología a datos reales era que el resultado dependía enteramente de un parámetro de escala: conecta los puntos demasiado pronto y todo es una masa amorfa; demasiado tarde y nada está conectado. Herbert Edelsbrunner, David Letscher y Afra Zomorodian propusieron la solución obvia en retrospectiva: calcular la homología en <em>todas</em> las escalas simultáneamente y registrar a qué escala cada rasgo nace y a qué escala muere. El nombre — <em>homología persistente</em> — captura exactamente la idea: lo que persiste durante un rango amplio de escalas es señal; lo efímero es ruido. Dos años después, Zomorodian y Carlsson completaron el algoritmo práctico, y los <em>barcodes</em> — barras horizontales donde la longitud representa cuánto persiste cada rasgo — convirtieron un cálculo abstracto en algo que se puede leer de un vistazo.</p>
+<p>En 2009, Gunnar Carlsson publicó «Topology and Data» en el <em>Bulletin of the American Mathematical Society</em> <span class="citation" data-cites="carlsson2009topology">(<a href="07.html#ref-carlsson2009topology" role="doc-biblioref">Carlsson 2009</a>)</span>, el texto que actuó como manifiesto del campo. Su argumento central era que la topología ofrecía a los datos algo que ni la estadística ni el álgebra lineal podían dar: descriptores de forma invariantes bajo deformaciones continuas, que funcionan en cualquier dimensión y que son matemáticamente estables — una pequeña perturbación en los datos produce una pequeña perturbación en el barcode, no un resultado completamente distinto. El artículo llegó cuando el aprendizaje automático empezaba a ahogarse en datos de alta dimensión y consolidó el TDA como disciplina con nombre propio.</p>
+<p>Las primeras aplicaciones que respaldaron el entusiasmo llegaron pronto: en 2011, Nicolau, Levine y Carlsson identificaron un subgrupo de cáncer de mama con perfil mutacional distintivo — y pronóstico excelente — que los métodos de clustering convencionales habían ignorado durante años; en 2013, el algoritmo Mapper reveló estructuras en datos de baloncesto y encuestas políticas que no cabían en ninguna segmentación preexistente. La llegada de librerías eficientes — GUDHI (INRIA, 2014) y sobre todo Ripser (2016), que redujo el tiempo de cálculo en varios órdenes de magnitud — completó la transición del laboratorio matemático al análisis de datos aplicado. ¿Cómo luce, en la práctica, ese barcode que codifica los agujeros de una nube de puntos real? Antes de la teoría, la mejor respuesta es verlo con código.</p>
 
 
+<div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
+<div id="ref-carlsson2009topology" class="csl-entry" role="listitem">
+Carlsson, Gunnar. 2009. <span>«Topology and Data»</span>. <em>Bulletin of the American Mathematical Society</em> 46 (2): 255-308. <a href="https://doi.org/10.1090/S0273-0979-09-01249-X">https://doi.org/10.1090/S0273-0979-09-01249-X</a>.
+</div>
+</div>
 </section>
 
 </main> <!-- /main -->
@@ -637,10 +664,13 @@ ul.task-list li input[type="checkbox"] {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="./00-prologo.html" class="pagination-link" aria-label="Prólogo">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Prólogo</span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./00-prologo.html" class="pagination-link" aria-label="Prólogo">
-        <span class="nav-page-text">Prólogo</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./02.html" class="pagination-link" aria-label="Manos a la obra">
+        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Manos a la obra</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

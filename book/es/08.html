@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.36">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Soluciones – Tecnologías Extrañas: Análisis Topológico de Datos</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./07.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-9e09d2eb63ca372e5c6aa0cd7f5bad22.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="templates/styles.css">
+<link rel="stylesheet" href="templates/standalone-book.css">
+</head>
+
+<body class="nav-sidebar floating nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">Tecnologías Extrañas: Análisis Topológico de Datos</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Buscar"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Navegación de palanca" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./../en/index.html"> 
+<span class="menu-text">English</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./08.html">Soluciones</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Prefacio</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./00-prologo.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Prólogo</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introducción</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Manos a la obra</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Aplicaciones</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Limitaciones actuales</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Fundamentos</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecturas Recomendadas</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./07.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Referencias</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./08.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Soluciones</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar"><div class="quarto-margin-header"><div class="margin-header-item">
+<p><strong>Tecnologías Extrañas: Análisis Topológico de Datos</strong></p>
+</div></div>
+        
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Soluciones</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="solucion">
+<ol type="1">
+<li><p>Con 4 clusters hay 3 fusiones tardías en <span class="math inline">\(H_0\)</span> (una menos que el número de clusters). Si dos clusters están muy juntos, se fusionarán pronto (persistencia baja) y solo quedarán 2 fusiones realmente tardías — los clusters cercanos se comportan como uno solo a escalas grandes.</p></li>
+<li><p>La respuesta del LLM debería describir: dado un conjunto de puntos, para cada valor de <span class="math inline">\(\varepsilon\)</span> se conectan todos los pares a distancia <span class="math inline">\(\leq \varepsilon\)</span> (y sus triángulos, tetraedros, etc.). Al aumentar <span class="math inline">\(\varepsilon\)</span> de 0 a <span class="math inline">\(\infty\)</span>, se obtiene una secuencia anidada de complejos simpliciales — eso es la filtración. Compara con la Receta 1: los 150 puntos aislados (<span class="math inline">\(\varepsilon = 0\)</span>) van fusionándose en clusters al crecer <span class="math inline">\(\varepsilon\)</span>.</p></li>
+<li><p>No cambia significativamente. La persistencia del agujero en <span class="math inline">\(H_1\)</span> depende de la <em>existencia</em> de un bucle cerrado, no de su forma. Una elipse y un círculo son topológicamente equivalentes (homeomorfos), así que el TDA ve el mismo agujero. La persistencia puede variar ligeramente por la geometría distorsionada, pero el agujero persiste.</p></li>
+<li><p>Un «8» tiene dos agujeros: dos bucles cerrados que comparten un punto de cruce. Se esperarían 2 ciclos persistentes en <span class="math inline">\(H_1\)</span>, cada uno correspondiente a uno de los dos lóbulos. En la práctica, la persistencia de ambos dependerá del tamaño relativo de cada lóbulo y del ruido, pero la señal topológica será de dos agujeros bien separados de la diagonal.</p></li>
+<li><p>El paisaje de <span class="math inline">\(H_1\)</span> deja de superar el umbral del 95% aproximadamente cuando <span class="math inline">\(\sigma \geq 0.5\)</span>, es decir, cuando el ruido es del mismo orden que el radio del círculo (r = 1). Esto tiene sentido intuitivo: si la dispersión radial es comparable al tamaño de la estructura, los puntos ya no «recuerdan» que estaban sobre un anillo — la señal topológica se pierde en el ruido.</p></li>
+<li><p>El TDA computa distancias euclídeas: con ruido <span class="math inline">\(\sigma\)</span> en <span class="math inline">\(\mathbb{R}^d\)</span>, la distancia típica crece como <span class="math inline">\(\sigma\sqrt{2d}\)</span>, de modo que la señal del círculo (amplitud <span class="math inline">\(\sim R\)</span>) queda progresivamente enterrada en las fluctuaciones de distancia. PCA trabaja con la <strong>matriz de covarianza</strong>: la dirección principal tiene autovalor <span class="math inline">\(\sigma^2 + R^2/2\)</span>, y las demás <span class="math inline">\(\sigma^2\)</span>; la brecha <span class="math inline">\(R^2/2 \approx 1.1\)</span> no depende de <span class="math inline">\(d\)</span>. Pero éste es un escenario ideal para PCA (señal exactamente en dos coordenadas, ruido isotrópico); en datos reales la señal suele estar distribuida y PCA también degrada. El preprocesado con UMAP (Receta 7) reduce la dimensión antes de aplicar TDA, mitigando la concentración de medida.</p></li>
+<li><p>Con dos anillos concéntricos, <code>ripser</code> debería detectar 2 ciclos altamente persistentes en <span class="math inline">\(H_1\)</span>. Los cociclos representativos correspondientes identificarán puntos sobre cada anillo por separado. Si los anillos son concéntricos (no se intersectan), los conjuntos de puntos no se solapan — cada ciclo representativo vivirá sobre un anillo distinto.</p></li>
+<li><p>Un <em>cociclo</em> representativo es una función definida sobre las aristas del complejo simplicial (asigna valores a aristas); un <em>ciclo</em> representativo es un conjunto de aristas que forman un bucle cerrado. <code>ripser</code> devuelve cociclos porque son más eficientes de calcular (se obtienen como subproducto del algoritmo de reducción de la matriz de borde) y porque las coordenadas de cociclo proveen información geométrica más rica. El ciclo se obtiene como dual del cociclo.</p></li>
+<li><p>Con una lente temporal, Mapper divide la narrativa en franjas de tiempo y agrupa por similitud dentro de cada franja. Como el solapamiento solo ocurre entre intervalos temporales contiguos, las aristas solo conectan nodos de momentos adyacentes — produciendo necesariamente una cadena (o algo cercano). La lente temporal <em>asume</em> linealidad y no puede detectar circularidad porque el principio y el final caen en intervalos distintos que jamás se solapan.</p></li>
+<li><p>Con <code>n_cubes</code> muy bajo (2-3), el grafo tiene pocos nodos y <span class="math inline">\(\beta_1\)</span> baja porque la resolución es insuficiente para crear aristas. Con <code>perc_overlap</code> muy bajo (&lt; 20%), los nodos se desconectan. Para la configuración por defecto (<code>n_cubes=5</code>, <code>perc_overlap=0.4</code>), los grafos son densos (<span class="math inline">\(\beta_1 \approx 35\)</span>–48) para todas las novelas — la densidad es robusta y no específica del viaje del héroe.</p></li>
+<li><p>La similitud coseno directa entre el primer y último chunk es un test mucho más simple que no requiere construir el grafo Mapper. En general confirma el mismo resultado: los embeddings del principio y final de una novela no son más similares que los de dos pasajes aleatorios del mismo libro. La excepción es <em>El Mago de Oz</em>, donde la repetición literal de «Kansas» produce alta similitud coseno.</p></li>
+<li><p>Las principales críticas incluyen: (1) la definición es tan flexible que casi cualquier narrativa encaja <em>a posteriori</em>; (2) privilegia un canon occidental y masculino; (3) no produce predicciones falsificables; (4) confunde patrón descriptivo con estructura universal. Nuestro test cuantitativo apoya la crítica (3): al operacionalizar «retorno» como proximidad semántica, <span class="math inline">\(p \approx 1.0\)</span> para 8 de 9 novelas.</p></li>
+<li><p>Reducir a solo 5 categorías eliminaría los papers que actúan de puentes entre CS y Física (e.g.&nbsp;simulación cuántica, aprendizaje automático para materia condensada) y entre CS y Estadística. Con un corpus solo de CS+QC, <span class="math inline">\(H_0\)</span> seguiría dando N_RAMAS = 1 porque esos campos comparten muchísimo vocabulario. Pero al eliminar las categorías de biología y economía — los campos más alejados del centroide de CS — se reduciría la barra más larga y el umbral bootstrap, sin cambiar el veredicto topológico. La diferencia estaría en las distancias entre centroides, no en la conectividad.</p></li>
+<li><p>La barra más larga (persistencia 0.70) corresponde al par de disciplinas con mayor separación geométrica que aun así queda conectado por papers intermedios. Dado que los centroides más alejados son Física–Biología (d = 0.60), esa barra probablemente refleja papers de biofísica o biología cuántica — investigación que usa herramientas de física cuántica (e.g.&nbsp;resonancia magnética cuántica, modelado cuántico de proteínas) aplicadas a sistemas biológicos. Esos papers son el «puente mínimo»: sin ellos, Física y Biología serían dos islas topológicamente separadas.</p></li>
+<li><p>Un ciclo en el grafo Mapper implicaría que hay al menos tres grupos de papers (nodos) cuyos solapamientos crean un bucle cerrado — es decir, una región del espacio semántico rodeada pero no rellenada. Topológicamente, un ciclo en el Mapper con lente de densidad suele corresponder a una zona de densidad intermedia que rodea un vacío interior. En ciencia, podría significar que hay un «eje temático» que conecta tres disciplinas distintas sin que ninguna de las tres tenga papers directamente en el centro de ese bucle: por ejemplo, un ciclo CS → Estadística → Economía → CS donde la zona central (intersección de las tres) está subpoblada. El grafo árbol que obtenemos (sin ciclos) indica que no hay tal vacío rodeado.</p></li>
+</ol>
+<p>Con <code>n_components</code> muy bajo (10), se pierde información y algunos ciclos desaparecen. Con valores moderados (50–100), el número de ciclos persistentes tiende a estabilizarse. Esto refleja el teorema de estabilidad: perturbaciones acotadas en los datos (como las que introduce la proyección PCA) producen perturbaciones acotadas en el diagrama de persistencia.</p>
+<ol start="16" type="1">
+<li><p>Si hubiera aparecido un ciclo <span class="math inline">\(H_1\)</span> persistente por encima del umbral, extraer su ciclo representativo (Receta 4) convertiría una abstracción topológica en una lista concreta de artículos: los papers que forman el bucle semántico más robusto en el espacio de embeddings. Probablemente conectarían subcampos con vocabulario metodológico compartido pero sin frontera disciplinar clara — por ejemplo, estadística computacional → aprendizaje automático → optimización numérica → estadística computacional. Esos artículos serían los puentes que sostienen la circularidad: eliminar cualquiera de ellos rompería el bucle y reduciría <span class="math inline">\(\beta_1\)</span> a cero.</p></li>
+<li><p>Una esfera <span class="math inline">\(S^2\)</span> tiene <span class="math inline">\(\beta_1 = 0\)</span> — sin 1-ciclos — y <span class="math inline">\(\beta_2 = 1\)</span> (una cavidad). Un toro tridimensional <span class="math inline">\(T^3 = S^1 \times S^1 \times S^1\)</span> tiene <span class="math inline">\(\beta_0 = 1\)</span>, <span class="math inline">\(\beta_1 = 3\)</span> (tres ciclos independientes, uno por cada factor <span class="math inline">\(S^1\)</span>), <span class="math inline">\(\beta_2 = 3\)</span> y <span class="math inline">\(\beta_3 = 1\)</span>. En general, <span class="math inline">\(T^n\)</span> tiene <span class="math inline">\(\beta_k = \binom{n}{k}\)</span>. Con la reducción UMAP+<code>ripser</code> de la Receta 7, la esfera daría <span class="math inline">\(H_1\)</span> vacío y una característica persistente en <span class="math inline">\(H_2\)</span>; <span class="math inline">\(T^3\)</span> requiere reducir a dimensión <span class="math inline">\(\geq 3\)</span> para que los tres 1-ciclos sean visibles.</p></li>
+<li><p>Con <span class="math inline">\(k=5\)</span> (vecindad pequeña), UMAP construye vecindades muy locales y puede fragmentar ciclos grandes en arcos disjuntos; a menudo detecta solo 1 ciclo en lugar de 2. Con <span class="math inline">\(k=15\)</span> (valor por defecto), ambos ciclos del toro se recuperan de forma consistente. Con <span class="math inline">\(k=50\)</span> (vecindad amplia), los ciclos siguen siendo robustos pero se difumina la distinción entre ciclo mayor y menor en zonas de alta curvatura. El resultado es moderadamente robusto para <span class="math inline">\(k \in [10, 25]\)</span> — el mismo rango que proporcionaba resultados fiables en el experimento de la Receta 7.</p></li>
+<li><p>Una respuesta correcta del LLM debe indicar que UMAP minimiza la entropía cruzada entre el complejo simplicial difuso construido en el espacio original y el del espacio reducido (véase <a href="05.html#sec-umap-fundamentos" class="quarto-xref"><span>UMAP y los complejos simpliciales difusos</span></a>). Esto preserva explícitamente la conectividad local —qué puntos son vecinos de qué— que es exactamente lo que <code>ripser</code> medirá después. PCA maximiza varianza proyectada sin ninguna garantía topológica: puede aplanar la variedad sobre un subespacio lineal y romper ciclos que no estén alineados con los ejes de máxima varianza.</p></li>
+<li><p>Con lente UMAP 2D en la Receta 8, los caminos de retorno siguen cruzando buena parte del grafo, confirmando que la ausencia de circularidad narrativa es robusta a la elección de la función lente. En el corpus arXiv, la variante UMAP con DBSCAN coseno en <span class="math inline">\(\mathbb{R}^{384}\)</span> produce 101 nodos y 236 aristas — frente a 88 nodos y 296 aristas con PCA 2D y clustering PCA 20D. La diferencia visible es combinatoria y geográfica, no una diferencia de homología: ambos nervios siguen siendo conexos y sin ciclos persistentes.</p></li>
+<li><p>Reutilizar la lente UMAP 2D como espacio de clustering mezclaría dos objetivos distintos: una buena lente debe organizar la cubierta global, mientras que DBSCAN necesita una métrica local donde la noción de vecino tenga significado semántico. Usar DBSCAN con distancia coseno sobre los embeddings originales evita introducir una segunda distorsión no lineal: UMAP decide qué puntos comparten parche, y DBSCAN decide dentro de ese parche qué puntos son angularmente cercanos. La cautela es que el parámetro <code>eps</code> sigue siendo delicado en alta dimensión.</p></li>
+<li><p>Los números de Betti <span class="math inline">\(\beta_0 = 1\)</span> y <span class="math inline">\(\beta_1 = 0\)</span> son invariantes topológicos gruesos: confirmar que ambos nervios son conexos y acíclicos no discrimina entre ellos. Para distinguirlos hace falta comparar los <em>diagramas de persistencia completos</em> —usando la distancia <em>bottleneck</em> o Wasserstein— o los <em>paisajes de persistencia</em> completos, que son vectores en <span class="math inline">\(L^p\)</span> y admiten estadística funcional. Dos grafos pueden tener <span class="math inline">\(\beta_k\)</span> idénticos y diferir completamente en el número de nodos, los pesos Jaccard de las aristas o la distribución geográfica de los campos.</p></li>
+<li><p>Usar las categorías arXiv como etiqueta independiente. <strong>Test 1 (pureza):</strong> auditar <span class="math inline">\(m \approx 60\)</span> nodos del UMAP-nervio (potencia 0.8 para detectar diferencia de 10 pp con el PCA-nervio); comparar <span class="math inline">\(\hat{p}_{\text{UMAP}}\)</span> con <span class="math inline">\(\hat{p}_{\text{PCA}}\)</span> con un test de proporciones de dos muestras. <strong>Test 2 (ANMI):</strong> calcular la información mutua ajustada entre la partición del nervio y las categorías arXiv top-level; con <span class="math inline">\(N=8085\)</span> y <span class="math inline">\(k \approx 100\)</span> nodos, ANMI <span class="math inline">\(&gt; 0.05\)</span> es estadísticamente significativo. <strong>Test 3 (correlación de aristas):</strong> comparar el peso Jaccard de cada arista del nervio con la fracción de pares con categoría arXiv compartida; calcular la correlación de Spearman <span class="math inline">\(\rho\)</span> con umbral <span class="math inline">\(\rho_c \approx 0.14\)</span> para <span class="math inline">\(n \approx 200\)</span> aristas. Si el UMAP-nervio supera al PCA-nervio en los tres tests, captura mejor la estructura disciplinar real del corpus.</p></li>
+<li><p>Los descriptores convencionales (intensidades de imagen en diagnóstico, <em>fingerprints</em> moleculares en fármacos, correlaciones par a par en conectomas) capturan propiedades locales pero ignoran la forma global: cuántas componentes, agujeros o cavidades hay. La invarianza bajo deformaciones es especialmente valiosa porque las transformaciones de preprocesado habituales — normalización, alineamiento, cambio de resolución — no alteran los rasgos topológicos: el número de cavidades de una proteína no cambia si la rotamos o escalamos uniformemente.</p></li>
+<li><p>Una respuesta correcta del LLM debería mencionar <code>ripser</code> (muy rápido, binding Python de C++), <code>giotto-tda</code> (integrado con scikit-learn), <code>gudhi</code> (biblioteca INRIA, amplia) y <code>kmapper</code> para Mapper. Un ejemplo básico: <code>import ripser, persim; dgms = ripser.ripser(puntos)["dgms"]; persim.plot_diagrams(dgms)</code>.</p></li>
+<li><p>Con dimensión intrínseca 3, calcular <span class="math inline">\(H_1\)</span> para 1.000 puntos es viable: <span class="math inline">\(\binom{1000}{3} \approx 1{,}7 \times 10^8\)</span> triángulos potenciales, manejables con <em>lazy evaluation</em>. Con dimensión intrínseca 20, el problema no es computacional sino de densidad: la teoría exige <span class="math inline">\(O((1/\tau)^{d_I})\)</span> puntos para cubrir la variedad uniformemente, y con <span class="math inline">\(d_I = 20\)</span> esos 1.000 puntos son claramente insuficientes — los ciclos detectados pueden ser artefactos de submuestreo.</p></li>
+<li><p>Para <span class="math inline">\(H_2\)</span> se necesitan tetraedros: <span class="math inline">\(\binom{1000}{4} \approx 4{,}1 \times 10^{10}\)</span> — inviable incluso con <em>lazy evaluation</em>. Para <span class="math inline">\(H_1\)</span> solo hacen falta triángulos: <span class="math inline">\(\binom{1000}{3} \approx 1{,}7 \times 10^8\)</span>; <code>ripser</code> los gestiona sin materializarlos todos gracias a cohomología dual y evaluación perezosa.</p></li>
+<li><p>No necesariamente: una barra persistente en <span class="math inline">\(H_0\)</span> puede ser la señal más valiosa — en finanzas, la transacción que forma una componente aislada es exactamente la anomalía que buscamos. El proceso correcto: localizar el punto responsable con los ciclos representativos de la Receta 4; inspeccionarlo en el dominio; decidir según el contexto. El TDA localiza la ambigüedad; el experto de dominio la resuelve.</p></li>
+<li><p>El complejo de Vietoris-Rips comprueba únicamente distancias por pares — <span class="math inline">\(O(n^2)\)</span> independientemente del orden del símplice — mientras que el complejo de Čech requiere verificar la intersección de <span class="math inline">\(k\)</span> bolas en dimensión alta, lo que implica resolver un programa lineal por cada posible símplice. En <span class="math inline">\(\mathbb{R}^{100}\)</span> con <span class="math inline">\(k = 5\)</span>, esto supone varios órdenes de magnitud más trabajo por símplice que VR.</p></li>
+<li><p>Con 6 puntos: aristas = <span class="math inline">\(\binom{6}{2} = 15\)</span>; triángulos = <span class="math inline">\(\binom{6}{3} = 20\)</span>; tetraedros = <span class="math inline">\(\binom{6}{4} = 15\)</span>. Ya con tan pocos puntos, el complejo simplicial completo tiene 50 celdas de dimensión <span class="math inline">\(\leq 3\)</span> — ilustrando cómo el tamaño crece combinatoriamente.</p></li>
+<li><p>Una respuesta correcta debe destacar que un triángulo <span class="math inline">\(\{u,v,w\}\)</span> captura una relación de orden superior: los tres puntos están mutuamente dentro del umbral, lo que rellena el hueco central y elimina el ciclo <span class="math inline">\(u\text{-}v\text{-}w\)</span>. Tres aristas sin triángulo dejan ese hueco abierto (<span class="math inline">\(\beta_1 = 1\)</span>); añadir el triángulo lo anula (<span class="math inline">\(\beta_1 = 0\)</span>).</p></li>
+<li><p>Tomemos vértices <span class="math inline">\(\{a,b,c,d\}\)</span> con triángulo <span class="math inline">\(\{a,b,c\}\)</span> y aristas extra <span class="math inline">\(\{b,d\}\)</span> y <span class="math inline">\(\{a,d\}\)</span>. El ciclo <span class="math inline">\(a\)</span>-<span class="math inline">\(b\)</span>-<span class="math inline">\(d\)</span>-<span class="math inline">\(a\)</span> está formado por aristas del complejo y no puede rellenarse con el único triángulo disponible <span class="math inline">\(\{a,b,c\}\)</span> (que no contiene <span class="math inline">\(d\)</span>): es un agujero real, <span class="math inline">\(\beta_1 = 1\)</span>. Si añadiéramos <span class="math inline">\(\{a,b,d\}\)</span>, ese ciclo pasaría a ser frontera y <span class="math inline">\(\beta_1\)</span> volvería a 0.</p></li>
+<li><p>Para <span class="math inline">\(H_1\)</span> se necesitan triángulos: <span class="math inline">\(\binom{1000}{3} \approx 1{,}66 \times 10^8\)</span>, manejable con <em>lazy evaluation</em> (ripser nunca los materializa todos). Para <span class="math inline">\(H_2\)</span> se necesitan tetraedros: <span class="math inline">\(\binom{1000}{4} \approx 4{,}1 \times 10^{10}\)</span> — varios órdenes de magnitud más, lo que hace inviable la reducción de la matriz de frontera incluso con estrategias perezosas.</p></li>
+<li><p>Sí. Dos ciclos son homólogos si su diferencia simétrica es frontera de algún conjunto de triángulos, lo que permite trayectorias totalmente distintas. Ejemplo: en un toro, dos rutas que rodean el mismo agujero pueden no compartir ninguna arista si van por lados opuestos — son homólogas pero geométricamente disjuntas.</p></li>
+<li><p>El punto <span class="math inline">\((0{,}3, +\infty)\)</span> indica la última componente conexa inmortal de <span class="math inline">\(H_0\)</span> (<span class="math inline">\(\beta_0\)</span> final <span class="math inline">\(= 1\)</span>). Los puntos <span class="math inline">\((0{,}2, 0{,}8)\)</span> y <span class="math inline">\((0{,}1, 0{,}15)\)</span> representan dos características adicionales: la primera tiene persistencia <span class="math inline">\(0{,}6\)</span> (señal, lejos de la diagonal); la segunda tiene persistencia <span class="math inline">\(0{,}05\)</span> (ruido, muy cerca de la diagonal). Si los puntos finitos pertenecen a <span class="math inline">\(H_1\)</span>: hay 2 ciclos, uno significativo y uno de ruido.</p></li>
+<li><p>Sí: multiplicidad <span class="math inline">\(&gt; 1\)</span> ocurre cuando dos características distintas nacen y mueren exactamente a la misma escala, posible en datos con simetrías perfectas (p.ej., dos anillos idénticos centrados simétricamente). Significa que hay dos agujeros con el mismo historial topológico, no un único punto doble. En datos reales sin simetría exacta, la multiplicidad mayor que uno es prácticamente inexistente.</p></li>
+<li><p>La cota del teorema de estabilidad es <span class="math inline">\(W_\infty(D(X), D(Y)) \leq 2 \cdot d_H(X,Y) = 2 \times 0{,}1 = 0{,}2\)</span>. La persistencia de cualquier ciclo puede cambiar como máximo en <span class="math inline">\(0{,}2\)</span> — tanto en la coordenada de nacimiento como en la de muerte.</p></li>
+<li><p>Un <em>outlier</em> muy alejado del resto implica <span class="math inline">\(d_H(X, X \setminus \{\text{outlier}\}) \approx\)</span> distancia del <em>outlier</em> al conjunto, que puede ser grande. La cota garantiza que el diagrama cambia hasta <span class="math inline">\(2 \times\)</span> esa distancia: se crea una barra de <span class="math inline">\(H_0\)</span> cuya longitud es esa distancia, potencialmente mucho mayor que el umbral de ruido. El antídoto: usar ciclos representativos (Receta 4) para identificar el punto responsable de la barra sospechosa e inspeccionarlo en el dominio.</p></li>
+<li><p>Con ruido gaussiano <span class="math inline">\(d_H\)</span> crece solo como <span class="math inline">\(\sigma\sqrt{2\log n}\)</span>, así que la cota del teorema sigue siendo ajustada. Con Pareto de exponente <span class="math inline">\(\alpha &lt; 1\)</span>, el máximo de <span class="math inline">\(n\)</span> muestras crece como <span class="math inline">\(n^{1/\alpha}\)</span>: la distancia de Hausdorff se dispara y la cota se vuelve trivialmente grande. La filtración DTM promedia sobre los <span class="math inline">\(k\)</span> vecinos más cercanos de cada punto en lugar de depender del más lejano, de modo que un único valor extremo apenas la perturba — igual que la mediana es robusta frente a la media.</p></li>
+<li><p>Con <span class="math inline">\(d_I \approx 15\)</span> y <span class="math inline">\(\tau = 0.5\)</span>, la fórmula de Niyogi et al.&nbsp;requiere <span class="math inline">\(n = O(1/0.5^{15}) \approx 3 \times 10^4\)</span> puntos para garantías formales. Las Recetas 5 y 6 operan con 200–2.000 embeddings — entre 15 y 150 veces menos. Lo que sigue siendo defensible: (1) <span class="math inline">\(H_0\)</span> con bootstrap, que valida la estructura de componentes conexas cualitativamente; (2) el grafo Mapper, cuyo lema del nervio solo exige que los parches sean contráctiles; (3) resultados estadísticos validados tanto con banda bootstrap como con línea nula. Lo que exige cautela: afirmaciones sobre ciclos específicos en <span class="math inline">\(H_1\)</span> o cavidades en <span class="math inline">\(H_2\)</span>, donde la detección puede ser un artefacto de submuestreo.</p></li>
+<li><p>La diferencia la explica la <strong>concentración de distancias en alta dimensión</strong>. En <span class="math inline">\(\mathbb{R}^{384}\)</span>, la varianza relativa de las distancias entre pares de puntos decae como <span class="math inline">\(\sqrt{2/d}\)</span>: con <span class="math inline">\(d=384\)</span>, el coeficiente de variación es solo <span class="math inline">\(\approx 7\%\)</span>. Todas las aristas de la filtración de Vietoris-Rips se insertan casi al mismo tiempo, y la homología resultante no refleja estructura real sino la geometría del hipercubo de muestreo. Con UMAP en <span class="math inline">\(\mathbb{R}^{10}\)</span>, el coeficiente de variación sube a <span class="math inline">\(\approx 45\%\)</span> — las distancias son discriminativas y la filtración tiene resolución suficiente para separar aristas de señal de aristas de ruido. No es un problema de <span class="math inline">\(n\)</span>: el mismo corpus con 5.000 puntos seguiría sin estructura en <span class="math inline">\(\mathbb{R}^{384}\)</span> pero con estructura clara en <span class="math inline">\(\mathbb{R}^{10}\)</span>.</p></li>
+<li><p>Con 150 columnas numéricas independientes entre sí, la dimensión intrínseca es <span class="math inline">\(d_I \approx D = 150\)</span>. Según la <a href="05.html#tbl-viabilidad-tda" class="quarto-xref">Tabla&nbsp;<span>5.1</span></a>, el <span class="math inline">\(n\)</span> requerido escala como <span class="math inline">\(O(1/\tau^{150})\)</span>: para <span class="math inline">\(\tau = 0.5\)</span> supera <span class="math inline">\(10^{45}\)</span> puntos — completamente prohibitivo. Además, la concentración de distancias en <span class="math inline">\(\mathbb{R}^{150}\)</span> tiene un coeficiente de variación de <span class="math inline">\(\approx \sqrt{2/150} \approx 12\%\)</span>: las distancias ya están concentradas y UMAP no puede desplegar ninguna variedad porque no existe. La herramienta alternativa depende del objetivo: detección de anomalías (Isolation Forest, COPOD) si se buscan transacciones atípicas; PCA seguido de regresión logística si se sospecha estructura lineal; o modelos supervisados directamente sobre las 150 columnas si hay etiquetas disponibles.</p></li>
+<li><p>La función tienda de <span class="math inline">\(p_1 = (0,2)\)</span> vale <span class="math inline">\(\lambda(t) = \min(t, 2-t)\)</span> para <span class="math inline">\(t \in [0,2]\)</span>; a <span class="math inline">\(t = 1{,}5\)</span>: <span class="math inline">\(\min(1{,}5,\, 0{,}5) = 0{,}5\)</span>. La tienda de <span class="math inline">\(p_2 = (1,3)\)</span> vale <span class="math inline">\(\min(t-1,\, 3-t)\)</span> para <span class="math inline">\(t \in [1,3]\)</span>; a <span class="math inline">\(t = 1{,}5\)</span>: <span class="math inline">\(\min(0{,}5,\, 1{,}5) = 0{,}5\)</span>. Ambas tiendas están activas con altura <span class="math inline">\(0{,}5\)</span>: <span class="math inline">\(\lambda_1(1{,}5) = 0{,}5\)</span> y <span class="math inline">\(\lambda_2(1{,}5) = 0{,}5\)</span>.</p></li>
+<li><p>El espacio de diagramas de persistencia bajo distancia <em>bottleneck</em> no es un espacio de Hilbert ni de Banach: la media de dos diagramas no está en general bien definida como diagrama. El paisaje de persistencia vive en <span class="math inline">\(L^p\)</span> (funciones integrables al cuadrado), que sí es Banach: la media de paisajes es un paisaje, las operaciones vectoriales son cerradas, y el <em>bootstrap</em> estándar aplica directamente para construir intervalos de confianza funcionales.</p></li>
+<li><p>No: superar la banda bootstrap solo indica que el pico es <em>reproducible</em> entre remuestras del dataset original (precisión), pero no que supere el nivel de ruido esperable sin ninguna estructura geométrica. Para afirmar significación estadística hace falta la línea nula: se generan <span class="math inline">\(B\)</span> datasets permutados (aleatorizando las coordenadas de cada punto de forma independiente, lo que destruye la geometría conjunta pero conserva las distribuciones marginales) y se calcula el percentil 95 de sus paisajes. Solo si el pico supera esa línea nula se puede descartar que la señal sea un artefacto del tamaño o la forma del dataset.</p></li>
+<li><p>Una respuesta correcta debe indicar: (1) el vector de 10 persistencias ignora el nacimiento — dos <em>features</em> con la misma persistencia pero distintos nacimientos son indistinguibles; (2) el paisaje incorpora tanto nacimiento como muerte; (3) el paisaje es estable: si la 10.ª y la 11.ª persistencia se cruzan, el vector cambia discontinuamente mientras el paisaje cambia de forma continua; (4) el paisaje permite estadística funcional (bootstrap, regresión sobre funciones).</p></li>
+<li><p>Con lente de densidad local, los intervalos de la cubierta separarían zonas densas de zonas dispersas, no agrupaciones por campo científico. El grafo nervio mostraría un núcleo densamente conectado (los <em>papers</em> interdisciplinares con muchos vecinos) rodeado de satélites dispersos (fronteras de cada campo), sin la estructura de árbol jerárquico que refleja la taxonomía disciplinar que obteníamos con PCA como lente.</p></li>
+<li><p>Sin solapamiento, cada punto pertenece exactamente a un intervalo y por tanto a exactamente un <em>cluster</em>. Dos <em>clusters</em> de intervalos distintos nunca comparten puntos, así que nunca se genera ninguna arista entre ellos. El resultado es un grafo totalmente desconectado: sin aristas no puede haber ciclos, y el nervio no puede capturar ninguna estructura topológica global.</p></li>
+<li><p>Si <span class="math inline">\(\bar{J} = 0{,}3\)</span> los nodos no identifican subconjuntos reproducibles de papers entre remuestras: la composición concreta de cada cluster cambia mucho aunque los <span class="math inline">\(\beta_k\)</span> se mantengan. Las afirmaciones sobre topología global (número de componentes, ciclos, cavidades) siguen siendo válidas, pero cualquier interpretación que dependa de <em>qué papers</em> forman cada nodo —caracterizar disciplinas, identificar puentes interdisciplinares, etiquetar clusters— queda invalidada. La conclusión topológica es robusta; la combinatoria, no.</p></li>
+<li><p>Para detectar una diferencia de 10 puntos de pureza con <span class="math inline">\(\alpha = 0{,}05\)</span> y potencia 0,8, basta auditar <span class="math inline">\(m \approx 60\)</span> nodos por nervio (test de proporciones de dos muestras). Para el test de información mutua se usa ANMI (<code>adjusted_mutual_info_score</code> en sklearn): <span class="math inline">\(\mathbb{E}[\text{ANMI}] = 0\)</span> bajo H₀ por construcción y la varianza analítica da <span class="math inline">\(\sigma \approx 0{,}016\)</span> para este corpus, así que ANMI <span class="math inline">\(&gt; 0{,}05\)</span> es significativo sin permutaciones. Para la correlación de aristas se puede usar la fracción de pares con coautoría — disponible en los metadatos de arXiv y completamente independiente del embedding semántico — calculando la correlación de Spearman <span class="math inline">\(\rho\)</span> entre el peso Jaccard de cada arista y la tasa de coautoría; la significación se evalúa con <span class="math inline">\(t = \rho\sqrt{(n-2)/(1-\rho^2)} \sim t_{n-2}\)</span>, con umbral <span class="math inline">\(\rho_c \approx 0{,}14\)</span> para <span class="math inline">\(n \approx 250\)</span> aristas.</p></li>
+<li><p>Las categorías arXiv son auto-asignadas por los autores, multilíquetas (un paper puede aparecer en cs.LG y stat.ML simultáneamente), y reflejan tanto contenido como convenciones sociológicas del campo. Como cada nodo del nervio tiene una sola etiqueta «mayoritaria», la pureza máxima posible es estructuralmente menor que 1 incluso para particiones perfectas: papers genuinamente interdisciplinares contribuyen como «impurezas» a cualquier nodo. La interpretación correcta de <span class="math inline">\(\hat{p}\)</span> no es como fracción absoluta, sino comparativa entre nervios sobre el mismo corpus: <span class="math inline">\(\hat{p}_{\text{UMAP}} &gt; \hat{p}_{\text{PCA}}\)</span> con <span class="math inline">\(m = 60\)</span> nodos significa que UMAP captura mejor la categorización auto-declarada, sin pretender que sea la verdad fundamental.</p></li>
+<li><p>Una señal con dos frecuencias incomensurables <span class="math inline">\(f_1/f_2 \notin \mathbb{Q}\)</span> tiene un atractor homeomorfo a un toro <span class="math inline">\(T^2 = S^1 \times S^1\)</span>. El toro tiene <span class="math inline">\(\beta_1 = 2\)</span> (dos ciclos independientes: uno para cada frecuencia) y <span class="math inline">\(\beta_2 = 1\)</span> (una cavidad encerrada). Por tanto, <code>ripser</code> sobre el atractor reconstruido debería detectar 2 ciclos muy persistentes en <span class="math inline">\(H_1\)</span> y 1 cavidad persistente en <span class="math inline">\(H_2\)</span>. La trayectoria llena densamente el toro sin cerrarse, lo que hace que ambos ciclos sean persistentes en lugar de efímeros.</p></li>
+<li><p>Si <span class="math inline">\(\tau = T\)</span> (período exacto de la oscilación), entonces <span class="math inline">\(s(t) = s(t+T)\)</span> para todo <span class="math inline">\(t\)</span>, y el <em>embedding</em> <span class="math inline">\(\Phi(t) = (s(t), s(t+T)) = (s(t), s(t))\)</span> es la diagonal de <span class="math inline">\(\mathbb{R}^2\)</span> — un segmento, no un círculo. <code>ripser</code> vería <span class="math inline">\(\beta_1 = 0\)</span>: la información de periodicidad se ha colapsado. El criterio del primer mínimo de información mutua identifica automáticamente los retardos resonantes que hay que evitar.</p></li>
+<li><p>«Genéricamente» significa «para un conjunto de parámetros de medida completa», es decir, salvo un conjunto de excepciones de medida cero. En la práctica equivale a «casi todo <span class="math inline">\(\tau\)</span> y casi toda función de observación funcionan». Solo retardos que sean múltiplos exactos del período de la dinámica pueden causar problemas, y se identifican fácilmente con el criterio de información mutua antes de aplicar el teorema.</p></li>
+</ol>
+</div>
+
+
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./07.html" class="pagination-link" aria-label="Referencias">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Referencias</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

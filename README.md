@@ -1,51 +1,84 @@
 # Strange Tech: Topological Data Analysis
 
-> Part of the **Strange Tech** series — short, standalone books about advanced
-> technologies that most engineers don't know about but might need.
+*Asymmetric bets for curious engineers*
 
-Topological Data Analysis (TDA) applies tools from algebraic topology to
-discover the "shape" of data — connected components, holes, cavities — at
-multiple scales simultaneously. Its key contribution is that these features
-are invariant under continuous deformations and mathematically stable under
-perturbations, making them robust descriptors where classical statistics and
-deep learning see only point clouds. The price: constructing the topological
-structures scales poorly with dimension and number of points, limiting its
-practical use to moderately sized datasets.
+Part of the [**Strange Tech**](https://github.com/marcmagransdeabril) series — a collection of standalone books, one per advanced technology, for engineers who want an edge before it becomes mainstream.
 
-## Read Online
+> **Chapter summary**
+>
+> Topological Data Analysis (TDA) applies tools from algebraic topology to
+> discover the "shape" of data — connected components, holes, cavities — at
+> multiple scales simultaneously. Its key contribution is that these features
+> are invariant under continuous deformations and mathematically stable under
+> perturbations, making them robust descriptors where classical statistics and
+> deep learning see only point clouds. The price: constructing the topological
+> structures scales poorly with dimension and number of points, limiting its
+> practical use to moderately sized datasets.
 
-| Language | Preface | Chapter |
-|----------|---------|---------|
-| English  | [Preface](https://marcmagransdeabril.github.io/strange-tech-tda/book/en/index.html) | [Topological Data Analysis](https://marcmagransdeabril.github.io/strange-tech-tda/book/en/tda.html) |
-| Español  | [Prefacio](https://marcmagransdeabril.github.io/strange-tech-tda/book/es/index.html) | [Análisis Topológico de Datos](https://marcmagransdeabril.github.io/strange-tech-tda/book/es/tda.html) |
+📖 **Read online**: https://marcmagransdeabril.github.io/strange-tech-tda/
 
 ## Download
 
-| Language | PDF | EPUB |
-|----------|-----|------|
-| English  | [strange-tech-tda.en.pdf](https://raw.githubusercontent.com/marcmagransdeabril/strange-tech-tda/main/book/en/strange-tech-tda.en.pdf) | [strange-tech-tda.en.epub](https://raw.githubusercontent.com/marcmagransdeabril/strange-tech-tda/main/book/en/strange-tech-tda.en.epub) |
-| Español  | [strange-tech-tda.es.pdf](https://raw.githubusercontent.com/marcmagransdeabril/strange-tech-tda/main/book/es/strange-tech-tda.es.pdf) | [strange-tech-tda.es.epub](https://raw.githubusercontent.com/marcmagransdeabril/strange-tech-tda/main/book/es/strange-tech-tda.es.epub) |
+Download links point to the **raw file** on `raw.githubusercontent.com` so
+clicking them triggers a direct binary download instead of GitHub's HTML blob
+preview page (which is what a relative or `blob/main/...` link would open —
+saving that page's HTML as if it were the PDF/EPUB produces a file that fails
+to open, e.g. "Failed to load PDF document").
+
+| Format | Español | English |
+|---|---|---|
+| PDF  | [📄 Descargar](https://raw.githubusercontent.com/marcmagransdeabril/strange-tech-tda/main/book/es/strange-tech-tda.es.pdf) | [📄 Download](https://raw.githubusercontent.com/marcmagransdeabril/strange-tech-tda/main/book/en/strange-tech-tda.en.pdf) |
+| EPUB | [📖 Descargar](https://raw.githubusercontent.com/marcmagransdeabril/strange-tech-tda/main/book/es/strange-tech-tda.es.epub) | [📖 Download](https://raw.githubusercontent.com/marcmagransdeabril/strange-tech-tda/main/book/en/strange-tech-tda.en.epub) |
+
+## Table of Contents
+
+Table of contents links point to the **GitHub Pages** site (not a repo-relative
+path), since GitHub only serves `.html` files as rendered pages through Pages —
+a relative link or blob link to an `.html` file opens GitHub's syntax-highlighted
+source view instead of the rendered page.
+
+### Español
+
+1. [Prefacio](https://marcmagransdeabril.github.io/strange-tech-tda/book/es/index.html)
+2. [Prólogo](https://marcmagransdeabril.github.io/strange-tech-tda/book/es/00-prologo.html)
+3. [Introducción](https://marcmagransdeabril.github.io/strange-tech-tda/book/es/01.html)
+4. [Manos a la obra](https://marcmagransdeabril.github.io/strange-tech-tda/book/es/02.html)
+5. [Aplicaciones](https://marcmagransdeabril.github.io/strange-tech-tda/book/es/03.html)
+6. [Limitaciones actuales](https://marcmagransdeabril.github.io/strange-tech-tda/book/es/04.html)
+7. [Fundamentos](https://marcmagransdeabril.github.io/strange-tech-tda/book/es/05.html)
+8. [Lecturas Recomendadas](https://marcmagransdeabril.github.io/strange-tech-tda/book/es/06.html)
+9. [Referencias](https://marcmagransdeabril.github.io/strange-tech-tda/book/es/07.html)
+10. [Soluciones](https://marcmagransdeabril.github.io/strange-tech-tda/book/es/08.html)
+
+### English
+
+1. [Preface](https://marcmagransdeabril.github.io/strange-tech-tda/book/en/index.html)
+2. [Prologue](https://marcmagransdeabril.github.io/strange-tech-tda/book/en/00-prologo.html)
+3. [Introduction](https://marcmagransdeabril.github.io/strange-tech-tda/book/en/01.html)
+4. [Hands On](https://marcmagransdeabril.github.io/strange-tech-tda/book/en/02.html)
+5. [Applications](https://marcmagransdeabril.github.io/strange-tech-tda/book/en/03.html)
+6. [Current Limitations](https://marcmagransdeabril.github.io/strange-tech-tda/book/en/04.html)
+7. [Foundations](https://marcmagransdeabril.github.io/strange-tech-tda/book/en/05.html)
+8. [Further Reading](https://marcmagransdeabril.github.io/strange-tech-tda/book/en/06.html)
+9. [References](https://marcmagransdeabril.github.io/strange-tech-tda/book/en/07.html)
+10. [Solutions](https://marcmagransdeabril.github.io/strange-tech-tda/book/en/08.html)
 
 ## Code Examples
 
-All code examples from the book live in [`code/tda/`](code/tda/), with unit
-tests in [`tests/tda/code/`](tests/tda/code/).
+Executable code accompanying this chapter lives in [`code/tda/`](code/tda/), with unit tests in [`tests/tda/code/`](tests/tda/code/).
 
 ```bash
 pip install -r requirements.txt
-python code/tda/quick_start.py
-pytest tests/tda/code
+pytest tests/
 ```
 
 ## About the Series
 
-**Strange Tech** (*Tecnologías Extrañas* in Spanish) is a series of short,
-standalone books, each covering one advanced but underused technology —
-technologies that are strange today but may become mainstream tomorrow.
-Every book mixes personal anecdotes with evidence-based technical analysis.
+**Strange Tech** covers advanced technologies that most engineers never encounter at work — not because they're useless, but because they sit at the frontier between disciplines, or simply haven't had their moment yet. Each book mixes personal stories with rigorous technical analysis.
 
 ## License
 
-This work is licensed under a
-[Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License (CC BY-NC-ND 4.0)](https://creativecommons.org/licenses/by-nc-nd/4.0/).
-See [LICENSE](LICENSE) for the full text.
+This work is licensed under [CC BY-NC-ND 4.0](https://creativecommons.org/licenses/by-nc-nd/4.0/) — Attribution-NonCommercial-NoDerivatives.
+
+© Marc Magrans de Abril
+

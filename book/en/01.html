@@ -1,14 +1,13 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.9.36">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Marc Magrans de Abril">
 
-<title>Tecnologías Extrañas: Análisis Topológico de Datos</title>
+<title>1&nbsp; Introduction – Strange Tech: Topological Data Analysis</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -24,7 +23,26 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -34,7 +52,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./00-prologo.html" rel="next">
+<link href="./02.html" rel="next">
+<link href="./00-prologo.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -59,17 +78,17 @@ ul.task-list li input[type="checkbox"] {
   ],
   "show-item-context": false,
   "language": {
-    "search-no-results-text": "No se han encontrado resultados",
-    "search-matching-documents-text": "documentos encontrados",
-    "search-copy-link-title": "Copiar el enlace en la búsqueda",
-    "search-hide-matches-text": "Ocultar resultados adicionales",
-    "search-more-match-text": "resultado adicional en este documento",
-    "search-more-matches-text": "resultados adicionales en este documento",
-    "search-clear-button-title": "Borrar",
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
     "search-text-placeholder": "",
-    "search-detached-cancel-button-title": "Cancelar",
-    "search-submit-button-title": "Enviar",
-    "search-label": "Buscar"
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 
@@ -86,18 +105,18 @@ ul.task-list li input[type="checkbox"] {
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="./index.html">
-    <span class="navbar-title">Tecnologías Extrañas: Análisis Topológico de Datos</span>
+    <span class="navbar-title">Strange Tech: Topological Data Analysis</span>
     </a>
   </div>
-            <div id="quarto-search" class="" title="Buscar"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Navegación de palanca" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./../en/index.html"> 
-<span class="menu-text">English</span></a>
+    <a class="nav-link" href="./../es/index.html"> 
+<span class="menu-text">Español</span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
@@ -107,11 +126,11 @@ ul.task-list li input[type="checkbox"] {
     </nav>
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Prefacio</a></li></ol></nav>
-        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./01.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
   </nav>
@@ -124,62 +143,62 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Prefacio</span></a>
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./00-prologo.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Prólogo</span></a>
+ <span class="menu-text">Prologue</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./01.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introducción</span></span></a>
+  <a href="./01.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./02.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Manos a la obra</span></span></a>
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Hands on</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./03.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Aplicaciones</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Applications</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./04.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Limitaciones actuales</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Current Limitations</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./05.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Fundamentos</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Foundations</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./06.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Lecturas Recomendadas</span></a>
+ <span class="menu-text">Further Reading</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./07.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Referencias</span></a>
+ <span class="menu-text">References</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./08.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Soluciones</span></a>
+ <span class="menu-text">Solutions</span></a>
   </div>
 </li>
     </ul>
@@ -188,13 +207,14 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar"><div class="quarto-margin-header"><div class="margin-header-item">
-<p><strong>Tecnologías Extrañas: Análisis Topológico de Datos</strong></p>
+<p><strong>Strange Tech: Topological Data Analysis</strong></p>
 </div></div>
         <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Tabla de contenidos</h2>
+    <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#prefacio" id="toc-prefacio" class="nav-link active" data-scroll-target="#prefacio">Prefacio</a></li>
+  <li><a href="#why-this-technology" id="toc-why-this-technology" class="nav-link active" data-scroll-target="#why-this-technology"><span class="header-section-number">1.1</span> Why this technology?</a></li>
+  <li><a href="#brief-history" id="toc-brief-history" class="nav-link" data-scroll-target="#brief-history"><span class="header-section-number">1.2</span> Brief history</a></li>
   </ul>
 </nav>
     </div>
@@ -203,20 +223,13 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Tecnologías Extrañas: Análisis Topológico de Datos</h1>
-<p class="subtitle lead">Apuestas asimétricas para ingenieros curiosos</p>
+<h1 class="title"><span id="sec-tda" class="quarto-section-identifier"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Autor/a</div>
-    <div class="quarto-title-meta-contents">
-             <p>Marc Magrans de Abril </p>
-          </div>
-  </div>
     
   
     
@@ -227,11 +240,25 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="prefacio" class="level1 unnumbered">
-<h1 class="unnumbered">Prefacio</h1>
-<p>Este libro forma parte de la serie <strong>Tecnologías Extrañas</strong>: pequeños libros independientes sobre tecnologías avanzadas que la mayoría de ingenieros no conoce pero que podrían necesitar. Cada libro mezcla experiencias personales con análisis técnico riguroso.</p>
+<p>Topological Data Analysis (TDA) applies tools from algebraic topology to discover the “shape” of data — connected components, holes, cavities — at multiple scales simultaneously. Its key contribution is that these features are invariant under continuous deformations and mathematically stable under perturbations, making them robust descriptors where classical statistics and deep learning see only point clouds. The price: constructing the topological structures scales poorly with dimension and number of points, limiting its practical use to moderately sized datasets.</p>
+<section id="why-this-technology" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="why-this-technology"><span class="header-section-number">1.1</span> Why this technology?</h2>
+<p>Topological Data Analysis sits in the phase of the long-tail opportunity map from the introductory chapter: +11% CAGR in publications, no mentions on Hacker News, 982 GitHub stars, and $106M in funding. It is clearly a technology <em>in the lab</em>, with weak signals across all metrics except academic growth.</p>
+<p>Qualitatively, it meets the six criteria from the introductory chapter on strange technologies: (1) it has incipient empirical traction — persistent homology is used in biomedical data analysis, materials science, and sensor networks; (2) it is <em>strange</em> — applying algebraic topology to point clouds is one of the most surprising ideas in this book; (3) its Lindy depth is exceptional — algebraic topology has over a century of development (Poincaré, 1895), and persistent homology crystallized in the early 2000s; (4) its mathematical core — Vietoris-Rips complexes, Betti numbers, and persistence diagrams — is teachable with intuitive geometric examples; (5) it does not overlap with any other chapter in the book; and (6) it is not the market’s main bet — the mainstream analyzes data with statistics and deep learning, not topology.</p>
+</section>
+<section id="brief-history" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="brief-history"><span class="header-section-number">1.2</span> Brief history</h2>
+<p>That century of depth we mentioned is not ornamental. In 1895, Henri Poincaré invented homology to classify surfaces without resorting to coordinates: instead of describing a figure with equations, he described it by counting its structural features — how many separate pieces compose it, how many tunnels pass through it, how many cavities it encloses. These are the same counts that Mireia called holes and loops; the difference is that Poincaré conceived them as a tool for pure mathematics, with no data in sight. Over the following century, algebraic topology flourished in the abstract: proving properties of spaces, classifying manifolds, studying homotopy groups. All beautiful. All useless for analyzing a point cloud, because no one had yet formulated the right question.</p>
+<p>That question arrived in 2002. The problem with applying homology to real data was that the result depended entirely on a scale parameter: connect the points too early and everything is an amorphous mass; too late and nothing is connected. Herbert Edelsbrunner, David Letscher, and Afra Zomorodian proposed the obvious-in-retrospect solution: compute the homology at <em>all</em> scales simultaneously and record at which scale each feature is born and at which scale it dies. The name — <em>persistent homology</em> — captures exactly the idea: what persists across a wide range of scales is signal; what is ephemeral is noise. Two years later, Zomorodian and Carlsson completed the practical algorithm, and <em>barcodes</em> — horizontal bars where the length represents how long each feature persists — turned an abstract computation into something readable at a glance.</p>
+<p>In 2009, Gunnar Carlsson published “Topology and Data” in the <em>Bulletin of the American Mathematical Society</em> <span class="citation" data-cites="carlsson2009topology">(<a href="07.html#ref-carlsson2009topology" role="doc-biblioref">Carlsson 2009</a>)</span>, the text that acted as the field’s manifesto. His central argument was that topology offered data something that neither statistics nor linear algebra could provide: shape descriptors invariant under continuous deformations, that work in any dimension and are mathematically stable — a small perturbation in the data produces a small perturbation in the barcode, not a completely different result. The paper arrived when machine learning was beginning to drown in high-dimensional data and consolidated TDA as a discipline with its own name.</p>
+<p>The first applications that backed the enthusiasm came quickly: in 2011, Nicolau, Levine, and Carlsson identified a subgroup of breast cancer with a distinctive mutational profile — and excellent prognosis — that conventional clustering methods had overlooked for years; in 2013, the Mapper algorithm revealed structures in basketball data and political surveys that did not fit any preexisting segmentation. The arrival of efficient libraries — GUDHI (INRIA, 2014) and especially Ripser (2016), which reduced computation time by several orders of magnitude — completed the transition from the mathematical laboratory to applied data analysis. What does that barcode encoding the holes of a real point cloud look like in practice? Before the theory, the best answer is to see it in code.</p>
 
 
+<div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
+<div id="ref-carlsson2009topology" class="csl-entry" role="listitem">
+Carlsson, Gunnar. 2009. <span>“Topology and Data.”</span> <em>Bulletin of the American Mathematical Society</em> 46 (2): 255–308. <a href="https://doi.org/10.1090/S0273-0979-09-01249-X">https://doi.org/10.1090/S0273-0979-09-01249-X</a>.
+</div>
+</div>
 </section>
 
 </main> <!-- /main -->
@@ -260,12 +287,12 @@ ul.task-list li input[type="checkbox"] {
       // flash "checked"
       button.classList.add('code-copy-button-checked');
       var currentTitle = button.getAttribute("title");
-      button.setAttribute("title", "Copiado");
+      button.setAttribute("title", "Copied!");
       let tooltip;
       if (window.bootstrap) {
         button.setAttribute("data-bs-toggle", "tooltip");
         button.setAttribute("data-bs-placement", "left");
-        button.setAttribute("data-bs-title", "Copiado");
+        button.setAttribute("data-bs-title", "Copied!");
         tooltip = new bootstrap.Tooltip(button, 
           { trigger: "manual", 
             customClass: "code-copy-button-tooltip",
@@ -637,10 +664,13 @@ ul.task-list li input[type="checkbox"] {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="./00-prologo.html" class="pagination-link" aria-label="Prologue">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Prologue</span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./00-prologo.html" class="pagination-link" aria-label="Prólogo">
-        <span class="nav-page-text">Prólogo</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./02.html" class="pagination-link" aria-label="Hands on">
+        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Hands on</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

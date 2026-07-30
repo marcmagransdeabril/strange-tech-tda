@@ -6,9 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Marc Magrans de Abril">
 
-<title>Tecnologías Extrañas: Análisis Topológico de Datos</title>
+<title>Prólogo – Tecnologías Extrañas: Análisis Topológico de Datos</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -34,7 +33,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./00-prologo.html" rel="next">
+<link href="./01.html" rel="next">
+<link href="./index.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -110,7 +110,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Prefacio</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./00-prologo.html">Prólogo</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -124,13 +124,13 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Prefacio</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./00-prologo.html" class="sidebar-item-text sidebar-link">
+  <a href="./00-prologo.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Prólogo</span></a>
   </div>
 </li>
@@ -190,33 +190,20 @@ ul.task-list li input[type="checkbox"] {
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar"><div class="quarto-margin-header"><div class="margin-header-item">
 <p><strong>Tecnologías Extrañas: Análisis Topológico de Datos</strong></p>
 </div></div>
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Tabla de contenidos</h2>
-   
-  <ul>
-  <li><a href="#prefacio" id="toc-prefacio" class="nav-link active" data-scroll-target="#prefacio">Prefacio</a></li>
-  </ul>
-</nav>
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Tecnologías Extrañas: Análisis Topológico de Datos</h1>
-<p class="subtitle lead">Apuestas asimétricas para ingenieros curiosos</p>
+<h1 class="title">Prólogo</h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Autor/a</div>
-    <div class="quarto-title-meta-contents">
-             <p>Marc Magrans de Abril </p>
-          </div>
-  </div>
     
   
     
@@ -227,12 +214,31 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="prefacio" class="level1 unnumbered">
-<h1 class="unnumbered">Prefacio</h1>
-<p>Este libro forma parte de la serie <strong>Tecnologías Extrañas</strong>: pequeños libros independientes sobre tecnologías avanzadas que la mayoría de ingenieros no conoce pero que podrían necesitar. Cada libro mezcla experiencias personales con análisis técnico riguroso.</p>
+<p><em>Era martes por la mañana cuando Daniel entró en Can Quirze, la cafetería de siempre en el Eixample, buscando el rincón de siempre — la mesa del fondo, desde donde se veía la calle mojada sin que llegara el ruido del tráfico. Jaume, su profesor preferido, le había dicho una vez: “Siempre tienes que tener a la vista a tus enemigos. Nunca des la espalda a la puerta.” Bueno, Daniel, por no tener, no tiene casi amigos, uno o dos. ¿Cómo va a tener tiempo para enemigos? En todo caso, eso le pareció una buena idea que rezumaba la filosofía samurái que tanto disfrutaba leyendo en Usagi Yojimbo.</em></p>
+<p><em>Lo que no esperaba era verla a ella.</em></p>
+<p><em>Mireia. Cinco años sin coincidir. La última vez había sido en la fiesta de fin de máster, donde Daniel había intentado decirle algo, pero o bien ella le había ignorado, o el volumen estaba demasiado alto y él fue demasiado tímido.</em></p>
+<p><em>Estaba de pie en la barra, el portátil abierto, el pelo recogido en el mismo moño informal de los años de facultad. Una chaqueta de lana color teja que combinaba de manera absurda con unos pantalones de lino. Al menos en eso él no era peor.</em></p>
+<p><strong>Mireia</strong>: <em>¡Daniel! ¿Qué haces tú aquí?</em></p>
+<p><strong>Daniel</strong>: <em>Vivo a tres manzanas. Vengo casi cada día. ¿Y tú?</em></p>
+<p><strong>Mireia</strong>: <em>Estoy hasta arriba. Trabajo con un banco y estoy intentando entender la «forma» de sus clientes.</em></p>
+<p><strong>Daniel</strong>: <em>¿La «forma»? ¿Querrás decir el perfil del cliente, no?</em></p>
+<p><strong>Mireia</strong>: <em>No, es más literal de lo que parece. Los clientes generan miles de transacciones que forman patrones. Si representas las transacciones de los clientes como puntos en un espacio de alta dimensión, esa nube tiene una forma. Componentes conexas, agujeros, bucles. Topología. Yo calculo la topología de sus clientes. Estamos investigando si ciertos clientes tienen una forma especial, una forma que nos pueda dar una pista sobre su perfil.</em></p>
+<p><em>Daniel procesó la frase en silencio mientras admiraba a su antigua compañera, y su mente entraba en ese difícil equilibrio entre la vergüenza y la sed de aventura. «Topología de clientes bancarios.»</em></p>
+<p><strong>Daniel</strong>: <em>¿Y qué encuentras?</em></p>
+<p><strong>Mireia</strong>: <em>Los clientes que se van no se van de golpe. Hay toda una «forma» previa que lo anuncia. La forma cambia súbitamente justo antes de marchar. Si detectas los bucles topológicos en su comportamiento antes de que abandonen el banco, puedes intervenir. La estadística clásica ve medias y varianzas. La topología ve si hay un agujero, si la forma se estrecha o se ramifica. En todo caso, ya me estoy liando, porque esto es confidencial.</em></p>
+<p><em>Sonó el teléfono.</em></p>
+<p><strong>Mireia</strong>: <em>Perdona, tengo que coger esto.</em></p>
+<p><em>Fue entonces cuando Daniel cayó en la cuenta de que llevaban tres minutos hablando de pie en la barra y que ella se iba sin que él hubiese conseguido nada concreto — ni un café, ni un LinkedIn, ni un número de teléfono. Hizo lo único que se le ocurrió.</em></p>
+<p><strong>Daniel</strong>: <em>Oye, ¿me das tu número?</em></p>
+<p><em>“Ya me he pasado”, pensó.</em></p>
+<p><em>Mireia le dedicó una sonrisa que Daniel no supo leer con exactitud — entre amable y levemente divertida — y ya estaba cogiendo el teléfono con la otra mano.</em></p>
+<p><strong>Mireia</strong>: <em>No worries, nos vemos por aquí.</em></p>
+<p><em>Y se fue hacia la terraza con el portátil bajo el brazo.</em></p>
+<p><em>Daniel volvió a su mesa. Abrió el ordenador. Cerró el ordenador. Volvió a abrirlo. «Nos vemos por aquí» podía significar cualquier cosa, desde «quedamos la semana que viene» hasta «no pienso darte mi número, pero no quiero ser maleducada», o probablemente «otro pesado intentando ligar».</em></p>
+<p><em>Mireia siguió con su trabajo mientras un hilo de pensamiento se le escapaba. Vendría mañana como siempre, justo antes de que llegara Daniel. Ella empezaba temprano y Daniel, estaba claro, se le enganchaban las sábanas — pensaba ella cada día que lo veía a lo lejos al marchar de la cafetería.</em></p>
+<p><em>“A ver si mañana pongo alguna excusa”, y llegó un poco más tarde. El mundo no se va a acabar si no estoy a las 9 en la oficina. ¿No?</em></p>
 
 
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -637,10 +643,13 @@ ul.task-list li input[type="checkbox"] {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="./index.html" class="pagination-link" aria-label="Prefacio">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Prefacio</span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./00-prologo.html" class="pagination-link" aria-label="Prólogo">
-        <span class="nav-page-text">Prólogo</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./01.html" class="pagination-link" aria-label="Introducción">
+        <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introducción</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

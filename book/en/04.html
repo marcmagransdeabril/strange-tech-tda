@@ -1,14 +1,13 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.9.36">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Marc Magrans de Abril">
 
-<title>Tecnologías Extrañas: Análisis Topológico de Datos</title>
+<title>4&nbsp; Current Limitations – Strange Tech: Topological Data Analysis</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -34,7 +33,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./00-prologo.html" rel="next">
+<link href="./05.html" rel="next">
+<link href="./03.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -59,20 +59,49 @@ ul.task-list li input[type="checkbox"] {
   ],
   "show-item-context": false,
   "language": {
-    "search-no-results-text": "No se han encontrado resultados",
-    "search-matching-documents-text": "documentos encontrados",
-    "search-copy-link-title": "Copiar el enlace en la búsqueda",
-    "search-hide-matches-text": "Ocultar resultados adicionales",
-    "search-more-match-text": "resultado adicional en este documento",
-    "search-more-matches-text": "resultados adicionales en este documento",
-    "search-clear-button-title": "Borrar",
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
     "search-text-placeholder": "",
-    "search-detached-cancel-button-title": "Cancelar",
-    "search-submit-button-title": "Enviar",
-    "search-label": "Buscar"
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="templates/styles.css">
 <link rel="stylesheet" href="templates/standalone-book.css">
@@ -86,18 +115,18 @@ ul.task-list li input[type="checkbox"] {
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="./index.html">
-    <span class="navbar-title">Tecnologías Extrañas: Análisis Topológico de Datos</span>
+    <span class="navbar-title">Strange Tech: Topological Data Analysis</span>
     </a>
   </div>
-            <div id="quarto-search" class="" title="Buscar"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Navegación de palanca" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./../en/index.html"> 
-<span class="menu-text">English</span></a>
+    <a class="nav-link" href="./../es/index.html"> 
+<span class="menu-text">Español</span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
@@ -107,11 +136,11 @@ ul.task-list li input[type="checkbox"] {
     </nav>
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Prefacio</a></li></ol></nav>
-        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./04.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Current Limitations</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
   </nav>
@@ -124,62 +153,62 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Prefacio</span></a>
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./00-prologo.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Prólogo</span></a>
+ <span class="menu-text">Prologue</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./01.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introducción</span></span></a>
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./02.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Manos a la obra</span></span></a>
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Hands on</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./03.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Aplicaciones</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Applications</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./04.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Limitaciones actuales</span></span></a>
+  <a href="./04.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Current Limitations</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./05.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Fundamentos</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Foundations</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./06.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Lecturas Recomendadas</span></a>
+ <span class="menu-text">Further Reading</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./07.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Referencias</span></a>
+ <span class="menu-text">References</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./08.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Soluciones</span></a>
+ <span class="menu-text">Solutions</span></a>
   </div>
 </li>
     </ul>
@@ -188,13 +217,18 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar"><div class="quarto-margin-header"><div class="margin-header-item">
-<p><strong>Tecnologías Extrañas: Análisis Topológico de Datos</strong></p>
+<p><strong>Strange Tech: Topological Data Analysis</strong></p>
 </div></div>
         <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Tabla de contenidos</h2>
+    <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#prefacio" id="toc-prefacio" class="nav-link active" data-scroll-target="#prefacio">Prefacio</a></li>
+  <li><a href="#required-data-density" id="toc-required-data-density" class="nav-link active" data-scroll-target="#required-data-density"><span class="header-section-number">4.1</span> Required Data Density</a></li>
+  <li><a href="#computational-complexity" id="toc-computational-complexity" class="nav-link" data-scroll-target="#computational-complexity"><span class="header-section-number">4.2</span> Computational Complexity</a></li>
+  <li><a href="#sensitivity-to-outliers" id="toc-sensitivity-to-outliers" class="nav-link" data-scroll-target="#sensitivity-to-outliers"><span class="header-section-number">4.3</span> Sensitivity to Outliers</a></li>
+  <li><a href="#interpretability" id="toc-interpretability" class="nav-link" data-scroll-target="#interpretability"><span class="header-section-number">4.4</span> Interpretability</a></li>
+  <li><a href="#non-uniqueness-of-the-inverse-operation" id="toc-non-uniqueness-of-the-inverse-operation" class="nav-link" data-scroll-target="#non-uniqueness-of-the-inverse-operation"><span class="header-section-number">4.5</span> Non-Uniqueness of the Inverse Operation</a></li>
+  <li><a href="#distance-concentration-in-high-dimensions" id="toc-distance-concentration-in-high-dimensions" class="nav-link" data-scroll-target="#distance-concentration-in-high-dimensions"><span class="header-section-number">4.6</span> Distance Concentration in High Dimensions</a></li>
   </ul>
 </nav>
     </div>
@@ -203,20 +237,13 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Tecnologías Extrañas: Análisis Topológico de Datos</h1>
-<p class="subtitle lead">Apuestas asimétricas para ingenieros curiosos</p>
+<h1 class="title"><span id="sec-limitaciones-tda" class="quarto-section-identifier"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Current Limitations</span></span></h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Autor/a</div>
-    <div class="quarto-title-meta-contents">
-             <p>Marc Magrans de Abril </p>
-          </div>
-  </div>
     
   
     
@@ -227,9 +254,66 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="prefacio" class="level1 unnumbered">
-<h1 class="unnumbered">Prefacio</h1>
-<p>Este libro forma parte de la serie <strong>Tecnologías Extrañas</strong>: pequeños libros independientes sobre tecnologías avanzadas que la mayoría de ingenieros no conoce pero que podrían necesitar. Cada libro mezcla experiencias personales con análisis técnico riguroso.</p>
+<p>TDA has solid theoretical guarantees, but between the concept and production use there are concrete obstacles. The limitations are ordered from greatest to least practical impact.</p>
+<section id="required-data-density" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="required-data-density"><span class="header-section-number">4.1</span> Required Data Density</h2>
+<p>The viability of TDA depends on the <strong>intrinsic dimension</strong> of the underlying object, not the ambient dimension of the data. The quantitative analysis — with a comparative table by domain (language, genomics, audio, signals, images, etc.) — is developed in <a href="05.html#sec-densidad-fundamentos" class="quarto-xref"><span>Section 5.5</span></a> within the Foundations section. Here the practical rule suffices: TDA works well when the data come from a process with few real degrees of freedom; it fails when the intrinsic dimension is comparable to the ambient dimension.</p>
+</section>
+<section id="computational-complexity" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="computational-complexity"><span class="header-section-number">4.2</span> Computational Complexity</h2>
+<p>This is the main bottleneck for <strong>persistent homology</strong> (<code>ripser</code>, <code>gudhi</code>). Computing <span class="math inline">\(H_j\)</span> requires building simplices of dimension <span class="math inline">\(j{+}1\)</span>: edges for <span class="math inline">\(H_0\)</span>, triangles for <span class="math inline">\(H_1\)</span>, tetrahedra for <span class="math inline">\(H_2\)</span>. The number of potential <span class="math inline">\((j{+}1)\)</span>-simplices in a Vietoris-Rips complex is <span class="math inline">\(\binom{n}{j+2}\)</span>, i.e., <span class="math inline">\(O(n^{j+2})\)</span>. Boundary matrix reduction — the central algebraic step — has cost proportional to the size of this matrix:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: center;">Homological dimension</th>
+<th style="text-align: center;">Required simplices</th>
+<th style="text-align: center;">Cost</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(H_0\)</span> (components)</td>
+<td style="text-align: center;"><span class="math inline">\(\binom{n}{2}\)</span> edges</td>
+<td style="text-align: center;"><span class="math inline">\(O(n^2)\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\(H_1\)</span> (holes)</td>
+<td style="text-align: center;"><span class="math inline">\(\binom{n}{3}\)</span> triangles</td>
+<td style="text-align: center;"><span class="math inline">\(O(n^3)\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(H_2\)</span> (voids)</td>
+<td style="text-align: center;"><span class="math inline">\(\binom{n}{4}\)</span> tetrahedra</td>
+<td style="text-align: center;"><span class="math inline">\(O(n^4)\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>Each additional homological dimension adds a factor of <span class="math inline">\(n\)</span> to the cost. In practice, <code>ripser</code> uses optimizations (<em>lazy evaluation</em>, cohomology instead of homology) that avoid explicitly building all simplices, but the asymptotic scaling persists. For <span class="math inline">\(H_1\)</span>, the practical limit is a few thousand points; for <span class="math inline">\(H_2\)</span>, a few hundred.</p>
+<p>Mapper and UMAP, by contrast, have different cost profiles — Mapper applies a clustering algorithm (DBSCAN, <span class="math inline">\(O(n_p \log n_p)\)</span> with a spatial index) to each of the <span class="math inline">\(m\)</span> cover intervals, where <span class="math inline">\(n_p \approx n/m\)</span> are the points in each patch; the total cost is approximately <span class="math inline">\(O(n \log(n/m))\)</span>, manageable with hundreds of thousands of points. UMAP builds the nearest-neighbor graph in <span class="math inline">\(O(n \log n)\)</span> with tree structures. Both are viable at scales where <code>ripser</code> is already prohibitive.</p>
+</section>
+<section id="sensitivity-to-outliers" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="sensitivity-to-outliers"><span class="header-section-number">4.3</span> Sensitivity to Outliers</h2>
+<p>Although persistence filters out short-lived artifacts (features with low persistence are noise), outliers can create artifacts with deceptively high persistence. An isolated point far from the main cloud takes a long time to connect, generating a long bar in <span class="math inline">\(H_0\)</span> that reflects not real structure but an anomalous data point. In <span class="math inline">\(H_1\)</span>, a handful of outliers can create spurious triangles that close fictitious cycles.</p>
+<p>The same tension arises here as when treating extreme values in a distribution: the standard approach is to remove them as noise, but in many domains — finance, fault detection, network anomalies — the outlier is precisely the highest-information event. TDA does not resolve this ambiguity: it cannot distinguish whether a long bar is produced by a real topological feature or an anomalous point. The pragmatic solution is to inspect it explicitly — locating the point using the representative cycles of Recipe 4 — and decide based on the domain whether it is signal or artifact.</p>
+</section>
+<section id="interpretability" class="level2" data-number="4.4">
+<h2 data-number="4.4" class="anchored" data-anchor-id="interpretability"><span class="header-section-number">4.4</span> Interpretability</h2>
+<p>Persistence diagrams summarize the “shape” of the data, but connecting a topological feature to a causal or actionable explanation is difficult. Detecting that there is a cycle in <span class="math inline">\(H_1\)</span> is informative; explaining <em>why</em> that cycle exists in domain terms requires additional work — such as the representative cycles of Recipe 4 — and even then interpretation is not automatic. This is where complementary techniques regain ground: Mapper translates the shape into an inspectable graph where each node carries a domain label (the novels in Recipe 5, the scientific fields in Recipe 6); UMAP projects the manifold to two or three dimensions while preserving topology, so the global structure is visible at a glance; and traditional statistical analysis — correlations, hypothesis tests, regression on persistence vectors — allows linking topological features to external variables. In practice, persistent homology detects <em>what</em> is there; the other techniques help understand <em>what it means</em>.</p>
+</section>
+<section id="non-uniqueness-of-the-inverse-operation" class="level2" data-number="4.5">
+<h2 data-number="4.5" class="anchored" data-anchor-id="non-uniqueness-of-the-inverse-operation"><span class="header-section-number">4.5</span> Non-Uniqueness of the Inverse Operation</h2>
+<p>The persistence diagram indicates <em>what</em> topological features exist (how many holes, at what scales), but the inverse operation — locating <em>where</em> they are — has no unique solution. As we saw in Recipe 4, for a single generator of <span class="math inline">\(H_1\)</span> there exist multiple homologous cycles enclosing the same hole: the shortest path, the one with minimum geometric length, the one with minimum enclosed area. All are valid and topologically equivalent answers. This ambiguity is inherent to homology: two cycles that differ by a boundary (an added or removed triangle) represent the same class. In practice, this means that different algorithms or implementations may return different representative cycles for the same persistent feature.</p>
+</section>
+<section id="distance-concentration-in-high-dimensions" class="level2" data-number="4.6">
+<h2 data-number="4.6" class="anchored" data-anchor-id="distance-concentration-in-high-dimensions"><span class="header-section-number">4.6</span> Distance Concentration in High Dimensions</h2>
+<p>In very high dimensions, distances between points tend to concentrate: all pairs of points end up at a similar distance, regardless of the metric chosen. The phenomenon affects all common metrics to varying degrees — Euclidean, cosine, Manhattan, Pearson correlation — though some are more robust than others: cosine distance and Pearson correlation, being normalized, degrade somewhat more slowly than Euclidean distance in very high dimensions, but none escapes the problem asymptotically. When this occurs, the Vietoris-Rips filtration loses resolution — all edges are inserted at nearly the same time — and the detected topological structures lose meaning. Recipe 7 addresses exactly this problem: it first reduces dimensionality with UMAP — which preserves simplicial structure — before applying <code>ripser</code>, yielding results superior to PCA (linear).</p>
+<div class="repaso">
+<ol type="1">
+<li>A dataset has 1,000 points in <span class="math inline">\(\mathbb{R}^{50}\)</span> but its intrinsic dimension is 3. Is computing <span class="math inline">\(H_1\)</span> feasible? What if the intrinsic dimension were 20?</li>
+<li>Why can <code>ripser</code> compute <span class="math inline">\(H_1\)</span> for 5,000 points but not <span class="math inline">\(H_2\)</span>? Calculate how many potential tetrahedra there are with <span class="math inline">\(n = 5{,}000\)</span>.</li>
+<li>The <span class="math inline">\(H_0\)</span> of a corpus of financial transactions shows a bar with persistence three times the null threshold — the typical signal of an isolated component. Your colleague proposes removing that point as an outlier before continuing the analysis. Do you agree? Justify your answer and describe which tool from the chapter you would use to make the decision.</li>
+</ol>
+</div>
 
 
 </section>
@@ -260,12 +344,12 @@ ul.task-list li input[type="checkbox"] {
       // flash "checked"
       button.classList.add('code-copy-button-checked');
       var currentTitle = button.getAttribute("title");
-      button.setAttribute("title", "Copiado");
+      button.setAttribute("title", "Copied!");
       let tooltip;
       if (window.bootstrap) {
         button.setAttribute("data-bs-toggle", "tooltip");
         button.setAttribute("data-bs-placement", "left");
-        button.setAttribute("data-bs-title", "Copiado");
+        button.setAttribute("data-bs-title", "Copied!");
         tooltip = new bootstrap.Tooltip(button, 
           { trigger: "manual", 
             customClass: "code-copy-button-tooltip",
@@ -637,10 +721,13 @@ ul.task-list li input[type="checkbox"] {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="./03.html" class="pagination-link" aria-label="Applications">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Applications</span></span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./00-prologo.html" class="pagination-link" aria-label="Prólogo">
-        <span class="nav-page-text">Prólogo</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./05.html" class="pagination-link" aria-label="Foundations">
+        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Foundations</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

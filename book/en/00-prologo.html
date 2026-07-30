@@ -1,14 +1,13 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.9.36">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Marc Magrans de Abril">
 
-<title>Tecnologías Extrañas: Análisis Topológico de Datos</title>
+<title>Prologue – Strange Tech: Topological Data Analysis</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -34,7 +33,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./00-prologo.html" rel="next">
+<link href="./01.html" rel="next">
+<link href="./index.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -59,17 +59,17 @@ ul.task-list li input[type="checkbox"] {
   ],
   "show-item-context": false,
   "language": {
-    "search-no-results-text": "No se han encontrado resultados",
-    "search-matching-documents-text": "documentos encontrados",
-    "search-copy-link-title": "Copiar el enlace en la búsqueda",
-    "search-hide-matches-text": "Ocultar resultados adicionales",
-    "search-more-match-text": "resultado adicional en este documento",
-    "search-more-matches-text": "resultados adicionales en este documento",
-    "search-clear-button-title": "Borrar",
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
     "search-text-placeholder": "",
-    "search-detached-cancel-button-title": "Cancelar",
-    "search-submit-button-title": "Enviar",
-    "search-label": "Buscar"
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 
@@ -86,18 +86,18 @@ ul.task-list li input[type="checkbox"] {
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="./index.html">
-    <span class="navbar-title">Tecnologías Extrañas: Análisis Topológico de Datos</span>
+    <span class="navbar-title">Strange Tech: Topological Data Analysis</span>
     </a>
   </div>
-            <div id="quarto-search" class="" title="Buscar"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Navegación de palanca" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./../en/index.html"> 
-<span class="menu-text">English</span></a>
+    <a class="nav-link" href="./../es/index.html"> 
+<span class="menu-text">Español</span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
@@ -107,11 +107,11 @@ ul.task-list li input[type="checkbox"] {
     </nav>
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Prefacio</a></li></ol></nav>
-        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./00-prologo.html">Prologue</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
   </nav>
@@ -124,62 +124,62 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Prefacio</span></a>
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./00-prologo.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Prólogo</span></a>
+  <a href="./00-prologo.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Prologue</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./01.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introducción</span></span></a>
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./02.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Manos a la obra</span></span></a>
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Hands on</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./03.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Aplicaciones</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Applications</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./04.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Limitaciones actuales</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Current Limitations</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./05.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Fundamentos</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Foundations</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./06.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Lecturas Recomendadas</span></a>
+ <span class="menu-text">Further Reading</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./07.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Referencias</span></a>
+ <span class="menu-text">References</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./08.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Soluciones</span></a>
+ <span class="menu-text">Solutions</span></a>
   </div>
 </li>
     </ul>
@@ -188,35 +188,22 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar"><div class="quarto-margin-header"><div class="margin-header-item">
-<p><strong>Tecnologías Extrañas: Análisis Topológico de Datos</strong></p>
+<p><strong>Strange Tech: Topological Data Analysis</strong></p>
 </div></div>
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Tabla de contenidos</h2>
-   
-  <ul>
-  <li><a href="#prefacio" id="toc-prefacio" class="nav-link active" data-scroll-target="#prefacio">Prefacio</a></li>
-  </ul>
-</nav>
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Tecnologías Extrañas: Análisis Topológico de Datos</h1>
-<p class="subtitle lead">Apuestas asimétricas para ingenieros curiosos</p>
+<h1 class="title">Prologue</h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Autor/a</div>
-    <div class="quarto-title-meta-contents">
-             <p>Marc Magrans de Abril </p>
-          </div>
-  </div>
     
   
     
@@ -227,12 +214,31 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="prefacio" class="level1 unnumbered">
-<h1 class="unnumbered">Prefacio</h1>
-<p>Este libro forma parte de la serie <strong>Tecnologías Extrañas</strong>: pequeños libros independientes sobre tecnologías avanzadas que la mayoría de ingenieros no conoce pero que podrían necesitar. Cada libro mezcla experiencias personales con análisis técnico riguroso.</p>
+<p><em>It was Tuesday morning when Daniel walked into Can Quirze, his usual café in the Eixample, looking for his usual spot — the table in the back, from which you could see the wet street without hearing the traffic noise. Jaume, his favorite professor, had once told him: “You must always keep your enemies in sight.” Well, Daniel, far from having enemies, barely has friends — one or two. How would he have time for enemies? In any case, it seemed like a good idea that oozed the samurai philosophy he so enjoyed reading in Usagi Yojimbo.</em></p>
+<p><em>What he didn’t expect was to see her.</em></p>
+<p><em>Mireia. Five years without crossing paths. The last time had been at the master’s graduation party, where Daniel had tried to say something to her, but either she’d ignored him, or the volume was too loud and he’d been too shy.</em></p>
+<p><em>She was standing at the bar, laptop open, hair pulled up in the same casual bun from their university years. A terracotta wool jacket that clashed absurdly with linen pants. At least in that regard, he was no worse.</em></p>
+<p><strong>Mireia</strong>: <em>Daniel! What are you doing here?</em></p>
+<p><strong>Daniel</strong>: <em>I live three blocks away. I come almost every day. And you?</em></p>
+<p><strong>Mireia</strong>: <em>I’m swamped. I’m working with a bank and trying to understand the “shape” of their customers.</em></p>
+<p><strong>Daniel</strong>: <em>The “shape”? Like clustering? Behavior profiles?</em></p>
+<p><strong>Mireia</strong>: <em>More literal than it sounds. Customers generate thousands of transactions and patterns. If you represent them as points in a high-dimensional space, that cloud has a shape. Connected components, holes, loops. Topology. I compute the topology of their customers. We’re investigating whether certain customers have a special shape, a shape that might give us a clue about their profile.</em></p>
+<p><em>Daniel processed the sentence in silence while admiring his former classmate, his mind entering that difficult balance between embarrassment and thirst for adventure. “Topology of bank customers.”</em></p>
+<p><strong>Daniel</strong>: <em>And what do you find?</em></p>
+<p><strong>Mireia</strong>: <em>Customers who leave don’t leave all at once. There’s an entire “shape” beforehand that announces it. If you detect the topological loops in their behavior before they leave the bank, you can intervene. Classical statistics sees means and variances. Topology sees whether there’s a hole. Anyway, I’m already rambling, because this is confidential.</em></p>
+<p><em>Mireia’s phone rang.</em></p>
+<p><strong>Mireia</strong>: <em>Sorry, I need to take this.</em></p>
+<p><em>That’s when Daniel realized they’d been talking for three minutes standing at the bar and she was leaving without him having gotten anything concrete — not a coffee, not a LinkedIn, not a phone number. He did the only thing he could think of.</em></p>
+<p><strong>Daniel</strong>: <em>Hey, can I have your number?</em></p>
+<p><em>“I’ve crossed the line,” he thought, and his inner failure laughed at him.</em></p>
+<p><em>Mireia gave him a smile that Daniel couldn’t quite read — somewhere between kind and slightly amused — and was already picking up the phone with her other hand.</em></p>
+<p><strong>Mireia</strong>: <em>No worries, we’ll see each other around here.</em></p>
+<p><em>And she headed toward the terrace with the laptop under her arm.</em></p>
+<p><em>Daniel went back to his table. Opened his computer. Closed his computer. Opened it again. “We’ll see each other around here” could mean anything, from “let’s meet next week” to “I’m not going to give you my number but I don’t want to be rude.”</em></p>
+<p><em>Mireia continued with her work, and she would come tomorrow as always, just before Daniel arrived. She started early, and Daniel clearly had trouble getting out of bed — she thought every day as she saw him in the distance when leaving the café.</em></p>
+<p><em>“Let’s see if tomorrow I come up with some excuse,” and she arrived a little later. The world isn’t going to end if I’m not at the office by 9. Right?</em></p>
 
 
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -260,12 +266,12 @@ ul.task-list li input[type="checkbox"] {
       // flash "checked"
       button.classList.add('code-copy-button-checked');
       var currentTitle = button.getAttribute("title");
-      button.setAttribute("title", "Copiado");
+      button.setAttribute("title", "Copied!");
       let tooltip;
       if (window.bootstrap) {
         button.setAttribute("data-bs-toggle", "tooltip");
         button.setAttribute("data-bs-placement", "left");
-        button.setAttribute("data-bs-title", "Copiado");
+        button.setAttribute("data-bs-title", "Copied!");
         tooltip = new bootstrap.Tooltip(button, 
           { trigger: "manual", 
             customClass: "code-copy-button-tooltip",
@@ -637,10 +643,13 @@ ul.task-list li input[type="checkbox"] {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="./index.html" class="pagination-link" aria-label="Preface">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Preface</span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./00-prologo.html" class="pagination-link" aria-label="Prólogo">
-        <span class="nav-page-text">Prólogo</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./01.html" class="pagination-link" aria-label="Introduction">
+        <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

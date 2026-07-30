@@ -6,9 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Marc Magrans de Abril">
 
-<title>Tecnologías Extrañas: Análisis Topológico de Datos</title>
+<title>3&nbsp; Aplicaciones – Tecnologías Extrañas: Análisis Topológico de Datos</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -34,7 +33,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./00-prologo.html" rel="next">
+<link href="./04.html" rel="next">
+<link href="./02.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -73,6 +73,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="templates/styles.css">
 <link rel="stylesheet" href="templates/standalone-book.css">
@@ -110,7 +139,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Prefacio</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./03.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Aplicaciones</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -124,7 +153,7 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Prefacio</span></a>
   </div>
 </li>
@@ -148,7 +177,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./03.html" class="sidebar-item-text sidebar-link">
+  <a href="./03.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Aplicaciones</span></span></a>
   </div>
 </li>
@@ -190,33 +219,20 @@ ul.task-list li input[type="checkbox"] {
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar"><div class="quarto-margin-header"><div class="margin-header-item">
 <p><strong>Tecnologías Extrañas: Análisis Topológico de Datos</strong></p>
 </div></div>
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Tabla de contenidos</h2>
-   
-  <ul>
-  <li><a href="#prefacio" id="toc-prefacio" class="nav-link active" data-scroll-target="#prefacio">Prefacio</a></li>
-  </ul>
-</nav>
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Tecnologías Extrañas: Análisis Topológico de Datos</h1>
-<p class="subtitle lead">Apuestas asimétricas para ingenieros curiosos</p>
+<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Aplicaciones</span></h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Autor/a</div>
-    <div class="quarto-title-meta-contents">
-             <p>Marc Magrans de Abril </p>
-          </div>
-  </div>
     
   
     
@@ -227,12 +243,20 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="prefacio" class="level1 unnumbered">
-<h1 class="unnumbered">Prefacio</h1>
-<p>Este libro forma parte de la serie <strong>Tecnologías Extrañas</strong>: pequeños libros independientes sobre tecnologías avanzadas que la mayoría de ingenieros no conoce pero que podrían necesitar. Cada libro mezcla experiencias personales con análisis técnico riguroso.</p>
+<p>Los dominios que han adoptado el TDA comparten un rasgo común: la forma importa más que los momentos. Donde la estadística clásica ve una distribución y el aprendizaje automático ve un vector de <em>features</em>, el TDA ve componentes conexas, agujeros y cavidades — y esa diferencia tiene consecuencias prácticas. <strong>Biología molecular y diseño de fármacos.</strong> Predecir si una molécula candidata se une a una proteína diana es el cuello de botella del descubrimiento de fármacos. Los descriptores moleculares clásicos — <em>fingerprints</em> ECFP, grafos de conectividad — capturan la estructura local pero ignoran la forma tridimensional de la cavidad de unión. Dos moléculas con grafos idénticos pero geometrías distintas pueden tener afinidades completamente diferentes; la homología persistente las distingue donde el grafo no puede. Por ejemplo, se ha demostrado que descriptores topológicos superan en hasta un 30% los métodos basados en grafos para predecir afinidad proteína-ligando, con resultados análogos en predicción de estabilidad de proteínas.</p>
+<p><strong>Aprendizaje profundo topológico.</strong> Las redes neuronales de grafos (<em>Graph Neural Networks</em>, GNN) generalizaron el deep learning a datos relacionales, pero solo capturan interacciones por pares: dos nodos están conectados o no. Muchos sistemas reales — moléculas, redes cerebrales, mallas 3D — tienen interacciones de orden superior que los grafos no pueden representar: tres residuos que forman una cavidad de unión, cuatro neuronas que se co-activan en un bucle. El <strong>aprendizaje profundo topológico</strong> (<em>Topological Deep Learning</em>, TDL) responde a esto definiendo redes neuronales directamente sobre complejos simpliciales y celulares, donde las <em>features</em> viven no solo en nodos sino también en aristas, triángulos, tetraedros. El paso de mensajes se produce entre símplices adyacentes en todas las dimensiones: un triángulo agrega información de sus tres aristas, una arista agrega información de los triángulos que la contienen. El resultado son modelos que capturan relaciones de grupo que un GNN convencional pierde por construcción. En predicción de propiedades moleculares, donde las interacciones de tres o cuatro átomos determinan la reactividad, TDL supera consistentemente a los GNN estándar sin aumentar el número de parámetros.</p>
+<p><strong>Diagnóstico clínico e imagen médica.</strong> Clasificar tumores cerebrales por resonancia magnética es difícil porque la morfología varía enormemente entre pacientes del mismo tipo histológico. Los descriptores convencionales — estadísticas de intensidad, tamaño, forma elíptica aproximada — ignoran rasgos como el número de cavidades internas o la complejidad del borde, que los radiólogos sí usan. Los vectores de persistencia derivados de la homología de la imagen del tumor son invariantes a rotaciones y escalados, y capturan precisamente esos rasgos estructurales. Estudios recientes en glioblastoma multiforme obtienen mejoras de clasificación del 5–8% sobre descriptores convencionales.</p>
+<p><strong>Series temporales y sistemas dinámicos.</strong> Una señal EEG durante un episodio epiléptico tiene una dinámica muy distinta de la actividad basal, pero esa diferencia no siempre es visible en el dominio de frecuencias. El teorema de Takens — que veremos en <a href="05.html" class="quarto-xref"><span>Capítulo 5</span></a> — permite reconstruir el atractor del sistema a partir de retardos de la propia señal: si la dinámica es periódica, el atractor tiene la topología de un toro; si es caótica, la topología es más compleja. Aplicando homología persistente al atractor reconstruido, se detectan cambios de régimen — como la transición ictal — sin asumir ningún modelo paramétrico. La ventaja sobre los espectrogramas es que la topología del atractor es robusta a artefactos de movimiento que distorsionan el espectro pero no cambian la forma global de la trayectoria.</p>
+<p><strong>Neurociencia y redes cerebrales.</strong> Los conectomas — mapas de conexiones entre regiones cerebrales — son grafos donde la organización global importa tanto como el peso de cada arista. Comparar conectomas entre pacientes con Alzheimer y controles sanos, o entre estados de sueño y vigilia, requiere métricas que capturen esa organización global, no solo propiedades locales como el grado de cada nodo. Los números de Betti del complejo simplicial asociado al conectoma — calculados ponderando aristas por correlación funcional — detectan diferencias sistemáticas entre grupos que el análisis espectral clásico del grafo no captura.</p>
+<p><strong>Finanzas y detección de burbujas.</strong> Los precios de activos correlacionados forman una nube de puntos en el espacio de rentabilidades, y esa nube cambia de forma durante las crisis. En condiciones normales los activos se agrupan en sectores bien separados — varias componentes conexas en <span class="math inline">\(H_0\)</span>. Antes de una burbuja, las correlaciones aumentan abruptamente y los sectores se fusionan en una única componente densa: la topología del mercado colapsa. La persistencia de <span class="math inline">\(H_0\)</span> — la distancia a la que los sectores se fusionan — actúa como indicador adelantado de riesgo sistémico, con ventanas de hasta cuatro semanas antes de correcciones significativas en datos históricos.</p>
+<div class="repaso">
+<ol type="1">
+<li>En biología molecular, diagnóstico clínico y neurociencia, ¿qué tienen en común los descriptores convencionales que el TDA supera? ¿Por qué la invarianza bajo deformaciones es especialmente valiosa en estos dominios?</li>
+<li>Pídele a un LLM: <em>«¿Qué librerías de Python implementan homología persistente y cómo empezar con un ejemplo básico?»</em></li>
+</ol>
+</div>
 
 
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -637,10 +661,13 @@ ul.task-list li input[type="checkbox"] {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="./02.html" class="pagination-link" aria-label="Manos a la obra">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Manos a la obra</span></span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./00-prologo.html" class="pagination-link" aria-label="Prólogo">
-        <span class="nav-page-text">Prólogo</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./04.html" class="pagination-link" aria-label="Limitaciones actuales">
+        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Limitaciones actuales</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

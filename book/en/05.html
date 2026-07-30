@@ -1,0 +1,1305 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.36">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>5&nbsp; Foundations – Strange Tech: Topological Data Analysis</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./06.html" rel="next">
+<link href="./04.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-9e09d2eb63ca372e5c6aa0cd7f5bad22.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="templates/styles.css">
+<link rel="stylesheet" href="templates/standalone-book.css">
+</head>
+
+<body class="nav-sidebar floating nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">Strange Tech: Topological Data Analysis</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./../es/index.html"> 
+<span class="menu-text">Español</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./05.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Foundations</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./00-prologo.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Prologue</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Hands on</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Applications</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Current Limitations</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Foundations</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Further Reading</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./07.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./08.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Solutions</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar"><div class="quarto-margin-header"><div class="margin-header-item">
+<p><strong>Strange Tech: Topological Data Analysis</strong></p>
+</div></div>
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#sec-complejos-simpliciales" id="toc-sec-complejos-simpliciales" class="nav-link active" data-scroll-target="#sec-complejos-simpliciales"><span class="header-section-number">5.1</span> Simplicial complexes and the Vietoris-Rips filtration</a></li>
+  <li><a href="#sec-homologia-persistente" id="toc-sec-homologia-persistente" class="nav-link" data-scroll-target="#sec-homologia-persistente"><span class="header-section-number">5.2</span> Persistent homology: births, deaths, and Betti numbers</a>
+  <ul class="collapse">
+  <li><a href="#sec-h0-clustering" id="toc-sec-h0-clustering" class="nav-link" data-scroll-target="#sec-h0-clustering"><span class="header-section-number">5.2.1</span> <span class="math inline">\(H_0\)</span>: connected components, single-linkage, and centroids</a></li>
+  <li><a href="#sec-h1-ciclos" id="toc-sec-h1-ciclos" class="nav-link" data-scroll-target="#sec-h1-ciclos"><span class="header-section-number">5.2.2</span> <span class="math inline">\(H_1\)</span>: cycles, boundaries, and representatives</a></li>
+  </ul></li>
+  <li><a href="#sec-pd-barcode" id="toc-sec-pd-barcode" class="nav-link" data-scroll-target="#sec-pd-barcode"><span class="header-section-number">5.3</span> Persistence Diagram and Barcode</a></li>
+  <li><a href="#sec-estabilidad-tda" id="toc-sec-estabilidad-tda" class="nav-link" data-scroll-target="#sec-estabilidad-tda"><span class="header-section-number">5.4</span> Stability and Bottleneck Distance</a></li>
+  <li><a href="#sec-densidad-fundamentos" id="toc-sec-densidad-fundamentos" class="nav-link" data-scroll-target="#sec-densidad-fundamentos"><span class="header-section-number">5.5</span> Data Density and Intrinsic Dimension: When Is TDA Viable?</a></li>
+  <li><a href="#sec-paisaje-persistencia" id="toc-sec-paisaje-persistencia" class="nav-link" data-scroll-target="#sec-paisaje-persistencia"><span class="header-section-number">5.6</span> Persistence Landscape and Vectorization</a></li>
+  <li><a href="#sec-mapper-fundamentos" id="toc-sec-mapper-fundamentos" class="nav-link" data-scroll-target="#sec-mapper-fundamentos"><span class="header-section-number">5.7</span> Mapper: Covers and Nerves</a></li>
+  <li><a href="#sec-validacion-mapper" id="toc-sec-validacion-mapper" class="nav-link" data-scroll-target="#sec-validacion-mapper"><span class="header-section-number">5.8</span> Mapper Nerve Validation</a></li>
+  <li><a href="#sec-umap-fundamentos" id="toc-sec-umap-fundamentos" class="nav-link" data-scroll-target="#sec-umap-fundamentos"><span class="header-section-number">5.9</span> UMAP and Fuzzy Simplicial Complexes</a>
+  <ul class="collapse">
+  <li><a href="#comparison-with-t-sne" id="toc-comparison-with-t-sne" class="nav-link" data-scroll-target="#comparison-with-t-sne"><span class="header-section-number">5.9.1</span> Comparison with t-SNE</a></li>
+  <li><a href="#practical-consequence" id="toc-practical-consequence" class="nav-link" data-scroll-target="#practical-consequence"><span class="header-section-number">5.9.2</span> Practical Consequence</a></li>
+  </ul></li>
+  <li><a href="#sec-takens" id="toc-sec-takens" class="nav-link" data-scroll-target="#sec-takens"><span class="header-section-number">5.10</span> Takens and Attractor Reconstruction</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span id="sec-fundamentos-tda" class="quarto-section-identifier"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Foundations</span></span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>The previous recipes showed that <code>ripser</code> detects islands, holes, and cycles without the programmer explicitly specifying them; that those features are robust to noise and continuous transformations; and that Mapper and UMAP organize the same data into inspectable formats. What we did not explain is <em>why</em> it works: what mathematical structure turns a point cloud into a list of “births” and “deaths”, why the resulting topology is stable, and how it can be vectorized to connect it with the rest of the statistical toolbox. The key lies in three ideas that build on each other: simplicial complexes, which generalize graphs to higher dimensions; homology, which counts the holes of a complex; and filtration, which tracks how those holes change as the observation scale varies.</p>
+<section id="sec-complejos-simpliciales" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="sec-complejos-simpliciales"><span class="header-section-number">5.1</span> Simplicial complexes and the Vietoris-Rips filtration</h2>
+<p>Topology studies properties that do not change when a space is continuously stretched or deformed — without tearing or gluing it. To apply those ideas to discrete data (a point cloud), we first need to construct a geometric object from them: a <em>simplicial complex</em>.</p>
+<p>A <strong><span class="math inline">\(k\)</span>-simplex</strong> is the generalization of a point (<span class="math inline">\(k=0\)</span>), an edge (<span class="math inline">\(k=1\)</span>), a triangle (<span class="math inline">\(k=2\)</span>), and a tetrahedron (<span class="math inline">\(k=3\)</span>) to any dimension: it is the convex hull of <span class="math inline">\(k+1\)</span> vertices in general position. A <strong>simplicial complex</strong> is a collection of simplices in which every face of each simplex also belongs to the collection: if a triangle <span class="math inline">\(\{u, v, w\}\)</span> belongs to the complex, then its three edges and three vertices must also belong. This is the same requirement as in a graph — where an edge implies the existence of its two endpoints — but applied to objects of any dimension.</p>
+<p>Given a set of points <span class="math inline">\(X = \{x_1, \ldots, x_n\}\)</span> and a scale parameter <span class="math inline">\(\varepsilon \geq 0\)</span>, the <strong>Vietoris-Rips complex</strong> <span class="math inline">\(\mathrm{VR}(X, \varepsilon)\)</span> includes all simplices whose vertices are pairwise within distance <span class="math inline">\(\varepsilon\)</span>: the simplex <span class="math inline">\(\{x_{i_0}, \ldots, x_{i_k}\}\)</span> belongs to the complex if and only if <span class="math inline">\(d(x_{i_j}, x_{i_l}) \leq \varepsilon\)</span> for every pair of indices <span class="math inline">\(j, l\)</span>. For <span class="math inline">\(\varepsilon = 0\)</span>, each point is an isolated simplex; for <span class="math inline">\(\varepsilon = \infty\)</span>, the complex includes all possible simplices. In between, the complex gradually “fills up” with edges, triangles, and tetrahedra as <span class="math inline">\(\varepsilon\)</span> grows.</p>
+<p>Why Vietoris-Rips and not the Čech complex, which includes a simplex when the balls of radius <span class="math inline">\(\varepsilon/2\)</span> centered at its vertices have a common intersection? The Čech complex has stronger theoretical guarantees, but is far more expensive: checking the intersection of <span class="math inline">\(k\)</span> balls in high dimension requires solving a linear programming system. Vietoris-Rips only checks pairwise distances (<span class="math inline">\(O(n^2)\)</span> computations, regardless of the dimension of <span class="math inline">\(k\)</span>), and comparison theorems guarantee that it is “sandwiched” between two Čech complexes at nearby scales, preserving the most persistent topological features.</p>
+<p>As <span class="math inline">\(\varepsilon\)</span> varies from <span class="math inline">\(0\)</span> to <span class="math inline">\(\infty\)</span>, we obtain a <strong>filtration</strong>: a nested family of complexes <span class="math inline">\(\mathrm{VR}(X, \varepsilon_1) \subseteq \mathrm{VR}(X, \varepsilon_2) \subseteq \cdots\)</span> for <span class="math inline">\(\varepsilon_1 \leq \varepsilon_2\)</span>. Each time <span class="math inline">\(\varepsilon\)</span> exceeds the distance between two points, an edge is added; when it exceeds the maximum distance within a group of <span class="math inline">\(k+1\)</span> mutually close points, a <span class="math inline">\(k\)</span>-simplex is added. The filtration is a <em>film</em> of the topology of the dataset at all scales simultaneously.</p>
+<p>Let us illustrate this with four points at the vertices of a unit square — the smallest example where a cycle appears. To track the evolution, it helps to count the topological features: <strong>Betti numbers</strong> <span class="math inline">\(\beta_k\)</span> count the number of “holes” in each dimension — <span class="math inline">\(\beta_0\)</span> is the number of connected components, <span class="math inline">\(\beta_1\)</span> the number of independent cycles, and so on (these are formalized in the next section). At scale <span class="math inline">\(\varepsilon = 0.9\)</span> there are no edges (the distance between adjacent vertices is 1): four isolated points, four components (<span class="math inline">\(\beta_0 = 4\)</span>), no cycles (<span class="math inline">\(\beta_1 = 0\)</span>). At <span class="math inline">\(\varepsilon = 1.05\)</span>, the four sides connect: four edges forming a hollow square. The four components merge into one (<span class="math inline">\(\beta_0 = 1\)</span>) and a cycle is born (<span class="math inline">\(\beta_1 = 1\)</span>). At <span class="math inline">\(\varepsilon = 1.45\)</span>, the diagonals are added (<span class="math inline">\(\sqrt{2} \approx 1.41\)</span>): two triangles appear that fill the interior, the cycle dies (<span class="math inline">\(\beta_1 = 0\)</span>), and the single connected component persists (<span class="math inline">\(\beta_0 = 1\)</span>).</p>
+<div id="fig-vr-filtration" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-vr-filtration-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="diagrams/tda/vietoris-rips-filtration.png" class="img-fluid figure-img" style="width:95.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-vr-filtration-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5.1: Vietoris-Rips filtration over a noisy ring of 30 points at four increasing scales <span class="math inline">\(\varepsilon\)</span>. Left: isolated points (maximum <span class="math inline">\(H_0\)</span>). Center-left: first edges; the three components of the ring connect (<span class="math inline">\(H_0\)</span> decreases). Center-right: the ring is visible as a persistent cycle in <span class="math inline">\(H_1\)</span> (red). Right: triangles fill the interior; the cycle dies. The barcode below shows the corresponding birth and death events.
+</figcaption>
+</figure>
+</div>
+<p>The <a href="#fig-vr-filtration" class="quarto-xref">Figure&nbsp;<span>5.1</span></a> summarizes this process: the same set of points at four scales, showing how topology emerges and disappears. What we just described informally — “at <span class="math inline">\(\varepsilon_2\)</span> the cycle is born, at <span class="math inline">\(\varepsilon_4\)</span> it dies” — is exactly what persistent homology computes systematically across the entire filtration.</p>
+<div class="repaso">
+<ol type="1">
+<li>Why is the Vietoris-Rips complex defined by conditions on all <em>pairs</em> of vertices rather than on ball intersections? What computational advantage does this provide in high dimensions?</li>
+<li>With 6 points, how many potential edges, triangles, and tetrahedra can <span class="math inline">\(\mathrm{VR}(X, \infty)\)</span> contain?</li>
+<li>Ask an LLM: <em>“Explain intuitively the difference between a graph and a simplicial complex. What topological information does a triangle capture that an edge cannot?”</em></li>
+</ol>
+</div>
+</section>
+<section id="sec-homologia-persistente" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="sec-homologia-persistente"><span class="header-section-number">5.2</span> Persistent homology: births, deaths, and Betti numbers</h2>
+<p>With the filtration in hand, the question is: how does the number of connected components, holes, and cavities change as <span class="math inline">\(\varepsilon\)</span> varies? <strong>Betti numbers</strong> are the natural counters: <span class="math inline">\(\beta_0\)</span> counts connected components, <span class="math inline">\(\beta_1\)</span> counts dimension-1 cycles (the “holes” enclosed by edges), <span class="math inline">\(\beta_2\)</span> counts spherical cavities, and <span class="math inline">\(\beta_k\)</span> generalizes this to dimension <span class="math inline">\(k\)</span>. <strong>Persistent homology</strong> tracks how each <span class="math inline">\(\beta_k\)</span> changes along the filtration, recording the value of <span class="math inline">\(\varepsilon\)</span> at which each feature is <em>born</em> and the value at which it <em>dies</em>.</p>
+<p>Note what Betti numbers <span class="math inline">\(\beta_k\)</span> guarantee — and what they do not. They are <strong>topological invariants</strong>: if two spaces are <strong>homeomorphic</strong> — meaning there exists a continuous, invertible deformation that transforms one into the other without cutting or gluing, like squashing a clay sphere into a cube — their <span class="math inline">\(\beta_k\)</span> are necessarily identical. The converse, however, does not hold: equal <span class="math inline">\(\beta_k\)</span> only guarantees the same count of components, cycles, and cavities in each dimension — what mathematicians call <strong>the same homology</strong> — but not homeomorphism. The canonical counterexample is the torus <span class="math inline">\(T^2\)</span> and the Klein bottle <span class="math inline">\(K\)</span>: with <span class="math inline">\(\mathbb{Z}_2\)</span> coefficients — those used by <code>ripser</code> — both have <span class="math inline">\(\beta_0 = 1\)</span>, <span class="math inline">\(\beta_1 = 2\)</span>, <span class="math inline">\(\beta_2 = 1\)</span>, yet they are not homeomorphic. What distinguishes them is finer structural information that those counts do not capture. More concretely: two point clouds with the same <span class="math inline">\(\beta_k\)</span> have no holes or cavities of different types, but they can differ in the local density of points, in how clusters are distributed, in the weight of connections between regions — everything that is not “how many holes are there in each dimension.”</p>
+<section id="sec-h0-clustering" class="level3" data-number="5.2.1">
+<h3 data-number="5.2.1" class="anchored" data-anchor-id="sec-h0-clustering"><span class="header-section-number">5.2.1</span> <span class="math inline">\(H_0\)</span>: connected components, single-linkage, and centroids</h3>
+<p><span class="math inline">\(H_0\)</span> is the <strong>dimension-0 homology group</strong>: an abelian group whose generators correspond to the connected components of the complex. What directly counts those components is its rank, <span class="math inline">\(\beta_0(\varepsilon)\)</span> — the <strong>zeroth Betti number</strong> — which is the number of connected pieces of the Vietoris-Rips complex at scale <span class="math inline">\(\varepsilon\)</span>: it starts at <span class="math inline">\(n\)</span> (each point is its own component) and decreases monotonically to 1 as <span class="math inline">\(\varepsilon\)</span> grows and edges connect neighboring points. The algorithm that executes this filtration is <strong>union-find</strong>: it maintains a partition of the <span class="math inline">\(n\)</span> points and, upon inserting each edge <span class="math inline">\((u,v)\)</span> in increasing order of distance, merges the two components if they are still separate. The bottleneck is not union-find itself — which is nearly linear — but the prior computation of the <span class="math inline">\(\binom{n}{2}\)</span> pairwise distances, putting the total complexity at <span class="math inline">\(O(n^2)\)</span>. Each merge corresponds to the death of a bar in the <span class="math inline">\(H_0\)</span> persistence diagram; the death scale is exactly the distance of the edge that caused it.</p>
+<p>This dynamic is algebraically identical to <strong>single-linkage hierarchical clustering</strong>: in single-linkage, two clusters merge when the minimum distance between any pair of points from different clusters is the smallest available — that is, when the first edge connecting them enters the filtration. The single-linkage dendrogram and the <span class="math inline">\(H_0\)</span> persistence diagram encode exactly the same information: each internal node of the dendrogram at height <span class="math inline">\(h\)</span> corresponds to a bar <span class="math inline">\([0, h]\)</span> in <span class="math inline">\(H_0\)</span>.</p>
+<p>The <a href="#fig-h0-filtration" class="quarto-xref">Figure&nbsp;<span>5.2</span></a> illustrates how the filtration, the dendrogram, and the barcode are three faces of the same object.</p>
+<div id="fig-h0-filtration" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-h0-filtration-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="diagrams/tda/h0-filtration.png" class="img-fluid figure-img" style="width:99.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-h0-filtration-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5.2: Vietoris-Rips filtration over five points (top), single-linkage dendrogram (middle), and <span class="math inline">\(H_0\)</span> barcode (bottom), aligned on the same scale <span class="math inline">\(\varepsilon\)</span>. Each frame shows the edge that triggers the merge (in red); the number <span class="math inline">\(\beta_0\)</span> indicates how many connected components remain active between events. The immortal bar (arrow) is the component that persists forever.
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="sec-h1-ciclos" class="level3" data-number="5.2.2">
+<h3 data-number="5.2.2" class="anchored" data-anchor-id="sec-h1-ciclos"><span class="header-section-number">5.2.2</span> <span class="math inline">\(H_1\)</span>: cycles, boundaries, and representatives</h3>
+<p><span class="math inline">\(H_1\)</span> measures <strong>closed loops of edges</strong> that surround a genuine hole — a region of the complex bounded by edges but with no triangle filling. The most common misconception is that <span class="math inline">\(H_1\)</span> is about triangles; in reality, <strong>cycles are chains of edges</strong> and <strong>triangles are what destroys them</strong>. Think of it this way: edges, (1)-simplices, form the “fence” that encloses a region; triangles, (2)-simplices, are the “floor” that can fill it. A hole in <span class="math inline">\(H_1\)</span> is a closed fence with no floor.</p>
+<p>The pattern extends to any dimension: a <span class="math inline">\(k\)</span>-simplex <strong>creates</strong> a feature of <span class="math inline">\(H_k\)</span>, and a <span class="math inline">\((k{+}1)\)</span>-simplex <strong>destroys</strong> it.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 19%">
+<col style="width: 38%">
+<col style="width: 41%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Group</th>
+<th style="text-align: left;">Born when…</th>
+<th style="text-align: left;">Dies when…</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(H_0\)</span></td>
+<td style="text-align: left;">an isolated point (0-simplex) exists</td>
+<td style="text-align: left;">an edge (1-simplex) connects it to another component</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\(H_1\)</span></td>
+<td style="text-align: left;">an edge (1-simplex) closes a loop</td>
+<td style="text-align: left;">a triangle (2-simplex) fills the hole</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(H_2\)</span></td>
+<td style="text-align: left;">a triangle (2-simplex) closes a cavity</td>
+<td style="text-align: left;">a tetrahedron (3-simplex) fills it</td>
+</tr>
+</tbody>
+</table>
+<p>The <strong>standard reduction algorithm</strong> detects births and deaths by processing the simplices of the filtration in increasing order of <span class="math inline">\(\varepsilon\)</span> with these three steps:</p>
+<ol type="1">
+<li><p><strong>Edge closes a loop → <span class="math inline">\(H_1\)</span> is born.</strong> When a new edge connects two vertices that were already joined by a path of prior edges, adding the missing link, that edge closes a cycle. Its scale <span class="math inline">\(\varepsilon\)</span> is the birth time of the new <span class="math inline">\(H_1\)</span> feature.</p></li>
+<li><p><strong>Triangle fills the cycle → <span class="math inline">\(H_1\)</span> dies.</strong> When a new triangle has all three of its edges already present in the complex, the triangle “fills” the hole that those edges enclosed. Its scale <span class="math inline">\(\varepsilon\)</span> is the death time.</p></li>
+<li><p><strong>The (birth, death) pair</strong> is the red bar in the barcode — and the point with coordinates <span class="math inline">\((\varepsilon_\text{arista}, \varepsilon_\text{triángulo})\)</span> in the persistence diagram.</p></li>
+</ol>
+<p>The number of simplices to examine grows polynomially with <span class="math inline">\(n\)</span>: with <span class="math inline">\(n\)</span> points there are <span class="math inline">\(O(n^2)\)</span> edges but <span class="math inline">\(O(n^3)\)</span> possible triangles, and it is that number of triangles that dominates the cost of the algorithm. The following paragraph explains exactly where that cubic factor comes from.</p>
+<p>The <a href="#fig-filtracion-barcode" class="quarto-xref">Figure&nbsp;<span>5.3</span></a> shows the process in four frames synchronized with the barcode. At <span class="math inline">\(\varepsilon_2\)</span>, edges connect all points into a chain: the components merge (<span class="math inline">\(H_0\)</span> decreases to 1) but the loop is not yet closed (<span class="math inline">\(\beta_1 = 0\)</span>). At <span class="math inline">\(\varepsilon_3\)</span>, the last edge — highlighted in red — connects the two free endpoints of the chain; since those endpoints were already joined by the existing path, this edge closes the loop and <span class="math inline">\(H_1\)</span> is born (<span class="math inline">\(\beta_1 = 1\)</span>). At <span class="math inline">\(\varepsilon_4\)</span>, the scale <span class="math inline">\(\varepsilon\)</span> reaches the diameter of the ring: opposite points are at distance <span class="math inline">\(\varepsilon\)</span>, enabling the longest triangles of the fan to form. The triangles form using only vertices of the ring — with no central point — filling the interior, and <span class="math inline">\(H_1\)</span> dies (<span class="math inline">\(\beta_1 = 0\)</span>). Each endpoint of the barcode bars coincides exactly with one of these events.</p>
+<p>The algebraic version of the same algorithm uses the <strong>boundary matrix</strong> <span class="math inline">\(\partial_2\)</span>: a matrix with one column per triangle and one row per edge, where the column for triangle <span class="math inline">\(\{u,v,w\}\)</span> has ones in the rows of its three edges.</p>
+<p>To understand how the algorithm works, the best approach is to follow it step by step through a minimal example: <strong>three points <span class="math inline">\(\{1, 2, 3\}\)</span> forming a triangle</strong>. The filtration adds simplices in this order:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 21%">
+<col style="width: 26%">
+<col style="width: 8%">
+<col style="width: 15%">
+<col style="width: 15%">
+<col style="width: 11%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;"><span class="math inline">\(\varepsilon\)</span></th>
+<th style="text-align: left;">Simplex added</th>
+<th style="text-align: left;">Type</th>
+<th style="text-align: center;"><span class="math inline">\(\beta_0\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(\beta_1\)</span></th>
+<th style="text-align: left;">Event</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(\varepsilon_1\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(1\)</span></td>
+<td style="text-align: left;">vertex</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: left;">isolated component</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\(\varepsilon_2\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(2\)</span></td>
+<td style="text-align: left;">vertex</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: left;">second isolated component</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(\varepsilon_3\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(3\)</span></td>
+<td style="text-align: left;">vertex</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: left;">third isolated component</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\(\varepsilon_4\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(\{1,2\}\)</span></td>
+<td style="text-align: left;">edge</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: left;">merges 1 and 2; no cycle closed</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(\varepsilon_5\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(\{2,3\}\)</span></td>
+<td style="text-align: left;">edge</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: left;">merges 2 and 3; no cycle closed</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\(\varepsilon_6\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(\{1,3\}\)</span></td>
+<td style="text-align: left;">edge</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: left;">closes <span class="math inline">\(1{-}2{-}3{-}1\)</span> → <strong><span class="math inline">\(H_1\)</span> born</strong></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(\varepsilon_7\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(\{1,2,3\}\)</span></td>
+<td style="text-align: left;">triangle</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: left;">fills the hole → <strong><span class="math inline">\(H_1\)</span> dies</strong></td>
+</tr>
+</tbody>
+</table>
+<p>The algorithm uses <strong>two boundary matrices</strong> in parallel. The first, <span class="math inline">\(\partial_1\)</span>, detects <span class="math inline">\(H_1\)</span> births (edges that close cycles); the second, <span class="math inline">\(\partial_2\)</span>, detects deaths (triangles that fill them).</p>
+<p><strong><span class="math inline">\(\partial_1\)</span>: what does each edge do?</strong></p>
+<p><span class="math inline">\(\partial_1\)</span> has one column per edge and one row per vertex: the column for edge <span class="math inline">\(\{u,v\}\)</span> has a 1 in rows <span class="math inline">\(u\)</span> and <span class="math inline">\(v\)</span>. In our example, with columns and rows ordered by <span class="math inline">\(\varepsilon\)</span>:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;"></th>
+<th style="text-align: center;"><span class="math inline">\(\{1,2\}\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(\{2,3\}\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(\{1,3\}\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(1\)</span></td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline">\(2\)</span></td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(3\)</span></td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1</td>
+</tr>
+</tbody>
+</table>
+<p>The reduction processes columns from left to right. For each column, we look for the <strong>pivot</strong> (the highest-index row with a 1); if a previous column has the same pivot, they are added modulo 2 until the conflict is resolved.</p>
+<ul>
+<li><p><strong><span class="math inline">\(\varepsilon_4\)</span>, column <span class="math inline">\(\{1,2\}\)</span></strong>: pivot = row <span class="math inline">\(2\)</span>. No previous column has that pivot. The column stays as-is. A nonzero column means <span class="math inline">\(\{1,2\}\)</span> <em>destroys</em> a connected component (<span class="math inline">\(H_0\)</span> dies: 1 and 2 merge).</p></li>
+<li><p><strong><span class="math inline">\(\varepsilon_5\)</span>, column <span class="math inline">\(\{2,3\}\)</span></strong>: pivot = row <span class="math inline">\(3\)</span>. No previous column has that pivot. The column stays as-is. Same case: <span class="math inline">\(\{2,3\}\)</span> merges two components; <span class="math inline">\(H_0\)</span> dies again.</p></li>
+<li><p><strong><span class="math inline">\(\varepsilon_6\)</span>, column <span class="math inline">\(\{1,3\}\)</span></strong>: initial pivot = row <span class="math inline">\(3\)</span>. But column <span class="math inline">\(\{2,3\}\)</span> already has pivot <span class="math inline">\(3\)</span> → add <span class="math inline">\(\{1,3\} + \{2,3\}\)</span> modulo 2:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;"></th>
+<th style="text-align: center;">result</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(1\)</span></td>
+<td style="text-align: center;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline">\(2\)</span></td>
+<td style="text-align: center;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(3\)</span></td>
+<td style="text-align: center;">0</td>
+</tr>
+</tbody>
+</table>
+<p>New pivot = row <span class="math inline">\(2\)</span>. But column <span class="math inline">\(\{1,2\}\)</span> has pivot <span class="math inline">\(2\)</span> → add again:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;"></th>
+<th style="text-align: center;">result</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(1\)</span></td>
+<td style="text-align: center;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline">\(2\)</span></td>
+<td style="text-align: center;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(3\)</span></td>
+<td style="text-align: center;">0</td>
+</tr>
+</tbody>
+</table>
+<p><strong>The column reduces to zero.</strong> This means <span class="math inline">\(\{1,3\}\)</span> cannot kill any connected component because 1 and 3 are already connected; instead, it <em>creates</em> a cycle. <span class="math inline">\(H_1\)</span> is born at <span class="math inline">\(\varepsilon_6\)</span>.</p></li>
+</ul>
+<p><strong><span class="math inline">\(\partial_2\)</span>: what does each triangle do?</strong></p>
+<p><span class="math inline">\(\partial_2\)</span> has one column per triangle and one row per edge: the single triangle <span class="math inline">\(\{1,2,3\}\)</span> gives the column:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;"></th>
+<th style="text-align: center;"><span class="math inline">\(\{1,2,3\}\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(\{1,2\}\)</span></td>
+<td style="text-align: center;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline">\(\{2,3\}\)</span></td>
+<td style="text-align: center;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(\{1,3\}\)</span></td>
+<td style="text-align: center;">1</td>
+</tr>
+</tbody>
+</table>
+<p>The pivot is row <span class="math inline">\(\{1,3\}\)</span>, the edge with the largest <span class="math inline">\(\varepsilon\)</span> (it entered at <span class="math inline">\(\varepsilon_6\)</span>). No previous column has that pivot, so the column stays unchanged.</p>
+<p><strong>Nonzero column → death.</strong> The pivot <span class="math inline">\(\{1,3\}\)</span> identifies the cycle this triangle destroys: the one born when <span class="math inline">\(\{1,3\}\)</span> entered. The pair is <span class="math inline">\((\varepsilon_6,\, \varepsilon_7)\)</span> and the bar <span class="math inline">\([\varepsilon_6, \varepsilon_7]\)</span> appears in the barcode.</p>
+<p>If the triangle did not exist, there would be no column in <span class="math inline">\(\partial_2\)</span> with pivot <span class="math inline">\(\{1,3\}\)</span>, the cycle would never die, and the bar would be <span class="math inline">\([\varepsilon_6, +\infty)\)</span> — the signature of a genuine hole. The case with <span class="math inline">\(n\)</span> points does not change the logic: there are <span class="math inline">\(O(n^3)\)</span> possible columns in <span class="math inline">\(\partial_2\)</span> because there are <span class="math inline">\(O(n^3)\)</span> possible triangles, and the algorithm must process them all.</p>
+<p>The cubic scaling comes directly from the number of potential triangles:</p>
+<p><span class="math display">\[\binom{n}{3} = \frac{n(n-1)(n-2)}{6} \approx \frac{n^3}{6}\]</span></p>
+<p>With <span class="math inline">\(n = 10\)</span> there are 120 triangles; with <span class="math inline">\(n = 100\)</span>, about 161,700; with <span class="math inline">\(n = 1{,}000\)</span>, more than 166 million. Even before the reduction, just storing the matrix costs <span class="math inline">\(O(n^3)\)</span> in memory — the scaling warned about in <a href="04.html" class="quarto-xref"><span>Chapter 4</span></a> — and the reduction itself adds another factor because each column may require multiple additions with earlier columns. <code>ripser</code> avoids building the full matrix by using <em>lazy evaluation</em> and dual cohomology.</p>
+<p>Two cycles that represent the same hole form a <strong>homology class</strong>: they are <em>homologous</em> if the difference between their edges is the boundary of some set of triangles — that is, if one cycle can be “deformed” into the other by filling in intermediate triangles. <code>ripser</code> returns one representative per class, but there are infinitely many equally valid ones; this is the “non-uniqueness” noted in <a href="04.html" class="quarto-xref"><span>Chapter 4</span></a>.</p>
+<p>Betti numbers <span class="math inline">\(\beta_k\)</span> for <span class="math inline">\(k \geq 2\)</span> — spherical cavities (<span class="math inline">\(H_2\)</span>), higher-dimensional holes (<span class="math inline">\(H_3\)</span>), etc. — are computed with higher-dimensional boundary matrices, but the cost grows as <span class="math inline">\(O(n^{k+2})\)</span>. In practice, <code>ripser</code> is used only up to <span class="math inline">\(H_2\)</span> except in very specific domains.</p>
+<div id="fig-filtracion-barcode" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-filtracion-barcode-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="diagrams/tda/filtracion-a-barcode.png" class="img-fluid figure-img" style="width:95.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-filtracion-barcode-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5.3: Four frames of the filtration synchronized with the barcode. <span class="math inline">\(\varepsilon_2\)</span>: edges form a chain (<span class="math inline">\(\beta_0 = 1\)</span>, <span class="math inline">\(\beta_1 = 0\)</span>). <span class="math inline">\(\varepsilon_3\)</span>: the red edge closes the loop — <span class="math inline">\(H_1\)</span> is born (<span class="math inline">\(\beta_1 = 1\)</span>). <span class="math inline">\(\varepsilon_4\)</span>: when <span class="math inline">\(\varepsilon\)</span> reaches the diameter (<span class="math inline">\(2r\)</span>), the fan-shaped triangles — formed using only ring points, with no central point — fill the interior and <span class="math inline">\(H_1\)</span> dies (<span class="math inline">\(\beta_1 = 0\)</span>). The diameter (thick red line) is the critical chord.
+</figcaption>
+</figure>
+</div>
+<p><a href="#fig-filtracion-barcode" class="quarto-xref">Figure&nbsp;<span>5.3</span></a> connects the geometry of the filtration with its topological signature: every event in the complex corresponds exactly to an endpoint of a barcode bar.</p>
+<div class="repaso">
+<ol type="1">
+<li>Draw a complex with 4 vertices, 5 edges, and 1 triangle. Is the cycle formed by the two edges not included in the triangle a genuine hole or a boundary? Why?</li>
+<li>Why is computing <span class="math inline">\(H_2\)</span> for 5,000 points infeasible with the standard reduction, while <span class="math inline">\(H_1\)</span> is feasible with lazy evaluation? Estimate the number of potential tetrahedra with <span class="math inline">\(n = 1{,}000\)</span>.</li>
+<li>Ask an LLM: <em>“Two homologous cycles represent the same hole. Can there be two homologous cycles that share no edge? Give a concrete example in a simple simplicial complex.”</em></li>
+</ol>
+</div>
+</section>
+</section>
+<section id="sec-pd-barcode" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="sec-pd-barcode"><span class="header-section-number">5.3</span> Persistence Diagram and Barcode</h2>
+<p>The (birth, death) pairs produced by persistent homology are visualized in two equivalent ways: the <strong>barcode</strong> and the <strong>persistence diagram</strong>.</p>
+<p>In the <strong>barcode</strong>, each feature is a horizontal bar <span class="math inline">\([b_i, d_i]\)</span> along the scale axis <span class="math inline">\(\varepsilon\)</span>. The length of the bar — the <strong>persistence</strong> <span class="math inline">\(d_i - b_i\)</span> — measures how long the feature survives as the scale varies. Long bars are signal; short bars are noise: an accidental edge that briefly closes a cycle before more edges fill it in. In Recipe 1 we saw exactly this contrast: 147 short bars (points within each cluster connecting to each other) and 2 long bars (the separation between the three actual groups).</p>
+<p>In the <strong>persistence diagram</strong>, each feature is a point with coordinates <span class="math inline">\((b_i, d_i)\)</span> in the plane. Since every feature dies after it is born (<span class="math inline">\(d_i \geq b_i\)</span>), all points fall on or above the diagonal <span class="math inline">\(y = x\)</span>. <strong>Persistence</strong> is the distance from the point to the diagonal: a point just above it is noise; a point far away is signal. In <span class="math inline">\(H_0\)</span>, the last connected component standing never dies — its point has death coordinate <span class="math inline">\(+\infty\)</span> and is drawn at the top edge of the diagram.</p>
+<p>Both representations encode exactly the same information. Barcodes are more natural for reading concrete birth and death scales; PDs are more compact when there are many features and make the statistical comparison we will see in the next section easier.</p>
+<div id="fig-barcode-vs-pd" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-barcode-vs-pd-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="diagrams/tda/barcode-vs-pd.png" class="img-fluid figure-img" style="width:99.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-barcode-vs-pd-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5.4: Left: five points arranged in a regular pentagon at scale <span class="math inline">\(\varepsilon \approx 0.4\)</span> — the edges (red) form a closed loop and the shaded interior is the hole that gives rise to the <span class="math inline">\(H_1\)</span> feature. Center: barcode of the point cloud; the four short blue bars are <span class="math inline">\(H_0\)</span> noise (components that merge quickly), the long blue bar with an arrow is the immortal <span class="math inline">\(H_0\)</span>, the long red bar is the <span class="math inline">\(H_1\)</span> signal (the hole), and the very short red bar is <span class="math inline">\(H_1\)</span> noise. Right: persistence diagram; the small blue points near the diagonal are <span class="math inline">\(H_0\)</span> noise, the large red point far from the diagonal is the <span class="math inline">\(H_1\)</span> signal, and the small red point next to the diagonal is <span class="math inline">\(H_1\)</span> noise. Distance to the diagonal axis measures persistence: signal above, noise below. Arrows show the bar ↔︎ point correspondence.
+</figcaption>
+</figure>
+</div>
+<div class="repaso">
+<ol type="1">
+<li>A PD has three points: <span class="math inline">\((0.2, 0.8)\)</span>, <span class="math inline">\((0.1, 0.15)\)</span>, and <span class="math inline">\((0.3, +\infty)\)</span>. How many connected components and how many cycles does it describe? What is the persistence of each feature?</li>
+<li>Why can PDs have points of multiplicity greater than one? What does it mean for two features to share exactly the same pair <span class="math inline">\((b, d)\)</span>?</li>
+</ol>
+</div>
+</section>
+<section id="sec-estabilidad-tda" class="level2" data-number="5.4">
+<h2 data-number="5.4" class="anchored" data-anchor-id="sec-estabilidad-tda"><span class="header-section-number">5.4</span> Stability and Bottleneck Distance</h2>
+<p>In Recipe 3 we saw that rotating, scaling, or adding moderate Gaussian noise barely changes the persistence diagram. This was not a coincidence or an artifact of that particular dataset: there is a theorem that guarantees it, and that guarantee is what turns TDA from a mathematical curiosity into a reliable tool for real data.</p>
+<p>To state the theorem we need to measure how similar two PDs are. The <strong>bottleneck distance</strong> <span class="math inline">\(W_\infty(D_1, D_2)\)</span> between two diagrams is the cost of the optimal matching between their points: each point in <span class="math inline">\(D_1\)</span> is matched to a point in <span class="math inline">\(D_2\)</span> or to its projection onto the diagonal (representing “this point is so close to the diagonal it can be ignored”), minimizing the <em>maximum</em> <span class="math inline">\(\ell^\infty\)</span> distance over all pairs:</p>
+<p><span class="math display">\[W_\infty(D_1, D_2) = \inf_{\gamma} \sup_{p \in D_1} \|p - \gamma(p)\|_\infty\]</span></p>
+<p>where the infimum is over all bijections <span class="math inline">\(\gamma\)</span> between <span class="math inline">\(D_1 \cup \Delta\)</span> and <span class="math inline">\(D_2 \cup \Delta\)</span>, with <span class="math inline">\(\Delta\)</span> being the diagonal (used to absorb unmatched points). Intuitively, <span class="math inline">\(W_\infty\)</span> is the distance traveled by the point that moves the most in the optimal matching.</p>
+<p>The <strong>stability theorem</strong> (Cohen-Steiner, Edelsbrunner, and Harer, 2007) states that a small perturbation of the data produces a small perturbation of the diagram. Using the Hausdorff distance <span class="math inline">\(d_H(X, Y) = \max\!\bigl(\sup_{x \in X} \inf_{y \in Y} d(x,y),\; \sup_{y \in Y} \inf_{x \in X} d(x,y)\bigr)\)</span> between two point clouds:</p>
+<p><span class="math display">\[W_\infty\bigl(D(X),\, D(Y)\bigr) \leq 2\, d_H(X, Y)\]</span></p>
+<p>If two point clouds are at Hausdorff distance <span class="math inline">\(\delta\)</span> — every point in <span class="math inline">\(X\)</span> has a neighbor in <span class="math inline">\(Y\)</span> at distance at most <span class="math inline">\(\delta\)</span>, and vice versa — then their diagrams differ by at most <span class="math inline">\(2\delta\)</span> in the bottleneck metric. It helps to think about three distinct situations, because the bound behaves very differently in each one.</p>
+<p><strong>Moderate Gaussian noise.</strong> Gaussian noise with standard deviation <span class="math inline">\(\sigma\)</span> displaces each point by <span class="math inline">\(\sigma\)</span> on average, but the Hausdorff distance depends on the <em>maximum</em> displacement: with <span class="math inline">\(n\)</span> points, the worst displacement scales as <span class="math inline">\(\sigma\sqrt{2 \log n}\)</span>, which grows very slowly. The bound is tight and the perturbation of the diagram is proportional to <span class="math inline">\(\sigma\)</span>: exactly what we observed in Recipe 3.</p>
+<p><strong>Heavy-tailed noise.</strong> With Cauchy, Lévy, or Pareto distributions with small exponent, the maximum of <span class="math inline">\(n\)</span> samples grows as <span class="math inline">\(n^{1/\alpha}\)</span> — polynomially rather than logarithmically. Sooner or later an extreme point appears that drives the Hausdorff distance up without any reasonable bound, making the bound trivially large. This is the same phenomenon that breaks the arithmetic mean: the <span class="math inline">\(\sup\)</span> operator in the Hausdorff distance, like the average in classical statistics, is not robust against extreme values. The analog of using the median is the <em>DTM filtration</em> (distance-to-measure), which averages over the <span class="math inline">\(k\)</span> nearest neighbors of each point instead of depending on the farthest one.</p>
+<p><strong>Outliers as signal.</strong> There is a third case, conceptually distinct: a point that is genuinely far from the rest not because it is noise, but because it represents a real event — a network anomaly, a mechanical failure, a fraudulent transaction. Here the theorem “fails” in the opposite direction: the long bar generated by that point <em>is</em> the signal, not an artifact. The analogy with statistical analysis is direct: an analyst who automatically discards outliers before fitting a model may be removing precisely the most informative observation in the dataset — the extreme value that reveals a financial crisis, a faulty sensor, or a latent failure. The same happens in TDA: the persistent bar may be the central finding of the analysis, or it may be due to a one-off measurement error (a <em>bit flip</em>, an out-of-range reading). The persistence diagram alone cannot distinguish between the two cases; the right tool, as we saw in Recipe 4, is to use representative cycles to locate the point responsible for the suspicious bar and inspect it with domain knowledge before deciding.</p>
+<div id="fig-bottleneck" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-bottleneck-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="diagrams/tda/bottleneck-matching.png" class="img-fluid figure-img" style="width:90.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-bottleneck-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5.5: Illustration of the stability theorem in three steps. <strong>Left</strong>: original point cloud <span class="math inline">\(X\)</span> (blue points). <strong>Center</strong>: perturbed point cloud <span class="math inline">\(Y = X + \eta\)</span>; the faded point shows the original position; the orange arrow marks the worst displacement <span class="math inline">\(\delta = d_H(X,Y)\)</span>. <strong>Right</strong>: persistence diagrams <span class="math inline">\(D(X)\)</span> (circles) and <span class="math inline">\(D(Y)\)</span> (squares) overlaid; the gray lines show the optimal bottleneck matching; the orange arrow bounds the largest displacement in PD space, which cannot exceed <span class="math inline">\(W_\infty \leq 2\delta\)</span>.
+</figcaption>
+</figure>
+</div>
+<div class="repaso">
+<ol type="1">
+<li>Two point clouds have Hausdorff distance <span class="math inline">\(\delta = 0.1\)</span>. By how much can the persistence of a cycle in their diagrams change at most?</li>
+<li>Why can a single outlier create a long bar that mimics real signal? What tool from the chapter would you use to decide whether it is signal or artifact?</li>
+<li>Your industrial sensor dataset has anomalous readings that follow a Pareto distribution with exponent 0.8. Why is the stability theorem’s guarantee less useful here than with Gaussian noise? What property of the DTM filtration alleviates the problem?</li>
+</ol>
+</div>
+</section>
+<section id="sec-densidad-fundamentos" class="level2" data-number="5.5">
+<h2 data-number="5.5" class="anchored" data-anchor-id="sec-densidad-fundamentos"><span class="header-section-number">5.5</span> Data Density and Intrinsic Dimension: When Is TDA Viable?</h2>
+<p>The result from the previous section — stability guarantees that a small perturbation produces a small change in the diagram — says nothing about how many points are needed in the first place. That question has a precise mathematical answer, and its practical consequence is what separates the domains where TDA works well from those where it does not.</p>
+<p>The classical topological reconstruction result (Niyogi, Smale, and Weinberger, 2008) establishes that to faithfully recover the <span class="math inline">\(\beta_k\)</span> of a manifold <span class="math inline">\(M\)</span> with intrinsic dimension <span class="math inline">\(d_I\)</span> and reach <span class="math inline">\(\tau\)</span> it suffices to have</p>
+<p><span class="math display">\[n = O\!\left(\frac{1}{\tau^{d_I}}\right)\]</span></p>
+<p>uniformly sampled points. The reach <span class="math inline">\(\tau\)</span> is the minimum distance at which the manifold “folds back on itself” — inversely proportional to maximum curvature. The crucial point is that the exponent is <span class="math inline">\(d_I\)</span>, the <strong>intrinsic</strong> dimension of the object, not the ambient dimension <span class="math inline">\(D\)</span> in which the data live. The fact that text data live in <span class="math inline">\(\mathbb{R}^{384}\)</span> does not matter: what matters is that the semantic manifold has intrinsic dimension <span class="math inline">\(d_I \sim 10\)</span>–<span class="math inline">\(30\)</span>.</p>
+<p><a href="#tbl-viabilidad-tda" class="quarto-xref">Table&nbsp;<span>5.1</span></a> applies the formula to the most common domains with <span class="math inline">\(\tau = 0.5\)</span> — a reasonable curvature scale for normalized embeddings — and allows comparison of the typical data availability with the minimum required by theory:</p>
+<div id="tbl-viabilidad-tda" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-viabilidad-tda-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;5.1: TDA viability by domain according to the Niyogi et al.&nbsp;(2008) formula with <span class="math inline">\(\tau=0.5\)</span>.
+</figcaption>
+<div aria-describedby="tbl-viabilidad-tda-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Domain</th>
+<th style="text-align: center;">Typical <span class="math inline">\(d_I\)</span></th>
+<th style="text-align: center;">Required <span class="math inline">\(n\)</span> (<span class="math inline">\(\tau{=}0.5\)</span>)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Time series / attractors</td>
+<td style="text-align: center;">2–8</td>
+<td style="text-align: center;">4–256</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Industrial sensors</td>
+<td style="text-align: center;">3–10</td>
+<td style="text-align: center;">8–<span class="math inline">\(10^3\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Birdsong</td>
+<td style="text-align: center;">5–15</td>
+<td style="text-align: center;">32–<span class="math inline">\(3\times10^4\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Audio / music</td>
+<td style="text-align: center;">5–20</td>
+<td style="text-align: center;">32–<span class="math inline">\(10^6\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Cetaceans (vocalizations)</td>
+<td style="text-align: center;">5–20</td>
+<td style="text-align: center;">32–<span class="math inline">\(10^6\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Genomics (scRNA-seq)</td>
+<td style="text-align: center;">10–30</td>
+<td style="text-align: center;"><span class="math inline">\(10^3\)</span>–<span class="math inline">\(10^9\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Natural images</td>
+<td style="text-align: center;">10–50</td>
+<td style="text-align: center;"><span class="math inline">\(10^3\)</span>–<span class="math inline">\(10^{15}\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Text / language</td>
+<td style="text-align: center;">10–30</td>
+<td style="text-align: center;"><span class="math inline">\(10^3\)</span>–<span class="math inline">\(10^9\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Proteins (3D structure)</td>
+<td style="text-align: center;">30–100+</td>
+<td style="text-align: center;"><span class="math inline">\(10^9\)</span>–<span class="math inline">\({\gg}10^{30}\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Tabular with independent <em>features</em></td>
+<td style="text-align: center;"><span class="math inline">\(d_I \approx D\)</span></td>
+<td style="text-align: center;">prohibitive</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p>The table assumes that data reach the TDA algorithm in the appropriate dimension. In practice, many domains in the lower half — language, genomics, images — have <span class="math inline">\(D \gg d_I\)</span>: embeddings live in <span class="math inline">\(\mathbb{R}^{100}\)</span> or <span class="math inline">\(\mathbb{R}^{50000}\)</span>, even though the underlying manifold has intrinsic dimension of ten to thirty. At high dimensions, Euclidean distances between points concentrate — all points tend to be at similar distances — and the Vietoris-Rips filtration loses resolution before the <span class="math inline">\(n\)</span> constraint becomes the bottleneck. UMAP solves this problem by projecting data to <span class="math inline">\(\mathbb{R}^d\)</span> with <span class="math inline">\(d \ll D\)</span> while preserving local topological structure, so that ripser and Mapper operate on informative distances with <span class="math inline">\(d_I\)</span> as the effective dimension — exactly what the Niyogi et al.&nbsp;formula assumes (see <a href="#sec-umap-fundamentos" class="quarto-xref"><span>Section 5.9</span></a>).</p>
+<div class="repaso">
+<ol type="1">
+<li>Recipes 5 and 6 in the chapter work with sets of between 200 and 2,000 text embeddings. Using <a href="#tbl-viabilidad-tda" class="quarto-xref">Table&nbsp;<span>5.1</span></a> and assuming <span class="math inline">\(d_I \approx 15\)</span>, is that range of <span class="math inline">\(n\)</span> sufficient according to the Niyogi et al.&nbsp;formula? What kinds of claims remain defensible?</li>
+<li>An analysis applies ripser directly to 5,000 text embeddings in <span class="math inline">\(\mathbb{R}^{384}\)</span> and obtains persistence diagrams with no notable structure. The same corpus reduced to <span class="math inline">\(\mathbb{R}^{10}\)</span> with UMAP shows a clear connected component in <span class="math inline">\(H_0\)</span>. What phenomenon explains the difference? Is the <span class="math inline">\(n\)</span> constraint the problem in this case?</li>
+<li>A colleague proposes applying TDA to a table of bank transactions with 150 mutually independent numerical columns. Using <a href="#tbl-viabilidad-tda" class="quarto-xref">Table&nbsp;<span>5.1</span></a>, explain why the required <span class="math inline">\(n\)</span> is prohibitive and what alternative tool you would recommend.</li>
+</ol>
+</div>
+</section>
+<section id="sec-paisaje-persistencia" class="level2" data-number="5.6">
+<h2 data-number="5.6" class="anchored" data-anchor-id="sec-paisaje-persistencia"><span class="header-section-number">5.6</span> Persistence Landscape and Vectorization</h2>
+<p>Persistence diagrams are powerful for visualization, but they have a practical limitation: they are not vectors. They cannot be averaged directly, they do not admit standard regression or classification, and computing statistics over a collection of PDs is non-trivial because the “space of PDs” has an irregular geometry under the bottleneck distance. To connect TDA with the rest of the statistical and machine learning toolkit we need to <em>vectorize</em> the diagrams.</p>
+<p>The most rigorous tool for this is the <strong>persistence landscape</strong>, introduced by Bubenik in 2015. For a PD with points <span class="math inline">\((b_i, d_i)\)</span>, a tent function centered at each point is defined:</p>
+<p><span class="math display">\[\Lambda_i(t) = \max\!\left(0,\; \min\bigl(t - b_i,\; d_i - t\bigr)\right)\]</span></p>
+<p>This function is zero outside <span class="math inline">\([b_i, d_i]\)</span>, rises linearly from <span class="math inline">\(b_i\)</span> to the midpoint <span class="math inline">\(m_i = (b_i + d_i)/2\)</span>, and falls symmetrically back to <span class="math inline">\(d_i\)</span>. Its maximum value is exactly half the persistence: <span class="math inline">\(\Lambda_i(m_i) = (d_i - b_i)/2\)</span>.</p>
+<p>The <strong><span class="math inline">\(k\)</span>-th landscape level</strong> is the <span class="math inline">\(k\)</span>-th maximum over all tent functions:</p>
+<p><span class="math display">\[\lambda_k(t) = \text{$k$-th largest value among} \;\{\Lambda_i(t) : i = 1, \ldots, N\}\]</span></p>
+<p>For <span class="math inline">\(k=1\)</span>, <span class="math inline">\(\lambda_1(t)\)</span> is the tallest tent at each point <span class="math inline">\(t\)</span> — the most persistent feature at that scale. For <span class="math inline">\(k=2\)</span>, the second tallest, and so on. If at a point <span class="math inline">\(t\)</span> there are fewer than <span class="math inline">\(k\)</span> active tents, <span class="math inline">\(\lambda_k(t) = 0\)</span>.</p>
+<p>Why this design? Because the functions <span class="math inline">\(\lambda_k\)</span> live in a Banach space: they have a well-defined norm, and their sums and scalings are still landscapes. This makes it possible to compute the <strong>mean landscape</strong> of a collection of diagrams by simply averaging the functions pointwise — something impossible with persistence diagrams directly, whose space does not admit an average in general. Standard statistical tools can then be applied over that vector space: <span class="math inline">\(t\)</span>-tests, regression, and above all, bootstrap.</p>
+<p><strong>Variability band (bootstrap).</strong> Given <span class="math inline">\(n\)</span> data points, <span class="math inline">\(B\)</span> bootstrap resamples with replacement are generated and the landscape of each one is computed. At each scale <span class="math inline">\(t\)</span> we have <span class="math inline">\(B\)</span> values <span class="math inline">\(\{\lambda_1^{(b)}(t)\}_{b=1}^{B}\)</span>; the 5th and 95th percentiles of those values form the <strong>bootstrap band</strong>:</p>
+<p><span class="math display">\[Q_{0.05}\!\bigl(\lambda_1^{(b)}(t)\bigr) \;\leq\; \bar{\lambda}_1(t) \;\leq\; Q_{0.95}\!\bigl(\lambda_1^{(b)}(t)\bigr)\]</span></p>
+<p>This band answers: <em>is the peak stable if I collect more data from the same source?</em> A peak that clearly rises above the 95th percentile is reproducible; one that barely grazes it may be an artifact of that particular sample. The band quantifies <strong>precision</strong>, not significance: it does not distinguish real signal from geometric noise, it only measures how much the observed signal varies across resamples.</p>
+<p><strong>Null line (permutation test).</strong> To know whether there is real topological signal, a different question is needed: <em>what landscape would I observe if the data had no structure at all?</em> To answer it, a null distribution is built: <span class="math inline">\(B\)</span> permuted datasets are generated — for example, by independently permuting each coordinate across data points, which destroys the joint geometry while preserving the marginal distributions — the landscape of each is computed, and the 95th percentile of those null landscapes is taken as the <strong>null line</strong> <span class="math inline">\(\ell_{\text{nulo}}(t)\)</span>. A peak in <span class="math inline">\(\bar{\lambda}_1(t)\)</span> is statistically significant only if it exceeds <span class="math inline">\(\ell_{\text{nulo}}(t)\)</span>, just as a test statistic exceeds the critical value in a classical permutation test.</p>
+<p>The two tools answer different questions: the bootstrap band measures precision; the null line measures significance. This is exactly the distinction we applied in <a href="#sec-h0-clustering" class="quarto-xref"><span>Section 5.2.1</span></a> to decide how many branches the tree of science has: the band confirms that the second <span class="math inline">\(H_0\)</span> component is stable across resamples, and the null line confirms that its height exceeds what would be expected by geometric chance.</p>
+<div id="fig-pd-paisaje" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-pd-paisaje-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="diagrams/tda/pd-a-paisaje.png" class="img-fluid figure-img" style="width:90.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pd-paisaje-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5.6: From persistence diagram to landscape. Each point <span class="math inline">\((b_i, d_i)\)</span> in the PD generates a tent function <span class="math inline">\(\Lambda_i\)</span> (left panel, colored by persistence). The landscape <span class="math inline">\(\lambda_k\)</span> takes the <span class="math inline">\(k\)</span>-th maximum at each scale <span class="math inline">\(t\)</span> (right panel). Levels <span class="math inline">\(\lambda_1\)</span>, <span class="math inline">\(\lambda_2\)</span>, <span class="math inline">\(\lambda_3\)</span> capture signal of decreasing persistence: <span class="math inline">\(\lambda_1\)</span> reflects the dominant feature, <span class="math inline">\(\lambda_2\)</span> the secondary one.
+</figcaption>
+</figure>
+</div>
+<div id="fig-bootstrap-paisaje" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-bootstrap-paisaje-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="diagrams/tda/bootstrap-paisaje.png" class="img-fluid figure-img" style="width:95.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-bootstrap-paisaje-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5.7: Three samples from the same process (rows 1–3) produce persistence diagrams with bars of different lengths and landscapes with peaks of different heights. The bottom row overlays the three individual landscapes (red) to obtain the <strong>mean landscape</strong> (blue), the <strong>bootstrap band 5%–95%</strong> (orange, variability band from resamples of the original dataset), and the <strong>null line</strong> (green, 95th percentile of landscapes from permuted data). The blue peak exceeds the null line — statistically significant signal — and stays within the bootstrap band — reproducible signal.
+</figcaption>
+</figure>
+</div>
+<p>Landscapes and the stability theorem provide the foundations for building robust descriptors. The next piece — Mapper — answers a different question: instead of counting how many holes there are, it builds a graph that summarizes the <em>global shape</em> of the data in a format directly interpretable by a domain analyst.</p>
+<div class="repaso">
+<ol type="1">
+<li>A PD has two points: <span class="math inline">\((0, 2)\)</span> and <span class="math inline">\((1, 3)\)</span>. Compute <span class="math inline">\(\lambda_1(1.5)\)</span> and <span class="math inline">\(\lambda_2(1.5)\)</span>.</li>
+<li>Why does the landscape allow computing confidence intervals by bootstrap while doing so directly with the PD points is harder?</li>
+<li>Your mean landscape <span class="math inline">\(\bar{\lambda}_1\)</span> has a high peak at <span class="math inline">\(t = 1.2\)</span> that exceeds the 95th percentile of the bootstrap band. A colleague says that is enough to conclude there is real topological structure. Are they right? What additional tool would you need and how would you build it?</li>
+<li>Ask an LLM: <em>“What advantages does the persistence landscape have over simply using the 10 longest persistences in the diagram as a feature vector?”</em></li>
+</ol>
+</div>
+</section>
+<section id="sec-mapper-fundamentos" class="level2" data-number="5.7">
+<h2 data-number="5.7" class="anchored" data-anchor-id="sec-mapper-fundamentos"><span class="header-section-number">5.7</span> Mapper: Covers and Nerves</h2>
+<p>Mapper, introduced by Singh, Mémoli, and Carlsson in 2007, answers a different question than persistent homology: instead of counting holes and cavities, it builds a graph that summarizes the <em>global shape</em> of the data in a way that each node is interpretable in domain terms. In Recipes 5 and 6 we used it to discover the hero’s journey in classic novels and the tree of science in arXiv. Here we explain why it works, starting from four steps.</p>
+<p><strong>Step 1: lens function.</strong> A function <span class="math inline">\(f: X \to \mathbb{R}^d\)</span> (typically <span class="math inline">\(d=1\)</span> or <span class="math inline">\(d=2\)</span>) is chosen that projects the data onto an axis of interest. The lens determines <em>which aspect</em> of the structure is highlighted: in Recipe 5 it was the narrative position (first PCA component); in Recipe 6, the UMAP coordinates. A density lens groups by local concentration; a maximum-variance lens groups by distance to the centroid; a narrative-time lens groups by position in the story.</p>
+<p><strong>Step 2: cover.</strong> The range of <span class="math inline">\(f\)</span> is divided into <span class="math inline">\(m\)</span> overlapping intervals with overlap percentage <span class="math inline">\(p\)</span>. For example, with <span class="math inline">\(m=5\)</span> over the interval <span class="math inline">\([0,1]\)</span> and <span class="math inline">\(p=30\%\)</span>, the cover has five intervals that share 30% of their length with their neighbors. The points that fall in more than one interval are those that will connect nodes in the final graph.</p>
+<p><strong>Step 3: pull-back and local clustering.</strong> For each interval <span class="math inline">\(U_i\)</span>, the points <span class="math inline">\(f^{-1}(U_i)\)</span> are extracted and a clustering algorithm — typically DBSCAN or single linkage — is applied <em>only</em> to them. Each cluster becomes a node in the graph. Working on local subsets allows the fine geometry of the space to be captured without global noise distorting it.</p>
+<p><strong>Step 4: nerve complex.</strong> An edge is added between two nodes if their point sets share at least one element. That overlap can only occur between clusters from adjacent intervals that overlap in the cover — so the edge reflects a continuous transition in space, not arbitrary global similarity. The result is the <strong>nerve complex</strong> of the cover.</p>
+<p>The <strong>nerve lemma</strong> guarantees, under regularity conditions on the cover, that the nerve has the same homotopy type as the original space: the same number of components, cycles, and cavities. In practice those conditions are rarely met with real data, but the nerve faithfully captures the global topology when parameters are well chosen.</p>
+<p>The two cover parameters — <span class="math inline">\(m\)</span> (resolution) and <span class="math inline">\(p\)</span> (overlap) — control the granularity of the graph. A small <span class="math inline">\(m\)</span> collapses distinct structures; a large <span class="math inline">\(m\)</span> overfits to local noise. Low <span class="math inline">\(p\)</span> produces disconnected graphs; high <span class="math inline">\(p\)</span> produces dense graphs where cycles are lost. Standard practice is to explore a <span class="math inline">\((m, p)\)</span> grid and look for robust structures that appear across multiple configurations.</p>
+<div id="fig-mapper-pipeline" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-mapper-pipeline-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="diagrams/tda/mapper-pipeline.png" class="img-fluid figure-img" style="width:95.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-mapper-pipeline-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5.8: Mapper pipeline in four steps. (1) Point cloud colored by lens value (<span class="math inline">\(x\)</span> coordinate). (2) Cover of 5 overlapping intervals along the lens axis. (3) Pull-back and local clustering within each interval; overlapping points (green) belong to two clusters. (4) Nerve graph with nodes colored by lens value and edges between clusters that share points.
+</figcaption>
+</figure>
+</div>
+<div class="repaso">
+<ol type="1">
+<li>In Recipe 6, Mapper with a UMAP lens produces a tree graph. What structure would you expect if you replaced the lens with local density (number of neighbors within radius 0.3)?</li>
+<li>Why is overlap between intervals <em>necessary</em> for the nerve graph to be able to contain cycles? Without overlap, what type of graph is always obtained?</li>
+</ol>
+</div>
+</section>
+<section id="sec-validacion-mapper" class="level2" data-number="5.8">
+<h2 data-number="5.8" class="anchored" data-anchor-id="sec-validacion-mapper"><span class="header-section-number">5.8</span> Mapper Nerve Validation</h2>
+<p><strong>When is the nerve faithful?</strong> The nerve lemma is a theoretical guarantee: if the cover <span class="math inline">\(\mathcal{U}\)</span> is <em>good</em> — every nonempty intersection of members is contractible —, the nerve <span class="math inline">\(N(\mathcal{U})\)</span> is <strong>homotopy equivalent</strong> to <span class="math inline">\(\bigcup \mathcal{U}\)</span> — that is, one can be continuously deformed into the other, like a coffee cup being flattened into a disk, preserving holes but not distances —, with the same <span class="math inline">\(\beta_k\)</span> for all <span class="math inline">\(k\)</span>.</p>
+<p>With finite data, this condition cannot be verified exactly, and there is no way to validate the nerve against the topology of the underlying space — any prior dimensionality reduction used as a reference would introduce its own distortions.</p>
+<p>The question “is this nerve faithful?” has two levels of operational answer:</p>
+<p><strong>Internal validation (without external reference).</strong> Measures whether the topological features of the nerve are reproducible and meaningful in themselves, without assuming anything about the true topology:</p>
+<ol type="1">
+<li><p><strong>Betti count consistency</strong>: compute the homology of the nerve — treated as a simplicial complex with edge weight <span class="math inline">\(= 1 - \text{Jaccard}(C_i, C_j)\)</span>, where the <strong>Jaccard index</strong> <span class="math inline">\(|C_i \cap C_j|/|C_i \cup C_j|\)</span> measures what fraction of points appearing in either cluster appears in both: it equals 1 if the clusters are identical and 0 if they share no points, so <span class="math inline">\(1 - \text{Jaccard}\)</span> is a natural distance between sets — and estimate a bootstrap confidence interval for each <span class="math inline">\(\beta_k\)</span> (<span class="math inline">\(B = 30\)</span> resamples of 80% of the points). If the count is reproducible, the structure is not an artifact of a particular sample.</p></li>
+<li><p><strong>Landscape bootstrap band</strong>: vectorize the nerve’s persistence diagrams via the landscape (<a href="#sec-paisaje-persistencia" class="quarto-xref"><span>Section 5.6</span></a>) and compute the pointwise 5%–95% band over the same <span class="math inline">\(B\)</span> resamples. A narrow band indicates that the full landscape is reproducible, not just the count.</p></li>
+<li><p><strong>Null baseline</strong>: permute each point’s coordinates independently and recompute the landscape; repeat <span class="math inline">\(B' = 200\)</span> times and take the 95th percentile as the threshold. Only landscape features that exceed this threshold are statistically significant against random geometric noise.</p></li>
+<li><p><strong>Parameter sensitivity</strong>: steps 1–3 measure sensitivity to <em>data</em> (does the result change if I observe a different 80% of the corpus?), but the Mapper nerve also depends on two analyst choices — the number of bins <span class="math inline">\(m\)</span> and the overlap <span class="math inline">\(p\)</span>. Step 4 checks that the vector <span class="math inline">\((\beta_0, \beta_1)\)</span> is constant over a grid of neighboring values. The criterion for choosing the range is not arbitrary: <span class="math inline">\(m\)</span> is varied enough for the node count to change appreciably — typically <span class="math inline">\(\pm 20\%\)</span> of the chosen value — and <span class="math inline">\(p\)</span> in steps of <span class="math inline">\(0.1\)</span>, the minimum increment with a detectable effect on graph connectivity. If the topological conclusion is robust in that neighborhood, it does not depend on the analyst’s specific choice. If any <span class="math inline">\(\beta_k\)</span> changes, the conclusion should be reported with caution.</p></li>
+</ol>
+<p>The first four steps validate the topological invariants (<span class="math inline">\(\beta_k\)</span>). But the Mapper graph contains more information than those invariants — the membership of each paper in each node, the Jaccard edge weights, the size distribution — and two graphs can have the same <span class="math inline">\(\beta_k\)</span> while differing in all of that combinatorial structure. Steps 5 and 6 validate that part:</p>
+<ol start="5" type="1">
+<li><p><strong>Membership stability</strong>: step 1 confirmed that the count of components and cycles was reproducible, but not that the nerve nodes consistently identify the same points. Two graphs can have identical <span class="math inline">\(\beta_k\)</span> and yet partition the papers in a completely different way. Here we ask the second question: if we reconstruct the nerve on 80% of the corpus, does each node of the base nerve have a clear counterpart in that bootstrap nerve?</p>
+<p>The natural measure of similarity between two sets of papers <span class="math inline">\(C\)</span> and <span class="math inline">\(C'\)</span> is the <strong>Jaccard index</strong>, <span class="math inline">\(|C \cap C'|/|C \cup C'|\)</span>: 1 if they are identical, 0 if they share no papers, intermediate values if they partially overlap. For each node <span class="math inline">\(C_i\)</span> of the base nerve we look for its best match in bootstrap nerve <span class="math inline">\(b\)</span>: <span class="math display">\[J_i^{(b)} = \max_{C' \in N^{(b)}} \frac{|C_i \cap C'|}{|C_i \cup C'|}\]</span></p>
+<p>The maximum over all bootstrap nodes answers the question “is there any node, whichever it may be, that represents essentially the same subset as <span class="math inline">\(C_i\)</span>?” Averaging over all base nodes and all resamples yields <span class="math inline">\(\bar{J}\)</span>, a global metric of partition reproducibility.</p>
+<p>We still need a reference to decide when <span class="math inline">\(\bar{J}\)</span> is high. We build one by deliberately breaking the geometry: if we permute each embedding dimension independently, the marginal values are preserved but the joint correlation between dimensions disappears — that is, the embedding stops encoding any real geometric structure. Applying the full pipeline (lens + Mapper + bootstrap) to the permuted data and repeating several times produces a distribution of <span class="math inline">\(\bar{J}\)</span> under the hypothesis that there is nothing to detect. The 95th percentile of that distribution, <span class="math inline">\(S_{0.95}^J\)</span>, is the threshold: <span class="math inline">\(\bar{J} &gt; S_{0.95}^J\)</span> means the nodes identify reproducible subsets beyond what would be expected by combinatorial chance.</p></li>
+<li><p><strong>Pair reproducibility</strong>: each edge <span class="math inline">\((C_u, C_v)\)</span> of the base nerve encodes a verifiable claim — “these two clusters are topologically adjacent,” meaning they share at least one paper in the cover’s overlap zone. That claim decomposes into a finer claim about the <span class="math inline">\(|C_u| \times |C_v|\)</span> paper pairs that support it: if <span class="math inline">\(i \in C_u\)</span> and <span class="math inline">\(j \in C_v\)</span>, the pair <span class="math inline">\((i, j)\)</span> is a <strong>topological neighbor</strong> according to the base nerve. If the structure is real, those pairs should still be neighbors when we reconstruct the nerve on a different sample of the corpus.</p>
+<p>For each bootstrap <span class="math inline">\(b\)</span> and each paper pair <span class="math inline">\((i, j)\)</span> associated with an edge of the base nerve, we distinguish two cases:</p>
+<ul>
+<li><strong>Testable</strong>: both papers fell in subsample <span class="math inline">\(b\)</span> (otherwise we cannot check anything about them).</li>
+<li><strong>Reproduced</strong>: in addition to testable, the bootstrap node containing <span class="math inline">\(i\)</span> is connected by an edge to the one containing <span class="math inline">\(j\)</span>.</li>
+</ul>
+<p>If <span class="math inline">\(k_b\)</span> is the number of reproduced pairs and <span class="math inline">\(n_b\)</span> the number of testable pairs in bootstrap <span class="math inline">\(b\)</span>, the <strong>persistence rate</strong> is <span class="math display">\[\bar{S} = \mathbb{E}_b\!\left[\frac{k_b}{n_b}\right]\]</span></p>
+<p>— the average fraction of the base nerve’s adjacency claims that survive a change of sample. It is the analog of step 5, but applied to edges rather than nodes: step 5 validates the partition; step 6 validates the connectivity.</p>
+<p>The null threshold <span class="math inline">\(S_{0.95}^S\)</span> is built the same way as <span class="math inline">\(S_{0.95}^J\)</span>: coordinate permutation to destroy the geometry, same full pipeline, 95th percentile of the resulting <span class="math inline">\(\bar{S}\)</span> values. The interpretation is the same: <span class="math inline">\(\bar{S} &gt; S_{0.95}^S\)</span> indicates that the graph’s connectivity reflects real geometric adjacency, not the combinatorics any graph of the same size would produce by chance.</p>
+<p>The mean density <span class="math inline">\(\rho\)</span> of the bootstrap nerve — the fraction of possible node pairs that have an edge — serves as a complementary reference. Under the hypothesis of edges placed at random while maintaining the same total count, any two nodes would be connected with probability <span class="math inline">\(\rho\)</span>, so <span class="math inline">\(\rho\)</span> is the reproducibility rate expected by pure combinatorial chance, and the excess <span class="math inline">\(\bar{S} - \rho\)</span> quantifies the effect size. It appears in the caption of <a href="02.html#fig-validacion-nervio" class="quarto-xref">Figure&nbsp;<span>2.15</span></a> precisely for that purpose: to give a second reading of the margin above chance.</p></li>
+</ol>
+<p>Steps 1–4 measure <em>topological robustness</em>; steps 5 and 6 measure <em>combinatorial robustness</em>. A reliable nerve passes all six filters: the <span class="math inline">\(\beta_k\)</span> are reproducible, the landscape is significant, the hyperparameters do not change the conclusion, the partition is stable in composition, and the graph connectivity is replicated point by point across resamples.</p>
+<p>The protocol is run with <code>maxdim=1</code>, covering <span class="math inline">\(H_0\)</span> and <span class="math inline">\(H_1\)</span>. <span class="math inline">\(H_2\)</span> is structurally null when the lens is 2D: the cover is a sheet, and folding that sheet back on itself to enclose a volume would require a lens of at least 3D. Adding <code>maxdim=2</code> introduces an <span class="math inline">\(O(n_{\text{nodos}}^4)\)</span> cost — with 100 nodes, <span class="math inline">\(\binom{100}{4} \approx 4 \times 10^6\)</span> tetrahedra per bootstrap iteration — with no expected benefit. <span class="math inline">\(H_3\)</span> and above are equally inaccessible in reasonable time.</p>
+<p><strong>External validation (with independent labels).</strong> When auxiliary labels not used in constructing the nerve exist — arXiv categories, authorships, citations, manual annotations — it is possible to check whether the nerve captures real external structure with quantitative tests. Three are operationally useful:</p>
+<ol type="1">
+<li><p><strong>Node purity audit</strong>: sample <span class="math inline">\(m\)</span> nerve nodes without replacement and compute the mean purity with respect to the reference label, <span class="math display">\[\hat{p} = \frac{1}{m}\sum_{i=1}^m \frac{\max_c |C_i \cap A_c|}{|C_i|},\]</span> where <span class="math inline">\(C_i\)</span> is the <span class="math inline">\(i\)</span>-th cluster and <span class="math inline">\(A_c\)</span> are the label classes. The 95% uncertainty is <span class="math inline">\(\pm 1.96\sqrt{\hat{p}(1-\hat{p})/m}\)</span>; using <span class="math inline">\(\hat{p} = 0.5\)</span> as a conservative bound (<span class="math inline">\(p(1-p)\)</span> is maximized at <span class="math inline">\(p=0.5\)</span>, regardless of the true purity): with <span class="math inline">\(m = 100\)</span> this gives <span class="math inline">\(\pm 0.10\)</span>, with <span class="math inline">\(m = 200\)</span>, <span class="math inline">\(\pm 0.07\)</span>. To detect a 10-percentage-point purity difference between two nerves with <span class="math inline">\(\alpha = 0.05\)</span> and power 0.8, a two-sample proportion test requires <span class="math inline">\(m \approx 60\)</span> nodes per nerve.</p></li>
+<li><p><strong>Adjusted Normalized Mutual Information (ANMI)</strong>: NMI has a positive bias under the null hypothesis (even without any real structure, two random partitions have <span class="math inline">\(\mathbb{E}[\text{NMI}] &gt; 0\)</span>) that grows with the number of clusters <span class="math inline">\(k\)</span> and labels <span class="math inline">\(r\)</span>: <span class="math inline">\(\mathbb{E}[I] \approx (k-1)(r-1)/(2N\ln 2)\)</span>. The <strong>Adjusted NMI</strong> (<em>Adjusted NMI</em>, ANMI) of Vinh et al.&nbsp;(2010) subtracts this bias with a closed-form formula based on the hypergeometric distribution of overlaps <span class="math inline">\(|C_i \cap L_j|\)</span> under independence: <span class="math display">\[\text{ANMI} = \frac{I(\mathcal{C};\mathcal{L}) - \mathbb{E}[I]}{[H(\mathcal{C})+H(\mathcal{L})]/2 - \mathbb{E}[I]},\]</span> where <span class="math inline">\(\mathbb{E}[I]\)</span> is computed analytically by fixing the marginals <span class="math inline">\(|C_i|\)</span> and <span class="math inline">\(|L_j|\)</span>. The result satisfies <span class="math inline">\(\mathbb{E}[\text{ANMI}] = 0\)</span> under independence and <span class="math inline">\(\text{ANMI} = 1\)</span> under perfect agreement. The residual variance under the null hypothesis H₀ decreases as <span class="math inline">\(O(kr/N\log N)\)</span>; with <span class="math inline">\(N=8085\)</span>, <span class="math inline">\(k \approx 100\)</span>, and <span class="math inline">\(r \approx 20\)</span> arXiv categories, <span class="math inline">\(\sigma \approx 0.016\)</span>, so any <span class="math inline">\(\text{ANMI} &gt; 0.05\)</span> is statistically significant.</p></li>
+<li><p><strong>Edge correlation with external relationships</strong>: for each edge <span class="math inline">\((i, j)\)</span> of the nerve, its Jaccard weight <span class="math inline">\(w_{ij}\)</span> is compared with the external co-occurrence rate <span class="math inline">\(r_{ij}\)</span> between the papers in <span class="math inline">\(C_i\)</span> and <span class="math inline">\(C_j\)</span> — for example, fraction of pairs with a shared author, fraction with a direct citation, or fraction with a shared arXiv category. The Spearman correlation <span class="math inline">\(\rho\)</span> is computed between the two vectors <span class="math inline">\(\mathbf{w} = (w_{ij})\)</span> and <span class="math inline">\(\mathbf{r} = (r_{ij})\)</span> indexed over all nerve edges. The significance of <span class="math inline">\(\rho\)</span> is assessed with the exact statistic under H₀ (<span class="math inline">\(\rho = 0\)</span>): <span class="math display">\[t = \rho\sqrt{\frac{n-2}{1-\rho^2}} \sim t_{n-2},\]</span> where <span class="math inline">\(n\)</span> is the number of nerve edges. With <span class="math inline">\(n \approx 200\)</span>–<span class="math inline">\(300\)</span> edges, the 95% threshold is <span class="math inline">\(\rho_c \approx 0.14\)</span>; with <span class="math inline">\(n = 100\)</span>, it rises to <span class="math inline">\(\rho_c \approx 0.20\)</span>. Bootstrap is not needed for significance — only for the confidence interval of <span class="math inline">\(\rho\)</span> itself if comparing two nerves. A positive <span class="math inline">\(\rho &gt; \rho_c\)</span> is evidence that the nerve’s connections reflect real domain relationships, not just geometry in the embedding space.</p></li>
+</ol>
+<p>No single test proves topological faithfulness in a strict sense, but the combination narrows the space of explanations: a nerve that passes all three tests captures external structure that cannot be reduced to either chance or embedding artifact. In Recipe 7 the internal protocol is verified with a known topology (<span class="math inline">\(\beta_1 = 2\)</span>); in Recipe 8 the internal protocol is applied and how these three external tests would apply to the arXiv corpus using the categories themselves as reference is discussed.</p>
+<div class="repaso">
+<ol type="1">
+<li>A nerve passes all four topological filters (steps 1–4) but fails step 5: <span class="math inline">\(\bar{J} = 0.3\)</span> on membership stability. What does this mean in practical terms? Is the conclusion about <span class="math inline">\(\beta_k\)</span> still valid? Which analysis claims are invalidated?</li>
+<li>Design the full external validation for the UMAP-nerve of the science tree using top-level arXiv categories as the reference label. Specify: <span class="math inline">\(m\)</span> nodes to audit to detect a 10pp difference with the PCA-nerve, number of permutations for the NMI test, and which external relationship you would use for the edge correlation (step 3).</li>
+<li>External validation with arXiv categories has a known bias: the same paper can belong to multiple categories (cs.LG and stat.ML, for example) and authors assign labels after the fact. How does this affect the maximum possible purity? What careful interpretation must be made of the resulting <span class="math inline">\(\hat{p}\)</span> value?</li>
+</ol>
+</div>
+</section>
+<section id="sec-umap-fundamentos" class="level2" data-number="5.9">
+<h2 data-number="5.9" class="anchored" data-anchor-id="sec-umap-fundamentos"><span class="header-section-number">5.9</span> UMAP and Fuzzy Simplicial Complexes</h2>
+<p>In Recipe 7 we saw that UMAP preserves topology better than PCA and t-SNE. Here we explain <em>why</em>: UMAP is, internally, a TDA algorithm that operates on fuzzy simplicial sets (<em>fuzzy simplicial sets</em>).</p>
+<p>The construction has three phases:</p>
+<p><strong>1. Local metric space.</strong> For each point <span class="math inline">\(x_i\)</span>, UMAP defines a local metric where distances to neighbors are normalized so the <span class="math inline">\(k\)</span>-th nearest neighbor is at distance 1. Concretely, for each point <span class="math inline">\(x_i\)</span> with <span class="math inline">\(k\)</span>-th nearest neighbor at distance <span class="math inline">\(\rho_i\)</span>, the edge weight to a neighbor <span class="math inline">\(x_j\)</span> is:</p>
+<p><span class="math display">\[w_{ij} = \exp\left(-\frac{d(x_i, x_j) - \rho_i}{\sigma_i}\right)\]</span></p>
+<p>where <span class="math inline">\(\sigma_i\)</span> is calibrated so that <span class="math inline">\(\sum_j w_{ij} = \log_2(k)\)</span>. This produces a weighted graph where each point has approximately <span class="math inline">\(k\)</span> “effective” neighbors, regardless of local density. In dense regions, <span class="math inline">\(\sigma_i\)</span> is small (only very close neighbors count); in sparse regions, <span class="math inline">\(\sigma_i\)</span> is large (more distant neighbors also contribute).</p>
+<p><strong>2. Topological symmetrization.</strong> The weights <span class="math inline">\(w_{ij}\)</span> and <span class="math inline">\(w_{ji}\)</span> are not equal (the metric is local to each point). UMAP symmetrizes them with the formula:</p>
+<p><span class="math display">\[\tilde{w}_{ij} = w_{ij} + w_{ji} - w_{ij} \cdot w_{ji}\]</span></p>
+<p>This operation is the <em>fuzzy union</em> of two simplicial sets: “an edge exists if <em>either</em> of the two points sees the other as a neighbor.” The result is a <strong>fuzzy simplicial complex</strong> — a Vietoris-Rips complex weighted with point-adaptive scaling. Compare with the standard VR, which uses a single global <span class="math inline">\(\varepsilon\)</span>: there an edge either exists (<span class="math inline">\(w = 1\)</span>) or does not (<span class="math inline">\(w = 0\)</span>); here it exists with a continuous weight between 0 and 1.</p>
+<p><strong>3. Representation optimization.</strong> UMAP initializes a configuration in <span class="math inline">\(\mathbb{R}^d\)</span> (typically with Laplacian Eigenmaps or PCA) and builds the same type of fuzzy simplicial complex over the projected points. The objective function is the <strong>cross-entropy</strong> between the two complexes:</p>
+<p><span class="math display">\[\mathcal{L} = \sum_{(i,j)} \left[ \tilde{w}_{ij} \log\frac{\tilde{w}_{ij}}{\hat{w}_{ij}} + (1 - \tilde{w}_{ij}) \log\frac{1 - \tilde{w}_{ij}}{1 - \hat{w}_{ij}} \right]\]</span></p>
+<p>where <span class="math inline">\(\hat{w}_{ij}\)</span> are the weights in low dimension. Minimizing <span class="math inline">\(\mathcal{L}\)</span> forces the <em>connectivity structure</em> (which points are topologically close) to be preserved, not the Euclidean distances per se.</p>
+<section id="comparison-with-t-sne" class="level3" data-number="5.9.1">
+<h3 data-number="5.9.1" class="anchored" data-anchor-id="comparison-with-t-sne"><span class="header-section-number">5.9.1</span> Comparison with t-SNE</h3>
+<p><strong>t-SNE</strong> (<em>t-distributed Stochastic Neighbor Embedding</em>) is another nonlinear dimensionality reduction technique widely used to visualize data in two or three dimensions. Like UMAP, it builds a low-dimensional representation preserving local neighborhood relationships — but it does so differently, and that difference has important topological consequences.</p>
+<p>t-SNE minimizes the KL divergence between conditional probability distributions of distances. The key difference is that KL is asymmetric: it heavily penalizes “pushing apart what was close” (preserves local neighborhoods) but lightly penalizes “pulling together what was far apart” (allows global structure to collapse). This means t-SNE can destroy cycles (by bringing together distant points that formed the cycle) or create spurious cycles (by separating points that were intermediate). UMAP, by using symmetric cross-entropy over an explicitly topological structure, preserves global connectivity — and with it, the cycles and connected components that persistent homology measures.</p>
+</section>
+<section id="practical-consequence" class="level3" data-number="5.9.2">
+<h3 data-number="5.9.2" class="anchored" data-anchor-id="practical-consequence"><span class="header-section-number">5.9.2</span> Practical Consequence</h3>
+<p>When we use UMAP as a preprocessing step for <code>ripser</code> (<a href="02.html#sec-tda-umap" class="quarto-xref"><span>Section 2.7</span></a>), we are not “reducing dimension and hoping topology survives” — we are explicitly optimizing the preservation of the same simplicial structure that <code>ripser</code> will analyze. That is why UMAP + <code>ripser</code> is a natural combination: their mathematical objectives are aligned. Moreover, UMAP can serve as an alternative lens function in Mapper: by preserving global topological structure, it produces more faithful covers than PCA for data with nonlinear geometry.</p>
+</section>
+</section>
+<section id="sec-takens" class="level2" data-number="5.10">
+<h2 data-number="5.10" class="anchored" data-anchor-id="sec-takens"><span class="header-section-number">5.10</span> Takens and Attractor Reconstruction</h2>
+<p>In the Applications section we mentioned detecting the ictal transition in EEG signals without assuming any parametric model. The key was first reconstructing the <em>attractor</em> of the underlying dynamical system from the signal itself, then applying <code>ripser</code> to that attractor. Here we explain how that reconstruction is done.</p>
+<p>The problem is as follows: we have a single scalar signal <span class="math inline">\(s(t) \in \mathbb{R}\)</span> — the reading from a single electrode — but the nervous system generating it has a state that lives in a much higher-dimensional space. How can we recover the geometry of the attractor from a single coordinate?</p>
+<p>The answer lies in <strong>delay coordinates</strong>. Instead of keeping only the instantaneous value, we construct a vector of <span class="math inline">\(d\)</span> values spaced <span class="math inline">\(\tau\)</span> apart in time:</p>
+<p><span class="math display">\[\Phi(t) = \bigl(s(t),\; s(t + \tau),\; s(t + 2\tau),\; \ldots,\; s(t + (d-1)\tau)\bigr) \in \mathbb{R}^d\]</span></p>
+<p>As <span class="math inline">\(t\)</span> varies, <span class="math inline">\(\Phi(t)\)</span> traces a trajectory in <span class="math inline">\(\mathbb{R}^d\)</span>. If the signal is periodic, the trajectory closes on itself forming a circle — and <code>ripser</code> will detect a persistent cycle in <span class="math inline">\(H_1\)</span>. If the dynamics are more complex (a Lorenz attractor), the trajectory traces a shape with its own topological signature.</p>
+<p><strong>Takens’ theorem</strong> (1981) turns this observation into a mathematical guarantee: if <span class="math inline">\(d &gt; 2D\)</span>, where <span class="math inline">\(D\)</span> is the dimension of the original attractor, then <span class="math inline">\(\Phi\)</span> is <em>generically</em> an embedding — a faithful copy of the attractor, topologically identical to the original. “Generically” means the property holds for almost all delays <span class="math inline">\(\tau\)</span> except a set of measure zero; in practice this is a condition very easy to satisfy.</p>
+<p><strong>How to choose <span class="math inline">\(\tau\)</span> and <span class="math inline">\(d\)</span>.</strong> These are the two hyperparameters of the method. If <span class="math inline">\(\tau\)</span> is too small, <span class="math inline">\(s(t)\)</span> and <span class="math inline">\(s(t+\tau)\)</span> are nearly identical and the embedding collapses onto the diagonal — all information is concentrated in a line. If <span class="math inline">\(\tau\)</span> is too large, the delays are nearly independent and the embedding loses the attractor’s continuity. The standard criterion is the <em>first minimum of mutual information</em> between <span class="math inline">\(s(t)\)</span> and <span class="math inline">\(s(t+\tau)\)</span>: the first <span class="math inline">\(\tau\)</span> at which the past no longer perfectly predicts the present. For the dimension <span class="math inline">\(d\)</span>, the <em>false nearest neighbors</em> method computes what fraction of neighbors in <span class="math inline">\(\mathbb{R}^d\)</span> cease to be neighbors when moving to <span class="math inline">\(\mathbb{R}^{d+1}\)</span>; when that fraction drops to zero, <span class="math inline">\(d\)</span> is sufficient to unfold the attractor without spurious folds.</p>
+<p>The connection with TDA is direct: a periodic signal has an attractor homeomorphic to a circle (<span class="math inline">\(S^1\)</span>), so <span class="math inline">\(H_1\)</span> will have exactly one highly persistent cycle. A quasiperiodic signal with two incommensurable frequencies <span class="math inline">\(f_1/f_2 \notin \mathbb{Q}\)</span> has an attractor homeomorphic to a torus (<span class="math inline">\(T^2\)</span>), with <span class="math inline">\(H_1\)</span> of rank 2 and <span class="math inline">\(H_2\)</span> of rank 1. A chaotic signal (Lorenz, Rössler) has a fractal attractor whose topological signature is more complex and varies with the system’s parameters.</p>
+<div id="fig-takens" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-takens-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="diagrams/tda/takens-embedding.png" class="img-fluid figure-img" style="width:85.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-takens-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5.9: Delay embedding of <span class="math inline">\(s(t) = \sin(t)\)</span> with delay <span class="math inline">\(\tau = \pi/2\)</span>. Left: the scalar signal <span class="math inline">\(s(t)\)</span> vs.&nbsp;<span class="math inline">\(t\)</span>. Right: the trajectory <span class="math inline">\((s(t),\, s(t{+}\tau))\)</span> in <span class="math inline">\(\mathbb{R}^2\)</span> traces a clean circle. The mini-barcode below shows an immortal component in <span class="math inline">\(H_0\)</span> and a highly persistent cycle in <span class="math inline">\(H_1\)</span> — the topological signature of periodicity.
+</figcaption>
+</figure>
+</div>
+<div class="repaso">
+<ol type="1">
+<li>A signal has two incommensurable frequencies <span class="math inline">\(f_1\)</span> and <span class="math inline">\(f_2\)</span> (that is, <span class="math inline">\(f_1/f_2 \notin \mathbb{Q}\)</span>). How many persistent cycles do you expect in <span class="math inline">\(H_1\)</span> and how many cavities in <span class="math inline">\(H_2\)</span> of its reconstructed attractor? Why?</li>
+<li>If the chosen delay <span class="math inline">\(\tau\)</span> coincides exactly with the oscillation period, what shape does <span class="math inline">\(\Phi(t)\)</span> have? What would <code>ripser</code> detect?</li>
+<li>Ask an LLM: <em>“Takens’ theorem says the property holds ‘generically.’ What does generically mean in this mathematical context, and why is it not a problematic restriction in practice?”</em></li>
+</ol>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./04.html" class="pagination-link" aria-label="Current Limitations">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Current Limitations</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./06.html" class="pagination-link" aria-label="Further Reading">
+        <span class="nav-page-text">Further Reading</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
