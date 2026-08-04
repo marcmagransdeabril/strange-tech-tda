@@ -4,7 +4,7 @@
 
 Part of the [**Strange Tech**](https://github.com/marcmagransdeabril) series — a collection of standalone books, one per advanced technology, for engineers who want an edge before it becomes mainstream.
 
-> **Chapter summary**
+> **Summary**
 >
 > Topological Data Analysis (TDA) applies tools from algebraic topology to
 > discover the "shape" of data — connected components, holes, cavities — at
