@@ -38,5 +38,33 @@
     "esperado_boot": "Expected:   {valores}",
     "error_max_boot": "Max error:  {valor:.6f}",
     "tiempo_bootstrap": "Bootstrap time: {valor:.2f} s"
+  },
+  "tda": {
+    "heroe_titulos": [
+      "The Odyssey",
+      "Beowulf",
+      "The Divine Comedy",
+      "Don Quixote",
+      "Moby-Dick",
+      "The Count of\nMonte Cristo",
+      "The Wonderful\nWizard of Oz",
+      "Around the World\nin 80 Days",
+      "A Princess\nof Mars"
+    ],
+    "narrative_position": "Narrative position",
+    "pos_start": "Start",
+    "pos_mid": "Mid",
+    "pos_end": "End",
+    "field_informatica": "Computer Science",
+    "field_fisica": "Physics",
+    "field_matematicas": "Mathematics",
+    "field_estadistica": "Statistics",
+    "field_biologia": "Biology",
+    "field_economia": "Economics",
+    "field_otros": "Other",
+    "lens_pca_label": "PCA 2D Lens",
+    "lens_umap_label": "UMAP 2D Lens",
+    "node_edge_count_fmt": "{n_nodes} nodes · {n_edges} edges",
+    "ciencia_umap_suptitle": "Tree of science: PCA 2D lens vs UMAP 2D lens\nMulti-field arXiv corpus 2025 · 8,085 articles"
   }
 }

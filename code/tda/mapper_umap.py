@@ -12,6 +12,8 @@ Salidas:
 """
 
 import os
+import sys
+from pathlib import Path
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.cm as cm
@@ -28,10 +30,18 @@ from matplotlib.patches import FancyArrowPatch, Wedge
 from matplotlib.colors import Normalize, LinearSegmentedColormap
 from matplotlib.cm import ScalarMappable
 
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+from i18n import t  # noqa: E402
+
+_CH = "tda"
+
 # ── Rutas ─────────────────────────────────────────────────────────────
 SCRIPT_DIR  = os.path.dirname(os.path.abspath(__file__))
 DATA_DIR    = os.path.join(SCRIPT_DIR, "data")
+_BOOK_LANG  = os.environ.get("BOOK_LANG", "es")
 OUT_DIR     = os.path.join(SCRIPT_DIR, "..", "..", "diagrams", "tda")
+if _BOOK_LANG != "es":
+    OUT_DIR = os.path.join(OUT_DIR, "en")
 
 # ── Paleta por campo macro (igual que diagrama_ciencia.py) ────────────
 FIELD_COLOR = {
@@ -43,6 +53,24 @@ FIELD_COLOR = {
     "Economía":     "#8c564b",
     "Otros":        "#7f7f7f",
 }
+
+# Claves internas en español (consistencia con MACRO_FIELD); solo se
+# traduce el texto mostrado en la leyenda.
+_FIELD_LABEL_KEY = {
+    "Informática":  "field_informatica",
+    "Física":       "field_fisica",
+    "Matemáticas":  "field_matematicas",
+    "Estadística":  "field_estadistica",
+    "Biología":     "field_biologia",
+    "Economía":     "field_economia",
+    "Otros":        "field_otros",
+}
+
+
+def _field_label(campo):
+    """Devuelve el nombre de campo localizado para mostrar en leyendas."""
+    key = _FIELD_LABEL_KEY.get(campo)
+    return t(_CH, key) if key else campo
 
 EPS_COSINE = 0.5
 MACRO_FIELD = {
@@ -211,11 +239,7 @@ def hacer_diagrama_heroe_umap():
     positions  = data["positions"]
     book_ids   = data["book_ids"]
 
-    titles_es = [
-        "La Odisea", "Beowulf", "Divina Comedia",
-        "Don Quijote", "Moby Dick", "El Conde de\nMonte Cristo",
-        "El Mago de Oz", "La vuelta al mundo\nen 80 días", "Una Princesa\nde Marte",
-    ]
+    titles_es = t(_CH, "heroe_titulos")
 
     mapper = km.KeplerMapper(verbose=0)
     colors_list = ["#d62728", "#ff7f0e", "#e8c838",
@@ -235,9 +259,9 @@ def hacer_diagrama_heroe_umap():
     sm = ScalarMappable(cmap=cmap, norm=norm)
     sm.set_array([])
     cbar = fig.colorbar(sm, cax=cbar_ax, orientation="horizontal")
-    cbar.set_label("Posición narrativa", fontsize=7)
+    cbar.set_label(t(_CH, "narrative_position"), fontsize=7)
     cbar.set_ticks([0, 0.5, 1])
-    cbar.set_ticklabels(["Inicio", "Medio", "Final"])
+    cbar.set_ticklabels([t(_CH, "pos_start"), t(_CH, "pos_mid"), t(_CH, "pos_end")])
 
     os.makedirs(OUT_DIR, exist_ok=True)
     for ext in ("pdf", "png"):
@@ -300,7 +324,7 @@ def _dibujar_grafo_ciencia(ax, graph, fields, title):
             ax.add_patch(wedge)
             start += angle
 
-    ax.set_title(f"{title}\n{n_nodes} nodos · {n_edges} aristas", fontsize=10)
+    ax.set_title(f"{title}\n" + t(_CH, "node_edge_count_fmt").format(n_nodes=n_nodes, n_edges=n_edges), fontsize=10)
     ax.autoscale_view()
     ax.set_aspect("equal")
     ax.axis("off")
@@ -345,19 +369,18 @@ def hacer_diagrama_ciencia_umap():
 
     fig, axes = plt.subplots(1, 2, figsize=(14, 7))
 
-    _dibujar_grafo_ciencia(axes[0], graph_pca,  fields, "Lente PCA 2D")
-    _dibujar_grafo_ciencia(axes[1], graph_umap, fields, "Lente UMAP 2D")
+    _dibujar_grafo_ciencia(axes[0], graph_pca,  fields, t(_CH, "lens_pca_label"))
+    _dibujar_grafo_ciencia(axes[1], graph_umap, fields, t(_CH, "lens_umap_label"))
 
     legend_patches = [
-        mpatches.Patch(color=c, label=f)
+        mpatches.Patch(color=c, label=_field_label(f))
         for f, c in FIELD_COLOR.items()
     ]
     fig.legend(handles=legend_patches, loc="lower center", ncol=7,
                fontsize=8, framealpha=0.9, bbox_to_anchor=(0.5, -0.02))
 
     fig.suptitle(
-        "Árbol de la ciencia: lente PCA 2D vs lente UMAP 2D\n"
-        "Corpus multi-campo arXiv 2025 · 8.085 artículos",
+        t(_CH, "ciencia_umap_suptitle"),
         fontsize=12, y=1.01,
     )
     fig.tight_layout()

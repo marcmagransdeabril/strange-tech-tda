@@ -38,5 +38,33 @@
     "esperado_boot": "Esperado:      {valores}",
     "error_max_boot": "Error máximo:  {valor:.6f}",
     "tiempo_bootstrap": "Tiempo bootstrap: {valor:.2f} s"
+  },
+  "tda": {
+    "heroe_titulos": [
+      "La Odisea",
+      "Beowulf",
+      "Divina Comedia",
+      "Don Quijote",
+      "Moby Dick",
+      "El Conde de\nMonte Cristo",
+      "El Mago de Oz",
+      "La vuelta al mundo\nen 80 días",
+      "Una Princesa\nde Marte"
+    ],
+    "narrative_position": "Posición narrativa",
+    "pos_start": "Inicio",
+    "pos_mid": "Medio",
+    "pos_end": "Final",
+    "field_informatica": "Informática",
+    "field_fisica": "Física",
+    "field_matematicas": "Matemáticas",
+    "field_estadistica": "Estadística",
+    "field_biologia": "Biología",
+    "field_economia": "Economía",
+    "field_otros": "Otros",
+    "lens_pca_label": "Lente PCA 2D",
+    "lens_umap_label": "Lente UMAP 2D",
+    "node_edge_count_fmt": "{n_nodes} nodos · {n_edges} aristas",
+    "ciencia_umap_suptitle": "Árbol de la ciencia: lente PCA 2D vs lente UMAP 2D\nCorpus multi-campo arXiv 2025 · 8.085 artículos"
   }
 }

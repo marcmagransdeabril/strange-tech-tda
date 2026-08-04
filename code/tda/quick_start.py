@@ -14,8 +14,15 @@ Datos: code/tda/data/ (generados por collect_*.py)
 """
 
 import os
+import sys
+from pathlib import Path
 
 import numpy as np
+
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+from i18n import t  # noqa: E402
+
+_CH = "tda"
 
 DATA_DIR = os.path.join(os.path.dirname(__file__), "data")
 
@@ -1274,25 +1281,17 @@ def fig_mapper_heroe(out_dir=None):
     from matplotlib.colors import Normalize
     from matplotlib.cm import ScalarMappable
 
+    lang = os.environ.get("BOOK_LANG", "es")
     if out_dir is None:
-        out_dir = DIAGRAMS_DIR
+        out_dir = DIAGRAMS_DIR if lang == "es" else os.path.join(DIAGRAMS_DIR, "en")
+    os.makedirs(out_dir, exist_ok=True)
 
     data = cargar_libros()
     embeddings = data["embeddings"]
     positions = data["positions"]
     book_ids = data["book_ids"]
 
-    titles_es = [
-        "La Odisea",
-        "Beowulf",
-        "Divina Comedia",
-        "Don Quijote",
-        "Moby Dick",
-        "El Conde de\nMonte Cristo",
-        "El Mago de Oz",
-        "La vuelta al mundo\nen 80 días",
-        "Una Princesa\nde Marte",
-    ]
+    titles_es = t(_CH, "heroe_titulos")
 
     mapper = km.KeplerMapper(verbose=0)
 
@@ -1444,9 +1443,9 @@ def fig_mapper_heroe(out_dir=None):
     sm = ScalarMappable(cmap=cmap, norm=norm)
     sm.set_array([])
     cbar = fig.colorbar(sm, cax=cbar_ax, orientation="horizontal")
-    cbar.set_label("Posición narrativa", fontsize=7)
+    cbar.set_label(t(_CH, "narrative_position"), fontsize=7)
     cbar.set_ticks([0, 0.5, 1])
-    cbar.set_ticklabels(["Inicio", "Medio", "Final"])
+    cbar.set_ticklabels([t(_CH, "pos_start"), t(_CH, "pos_mid"), t(_CH, "pos_end")])
 
     path = os.path.join(out_dir, "mapper-heroe.pdf")
     fig.savefig(path, bbox_inches="tight")
