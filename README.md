@@ -4,17 +4,7 @@
 
 Part of the [**Strange Tech**](https://github.com/marcmagransdeabril) series — a collection of standalone books, one per advanced technology, for engineers who want an edge before it becomes mainstream.
 
-> **Summary**
->
-> Topological Data Analysis (TDA) applies tools from algebraic topology to
-> discover the "shape" of data — connected components, holes, cavities — at
-> multiple scales simultaneously. Its key contribution is that these features
-> are invariant under continuous deformations and mathematically stable under
-> perturbations, making them robust descriptors where classical statistics and
-> deep learning see only point clouds. The price: constructing the topological
-> structures scales poorly with dimension and number of points, limiting its
-> practical use to moderately sized datasets.
-
+Topological Data Analysis (TDA) applies tools from algebraic topology to discover the "shape" of data — connected components, holes, cavities — at multiple scales simultaneously. Its key contribution is that these features are invariant under continuous deformations and mathematically stable under perturbations, making them robust descriptors where classical statistics and deep learning see only point clouds. The price: constructing the topological structures scales poorly with dimension and number of points, limiting its practical use to moderately sized datasets.
 
 | Format | Español | English |
 |---|---|---|
