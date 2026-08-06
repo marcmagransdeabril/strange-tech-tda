@@ -15,42 +15,15 @@ Part of the [**Strange Tech**](https://github.com/marcmagransdeabril) series —
 > structures scales poorly with dimension and number of points, limiting its
 > practical use to moderately sized datasets.
 
-📖 **Read online**: https://marcmagransdeabril.github.io/strange-tech-tda/
-
-## Download
-
-Download links point to the **raw file** on `raw.githubusercontent.com` so
-clicking them triggers a direct binary download instead of GitHub's HTML blob
-preview page (which is what a relative or `blob/main/...` link would open —
-saving that page's HTML as if it were the PDF/EPUB produces a file that fails
-to open, e.g. "Failed to load PDF document").
 
 | Format | Español | English |
 |---|---|---|
 | PDF  | [📄 Descargar](https://raw.githubusercontent.com/marcmagransdeabril/strange-tech-tda/main/book/es/strange-tech-tda.es.pdf) | [📄 Download](https://raw.githubusercontent.com/marcmagransdeabril/strange-tech-tda/main/book/en/strange-tech-tda.en.pdf) |
 | EPUB | [📖 Descargar](https://raw.githubusercontent.com/marcmagransdeabril/strange-tech-tda/main/book/es/strange-tech-tda.es.epub) | [📖 Download](https://raw.githubusercontent.com/marcmagransdeabril/strange-tech-tda/main/book/en/strange-tech-tda.en.epub) |
+| HTML | [🌐 Ver](https://marcmagransdeabril.github.io/strange-tech-tda/book/es/index.html) | [🌐 View](https://marcmagransdeabril.github.io/strange-tech-tda/book/en/index.html) |
+
 
 ## Table of Contents
-
-Each language is now a **single scrollable page** (`book/<lang>/index.html`)
-with a persistent left-hand table of contents (every chapter, plus its own
-subsections) and a top-right language switcher. The links below deep-link
-into that page:
-
-### Español
-
-1. [Prefacio](https://marcmagransdeabril.github.io/strange-tech-tda/book/es/index.html#merged-00)
-2. [Prólogo](https://marcmagransdeabril.github.io/strange-tech-tda/book/es/index.html#merged-01)
-3. [Introducción](https://marcmagransdeabril.github.io/strange-tech-tda/book/es/index.html#merged-02)
-4. [Manos a la obra](https://marcmagransdeabril.github.io/strange-tech-tda/book/es/index.html#merged-03)
-5. [Aplicaciones](https://marcmagransdeabril.github.io/strange-tech-tda/book/es/index.html#merged-04)
-6. [Limitaciones actuales](https://marcmagransdeabril.github.io/strange-tech-tda/book/es/index.html#merged-05)
-7. [Fundamentos](https://marcmagransdeabril.github.io/strange-tech-tda/book/es/index.html#merged-06)
-8. [Lecturas Recomendadas](https://marcmagransdeabril.github.io/strange-tech-tda/book/es/index.html#merged-07)
-9. [Referencias](https://marcmagransdeabril.github.io/strange-tech-tda/book/es/index.html#merged-08)
-10. [Soluciones](https://marcmagransdeabril.github.io/strange-tech-tda/book/es/index.html#merged-09)
-
-### English
 
 1. [Preface](https://marcmagransdeabril.github.io/strange-tech-tda/book/en/index.html#merged-00)
 2. [Prologue](https://marcmagransdeabril.github.io/strange-tech-tda/book/en/index.html#merged-01)
