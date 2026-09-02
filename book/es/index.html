@@ -24,7 +24,7 @@ ul.task-list li input[type="checkbox"] {
 </style>
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="site_libs/quarto-nav/headroom.min.js"></script>
-<link href="./00-prologo.html" rel="next"/>
+
 <script src="site_libs/clipboard/clipboard.min.js"></script>
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -233,7 +233,7 @@ Carlsson, Gunnar. 2009. <span>«Topology and Data»</span>. <em>Bulletin of the 
 </section><section class="standalone-merged-section" id="merged-03">
 <header class="quarto-title-block default" id="title-block-header-3">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">2</span>  <span class="chapter-title">Manos a la obra</span></h1>
+<h1 class="title"><span class="quarto-section-identifier" id="sec-manos-tda"><span class="chapter-number">2</span>  <span class="chapter-title">Manos a la obra</span></span></h1>
 </div>
 <div class="quarto-title-meta">
 </div>
@@ -296,10 +296,12 @@ Figura 2.2: Control negativo: 150 puntos uniformes (sin estructura). El diagram
 </figure>
 </div>
 <div class="repaso">
-<ol type="1">
-<li>Genera cuatro clusters en lugar de tres (Receta 1). ¿Cuántas fusiones tardías esperas en <span class="math inline">\(H_0\)</span>? ¿Y si dos de los clusters están muy juntos?</li>
-<li>Pídele a un LLM: <em>«¿Qué es una filtración de Vietoris-Rips? Explícamelo con el ejemplo de puntos sobre un círculo.»</em> Compara su respuesta con la intuición de la Receta 1, donde las componentes se fusionaron al crecer <span class="math inline">\(\varepsilon\)</span>.</li>
-</ol>
+<div class="pregunta" id="q-sec-manos-tda-1">
+<a class="pregunta-num" href="#sol-sec-manos-tda-1"><strong>2.1.</strong></a> Genera cuatro clusters en lugar de tres (Receta 1). ¿Cuántas fusiones tardías esperas en <span class="math inline">\(H_0\)</span>? ¿Y si dos de los clusters están muy juntos?
+</div>
+<div class="pregunta" id="q-sec-manos-tda-2">
+<a class="pregunta-num" href="#sol-sec-manos-tda-2"><strong>2.2.</strong></a> Pídele a un LLM: <em>«¿Qué es una filtración de Vietoris-Rips? Explícamelo con el ejemplo de puntos sobre un círculo.»</em> Compara su respuesta con la intuición de la Receta 1, donde las componentes se fusionaron al crecer <span class="math inline">\(\varepsilon\)</span>.
+</div>
 </div>
 </section>
 <section class="level2" data-number="2.2" id="sec-tda-anillo">
@@ -353,10 +355,12 @@ Figura 2.4: Invarianza topológica: un óvalo, un cuadrado y una curva aleatori
 </figure>
 </div>
 <div class="repaso">
-<ol type="1">
-<li>Genera puntos sobre una elipse en lugar de un círculo (Receta 2). ¿Cambia la persistencia del agujero en <span class="math inline">\(H_1\)</span>? ¿Por qué?</li>
-<li>¿Qué ocurriría con <span class="math inline">\(H_1\)</span> si generaras puntos sobre un «8» (dos círculos pegados)? ¿Cuántos agujeros persistentes esperarías?</li>
-</ol>
+<div class="pregunta" id="q-sec-manos-tda-3">
+<a class="pregunta-num" href="#sol-sec-manos-tda-3"><strong>2.3.</strong></a> Genera puntos sobre una elipse en lugar de un círculo (Receta 2). ¿Cambia la persistencia del agujero en <span class="math inline">\(H_1\)</span>? ¿Por qué?
+</div>
+<div class="pregunta" id="q-sec-manos-tda-4">
+<a class="pregunta-num" href="#sol-sec-manos-tda-4"><strong>2.4.</strong></a> ¿Qué ocurriría con <span class="math inline">\(H_1\)</span> si generaras puntos sobre un «8» (dos círculos pegados)? ¿Cuántos agujeros persistentes esperarías?
+</div>
 </div>
 </section>
 <section class="level2" data-number="2.3" id="sec-tda-ruido">
@@ -440,10 +444,12 @@ Figura 2.6: Maldición de la dimensionalidad: círculo de <span class="math inl
 <p>PCA funciona porque busca las proyecciones lineales de mayor varianza: en nuestro ejemplo, las dos primeras coordenadas concentran toda la señal en el plano <span class="math inline">\((x_1, x_2)\)</span>, que PCA recupera perfectamente. Nótese que éste es el escenario más favorable posible para PCA — en datos reales la señal suele repartirse entre muchas dimensiones correlacionadas. El TDA, en cambio, trabaja con distancias euclídeas; al crecer <span class="math inline">\(d\)</span>, las distancias convergen hacia un mismo valor y la señal topológica queda enterrada en las fluctuaciones del ruido. Esta asimetría motiva el preprocesado con UMAP antes de aplicar TDA en alta dimensión, como veremos en la Receta 7.</p>
 <p>Las tres primeras recetas nos han dado las herramientas conceptuales básicas: <span class="math inline">\(H_0\)</span> para contar componentes, <span class="math inline">\(H_1\)</span> para detectar agujeros, la persistencia para distinguir señal de ruido, y los límites del TDA en alta dimensión. Pero queda una pregunta natural: si detectamos un agujero, ¿podemos saber <em>dónde</em> está? ¿Cuáles son los puntos concretos que lo forman?</p>
 <div class="repaso">
-<ol type="1">
-<li>En la <a class="quarto-xref" href="#fig-ruido">Figura <span>2.5</span></a>, ¿a partir de qué <span class="math inline">\(\sigma\)</span> el paisaje de <span class="math inline">\(H_1\)</span> deja de superar el umbral del 95%? ¿Qué relación tiene ese <span class="math inline">\(\sigma\)</span> con el radio del círculo?</li>
-<li>En la <a class="quarto-xref" href="#fig-invarianza-dimension">Figura <span>2.6</span></a>, PCA recupera el círculo en todas las dimensiones mientras la señal del TDA se degrada gradualmente hasta volverse difícilmente distinguible del ruido en <span class="math inline">\(d = 128\)</span>. ¿Por qué afecta la maldición de la dimensionalidad al TDA más que al PCA? ¿En qué sentido es éste un escenario favorable para PCA?</li>
-</ol>
+<div class="pregunta" id="q-sec-manos-tda-5">
+<a class="pregunta-num" href="#sol-sec-manos-tda-5"><strong>2.5.</strong></a> En la <a class="quarto-xref" href="#fig-ruido">Figura <span>2.5</span></a>, ¿a partir de qué <span class="math inline">\(\sigma\)</span> el paisaje de <span class="math inline">\(H_1\)</span> deja de superar el umbral del 95%? ¿Qué relación tiene ese <span class="math inline">\(\sigma\)</span> con el radio del círculo?
+</div>
+<div class="pregunta" id="q-sec-manos-tda-6">
+<a class="pregunta-num" href="#sol-sec-manos-tda-6"><strong>2.6.</strong></a> En la <a class="quarto-xref" href="#fig-invarianza-dimension">Figura <span>2.6</span></a>, PCA recupera el círculo en todas las dimensiones mientras la señal del TDA se degrada gradualmente hasta volverse difícilmente distinguible del ruido en <span class="math inline">\(d = 128\)</span>. ¿Por qué afecta la maldición de la dimensionalidad al TDA más que al PCA? ¿En qué sentido es éste un escenario favorable para PCA?
+</div>
 </div>
 </section>
 </section>
@@ -500,10 +506,12 @@ Figura 2.7: Receta 4: ciclo representativo del agujero principal. Izquierda: lo
 <p>La limitación principal es que el ciclo representativo no es único: pueden existir múltiples ciclos homólogos (topológicamente equivalentes) que encierran el mismo agujero. Nuestra reconstrucción devuelve el más corto en número de aristas a la escala de nacimiento, pero hay otros algoritmos que buscan el ciclo óptimo según distintos criterios (mínima longitud geométrica, mínima área encerrada). En la práctica, el camino más corto es suficiente para localizar la región de interés.</p>
 <p>Con esta receta completamos la caja de herramientas básica de la homología persistente: sabemos contar componentes (<span class="math inline">\(H_0\)</span>), detectar agujeros (<span class="math inline">\(H_1\)</span>), distinguir señal de ruido (persistencia), trabajar en alta dimensión (invarianza), y ahora localizar las características detectadas (ciclos representativos). Antes de pasar a datos reales, nos queda una herramienta complementaria: el algoritmo Mapper, que produce grafos directamente interpretables en lugar de diagramas abstractos.</p>
 <div class="repaso">
-<ol type="1">
-<li>Modifica el código para extraer los ciclos representativos de los <em>dos</em> ciclos más persistentes en <span class="math inline">\(H_1\)</span> de una nube con dos anillos concéntricos. ¿Se solapan los puntos?</li>
-<li>Pídele a un LLM: <em>«¿Cuál es la diferencia entre un cociclo representativo y un ciclo representativo en homología persistente? ¿Por qué ripser devuelve cociclos?»</em></li>
-</ol>
+<div class="pregunta" id="q-sec-manos-tda-7">
+<a class="pregunta-num" href="#sol-sec-manos-tda-7"><strong>2.7.</strong></a> Modifica el código para extraer los ciclos representativos de los <em>dos</em> ciclos más persistentes en <span class="math inline">\(H_1\)</span> de una nube con dos anillos concéntricos. ¿Se solapan los puntos?
+</div>
+<div class="pregunta" id="q-sec-manos-tda-8">
+<a class="pregunta-num" href="#sol-sec-manos-tda-8"><strong>2.8.</strong></a> Pídele a un LLM: <em>«¿Cuál es la diferencia entre un cociclo representativo y un ciclo representativo en homología persistente? ¿Por qué ripser devuelve cociclos?»</em>
+</div>
 </div>
 </section>
 <section class="level2" data-number="2.5" id="sec-tda-mapper-heroe">
@@ -729,12 +737,18 @@ Tabla 2.1: Distancia de retorno en el grafo Mapper para nueve novelas. <span cl
 <p>La ventaja de Mapper frente a la homología persistente pura es la <strong>interpretabilidad directa</strong>: no necesitamos interpretar un diagrama abstracto — podemos <em>ver</em> la forma de la historia en el hipergrafo. Cada nodo corresponde a un grupo de pasajes temáticamente similares, y cada arista indica proximidad semántica. La espiral revela simultáneamente la estructura temporal (posición) y la estructura semántica (conexiones), haciendo explícito por qué el retorno no funciona: las flechas rojas cruzan casi todo el grafo.</p>
 <p>La limitación es que Mapper depende de parámetros — número de intervalos, porcentaje de solapamiento, algoritmo de clustering — y el grafo resultante puede cambiar con estos ajustes. En la práctica, si la estructura es robusta (como un viaje del héroe claro), aparece para un rango amplio de parámetros.</p>
 <div class="repaso">
-<ol type="1">
-<li>Si usaras la <strong>posición narrativa</strong> (tiempo) como lente en lugar de PCA, ¿qué topología esperarías en el grafo Mapper? ¿Por qué esa elección de lente no puede detectar circularidad?</li>
-<li>Modifica los parámetros de Mapper (<code>n_cubes</code>, <code>perc_overlap</code>) y observa cómo cambia el grafo para <em>La Odisea</em>. ¿A partir de qué parámetros se reduce <span class="math inline">\(\beta_1\)</span> a cero? ¿Es la densidad del grafo robusta o un artefacto de la configuración?</li>
-<li>El test cíclico muestra que el inicio y el final de las novelas están <em>más lejos</em> que la media. Diseña un test alternativo: en lugar de <span class="math inline">\(d/\text{trav}\)</span>, usa la similitud coseno directa entre el embedding medio del primer y último chunk. ¿Cambia la conclusión?</li>
-<li>Pídele a un LLM: <em>«¿Cuáles son las principales críticas académicas a la teoría del monomito de Joseph Campbell?»</em> Compara con nuestro resultado cuantitativo.</li>
-</ol>
+<div class="pregunta" id="q-sec-manos-tda-9">
+<a class="pregunta-num" href="#sol-sec-manos-tda-9"><strong>2.9.</strong></a> Si usaras la <strong>posición narrativa</strong> (tiempo) como lente en lugar de PCA, ¿qué topología esperarías en el grafo Mapper? ¿Por qué esa elección de lente no puede detectar circularidad?
+</div>
+<div class="pregunta" id="q-sec-manos-tda-10">
+<a class="pregunta-num" href="#sol-sec-manos-tda-10"><strong>2.10.</strong></a> Modifica los parámetros de Mapper (<code>n_cubes</code>, <code>perc_overlap</code>) y observa cómo cambia el grafo para <em>La Odisea</em>. ¿A partir de qué parámetros se reduce <span class="math inline">\(\beta_1\)</span> a cero? ¿Es la densidad del grafo robusta o un artefacto de la configuración?
+</div>
+<div class="pregunta" id="q-sec-manos-tda-11">
+<a class="pregunta-num" href="#sol-sec-manos-tda-11"><strong>2.11.</strong></a> El test cíclico muestra que el inicio y el final de las novelas están <em>más lejos</em> que la media. Diseña un test alternativo: en lugar de <span class="math inline">\(d/\text{trav}\)</span>, usa la similitud coseno directa entre el embedding medio del primer y último chunk. ¿Cambia la conclusión?
+</div>
+<div class="pregunta" id="q-sec-manos-tda-12">
+<a class="pregunta-num" href="#sol-sec-manos-tda-12"><strong>2.12.</strong></a> Pídele a un LLM: <em>«¿Cuáles son las principales críticas académicas a la teoría del monomito de Joseph Campbell?»</em> Compara con nuestro resultado cuantitativo.
+</div>
 </div>
 </section>
 </section>
@@ -880,12 +894,18 @@ Figura 2.11: Grafo Mapper del corpus multi-campo arXiv 2025 (8.085 artículos, 
 <p>Este resultado tiene una consecuencia directa para quien investiga o innova en cualquier campo. Si la ciencia es una única variedad continua, la pregunta no es «¿a qué isla pertenece mi idea?» sino «¿en qué región del continente estoy, y cuáles son las zonas adyacentes menos exploradas?». Los nodos periféricos del Mapper — los puentes inter-campo — señalan exactamente esas zonas: papers que ya han cruzado la frontera disciplinar y que abren caminos hacia vocabularios y técnicas del campo vecino.</p>
 <p>El mismo flujo de trabajo — colección estratificada, <span class="math inline">\(H_0\)</span> con bootstrap, Mapper con lente PCA 2D — se puede ejecutar sobre cualquier subconjunto del corpus para preguntarle cosas más específicas: «¿es el subcampo de simulación cuántica una isla dentro de Física, o está conectado con informática?»; «¿qué papers conectan econometría con estadística bayesiana?». El código completo está en <code>code/tda/diagrama_ciencia.py</code>.</p>
 <div class="repaso">
-<ol type="1">
-<li>El análisis produce N_RAMAS = 1 al 95% de confianza sobre 29 categorías de arXiv 2025. ¿Cambiaría el resultado si incluimos solo las 5 categorías más grandes (cs.LG, cs.CV, cs.CL, quant-ph, hep-th)? ¿Por qué?</li>
-<li>La barra <span class="math inline">\(H_0\)</span> más larga tiene persistencia 0.70 — el 42% del umbral 1.67. Interpreta este valor: ¿qué par de disciplinas produce esa barra? ¿Qué tipo de papers formarían el «puente mínimo» que las une?</li>
-<li>El grafo Mapper con lente PCA 1D produce un árbol (10 nodos, 9 aristas, sin ciclos). ¿Qué implicaría para la estructura del conocimiento científico que hubiera un ciclo en el grafo Mapper? ¿Qué tipo de papers formarían ese ciclo?</li>
-<li>El análisis ripser muestra <span class="math inline">\(\beta_1 = 0\)</span>: no existe ningún ciclo <span class="math inline">\(H_1\)</span> estadísticamente significativo en el corpus arXiv. Si, hipotéticamente, hubiera aparecido uno por encima del umbral, ¿qué significaría extraer su ciclo representativo (véase la Receta 4)? ¿Qué disciplinas o subcampos esperarías que formasen ese bucle semántico?</li>
-</ol>
+<div class="pregunta" id="q-sec-manos-tda-13">
+<a class="pregunta-num" href="#sol-sec-manos-tda-13"><strong>2.13.</strong></a> El análisis produce N_RAMAS = 1 al 95% de confianza sobre 29 categorías de arXiv 2025. ¿Cambiaría el resultado si incluimos solo las 5 categorías más grandes (cs.LG, cs.CV, cs.CL, quant-ph, hep-th)? ¿Por qué?
+</div>
+<div class="pregunta" id="q-sec-manos-tda-14">
+<a class="pregunta-num" href="#sol-sec-manos-tda-14"><strong>2.14.</strong></a> La barra <span class="math inline">\(H_0\)</span> más larga tiene persistencia 0.70 — el 42% del umbral 1.67. Interpreta este valor: ¿qué par de disciplinas produce esa barra? ¿Qué tipo de papers formarían el «puente mínimo» que las une?
+</div>
+<div class="pregunta" id="q-sec-manos-tda-15">
+<a class="pregunta-num" href="#sol-sec-manos-tda-15"><strong>2.15.</strong></a> El grafo Mapper con lente PCA 1D produce un árbol (10 nodos, 9 aristas, sin ciclos). ¿Qué implicaría para la estructura del conocimiento científico que hubiera un ciclo en el grafo Mapper? ¿Qué tipo de papers formarían ese ciclo?
+</div>
+<div class="pregunta" id="q-sec-manos-tda-16">
+<a class="pregunta-num" href="#sol-sec-manos-tda-16"><strong>2.16.</strong></a> El análisis ripser muestra <span class="math inline">\(\beta_1 = 0\)</span>: no existe ningún ciclo <span class="math inline">\(H_1\)</span> estadísticamente significativo en el corpus arXiv. Si, hipotéticamente, hubiera aparecido uno por encima del umbral, ¿qué significaría extraer su ciclo representativo (véase la Receta 4)? ¿Qué disciplinas o subcampos esperarías que formasen ese bucle semántico?
+</div>
 </div>
 </section>
 </section>
@@ -1006,12 +1026,18 @@ Figura 2.12: Receta 7: reducción de un toro (<span class="math inline">\(\beta
 <p>La implicación práctica es clara: cuando tenemos datos de alta dimensión y queremos aplicar homología persistente, <strong>UMAP es el paso de reducción natural</strong> — no porque sea «mejor» en un sentido genérico, sino porque su objetivo matemático (preservar la estructura simplicial difusa) está alineado con lo que <code>ripser</code> va a medir después. PCA es una alternativa rápida y determinista, pero al ser lineal puede perder estructura no lineal como los dos ciclos del toro.</p>
 <p>El código completo está en <code>code/tda/umap_reduccion.py</code>.</p>
 <div class="repaso">
-<ol type="1">
-<li>El toro tiene <span class="math inline">\(\beta_1 = 2\)</span>. ¿Cuántos ciclos persistentes esperarías en <span class="math inline">\(H_1\)</span> si los datos fueran una esfera (<span class="math inline">\(S^2\)</span>) en <span class="math inline">\(\mathbb{R}^{50}\)</span>? ¿Y si fueran un toro de dimensión 3 (<span class="math inline">\(T^3 = S^1 \times S^1 \times S^1\)</span>)?</li>
-<li>UMAP usa <span class="math inline">\(k\)</span> vecinos para calibrar la escala local. Experimenta con <span class="math inline">\(k = 5\)</span>, <span class="math inline">\(k = 15\)</span> y <span class="math inline">\(k = 50\)</span>: ¿cómo afecta al número de ciclos detectados por <code>ripser</code>? ¿Existe un valor óptimo o es robusto?</li>
-<li>Pídele a un LLM: <em>«Explícame por qué UMAP preserva la topología global mejor que una reducción por PCA cuando los datos tienen estructura no lineal.»</em></li>
-<li>Aplica UMAP como función lente —en lugar de PCA— en el Mapper de las Recetas 5 y 6. ¿Qué estructura esperas ver en el grafo resultante? ¿Cómo predices que cambiarán los ratios <span class="math inline">\(d/\text{trav}\)</span> (Receta 5) y el número de nodos y aristas (Receta 6)?</li>
-</ol>
+<div class="pregunta" id="q-sec-manos-tda-17">
+<a class="pregunta-num" href="#sol-sec-manos-tda-17"><strong>2.17.</strong></a> El toro tiene <span class="math inline">\(\beta_1 = 2\)</span>. ¿Cuántos ciclos persistentes esperarías en <span class="math inline">\(H_1\)</span> si los datos fueran una esfera (<span class="math inline">\(S^2\)</span>) en <span class="math inline">\(\mathbb{R}^{50}\)</span>? ¿Y si fueran un toro de dimensión 3 (<span class="math inline">\(T^3 = S^1 \times S^1 \times S^1\)</span>)?
+</div>
+<div class="pregunta" id="q-sec-manos-tda-18">
+<a class="pregunta-num" href="#sol-sec-manos-tda-18"><strong>2.18.</strong></a> UMAP usa <span class="math inline">\(k\)</span> vecinos para calibrar la escala local. Experimenta con <span class="math inline">\(k = 5\)</span>, <span class="math inline">\(k = 15\)</span> y <span class="math inline">\(k = 50\)</span>: ¿cómo afecta al número de ciclos detectados por <code>ripser</code>? ¿Existe un valor óptimo o es robusto?
+</div>
+<div class="pregunta" id="q-sec-manos-tda-19">
+<a class="pregunta-num" href="#sol-sec-manos-tda-19"><strong>2.19.</strong></a> Pídele a un LLM: <em>«Explícame por qué UMAP preserva la topología global mejor que una reducción por PCA cuando los datos tienen estructura no lineal.»</em>
+</div>
+<div class="pregunta" id="q-sec-manos-tda-20">
+<a class="pregunta-num" href="#sol-sec-manos-tda-20"><strong>2.20.</strong></a> Aplica UMAP como función lente —en lugar de PCA— en el Mapper de las Recetas 5 y 6. ¿Qué estructura esperas ver en el grafo resultante? ¿Cómo predices que cambiarán los ratios <span class="math inline">\(d/\text{trav}\)</span> (Receta 5) y el número de nodos y aristas (Receta 6)?
+</div>
 </div>
 </section>
 <section class="level2" data-number="2.8" id="sec-tda-mapper-umap">
@@ -1163,18 +1189,22 @@ Tabla 2.3: Validación topológica interna de los dos nervios Mapper del corpus
 <p>Los pasos 5 y 6 separan los dos nervios donde los <span class="math inline">\(\beta_k\)</span> no podían: estabilidad de membresía de nodos y persistencia de aristas punto a punto bajo bootstrap. Esta validación combinatoria es más cara que el recuento de Betti porque exige reconstruir muchos nervios sobre remuestras y permutaciones. La versión anterior del experimento indicaba que PCA era más estable combinatoriamente que UMAP, algo esperable porque UMAP es estocástico y sensible al conjunto de entrenamiento. Con la variante UMAP-coseno, esa comparación debe recalcularse antes de convertirla en afirmación numérica: la conclusión topológica de la <a class="quarto-xref" href="#tbl-validacion-nervio">Tabla <span>2.3</span></a> ya está validada, pero la comparación fina de estabilidad queda como el siguiente chequeo experimental.</p>
 <p>Para el corpus del Camino del Héroe el resultado es análogo: ambos nervios dan <span class="math inline">\(\beta_0 = 1\)</span> y <span class="math inline">\(\beta_1 = 0\)</span>. La conclusión topológica — ausencia de circularidad narrativa — es robusta a la elección de lente.</p>
 <div class="repaso">
-<ol type="1">
-<li>En la Receta 8 usamos UMAP como lente, pero mantenemos DBSCAN en el espacio original con distancia coseno. ¿Qué problema evitamos al no reutilizar la reducción UMAP 2D como espacio de clustering?</li>
-<li>El protocolo da <span class="math inline">\(\beta_0 = 1\)</span> y <span class="math inline">\(\beta_1 = 0\)</span> para ambos nervios del corpus arXiv. Los grafos son visualmente distintos (88 vs 101 nodos, distribución diferente de aristas). ¿Qué implica esto sobre la capacidad de los números de Betti para discriminar entre los dos nervios? ¿Qué herramienta sería necesaria para la discriminación?</li>
-<li>Propón un experimento de validación externa para el UMAP-nervio del árbol de la ciencia: ¿qué propiedad conocida del corpus arXiv usarías para comprobar si el nervio captura estructura real, y cómo medirías si lo hace mejor que el PCA-nervio?</li>
-</ol>
+<div class="pregunta" id="q-sec-manos-tda-21">
+<a class="pregunta-num" href="#sol-sec-manos-tda-21"><strong>2.21.</strong></a> En la Receta 8 usamos UMAP como lente, pero mantenemos DBSCAN en el espacio original con distancia coseno. ¿Qué problema evitamos al no reutilizar la reducción UMAP 2D como espacio de clustering?
+</div>
+<div class="pregunta" id="q-sec-manos-tda-22">
+<a class="pregunta-num" href="#sol-sec-manos-tda-22"><strong>2.22.</strong></a> El protocolo da <span class="math inline">\(\beta_0 = 1\)</span> y <span class="math inline">\(\beta_1 = 0\)</span> para ambos nervios del corpus arXiv. Los grafos son visualmente distintos (88 vs 101 nodos, distribución diferente de aristas). ¿Qué implica esto sobre la capacidad de los números de Betti para discriminar entre los dos nervios? ¿Qué herramienta sería necesaria para la discriminación?
+</div>
+<div class="pregunta" id="q-sec-manos-tda-23">
+<a class="pregunta-num" href="#sol-sec-manos-tda-23"><strong>2.23.</strong></a> Propón un experimento de validación externa para el UMAP-nervio del árbol de la ciencia: ¿qué propiedad conocida del corpus arXiv usarías para comprobar si el nervio captura estructura real, y cómo medirías si lo hace mejor que el PCA-nervio?
+</div>
 </div>
 </section>
 </section>
 </section><section class="standalone-merged-section" id="merged-04">
 <header class="quarto-title-block default" id="title-block-header-4">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">3</span>  <span class="chapter-title">Aplicaciones</span></h1>
+<h1 class="title"><span class="quarto-section-identifier" id="sec-aplicaciones-tda"><span class="chapter-number">3</span>  <span class="chapter-title">Aplicaciones</span></span></h1>
 </div>
 <div class="quarto-title-meta">
 </div>
@@ -1186,10 +1216,12 @@ Tabla 2.3: Validación topológica interna de los dos nervios Mapper del corpus
 <p><strong>Neurociencia y redes cerebrales.</strong> Los conectomas — mapas de conexiones entre regiones cerebrales — son grafos donde la organización global importa tanto como el peso de cada arista. Comparar conectomas entre pacientes con Alzheimer y controles sanos, o entre estados de sueño y vigilia, requiere métricas que capturen esa organización global, no solo propiedades locales como el grado de cada nodo. Los números de Betti del complejo simplicial asociado al conectoma — calculados ponderando aristas por correlación funcional — detectan diferencias sistemáticas entre grupos que el análisis espectral clásico del grafo no captura.</p>
 <p><strong>Finanzas y detección de burbujas.</strong> Los precios de activos correlacionados forman una nube de puntos en el espacio de rentabilidades, y esa nube cambia de forma durante las crisis. En condiciones normales los activos se agrupan en sectores bien separados — varias componentes conexas en <span class="math inline">\(H_0\)</span>. Antes de una burbuja, las correlaciones aumentan abruptamente y los sectores se fusionan en una única componente densa: la topología del mercado colapsa. La persistencia de <span class="math inline">\(H_0\)</span> — la distancia a la que los sectores se fusionan — actúa como indicador adelantado de riesgo sistémico, con ventanas de hasta cuatro semanas antes de correcciones significativas en datos históricos.</p>
 <div class="repaso">
-<ol type="1">
-<li>En biología molecular, diagnóstico clínico y neurociencia, ¿qué tienen en común los descriptores convencionales que el TDA supera? ¿Por qué la invarianza bajo deformaciones es especialmente valiosa en estos dominios?</li>
-<li>Pídele a un LLM: <em>«¿Qué librerías de Python implementan homología persistente y cómo empezar con un ejemplo básico?»</em></li>
-</ol>
+<div class="pregunta" id="q-sec-aplicaciones-tda-1">
+<a class="pregunta-num" href="#sol-sec-aplicaciones-tda-1"><strong>3.1.</strong></a> En biología molecular, diagnóstico clínico y neurociencia, ¿qué tienen en común los descriptores convencionales que el TDA supera? ¿Por qué la invarianza bajo deformaciones es especialmente valiosa en estos dominios?
+</div>
+<div class="pregunta" id="q-sec-aplicaciones-tda-2">
+<a class="pregunta-num" href="#sol-sec-aplicaciones-tda-2"><strong>3.2.</strong></a> Pídele a un LLM: <em>«¿Qué librerías de Python implementan homología persistente y cómo empezar con un ejemplo básico?»</em>
+</div>
 </div>
 </section><section class="standalone-merged-section" id="merged-05">
 <header class="quarto-title-block default" id="title-block-header-5">
@@ -1253,11 +1285,15 @@ Tabla 2.3: Validación topológica interna de los dos nervios Mapper del corpus
 <h2 class="anchored" data-anchor-id="concentración-de-distancias-en-alta-dimensión" data-number="4.6"><span class="header-section-number">4.6</span> Concentración de distancias en alta dimensión</h2>
 <p>En dimensiones muy altas, las distancias entre puntos tienden a concentrarse: todos los pares de puntos quedan a una distancia similar, independientemente de la métrica elegida. El fenómeno afecta en mayor o menor medida a todas las métricas habituales — euclídea, coseno, Manhattan, correlación de Pearson —, aunque algunas son más robustas que otras: la distancia coseno y la correlación de Pearson, al estar normalizadas, se degradan algo más lentamente que la distancia euclídea en dimensiones muy altas, pero ninguna escapa al problema asintóticamente. Cuando esto ocurre, la filtración de Vietoris-Rips pierde resolución — todas las aristas se insertan casi al mismo tiempo — y las estructuras topológicas detectadas pierden significado. La Receta 7 aborda exactamente este problema: reduce primero la dimensión con UMAP — que preserva la estructura simplicial — antes de aplicar <code>ripser</code>, obteniendo resultados superiores a PCA (lineal).</p>
 <div class="repaso">
-<ol type="1">
-<li>Un dataset tiene 1.000 puntos en <span class="math inline">\(\mathbb{R}^{50}\)</span> pero su dimensión intrínseca es 3. ¿Es viable calcular <span class="math inline">\(H_1\)</span>? ¿Y si la dimensión intrínseca fuera 20?</li>
-<li>¿Por qué <code>ripser</code> puede calcular <span class="math inline">\(H_1\)</span> para 5.000 puntos pero no <span class="math inline">\(H_2\)</span>? Calcula cuántos tetraedros potenciales hay con <span class="math inline">\(n = 5{,}000\)</span>.</li>
-<li>El <span class="math inline">\(H_0\)</span> de un corpus de transacciones financieras muestra una barra con persistencia tres veces el umbral nulo — la señal típica de una componente aislada. Tu compañero propone eliminar ese punto como outlier antes de continuar el análisis. ¿Estás de acuerdo? Justifica y describe qué herramienta del capítulo usarías para tomar la decisión.</li>
-</ol>
+<div class="pregunta" id="q-sec-limitaciones-tda-1">
+<a class="pregunta-num" href="#sol-sec-limitaciones-tda-1"><strong>4.1.</strong></a> Un dataset tiene 1.000 puntos en <span class="math inline">\(\mathbb{R}^{50}\)</span> pero su dimensión intrínseca es 3. ¿Es viable calcular <span class="math inline">\(H_1\)</span>? ¿Y si la dimensión intrínseca fuera 20?
+</div>
+<div class="pregunta" id="q-sec-limitaciones-tda-2">
+<a class="pregunta-num" href="#sol-sec-limitaciones-tda-2"><strong>4.2.</strong></a> ¿Por qué <code>ripser</code> puede calcular <span class="math inline">\(H_1\)</span> para 5.000 puntos pero no <span class="math inline">\(H_2\)</span>? Calcula cuántos tetraedros potenciales hay con <span class="math inline">\(n = 5{,}000\)</span>.
+</div>
+<div class="pregunta" id="q-sec-limitaciones-tda-3">
+<a class="pregunta-num" href="#sol-sec-limitaciones-tda-3"><strong>4.3.</strong></a> El <span class="math inline">\(H_0\)</span> de un corpus de transacciones financieras muestra una barra con persistencia tres veces el umbral nulo — la señal típica de una componente aislada. Tu compañero propone eliminar ese punto como outlier antes de continuar el análisis. ¿Estás de acuerdo? Justifica y describe qué herramienta del capítulo usarías para tomar la decisión.
+</div>
 </div>
 </section>
 </section><section class="standalone-merged-section" id="merged-06">
@@ -1289,11 +1325,15 @@ Figura 5.1: Filtración de Vietoris-Rips sobre un anillo ruidoso de 30 puntos a
 </div>
 <p>La <a class="quarto-xref" href="#fig-vr-filtration">Figura <span>5.1</span></a> resume este proceso: el mismo conjunto de puntos a cuatro escalas, mostrando cómo la topología emerge y desaparece. Lo que acabamos de describir informalmente — «en <span class="math inline">\(\varepsilon_2\)</span> nace el ciclo, en <span class="math inline">\(\varepsilon_4\)</span> muere» — es exactamente lo que calcula la homología persistente de forma sistemática sobre toda la filtración.</p>
 <div class="repaso">
-<ol type="1">
-<li>¿Por qué el complejo de Vietoris-Rips se define por condiciones sobre todos los <em>pares</em> de vértices y no sobre la intersección de bolas? ¿Qué ventaja computacional aporta esto en dimensión alta?</li>
-<li>Con 6 puntos, ¿cuántas aristas, triángulos y tetraedros <em>potenciales</em> puede contener <span class="math inline">\(\mathrm{VR}(X, \infty)\)</span>?</li>
-<li>Pídele a un LLM: <em>«Explícame la diferencia intuitiva entre un grafo y un complejo simplicial. ¿Qué información topológica captura un triángulo que una arista no puede?»</em></li>
-</ol>
+<div class="pregunta" id="q-sec-fundamentos-tda-1">
+<a class="pregunta-num" href="#sol-sec-fundamentos-tda-1"><strong>5.1.</strong></a> ¿Por qué el complejo de Vietoris-Rips se define por condiciones sobre todos los <em>pares</em> de vértices y no sobre la intersección de bolas? ¿Qué ventaja computacional aporta esto en dimensión alta?
+</div>
+<div class="pregunta" id="q-sec-fundamentos-tda-2">
+<a class="pregunta-num" href="#sol-sec-fundamentos-tda-2"><strong>5.2.</strong></a> Con 6 puntos, ¿cuántas aristas, triángulos y tetraedros <em>potenciales</em> puede contener <span class="math inline">\(\mathrm{VR}(X, \infty)\)</span>?
+</div>
+<div class="pregunta" id="q-sec-fundamentos-tda-3">
+<a class="pregunta-num" href="#sol-sec-fundamentos-tda-3"><strong>5.3.</strong></a> Pídele a un LLM: <em>«Explícame la diferencia intuitiva entre un grafo y un complejo simplicial. ¿Qué información topológica captura un triángulo que una arista no puede?»</em>
+</div>
 </div>
 </section>
 <section class="level2" data-number="5.2" id="sec-homologia-persistente">
@@ -1574,11 +1614,15 @@ Figura 5.3: Cuatro fotogramas de la filtración sincronizados con el código de
 </div>
 <p>La <a class="quarto-xref" href="#fig-filtracion-barcode">Figura <span>5.3</span></a> conecta la geometría de la filtración con su firma topológica: cada evento en el complejo corresponde exactamente al extremo de una barra del código de barras.</p>
 <div class="repaso">
-<ol type="1">
-<li>Dibuja un complejo con 4 vértices, 5 aristas y 1 triángulo. ¿El ciclo formado por las dos aristas no incluidas en el triángulo es un agujero real o es frontera? ¿Por qué?</li>
-<li>¿Por qué calcular <span class="math inline">\(H_2\)</span> para 5.000 puntos es inviable con la reducción estándar pero <span class="math inline">\(H_1\)</span> es factible con lazy evaluation? Estima el número de tetraedros potenciales con <span class="math inline">\(n = 1.000\)</span>.</li>
-<li>Pídele a un LLM: <em>«Dos ciclos homólogos representan el mismo agujero. ¿Puede haber dos ciclos homólogos que no compartan ninguna arista? Dame un ejemplo concreto en un complejo simplicial simple.»</em></li>
-</ol>
+<div class="pregunta" id="q-sec-fundamentos-tda-4">
+<a class="pregunta-num" href="#sol-sec-fundamentos-tda-4"><strong>5.4.</strong></a> Dibuja un complejo con 4 vértices, 5 aristas y 1 triángulo. ¿El ciclo formado por las dos aristas no incluidas en el triángulo es un agujero real o es frontera? ¿Por qué?
+</div>
+<div class="pregunta" id="q-sec-fundamentos-tda-5">
+<a class="pregunta-num" href="#sol-sec-fundamentos-tda-5"><strong>5.5.</strong></a> ¿Por qué calcular <span class="math inline">\(H_2\)</span> para 5.000 puntos es inviable con la reducción estándar pero <span class="math inline">\(H_1\)</span> es factible con lazy evaluation? Estima el número de tetraedros potenciales con <span class="math inline">\(n = 1.000\)</span>.
+</div>
+<div class="pregunta" id="q-sec-fundamentos-tda-6">
+<a class="pregunta-num" href="#sol-sec-fundamentos-tda-6"><strong>5.6.</strong></a> Pídele a un LLM: <em>«Dos ciclos homólogos representan el mismo agujero. ¿Puede haber dos ciclos homólogos que no compartan ninguna arista? Dame un ejemplo concreto en un complejo simplicial simple.»</em>
+</div>
 </div>
 </section>
 </section>
@@ -1599,10 +1643,12 @@ Figura 5.4: Izquierda: cinco puntos dispuestos en un pentágono regular a escal
 </figure>
 </div>
 <div class="repaso">
-<ol type="1">
-<li>Un PD tiene tres puntos: <span class="math inline">\((0.2, 0.8)\)</span>, <span class="math inline">\((0.1, 0.15)\)</span> y <span class="math inline">\((0.3, +\infty)\)</span>. ¿Cuántas componentes conexas y cuántos ciclos describe? ¿Cuál es la persistencia de cada característica?</li>
-<li>¿Por qué los PDs pueden tener puntos de multiplicidad mayor que uno? ¿Qué significa que dos características compartan exactamente el mismo par <span class="math inline">\((b, d)\)</span>?</li>
-</ol>
+<div class="pregunta" id="q-sec-fundamentos-tda-7">
+<a class="pregunta-num" href="#sol-sec-fundamentos-tda-7"><strong>5.7.</strong></a> Un PD tiene tres puntos: <span class="math inline">\((0.2, 0.8)\)</span>, <span class="math inline">\((0.1, 0.15)\)</span> y <span class="math inline">\((0.3, +\infty)\)</span>. ¿Cuántas componentes conexas y cuántos ciclos describe? ¿Cuál es la persistencia de cada característica?
+</div>
+<div class="pregunta" id="q-sec-fundamentos-tda-8">
+<a class="pregunta-num" href="#sol-sec-fundamentos-tda-8"><strong>5.8.</strong></a> ¿Por qué los PDs pueden tener puntos de multiplicidad mayor que uno? ¿Qué significa que dos características compartan exactamente el mismo par <span class="math inline">\((b, d)\)</span>?
+</div>
 </div>
 </section>
 <section class="level2" data-number="5.4" id="sec-estabilidad-tda">
@@ -1628,11 +1674,15 @@ Figura 5.5: Ilustración del teorema de estabilidad en tres pasos. <strong>Izqu
 </figure>
 </div>
 <div class="repaso">
-<ol type="1">
-<li>Dos nubes tienen distancia de Hausdorff <span class="math inline">\(\delta = 0.1\)</span>. ¿Cuánto puede cambiar como máximo la persistencia de un ciclo en su diagrama?</li>
-<li>¿Por qué un único outlier puede crear una barra larga que imita señal real? ¿Qué herramienta del capítulo usarías para decidir si es señal o artefacto?</li>
-<li>Tu dataset de sensores industriales tiene lecturas anómalas que siguen una distribución de Pareto de exponente 0.8. ¿Por qué la garantía del teorema de estabilidad es menos útil aquí que con ruido gaussiano? ¿Qué propiedad de la filtración DTM alivia el problema?</li>
-</ol>
+<div class="pregunta" id="q-sec-fundamentos-tda-9">
+<a class="pregunta-num" href="#sol-sec-fundamentos-tda-9"><strong>5.9.</strong></a> Dos nubes tienen distancia de Hausdorff <span class="math inline">\(\delta = 0.1\)</span>. ¿Cuánto puede cambiar como máximo la persistencia de un ciclo en su diagrama?
+</div>
+<div class="pregunta" id="q-sec-fundamentos-tda-10">
+<a class="pregunta-num" href="#sol-sec-fundamentos-tda-10"><strong>5.10.</strong></a> ¿Por qué un único outlier puede crear una barra larga que imita señal real? ¿Qué herramienta del capítulo usarías para decidir si es señal o artefacto?
+</div>
+<div class="pregunta" id="q-sec-fundamentos-tda-11">
+<a class="pregunta-num" href="#sol-sec-fundamentos-tda-11"><strong>5.11.</strong></a> Tu dataset de sensores industriales tiene lecturas anómalas que siguen una distribución de Pareto de exponente 0.8. ¿Por qué la garantía del teorema de estabilidad es menos útil aquí que con ruido gaussiano? ¿Qué propiedad de la filtración DTM alivia el problema?
+</div>
 </div>
 </section>
 <section class="level2" data-number="5.5" id="sec-densidad-fundamentos">
@@ -1719,11 +1769,15 @@ Tabla 5.1: Viabilidad del TDA por dominio según la fórmula de Niyogi et al. 
 </div>
 <p>La tabla asume que los datos llegan al algoritmo de TDA en la dimensión adecuada. En la práctica, muchos dominios de la mitad inferior — lenguaje, genómica, imágenes — tienen <span class="math inline">\(D \gg d_I\)</span>: los embeddings viven en <span class="math inline">\(\mathbb{R}^{100}\)</span> o <span class="math inline">\(\mathbb{R}^{50000}\)</span>, aunque la variedad subyacente tenga dimensión intrínseca de diez a treinta. A dimensiones altas, las distancias euclídeas entre puntos se concentran — todos los puntos tienden a estar a distancias similares — y la filtración de Vietoris-Rips pierde resolución antes de que la restricción de <span class="math inline">\(n\)</span> sea el cuello de botella. UMAP resuelve este problema proyectando los datos a <span class="math inline">\(\mathbb{R}^d\)</span> con <span class="math inline">\(d \ll D\)</span> mientras preserva la estructura topológica local, de modo que ripser y Mapper operan sobre distancias informativas con <span class="math inline">\(d_I\)</span> como dimensión efectiva — exactamente lo que la fórmula de Niyogi et al. supone (véase <a class="quarto-xref" href="#sec-umap-fundamentos"><span>Sección 5.9</span></a>).</p>
 <div class="repaso">
-<ol type="1">
-<li>Las Recetas 5 y 6 del capítulo trabajan con conjuntos de entre 200 y 2.000 embeddings de texto. Usando la <a class="quarto-xref" href="#tbl-viabilidad-tda">Tabla <span>5.1</span></a> y asumiendo <span class="math inline">\(d_I \approx 15\)</span>, ¿es ese rango de <span class="math inline">\(n\)</span> suficiente según la fórmula de Niyogi et al.? ¿Qué tipo de afirmaciones siguen siendo defensibles?</li>
-<li>Un análisis aplica ripser directamente a 5.000 embeddings de texto en <span class="math inline">\(\mathbb{R}^{384}\)</span> y obtiene diagramas de persistencia sin estructura notable. El mismo corpus reducido a <span class="math inline">\(\mathbb{R}^{10}\)</span> con UMAP muestra una componente conexa clara en <span class="math inline">\(H_0\)</span>. ¿Qué fenómeno explica la diferencia? ¿La restricción de <span class="math inline">\(n\)</span> es el problema en este caso?</li>
-<li>Un colega propone aplicar TDA a una tabla de transacciones bancarias con 150 columnas numéricas independientes entre sí. Usando la <a class="quarto-xref" href="#tbl-viabilidad-tda">Tabla <span>5.1</span></a>, explica por qué el <span class="math inline">\(n\)</span> requerido es prohibitivo y qué herramienta alternativa recomendarías.</li>
-</ol>
+<div class="pregunta" id="q-sec-fundamentos-tda-12">
+<a class="pregunta-num" href="#sol-sec-fundamentos-tda-12"><strong>5.12.</strong></a> Las Recetas 5 y 6 del capítulo trabajan con conjuntos de entre 200 y 2.000 embeddings de texto. Usando la <a class="quarto-xref" href="#tbl-viabilidad-tda">Tabla <span>5.1</span></a> y asumiendo <span class="math inline">\(d_I \approx 15\)</span>, ¿es ese rango de <span class="math inline">\(n\)</span> suficiente según la fórmula de Niyogi et al.? ¿Qué tipo de afirmaciones siguen siendo defensibles?
+</div>
+<div class="pregunta" id="q-sec-fundamentos-tda-13">
+<a class="pregunta-num" href="#sol-sec-fundamentos-tda-13"><strong>5.13.</strong></a> Un análisis aplica ripser directamente a 5.000 embeddings de texto en <span class="math inline">\(\mathbb{R}^{384}\)</span> y obtiene diagramas de persistencia sin estructura notable. El mismo corpus reducido a <span class="math inline">\(\mathbb{R}^{10}\)</span> con UMAP muestra una componente conexa clara en <span class="math inline">\(H_0\)</span>. ¿Qué fenómeno explica la diferencia? ¿La restricción de <span class="math inline">\(n\)</span> es el problema en este caso?
+</div>
+<div class="pregunta" id="q-sec-fundamentos-tda-14">
+<a class="pregunta-num" href="#sol-sec-fundamentos-tda-14"><strong>5.14.</strong></a> Un colega propone aplicar TDA a una tabla de transacciones bancarias con 150 columnas numéricas independientes entre sí. Usando la <a class="quarto-xref" href="#tbl-viabilidad-tda">Tabla <span>5.1</span></a>, explica por qué el <span class="math inline">\(n\)</span> requerido es prohibitivo y qué herramienta alternativa recomendarías.
+</div>
 </div>
 </section>
 <section class="level2" data-number="5.6" id="sec-paisaje-persistencia">
@@ -1763,12 +1817,18 @@ Figura 5.7: Tres muestras del mismo proceso (filas 1–3) producen diagramas de
 </div>
 <p>Los paisajes y el teorema de estabilidad proveen las bases para construir descriptores robustos. La siguiente pieza — Mapper — responde a una pregunta distinta: en lugar de contar cuántos agujeros hay, construye un grafo que resume la <em>forma global</em> de los datos en un formato directamente interpretable por un analista de dominio.</p>
 <div class="repaso">
-<ol type="1">
-<li>Un PD tiene dos puntos: <span class="math inline">\((0, 2)\)</span> y <span class="math inline">\((1, 3)\)</span>. Calcula <span class="math inline">\(\lambda_1(1.5)\)</span> y <span class="math inline">\(\lambda_2(1.5)\)</span>.</li>
-<li>¿Por qué el paisaje permite calcular intervalos de confianza por bootstrap mientras que hacerlo directamente con los puntos del PD es más difícil?</li>
-<li>Tu paisaje medio <span class="math inline">\(\bar{\lambda}_1\)</span> tiene un pico alto en <span class="math inline">\(t = 1.2\)</span> que supera el percentil 95 de la banda bootstrap. Un colega dice que eso es suficiente para concluir que hay una estructura topológica real. ¿Está en lo correcto? ¿Qué herramienta adicional necesitarías y cómo la construirías?</li>
-<li>Pídele a un LLM: <em>«¿Qué ventajas tiene el paisaje de persistencia frente a usar simplemente las 10 persistencias más largas del diagrama como vector de features?»</em></li>
-</ol>
+<div class="pregunta" id="q-sec-fundamentos-tda-15">
+<a class="pregunta-num" href="#sol-sec-fundamentos-tda-15"><strong>5.15.</strong></a> Un PD tiene dos puntos: <span class="math inline">\((0, 2)\)</span> y <span class="math inline">\((1, 3)\)</span>. Calcula <span class="math inline">\(\lambda_1(1.5)\)</span> y <span class="math inline">\(\lambda_2(1.5)\)</span>.
+</div>
+<div class="pregunta" id="q-sec-fundamentos-tda-16">
+<a class="pregunta-num" href="#sol-sec-fundamentos-tda-16"><strong>5.16.</strong></a> ¿Por qué el paisaje permite calcular intervalos de confianza por bootstrap mientras que hacerlo directamente con los puntos del PD es más difícil?
+</div>
+<div class="pregunta" id="q-sec-fundamentos-tda-17">
+<a class="pregunta-num" href="#sol-sec-fundamentos-tda-17"><strong>5.17.</strong></a> Tu paisaje medio <span class="math inline">\(\bar{\lambda}_1\)</span> tiene un pico alto en <span class="math inline">\(t = 1.2\)</span> que supera el percentil 95 de la banda bootstrap. Un colega dice que eso es suficiente para concluir que hay una estructura topológica real. ¿Está en lo correcto? ¿Qué herramienta adicional necesitarías y cómo la construirías?
+</div>
+<div class="pregunta" id="q-sec-fundamentos-tda-18">
+<a class="pregunta-num" href="#sol-sec-fundamentos-tda-18"><strong>5.18.</strong></a> Pídele a un LLM: <em>«¿Qué ventajas tiene el paisaje de persistencia frente a usar simplemente las 10 persistencias más largas del diagrama como vector de features?»</em>
+</div>
 </div>
 </section>
 <section class="level2" data-number="5.7" id="sec-mapper-fundamentos">
@@ -1791,10 +1851,12 @@ Figura 5.8: Pipeline de Mapper en cuatro pasos. (1) Nube de datos coloreada por
 </figure>
 </div>
 <div class="repaso">
-<ol type="1">
-<li>En la Receta 6, Mapper con lente UMAP produce un grafo árbol. ¿Qué estructura esperarías si cambiases la lente por la densidad local (número de vecinos dentro de radio 0.3)?</li>
-<li>¿Por qué el solapamiento entre intervalos es <em>necesario</em> para que el grafo nervio pueda contener ciclos? Sin solapamiento, ¿qué tipo de grafo se obtiene siempre?</li>
-</ol>
+<div class="pregunta" id="q-sec-fundamentos-tda-19">
+<a class="pregunta-num" href="#sol-sec-fundamentos-tda-19"><strong>5.19.</strong></a> En la Receta 6, Mapper con lente UMAP produce un grafo árbol. ¿Qué estructura esperarías si cambiases la lente por la densidad local (número de vecinos dentro de radio 0.3)?
+</div>
+<div class="pregunta" id="q-sec-fundamentos-tda-20">
+<a class="pregunta-num" href="#sol-sec-fundamentos-tda-20"><strong>5.20.</strong></a> ¿Por qué el solapamiento entre intervalos es <em>necesario</em> para que el grafo nervio pueda contener ciclos? Sin solapamiento, ¿qué tipo de grafo se obtiene siempre?
+</div>
 </div>
 </section>
 <section class="level2" data-number="5.8" id="sec-validacion-mapper">
@@ -1836,11 +1898,15 @@ Figura 5.8: Pipeline de Mapper en cuatro pasos. (1) Nube de datos coloreada por
 </ol>
 <p>Ningún test individual prueba fidelidad topológica en sentido estricto, pero la combinación acota el espacio de explicaciones: un nervio que pasa los tres tests captura estructura externa que no se reduce ni a azar ni a artefacto del embedding. En la Receta 7 se verifica el protocolo interno con una topología conocida (<span class="math inline">\(\beta_1 = 2\)</span>); en la Receta 8 se aplica el protocolo interno y se discute cómo aplicarían estos tres tests externos al corpus arXiv usando las propias categorías como referencia.</p>
 <div class="repaso">
-<ol type="1">
-<li>Un nervio pasa los cuatro filtros topológicos (pasos 1–4) pero falla el paso 5: <span class="math inline">\(\bar{J} = 0.3\)</span> en estabilidad de membresía. ¿Qué significa esto en términos prácticos? ¿Es válida la conclusión sobre <span class="math inline">\(\beta_k\)</span>? ¿Qué afirmaciones del análisis quedan invalidadas?</li>
-<li>Diseña la validación externa completa para el UMAP-nervio del árbol de la ciencia usando las categorías arXiv top-level como etiqueta de referencia. Especifica: <span class="math inline">\(m\)</span> nodos a auditar para detectar diferencia de 10pp con el PCA-nervio, número de permutaciones para el test NMI, y qué relación externa usarías para la correlación de aristas (paso 3).</li>
-<li>La validación externa con categorías arXiv tiene un sesgo conocido: un mismo paper puede pertenecer a varias categorías (cs.LG y stat.ML, por ejemplo) y los autores asignan las etiquetas a posteriori. ¿Cómo afecta esto a la pureza máxima posible? ¿Qué interpretación cuidadosa hay que hacer del valor <span class="math inline">\(\hat{p}\)</span> resultante?</li>
-</ol>
+<div class="pregunta" id="q-sec-fundamentos-tda-21">
+<a class="pregunta-num" href="#sol-sec-fundamentos-tda-21"><strong>5.21.</strong></a> Un nervio pasa los cuatro filtros topológicos (pasos 1–4) pero falla el paso 5: <span class="math inline">\(\bar{J} = 0.3\)</span> en estabilidad de membresía. ¿Qué significa esto en términos prácticos? ¿Es válida la conclusión sobre <span class="math inline">\(\beta_k\)</span>? ¿Qué afirmaciones del análisis quedan invalidadas?
+</div>
+<div class="pregunta" id="q-sec-fundamentos-tda-22">
+<a class="pregunta-num" href="#sol-sec-fundamentos-tda-22"><strong>5.22.</strong></a> Diseña la validación externa completa para el UMAP-nervio del árbol de la ciencia usando las categorías arXiv top-level como etiqueta de referencia. Especifica: <span class="math inline">\(m\)</span> nodos a auditar para detectar diferencia de 10pp con el PCA-nervio, número de permutaciones para el test NMI, y qué relación externa usarías para la correlación de aristas (paso 3).
+</div>
+<div class="pregunta" id="q-sec-fundamentos-tda-23">
+<a class="pregunta-num" href="#sol-sec-fundamentos-tda-23"><strong>5.23.</strong></a> La validación externa con categorías arXiv tiene un sesgo conocido: un mismo paper puede pertenecer a varias categorías (cs.LG y stat.ML, por ejemplo) y los autores asignan las etiquetas a posteriori. ¿Cómo afecta esto a la pureza máxima posible? ¿Qué interpretación cuidadosa hay que hacer del valor <span class="math inline">\(\hat{p}\)</span> resultante?
+</div>
 </div>
 </section>
 <section class="level2" data-number="5.9" id="sec-umap-fundamentos">
@@ -1887,11 +1953,15 @@ Figura 5.9: Embedding de retardos de <span class="math inline">\(s(t) = \sin(t)
 </figure>
 </div>
 <div class="repaso">
-<ol type="1">
-<li>Una señal tiene dos frecuencias incomensurables <span class="math inline">\(f_1\)</span> y <span class="math inline">\(f_2\)</span> (es decir, <span class="math inline">\(f_1/f_2 \notin \mathbb{Q}\)</span>). ¿Cuántos ciclos persistentes esperas en <span class="math inline">\(H_1\)</span> y cuántas cavidades en <span class="math inline">\(H_2\)</span> de su atractor reconstruido? ¿Por qué?</li>
-<li>Si el retardo <span class="math inline">\(\tau\)</span> elegido coincide exactamente con el período de la oscilación, ¿qué forma tiene <span class="math inline">\(\Phi(t)\)</span>? ¿Qué detectaría <code>ripser</code>?</li>
-<li>Pídele a un LLM: <em>«El teorema de Takens dice que la propiedad vale “genéricamente”. ¿Qué significa genéricamente en este contexto matemático, y por qué en la práctica no es una restricción problemática?»</em></li>
-</ol>
+<div class="pregunta" id="q-sec-fundamentos-tda-24">
+<a class="pregunta-num" href="#sol-sec-fundamentos-tda-24"><strong>5.24.</strong></a> Una señal tiene dos frecuencias incomensurables <span class="math inline">\(f_1\)</span> y <span class="math inline">\(f_2\)</span> (es decir, <span class="math inline">\(f_1/f_2 \notin \mathbb{Q}\)</span>). ¿Cuántos ciclos persistentes esperas en <span class="math inline">\(H_1\)</span> y cuántas cavidades en <span class="math inline">\(H_2\)</span> de su atractor reconstruido? ¿Por qué?
+</div>
+<div class="pregunta" id="q-sec-fundamentos-tda-25">
+<a class="pregunta-num" href="#sol-sec-fundamentos-tda-25"><strong>5.25.</strong></a> Si el retardo <span class="math inline">\(\tau\)</span> elegido coincide exactamente con el período de la oscilación, ¿qué forma tiene <span class="math inline">\(\Phi(t)\)</span>? ¿Qué detectaría <code>ripser</code>?
+</div>
+<div class="pregunta" id="q-sec-fundamentos-tda-26">
+<a class="pregunta-num" href="#sol-sec-fundamentos-tda-26"><strong>5.26.</strong></a> Pídele a un LLM: <em>«El teorema de Takens dice que la propiedad vale “genéricamente”. ¿Qué significa genéricamente en este contexto matemático, y por qué en la práctica no es una restricción problemática?»</em>
+</div>
 </div>
 </section>
 </section><section class="standalone-merged-section" id="merged-07">
@@ -1950,66 +2020,176 @@ Data.”</span> <em>Bulletin of the American Mathematical Society</em> 45
 <div class="quarto-title-meta">
 </div>
 </header>
-<div class="solucion">
-<ol type="1">
-<li><p>Con 4 clusters hay 3 fusiones tardías en <span class="math inline">\(H_0\)</span> (una menos que el número de clusters). Si dos clusters están muy juntos, se fusionarán pronto (persistencia baja) y solo quedarán 2 fusiones realmente tardías — los clusters cercanos se comportan como uno solo a escalas grandes.</p></li>
-<li><p>La respuesta del LLM debería describir: dado un conjunto de puntos, para cada valor de <span class="math inline">\(\varepsilon\)</span> se conectan todos los pares a distancia <span class="math inline">\(\leq \varepsilon\)</span> (y sus triángulos, tetraedros, etc.). Al aumentar <span class="math inline">\(\varepsilon\)</span> de 0 a <span class="math inline">\(\infty\)</span>, se obtiene una secuencia anidada de complejos simpliciales — eso es la filtración. Compara con la Receta 1: los 150 puntos aislados (<span class="math inline">\(\varepsilon = 0\)</span>) van fusionándose en clusters al crecer <span class="math inline">\(\varepsilon\)</span>.</p></li>
-<li><p>No cambia significativamente. La persistencia del agujero en <span class="math inline">\(H_1\)</span> depende de la <em>existencia</em> de un bucle cerrado, no de su forma. Una elipse y un círculo son topológicamente equivalentes (homeomorfos), así que el TDA ve el mismo agujero. La persistencia puede variar ligeramente por la geometría distorsionada, pero el agujero persiste.</p></li>
-<li><p>Un «8» tiene dos agujeros: dos bucles cerrados que comparten un punto de cruce. Se esperarían 2 ciclos persistentes en <span class="math inline">\(H_1\)</span>, cada uno correspondiente a uno de los dos lóbulos. En la práctica, la persistencia de ambos dependerá del tamaño relativo de cada lóbulo y del ruido, pero la señal topológica será de dos agujeros bien separados de la diagonal.</p></li>
-<li><p>El paisaje de <span class="math inline">\(H_1\)</span> deja de superar el umbral del 95% aproximadamente cuando <span class="math inline">\(\sigma \geq 0.5\)</span>, es decir, cuando el ruido es del mismo orden que el radio del círculo (r = 1). Esto tiene sentido intuitivo: si la dispersión radial es comparable al tamaño de la estructura, los puntos ya no «recuerdan» que estaban sobre un anillo — la señal topológica se pierde en el ruido.</p></li>
-<li><p>El TDA computa distancias euclídeas: con ruido <span class="math inline">\(\sigma\)</span> en <span class="math inline">\(\mathbb{R}^d\)</span>, la distancia típica crece como <span class="math inline">\(\sigma\sqrt{2d}\)</span>, de modo que la señal del círculo (amplitud <span class="math inline">\(\sim R\)</span>) queda progresivamente enterrada en las fluctuaciones de distancia. PCA trabaja con la <strong>matriz de covarianza</strong>: la dirección principal tiene autovalor <span class="math inline">\(\sigma^2 + R^2/2\)</span>, y las demás <span class="math inline">\(\sigma^2\)</span>; la brecha <span class="math inline">\(R^2/2 \approx 1.1\)</span> no depende de <span class="math inline">\(d\)</span>. Pero éste es un escenario ideal para PCA (señal exactamente en dos coordenadas, ruido isotrópico); en datos reales la señal suele estar distribuida y PCA también degrada. El preprocesado con UMAP (Receta 7) reduce la dimensión antes de aplicar TDA, mitigando la concentración de medida.</p></li>
-<li><p>Con dos anillos concéntricos, <code>ripser</code> debería detectar 2 ciclos altamente persistentes en <span class="math inline">\(H_1\)</span>. Los cociclos representativos correspondientes identificarán puntos sobre cada anillo por separado. Si los anillos son concéntricos (no se intersectan), los conjuntos de puntos no se solapan — cada ciclo representativo vivirá sobre un anillo distinto.</p></li>
-<li><p>Un <em>cociclo</em> representativo es una función definida sobre las aristas del complejo simplicial (asigna valores a aristas); un <em>ciclo</em> representativo es un conjunto de aristas que forman un bucle cerrado. <code>ripser</code> devuelve cociclos porque son más eficientes de calcular (se obtienen como subproducto del algoritmo de reducción de la matriz de borde) y porque las coordenadas de cociclo proveen información geométrica más rica. El ciclo se obtiene como dual del cociclo.</p></li>
-<li><p>Con una lente temporal, Mapper divide la narrativa en franjas de tiempo y agrupa por similitud dentro de cada franja. Como el solapamiento solo ocurre entre intervalos temporales contiguos, las aristas solo conectan nodos de momentos adyacentes — produciendo necesariamente una cadena (o algo cercano). La lente temporal <em>asume</em> linealidad y no puede detectar circularidad porque el principio y el final caen en intervalos distintos que jamás se solapan.</p></li>
-<li><p>Con <code>n_cubes</code> muy bajo (2-3), el grafo tiene pocos nodos y <span class="math inline">\(\beta_1\)</span> baja porque la resolución es insuficiente para crear aristas. Con <code>perc_overlap</code> muy bajo (&lt; 20%), los nodos se desconectan. Para la configuración por defecto (<code>n_cubes=5</code>, <code>perc_overlap=0.4</code>), los grafos son densos (<span class="math inline">\(\beta_1 \approx 35\)</span>–48) para todas las novelas — la densidad es robusta y no específica del viaje del héroe.</p></li>
-<li><p>La similitud coseno directa entre el primer y último chunk es un test mucho más simple que no requiere construir el grafo Mapper. En general confirma el mismo resultado: los embeddings del principio y final de una novela no son más similares que los de dos pasajes aleatorios del mismo libro. La excepción es <em>El Mago de Oz</em>, donde la repetición literal de «Kansas» produce alta similitud coseno.</p></li>
-<li><p>Las principales críticas incluyen: (1) la definición es tan flexible que casi cualquier narrativa encaja <em>a posteriori</em>; (2) privilegia un canon occidental y masculino; (3) no produce predicciones falsificables; (4) confunde patrón descriptivo con estructura universal. Nuestro test cuantitativo apoya la crítica (3): al operacionalizar «retorno» como proximidad semántica, <span class="math inline">\(p \approx 1.0\)</span> para 8 de 9 novelas.</p></li>
-<li><p>Reducir a solo 5 categorías eliminaría los papers que actúan de puentes entre CS y Física (e.g. simulación cuántica, aprendizaje automático para materia condensada) y entre CS y Estadística. Con un corpus solo de CS+QC, <span class="math inline">\(H_0\)</span> seguiría dando N_RAMAS = 1 porque esos campos comparten muchísimo vocabulario. Pero al eliminar las categorías de biología y economía — los campos más alejados del centroide de CS — se reduciría la barra más larga y el umbral bootstrap, sin cambiar el veredicto topológico. La diferencia estaría en las distancias entre centroides, no en la conectividad.</p></li>
-<li><p>La barra más larga (persistencia 0.70) corresponde al par de disciplinas con mayor separación geométrica que aun así queda conectado por papers intermedios. Dado que los centroides más alejados son Física–Biología (d = 0.60), esa barra probablemente refleja papers de biofísica o biología cuántica — investigación que usa herramientas de física cuántica (e.g. resonancia magnética cuántica, modelado cuántico de proteínas) aplicadas a sistemas biológicos. Esos papers son el «puente mínimo»: sin ellos, Física y Biología serían dos islas topológicamente separadas.</p></li>
-<li><p>Un ciclo en el grafo Mapper implicaría que hay al menos tres grupos de papers (nodos) cuyos solapamientos crean un bucle cerrado — es decir, una región del espacio semántico rodeada pero no rellenada. Topológicamente, un ciclo en el Mapper con lente de densidad suele corresponder a una zona de densidad intermedia que rodea un vacío interior. En ciencia, podría significar que hay un «eje temático» que conecta tres disciplinas distintas sin que ninguna de las tres tenga papers directamente en el centro de ese bucle: por ejemplo, un ciclo CS → Estadística → Economía → CS donde la zona central (intersección de las tres) está subpoblada. El grafo árbol que obtenemos (sin ciclos) indica que no hay tal vacío rodeado.</p></li>
-</ol>
+<div class="solucion" data-ref="sec-manos-tda">
+<div class="solucion" id="sol-sec-manos-tda-1">
+<p><a class="solucion-num" href="#q-sec-manos-tda-1"><strong>2.1.</strong></a> Con 4 clusters hay 3 fusiones tardías en <span class="math inline">\(H_0\)</span> (una menos que el número de clusters). Si dos clusters están muy juntos, se fusionarán pronto (persistencia baja) y solo quedarán 2 fusiones realmente tardías — los clusters cercanos se comportan como uno solo a escalas grandes.</p>
+</div>
+<div class="solucion" id="sol-sec-manos-tda-2">
+<p><a class="solucion-num" href="#q-sec-manos-tda-2"><strong>2.2.</strong></a> La respuesta del LLM debería describir: dado un conjunto de puntos, para cada valor de <span class="math inline">\(\varepsilon\)</span> se conectan todos los pares a distancia <span class="math inline">\(\leq \varepsilon\)</span> (y sus triángulos, tetraedros, etc.). Al aumentar <span class="math inline">\(\varepsilon\)</span> de 0 a <span class="math inline">\(\infty\)</span>, se obtiene una secuencia anidada de complejos simpliciales — eso es la filtración. Compara con la Receta 1: los 150 puntos aislados (<span class="math inline">\(\varepsilon = 0\)</span>) van fusionándose en clusters al crecer <span class="math inline">\(\varepsilon\)</span>.</p>
+</div>
+<div class="solucion" id="sol-sec-manos-tda-3">
+<p><a class="solucion-num" href="#q-sec-manos-tda-3"><strong>2.3.</strong></a> No cambia significativamente. La persistencia del agujero en <span class="math inline">\(H_1\)</span> depende de la <em>existencia</em> de un bucle cerrado, no de su forma. Una elipse y un círculo son topológicamente equivalentes (homeomorfos), así que el TDA ve el mismo agujero. La persistencia puede variar ligeramente por la geometría distorsionada, pero el agujero persiste.</p>
+</div>
+<div class="solucion" id="sol-sec-manos-tda-4">
+<p><a class="solucion-num" href="#q-sec-manos-tda-4"><strong>2.4.</strong></a> Un «8» tiene dos agujeros: dos bucles cerrados que comparten un punto de cruce. Se esperarían 2 ciclos persistentes en <span class="math inline">\(H_1\)</span>, cada uno correspondiente a uno de los dos lóbulos. En la práctica, la persistencia de ambos dependerá del tamaño relativo de cada lóbulo y del ruido, pero la señal topológica será de dos agujeros bien separados de la diagonal.</p>
+</div>
+<div class="solucion" id="sol-sec-manos-tda-5">
+<p><a class="solucion-num" href="#q-sec-manos-tda-5"><strong>2.5.</strong></a> El paisaje de <span class="math inline">\(H_1\)</span> deja de superar el umbral del 95% aproximadamente cuando <span class="math inline">\(\sigma \geq 0.5\)</span>, es decir, cuando el ruido es del mismo orden que el radio del círculo (r = 1). Esto tiene sentido intuitivo: si la dispersión radial es comparable al tamaño de la estructura, los puntos ya no «recuerdan» que estaban sobre un anillo — la señal topológica se pierde en el ruido.</p>
+</div>
+<div class="solucion" id="sol-sec-manos-tda-6">
+<p><a class="solucion-num" href="#q-sec-manos-tda-6"><strong>2.6.</strong></a> El TDA computa distancias euclídeas: con ruido <span class="math inline">\(\sigma\)</span> en <span class="math inline">\(\mathbb{R}^d\)</span>, la distancia típica crece como <span class="math inline">\(\sigma\sqrt{2d}\)</span>, de modo que la señal del círculo (amplitud <span class="math inline">\(\sim R\)</span>) queda progresivamente enterrada en las fluctuaciones de distancia. PCA trabaja con la <strong>matriz de covarianza</strong>: la dirección principal tiene autovalor <span class="math inline">\(\sigma^2 + R^2/2\)</span>, y las demás <span class="math inline">\(\sigma^2\)</span>; la brecha <span class="math inline">\(R^2/2 \approx 1.1\)</span> no depende de <span class="math inline">\(d\)</span>. Pero éste es un escenario ideal para PCA (señal exactamente en dos coordenadas, ruido isotrópico); en datos reales la señal suele estar distribuida y PCA también degrada. El preprocesado con UMAP (Receta 7) reduce la dimensión antes de aplicar TDA, mitigando la concentración de medida.</p>
+</div>
+<div class="solucion" id="sol-sec-manos-tda-7">
+<p><a class="solucion-num" href="#q-sec-manos-tda-7"><strong>2.7.</strong></a> Con dos anillos concéntricos, <code>ripser</code> debería detectar 2 ciclos altamente persistentes en <span class="math inline">\(H_1\)</span>. Los cociclos representativos correspondientes identificarán puntos sobre cada anillo por separado. Si los anillos son concéntricos (no se intersectan), los conjuntos de puntos no se solapan — cada ciclo representativo vivirá sobre un anillo distinto.</p>
+</div>
+<div class="solucion" id="sol-sec-manos-tda-8">
+<p><a class="solucion-num" href="#q-sec-manos-tda-8"><strong>2.8.</strong></a> Un <em>cociclo</em> representativo es una función definida sobre las aristas del complejo simplicial (asigna valores a aristas); un <em>ciclo</em> representativo es un conjunto de aristas que forman un bucle cerrado. <code>ripser</code> devuelve cociclos porque son más eficientes de calcular (se obtienen como subproducto del algoritmo de reducción de la matriz de borde) y porque las coordenadas de cociclo proveen información geométrica más rica. El ciclo se obtiene como dual del cociclo.</p>
+</div>
+<div class="solucion" id="sol-sec-manos-tda-9">
+<p><a class="solucion-num" href="#q-sec-manos-tda-9"><strong>2.9.</strong></a> Con una lente temporal, Mapper divide la narrativa en franjas de tiempo y agrupa por similitud dentro de cada franja. Como el solapamiento solo ocurre entre intervalos temporales contiguos, las aristas solo conectan nodos de momentos adyacentes — produciendo necesariamente una cadena (o algo cercano). La lente temporal <em>asume</em> linealidad y no puede detectar circularidad porque el principio y el final caen en intervalos distintos que jamás se solapan.</p>
+</div>
+<div class="solucion" id="sol-sec-manos-tda-10">
+<p><a class="solucion-num" href="#q-sec-manos-tda-10"><strong>2.10.</strong></a> Con <code>n_cubes</code> muy bajo (2-3), el grafo tiene pocos nodos y <span class="math inline">\(\beta_1\)</span> baja porque la resolución es insuficiente para crear aristas. Con <code>perc_overlap</code> muy bajo (&lt; 20%), los nodos se desconectan. Para la configuración por defecto (<code>n_cubes=5</code>, <code>perc_overlap=0.4</code>), los grafos son densos (<span class="math inline">\(\beta_1 \approx 35\)</span>–48) para todas las novelas — la densidad es robusta y no específica del viaje del héroe.</p>
+</div>
+<div class="solucion" id="sol-sec-manos-tda-11">
+<p><a class="solucion-num" href="#q-sec-manos-tda-11"><strong>2.11.</strong></a> La similitud coseno directa entre el primer y último chunk es un test mucho más simple que no requiere construir el grafo Mapper. En general confirma el mismo resultado: los embeddings del principio y final de una novela no son más similares que los de dos pasajes aleatorios del mismo libro. La excepción es <em>El Mago de Oz</em>, donde la repetición literal de «Kansas» produce alta similitud coseno.</p>
+</div>
+<div class="solucion" id="sol-sec-manos-tda-12">
+<p><a class="solucion-num" href="#q-sec-manos-tda-12"><strong>2.12.</strong></a> Las principales críticas incluyen: (1) la definición es tan flexible que casi cualquier narrativa encaja <em>a posteriori</em>; (2) privilegia un canon occidental y masculino; (3) no produce predicciones falsificables; (4) confunde patrón descriptivo con estructura universal. Nuestro test cuantitativo apoya la crítica (3): al operacionalizar «retorno» como proximidad semántica, <span class="math inline">\(p \approx 1.0\)</span> para 8 de 9 novelas.</p>
+</div>
+<div class="solucion" id="sol-sec-manos-tda-13">
+<p><a class="solucion-num" href="#q-sec-manos-tda-13"><strong>2.13.</strong></a> Reducir a solo 5 categorías eliminaría los papers que actúan de puentes entre CS y Física (e.g. simulación cuántica, aprendizaje automático para materia condensada) y entre CS y Estadística. Con un corpus solo de CS+QC, <span class="math inline">\(H_0\)</span> seguiría dando N_RAMAS = 1 porque esos campos comparten muchísimo vocabulario. Pero al eliminar las categorías de biología y economía — los campos más alejados del centroide de CS — se reduciría la barra más larga y el umbral bootstrap, sin cambiar el veredicto topológico. La diferencia estaría en las distancias entre centroides, no en la conectividad.</p>
+</div>
+<div class="solucion" id="sol-sec-manos-tda-14">
+<p><a class="solucion-num" href="#q-sec-manos-tda-14"><strong>2.14.</strong></a> La barra más larga (persistencia 0.70) corresponde al par de disciplinas con mayor separación geométrica que aun así queda conectado por papers intermedios. Dado que los centroides más alejados son Física–Biología (d = 0.60), esa barra probablemente refleja papers de biofísica o biología cuántica — investigación que usa herramientas de física cuántica (e.g. resonancia magnética cuántica, modelado cuántico de proteínas) aplicadas a sistemas biológicos. Esos papers son el «puente mínimo»: sin ellos, Física y Biología serían dos islas topológicamente separadas.</p>
+</div>
+<div class="solucion" id="sol-sec-manos-tda-15">
+<p><a class="solucion-num" href="#q-sec-manos-tda-15"><strong>2.15.</strong></a> Un ciclo en el grafo Mapper implicaría que hay al menos tres grupos de papers (nodos) cuyos solapamientos crean un bucle cerrado — es decir, una región del espacio semántico rodeada pero no rellenada. Topológicamente, un ciclo en el Mapper con lente de densidad suele corresponder a una zona de densidad intermedia que rodea un vacío interior. En ciencia, podría significar que hay un «eje temático» que conecta tres disciplinas distintas sin que ninguna de las tres tenga papers directamente en el centro de ese bucle: por ejemplo, un ciclo CS → Estadística → Economía → CS donde la zona central (intersección de las tres) está subpoblada. El grafo árbol que obtenemos (sin ciclos) indica que no hay tal vacío rodeado.</p>
+</div>
 <p>Con <code>n_components</code> muy bajo (10), se pierde información y algunos ciclos desaparecen. Con valores moderados (50–100), el número de ciclos persistentes tiende a estabilizarse. Esto refleja el teorema de estabilidad: perturbaciones acotadas en los datos (como las que introduce la proyección PCA) producen perturbaciones acotadas en el diagrama de persistencia.</p>
-<ol start="16" type="1">
-<li><p>Si hubiera aparecido un ciclo <span class="math inline">\(H_1\)</span> persistente por encima del umbral, extraer su ciclo representativo (Receta 4) convertiría una abstracción topológica en una lista concreta de artículos: los papers que forman el bucle semántico más robusto en el espacio de embeddings. Probablemente conectarían subcampos con vocabulario metodológico compartido pero sin frontera disciplinar clara — por ejemplo, estadística computacional → aprendizaje automático → optimización numérica → estadística computacional. Esos artículos serían los puentes que sostienen la circularidad: eliminar cualquiera de ellos rompería el bucle y reduciría <span class="math inline">\(\beta_1\)</span> a cero.</p></li>
-<li><p>Una esfera <span class="math inline">\(S^2\)</span> tiene <span class="math inline">\(\beta_1 = 0\)</span> — sin 1-ciclos — y <span class="math inline">\(\beta_2 = 1\)</span> (una cavidad). Un toro tridimensional <span class="math inline">\(T^3 = S^1 \times S^1 \times S^1\)</span> tiene <span class="math inline">\(\beta_0 = 1\)</span>, <span class="math inline">\(\beta_1 = 3\)</span> (tres ciclos independientes, uno por cada factor <span class="math inline">\(S^1\)</span>), <span class="math inline">\(\beta_2 = 3\)</span> y <span class="math inline">\(\beta_3 = 1\)</span>. En general, <span class="math inline">\(T^n\)</span> tiene <span class="math inline">\(\beta_k = \binom{n}{k}\)</span>. Con la reducción UMAP+<code>ripser</code> de la Receta 7, la esfera daría <span class="math inline">\(H_1\)</span> vacío y una característica persistente en <span class="math inline">\(H_2\)</span>; <span class="math inline">\(T^3\)</span> requiere reducir a dimensión <span class="math inline">\(\geq 3\)</span> para que los tres 1-ciclos sean visibles.</p></li>
-<li><p>Con <span class="math inline">\(k=5\)</span> (vecindad pequeña), UMAP construye vecindades muy locales y puede fragmentar ciclos grandes en arcos disjuntos; a menudo detecta solo 1 ciclo en lugar de 2. Con <span class="math inline">\(k=15\)</span> (valor por defecto), ambos ciclos del toro se recuperan de forma consistente. Con <span class="math inline">\(k=50\)</span> (vecindad amplia), los ciclos siguen siendo robustos pero se difumina la distinción entre ciclo mayor y menor en zonas de alta curvatura. El resultado es moderadamente robusto para <span class="math inline">\(k \in [10, 25]\)</span> — el mismo rango que proporcionaba resultados fiables en el experimento de la Receta 7.</p></li>
-<li><p>Una respuesta correcta del LLM debe indicar que UMAP minimiza la entropía cruzada entre el complejo simplicial difuso construido en el espacio original y el del espacio reducido (véase <a class="quarto-xref" href="05.html#sec-umap-fundamentos"><span>UMAP y los complejos simpliciales difusos</span></a>). Esto preserva explícitamente la conectividad local —qué puntos son vecinos de qué— que es exactamente lo que <code>ripser</code> medirá después. PCA maximiza varianza proyectada sin ninguna garantía topológica: puede aplanar la variedad sobre un subespacio lineal y romper ciclos que no estén alineados con los ejes de máxima varianza.</p></li>
-<li><p>Con lente UMAP 2D en la Receta 8, los caminos de retorno siguen cruzando buena parte del grafo, confirmando que la ausencia de circularidad narrativa es robusta a la elección de la función lente. En el corpus arXiv, la variante UMAP con DBSCAN coseno en <span class="math inline">\(\mathbb{R}^{384}\)</span> produce 101 nodos y 236 aristas — frente a 88 nodos y 296 aristas con PCA 2D y clustering PCA 20D. La diferencia visible es combinatoria y geográfica, no una diferencia de homología: ambos nervios siguen siendo conexos y sin ciclos persistentes.</p></li>
-<li><p>Reutilizar la lente UMAP 2D como espacio de clustering mezclaría dos objetivos distintos: una buena lente debe organizar la cubierta global, mientras que DBSCAN necesita una métrica local donde la noción de vecino tenga significado semántico. Usar DBSCAN con distancia coseno sobre los embeddings originales evita introducir una segunda distorsión no lineal: UMAP decide qué puntos comparten parche, y DBSCAN decide dentro de ese parche qué puntos son angularmente cercanos. La cautela es que el parámetro <code>eps</code> sigue siendo delicado en alta dimensión.</p></li>
-<li><p>Los números de Betti <span class="math inline">\(\beta_0 = 1\)</span> y <span class="math inline">\(\beta_1 = 0\)</span> son invariantes topológicos gruesos: confirmar que ambos nervios son conexos y acíclicos no discrimina entre ellos. Para distinguirlos hace falta comparar los <em>diagramas de persistencia completos</em> —usando la distancia <em>bottleneck</em> o Wasserstein— o los <em>paisajes de persistencia</em> completos, que son vectores en <span class="math inline">\(L^p\)</span> y admiten estadística funcional. Dos grafos pueden tener <span class="math inline">\(\beta_k\)</span> idénticos y diferir completamente en el número de nodos, los pesos Jaccard de las aristas o la distribución geográfica de los campos.</p></li>
-<li><p>Usar las categorías arXiv como etiqueta independiente. <strong>Test 1 (pureza):</strong> auditar <span class="math inline">\(m \approx 60\)</span> nodos del UMAP-nervio (potencia 0.8 para detectar diferencia de 10 pp con el PCA-nervio); comparar <span class="math inline">\(\hat{p}_{\text{UMAP}}\)</span> con <span class="math inline">\(\hat{p}_{\text{PCA}}\)</span> con un test de proporciones de dos muestras. <strong>Test 2 (ANMI):</strong> calcular la información mutua ajustada entre la partición del nervio y las categorías arXiv top-level; con <span class="math inline">\(N=8085\)</span> y <span class="math inline">\(k \approx 100\)</span> nodos, ANMI <span class="math inline">\(&gt; 0.05\)</span> es estadísticamente significativo. <strong>Test 3 (correlación de aristas):</strong> comparar el peso Jaccard de cada arista del nervio con la fracción de pares con categoría arXiv compartida; calcular la correlación de Spearman <span class="math inline">\(\rho\)</span> con umbral <span class="math inline">\(\rho_c \approx 0.14\)</span> para <span class="math inline">\(n \approx 200\)</span> aristas. Si el UMAP-nervio supera al PCA-nervio en los tres tests, captura mejor la estructura disciplinar real del corpus.</p></li>
-<li><p>Los descriptores convencionales (intensidades de imagen en diagnóstico, <em>fingerprints</em> moleculares en fármacos, correlaciones par a par en conectomas) capturan propiedades locales pero ignoran la forma global: cuántas componentes, agujeros o cavidades hay. La invarianza bajo deformaciones es especialmente valiosa porque las transformaciones de preprocesado habituales — normalización, alineamiento, cambio de resolución — no alteran los rasgos topológicos: el número de cavidades de una proteína no cambia si la rotamos o escalamos uniformemente.</p></li>
-<li><p>Una respuesta correcta del LLM debería mencionar <code>ripser</code> (muy rápido, binding Python de C++), <code>giotto-tda</code> (integrado con scikit-learn), <code>gudhi</code> (biblioteca INRIA, amplia) y <code>kmapper</code> para Mapper. Un ejemplo básico: <code>import ripser, persim; dgms = ripser.ripser(puntos)["dgms"]; persim.plot_diagrams(dgms)</code>.</p></li>
-<li><p>Con dimensión intrínseca 3, calcular <span class="math inline">\(H_1\)</span> para 1.000 puntos es viable: <span class="math inline">\(\binom{1000}{3} \approx 1{,}7 \times 10^8\)</span> triángulos potenciales, manejables con <em>lazy evaluation</em>. Con dimensión intrínseca 20, el problema no es computacional sino de densidad: la teoría exige <span class="math inline">\(O((1/\tau)^{d_I})\)</span> puntos para cubrir la variedad uniformemente, y con <span class="math inline">\(d_I = 20\)</span> esos 1.000 puntos son claramente insuficientes — los ciclos detectados pueden ser artefactos de submuestreo.</p></li>
-<li><p>Para <span class="math inline">\(H_2\)</span> se necesitan tetraedros: <span class="math inline">\(\binom{1000}{4} \approx 4{,}1 \times 10^{10}\)</span> — inviable incluso con <em>lazy evaluation</em>. Para <span class="math inline">\(H_1\)</span> solo hacen falta triángulos: <span class="math inline">\(\binom{1000}{3} \approx 1{,}7 \times 10^8\)</span>; <code>ripser</code> los gestiona sin materializarlos todos gracias a cohomología dual y evaluación perezosa.</p></li>
-<li><p>No necesariamente: una barra persistente en <span class="math inline">\(H_0\)</span> puede ser la señal más valiosa — en finanzas, la transacción que forma una componente aislada es exactamente la anomalía que buscamos. El proceso correcto: localizar el punto responsable con los ciclos representativos de la Receta 4; inspeccionarlo en el dominio; decidir según el contexto. El TDA localiza la ambigüedad; el experto de dominio la resuelve.</p></li>
-<li><p>El complejo de Vietoris-Rips comprueba únicamente distancias por pares — <span class="math inline">\(O(n^2)\)</span> independientemente del orden del símplice — mientras que el complejo de Čech requiere verificar la intersección de <span class="math inline">\(k\)</span> bolas en dimensión alta, lo que implica resolver un programa lineal por cada posible símplice. En <span class="math inline">\(\mathbb{R}^{100}\)</span> con <span class="math inline">\(k = 5\)</span>, esto supone varios órdenes de magnitud más trabajo por símplice que VR.</p></li>
-<li><p>Con 6 puntos: aristas = <span class="math inline">\(\binom{6}{2} = 15\)</span>; triángulos = <span class="math inline">\(\binom{6}{3} = 20\)</span>; tetraedros = <span class="math inline">\(\binom{6}{4} = 15\)</span>. Ya con tan pocos puntos, el complejo simplicial completo tiene 50 celdas de dimensión <span class="math inline">\(\leq 3\)</span> — ilustrando cómo el tamaño crece combinatoriamente.</p></li>
-<li><p>Una respuesta correcta debe destacar que un triángulo <span class="math inline">\(\{u,v,w\}\)</span> captura una relación de orden superior: los tres puntos están mutuamente dentro del umbral, lo que rellena el hueco central y elimina el ciclo <span class="math inline">\(u\text{-}v\text{-}w\)</span>. Tres aristas sin triángulo dejan ese hueco abierto (<span class="math inline">\(\beta_1 = 1\)</span>); añadir el triángulo lo anula (<span class="math inline">\(\beta_1 = 0\)</span>).</p></li>
-<li><p>Tomemos vértices <span class="math inline">\(\{a,b,c,d\}\)</span> con triángulo <span class="math inline">\(\{a,b,c\}\)</span> y aristas extra <span class="math inline">\(\{b,d\}\)</span> y <span class="math inline">\(\{a,d\}\)</span>. El ciclo <span class="math inline">\(a\)</span>-<span class="math inline">\(b\)</span>-<span class="math inline">\(d\)</span>-<span class="math inline">\(a\)</span> está formado por aristas del complejo y no puede rellenarse con el único triángulo disponible <span class="math inline">\(\{a,b,c\}\)</span> (que no contiene <span class="math inline">\(d\)</span>): es un agujero real, <span class="math inline">\(\beta_1 = 1\)</span>. Si añadiéramos <span class="math inline">\(\{a,b,d\}\)</span>, ese ciclo pasaría a ser frontera y <span class="math inline">\(\beta_1\)</span> volvería a 0.</p></li>
-<li><p>Para <span class="math inline">\(H_1\)</span> se necesitan triángulos: <span class="math inline">\(\binom{1000}{3} \approx 1{,}66 \times 10^8\)</span>, manejable con <em>lazy evaluation</em> (ripser nunca los materializa todos). Para <span class="math inline">\(H_2\)</span> se necesitan tetraedros: <span class="math inline">\(\binom{1000}{4} \approx 4{,}1 \times 10^{10}\)</span> — varios órdenes de magnitud más, lo que hace inviable la reducción de la matriz de frontera incluso con estrategias perezosas.</p></li>
-<li><p>Sí. Dos ciclos son homólogos si su diferencia simétrica es frontera de algún conjunto de triángulos, lo que permite trayectorias totalmente distintas. Ejemplo: en un toro, dos rutas que rodean el mismo agujero pueden no compartir ninguna arista si van por lados opuestos — son homólogas pero geométricamente disjuntas.</p></li>
-<li><p>El punto <span class="math inline">\((0{,}3, +\infty)\)</span> indica la última componente conexa inmortal de <span class="math inline">\(H_0\)</span> (<span class="math inline">\(\beta_0\)</span> final <span class="math inline">\(= 1\)</span>). Los puntos <span class="math inline">\((0{,}2, 0{,}8)\)</span> y <span class="math inline">\((0{,}1, 0{,}15)\)</span> representan dos características adicionales: la primera tiene persistencia <span class="math inline">\(0{,}6\)</span> (señal, lejos de la diagonal); la segunda tiene persistencia <span class="math inline">\(0{,}05\)</span> (ruido, muy cerca de la diagonal). Si los puntos finitos pertenecen a <span class="math inline">\(H_1\)</span>: hay 2 ciclos, uno significativo y uno de ruido.</p></li>
-<li><p>Sí: multiplicidad <span class="math inline">\(&gt; 1\)</span> ocurre cuando dos características distintas nacen y mueren exactamente a la misma escala, posible en datos con simetrías perfectas (p.ej., dos anillos idénticos centrados simétricamente). Significa que hay dos agujeros con el mismo historial topológico, no un único punto doble. En datos reales sin simetría exacta, la multiplicidad mayor que uno es prácticamente inexistente.</p></li>
-<li><p>La cota del teorema de estabilidad es <span class="math inline">\(W_\infty(D(X), D(Y)) \leq 2 \cdot d_H(X,Y) = 2 \times 0{,}1 = 0{,}2\)</span>. La persistencia de cualquier ciclo puede cambiar como máximo en <span class="math inline">\(0{,}2\)</span> — tanto en la coordenada de nacimiento como en la de muerte.</p></li>
-<li><p>Un <em>outlier</em> muy alejado del resto implica <span class="math inline">\(d_H(X, X \setminus \{\text{outlier}\}) \approx\)</span> distancia del <em>outlier</em> al conjunto, que puede ser grande. La cota garantiza que el diagrama cambia hasta <span class="math inline">\(2 \times\)</span> esa distancia: se crea una barra de <span class="math inline">\(H_0\)</span> cuya longitud es esa distancia, potencialmente mucho mayor que el umbral de ruido. El antídoto: usar ciclos representativos (Receta 4) para identificar el punto responsable de la barra sospechosa e inspeccionarlo en el dominio.</p></li>
-<li><p>Con ruido gaussiano <span class="math inline">\(d_H\)</span> crece solo como <span class="math inline">\(\sigma\sqrt{2\log n}\)</span>, así que la cota del teorema sigue siendo ajustada. Con Pareto de exponente <span class="math inline">\(\alpha &lt; 1\)</span>, el máximo de <span class="math inline">\(n\)</span> muestras crece como <span class="math inline">\(n^{1/\alpha}\)</span>: la distancia de Hausdorff se dispara y la cota se vuelve trivialmente grande. La filtración DTM promedia sobre los <span class="math inline">\(k\)</span> vecinos más cercanos de cada punto en lugar de depender del más lejano, de modo que un único valor extremo apenas la perturba — igual que la mediana es robusta frente a la media.</p></li>
-<li><p>Con <span class="math inline">\(d_I \approx 15\)</span> y <span class="math inline">\(\tau = 0.5\)</span>, la fórmula de Niyogi et al. requiere <span class="math inline">\(n = O(1/0.5^{15}) \approx 3 \times 10^4\)</span> puntos para garantías formales. Las Recetas 5 y 6 operan con 200–2.000 embeddings — entre 15 y 150 veces menos. Lo que sigue siendo defensible: (1) <span class="math inline">\(H_0\)</span> con bootstrap, que valida la estructura de componentes conexas cualitativamente; (2) el grafo Mapper, cuyo lema del nervio solo exige que los parches sean contráctiles; (3) resultados estadísticos validados tanto con banda bootstrap como con línea nula. Lo que exige cautela: afirmaciones sobre ciclos específicos en <span class="math inline">\(H_1\)</span> o cavidades en <span class="math inline">\(H_2\)</span>, donde la detección puede ser un artefacto de submuestreo.</p></li>
-<li><p>La diferencia la explica la <strong>concentración de distancias en alta dimensión</strong>. En <span class="math inline">\(\mathbb{R}^{384}\)</span>, la varianza relativa de las distancias entre pares de puntos decae como <span class="math inline">\(\sqrt{2/d}\)</span>: con <span class="math inline">\(d=384\)</span>, el coeficiente de variación es solo <span class="math inline">\(\approx 7\%\)</span>. Todas las aristas de la filtración de Vietoris-Rips se insertan casi al mismo tiempo, y la homología resultante no refleja estructura real sino la geometría del hipercubo de muestreo. Con UMAP en <span class="math inline">\(\mathbb{R}^{10}\)</span>, el coeficiente de variación sube a <span class="math inline">\(\approx 45\%\)</span> — las distancias son discriminativas y la filtración tiene resolución suficiente para separar aristas de señal de aristas de ruido. No es un problema de <span class="math inline">\(n\)</span>: el mismo corpus con 5.000 puntos seguiría sin estructura en <span class="math inline">\(\mathbb{R}^{384}\)</span> pero con estructura clara en <span class="math inline">\(\mathbb{R}^{10}\)</span>.</p></li>
-<li><p>Con 150 columnas numéricas independientes entre sí, la dimensión intrínseca es <span class="math inline">\(d_I \approx D = 150\)</span>. Según la <a class="quarto-xref" href="05.html#tbl-viabilidad-tda">Tabla <span>5.1</span></a>, el <span class="math inline">\(n\)</span> requerido escala como <span class="math inline">\(O(1/\tau^{150})\)</span>: para <span class="math inline">\(\tau = 0.5\)</span> supera <span class="math inline">\(10^{45}\)</span> puntos — completamente prohibitivo. Además, la concentración de distancias en <span class="math inline">\(\mathbb{R}^{150}\)</span> tiene un coeficiente de variación de <span class="math inline">\(\approx \sqrt{2/150} \approx 12\%\)</span>: las distancias ya están concentradas y UMAP no puede desplegar ninguna variedad porque no existe. La herramienta alternativa depende del objetivo: detección de anomalías (Isolation Forest, COPOD) si se buscan transacciones atípicas; PCA seguido de regresión logística si se sospecha estructura lineal; o modelos supervisados directamente sobre las 150 columnas si hay etiquetas disponibles.</p></li>
-<li><p>La función tienda de <span class="math inline">\(p_1 = (0,2)\)</span> vale <span class="math inline">\(\lambda(t) = \min(t, 2-t)\)</span> para <span class="math inline">\(t \in [0,2]\)</span>; a <span class="math inline">\(t = 1{,}5\)</span>: <span class="math inline">\(\min(1{,}5,\, 0{,}5) = 0{,}5\)</span>. La tienda de <span class="math inline">\(p_2 = (1,3)\)</span> vale <span class="math inline">\(\min(t-1,\, 3-t)\)</span> para <span class="math inline">\(t \in [1,3]\)</span>; a <span class="math inline">\(t = 1{,}5\)</span>: <span class="math inline">\(\min(0{,}5,\, 1{,}5) = 0{,}5\)</span>. Ambas tiendas están activas con altura <span class="math inline">\(0{,}5\)</span>: <span class="math inline">\(\lambda_1(1{,}5) = 0{,}5\)</span> y <span class="math inline">\(\lambda_2(1{,}5) = 0{,}5\)</span>.</p></li>
-<li><p>El espacio de diagramas de persistencia bajo distancia <em>bottleneck</em> no es un espacio de Hilbert ni de Banach: la media de dos diagramas no está en general bien definida como diagrama. El paisaje de persistencia vive en <span class="math inline">\(L^p\)</span> (funciones integrables al cuadrado), que sí es Banach: la media de paisajes es un paisaje, las operaciones vectoriales son cerradas, y el <em>bootstrap</em> estándar aplica directamente para construir intervalos de confianza funcionales.</p></li>
-<li><p>No: superar la banda bootstrap solo indica que el pico es <em>reproducible</em> entre remuestras del dataset original (precisión), pero no que supere el nivel de ruido esperable sin ninguna estructura geométrica. Para afirmar significación estadística hace falta la línea nula: se generan <span class="math inline">\(B\)</span> datasets permutados (aleatorizando las coordenadas de cada punto de forma independiente, lo que destruye la geometría conjunta pero conserva las distribuciones marginales) y se calcula el percentil 95 de sus paisajes. Solo si el pico supera esa línea nula se puede descartar que la señal sea un artefacto del tamaño o la forma del dataset.</p></li>
-<li><p>Una respuesta correcta debe indicar: (1) el vector de 10 persistencias ignora el nacimiento — dos <em>features</em> con la misma persistencia pero distintos nacimientos son indistinguibles; (2) el paisaje incorpora tanto nacimiento como muerte; (3) el paisaje es estable: si la 10.ª y la 11.ª persistencia se cruzan, el vector cambia discontinuamente mientras el paisaje cambia de forma continua; (4) el paisaje permite estadística funcional (bootstrap, regresión sobre funciones).</p></li>
-<li><p>Con lente de densidad local, los intervalos de la cubierta separarían zonas densas de zonas dispersas, no agrupaciones por campo científico. El grafo nervio mostraría un núcleo densamente conectado (los <em>papers</em> interdisciplinares con muchos vecinos) rodeado de satélites dispersos (fronteras de cada campo), sin la estructura de árbol jerárquico que refleja la taxonomía disciplinar que obteníamos con PCA como lente.</p></li>
-<li><p>Sin solapamiento, cada punto pertenece exactamente a un intervalo y por tanto a exactamente un <em>cluster</em>. Dos <em>clusters</em> de intervalos distintos nunca comparten puntos, así que nunca se genera ninguna arista entre ellos. El resultado es un grafo totalmente desconectado: sin aristas no puede haber ciclos, y el nervio no puede capturar ninguna estructura topológica global.</p></li>
-<li><p>Si <span class="math inline">\(\bar{J} = 0{,}3\)</span> los nodos no identifican subconjuntos reproducibles de papers entre remuestras: la composición concreta de cada cluster cambia mucho aunque los <span class="math inline">\(\beta_k\)</span> se mantengan. Las afirmaciones sobre topología global (número de componentes, ciclos, cavidades) siguen siendo válidas, pero cualquier interpretación que dependa de <em>qué papers</em> forman cada nodo —caracterizar disciplinas, identificar puentes interdisciplinares, etiquetar clusters— queda invalidada. La conclusión topológica es robusta; la combinatoria, no.</p></li>
-<li><p>Para detectar una diferencia de 10 puntos de pureza con <span class="math inline">\(\alpha = 0{,}05\)</span> y potencia 0,8, basta auditar <span class="math inline">\(m \approx 60\)</span> nodos por nervio (test de proporciones de dos muestras). Para el test de información mutua se usa ANMI (<code>adjusted_mutual_info_score</code> en sklearn): <span class="math inline">\(\mathbb{E}[\text{ANMI}] = 0\)</span> bajo H₀ por construcción y la varianza analítica da <span class="math inline">\(\sigma \approx 0{,}016\)</span> para este corpus, así que ANMI <span class="math inline">\(&gt; 0{,}05\)</span> es significativo sin permutaciones. Para la correlación de aristas se puede usar la fracción de pares con coautoría — disponible en los metadatos de arXiv y completamente independiente del embedding semántico — calculando la correlación de Spearman <span class="math inline">\(\rho\)</span> entre el peso Jaccard de cada arista y la tasa de coautoría; la significación se evalúa con <span class="math inline">\(t = \rho\sqrt{(n-2)/(1-\rho^2)} \sim t_{n-2}\)</span>, con umbral <span class="math inline">\(\rho_c \approx 0{,}14\)</span> para <span class="math inline">\(n \approx 250\)</span> aristas.</p></li>
-<li><p>Las categorías arXiv son auto-asignadas por los autores, multilíquetas (un paper puede aparecer en cs.LG y stat.ML simultáneamente), y reflejan tanto contenido como convenciones sociológicas del campo. Como cada nodo del nervio tiene una sola etiqueta «mayoritaria», la pureza máxima posible es estructuralmente menor que 1 incluso para particiones perfectas: papers genuinamente interdisciplinares contribuyen como «impurezas» a cualquier nodo. La interpretación correcta de <span class="math inline">\(\hat{p}\)</span> no es como fracción absoluta, sino comparativa entre nervios sobre el mismo corpus: <span class="math inline">\(\hat{p}_{\text{UMAP}} &gt; \hat{p}_{\text{PCA}}\)</span> con <span class="math inline">\(m = 60\)</span> nodos significa que UMAP captura mejor la categorización auto-declarada, sin pretender que sea la verdad fundamental.</p></li>
-<li><p>Una señal con dos frecuencias incomensurables <span class="math inline">\(f_1/f_2 \notin \mathbb{Q}\)</span> tiene un atractor homeomorfo a un toro <span class="math inline">\(T^2 = S^1 \times S^1\)</span>. El toro tiene <span class="math inline">\(\beta_1 = 2\)</span> (dos ciclos independientes: uno para cada frecuencia) y <span class="math inline">\(\beta_2 = 1\)</span> (una cavidad encerrada). Por tanto, <code>ripser</code> sobre el atractor reconstruido debería detectar 2 ciclos muy persistentes en <span class="math inline">\(H_1\)</span> y 1 cavidad persistente en <span class="math inline">\(H_2\)</span>. La trayectoria llena densamente el toro sin cerrarse, lo que hace que ambos ciclos sean persistentes en lugar de efímeros.</p></li>
-<li><p>Si <span class="math inline">\(\tau = T\)</span> (período exacto de la oscilación), entonces <span class="math inline">\(s(t) = s(t+T)\)</span> para todo <span class="math inline">\(t\)</span>, y el <em>embedding</em> <span class="math inline">\(\Phi(t) = (s(t), s(t+T)) = (s(t), s(t))\)</span> es la diagonal de <span class="math inline">\(\mathbb{R}^2\)</span> — un segmento, no un círculo. <code>ripser</code> vería <span class="math inline">\(\beta_1 = 0\)</span>: la información de periodicidad se ha colapsado. El criterio del primer mínimo de información mutua identifica automáticamente los retardos resonantes que hay que evitar.</p></li>
-<li><p>«Genéricamente» significa «para un conjunto de parámetros de medida completa», es decir, salvo un conjunto de excepciones de medida cero. En la práctica equivale a «casi todo <span class="math inline">\(\tau\)</span> y casi toda función de observación funcionan». Solo retardos que sean múltiplos exactos del período de la dinámica pueden causar problemas, y se identifican fácilmente con el criterio de información mutua antes de aplicar el teorema.</p></li>
-</ol>
+<div class="solucion" id="sol-sec-manos-tda-16">
+<p><a class="solucion-num" href="#q-sec-manos-tda-16"><strong>2.16.</strong></a> Si hubiera aparecido un ciclo <span class="math inline">\(H_1\)</span> persistente por encima del umbral, extraer su ciclo representativo (Receta 4) convertiría una abstracción topológica en una lista concreta de artículos: los papers que forman el bucle semántico más robusto en el espacio de embeddings. Probablemente conectarían subcampos con vocabulario metodológico compartido pero sin frontera disciplinar clara — por ejemplo, estadística computacional → aprendizaje automático → optimización numérica → estadística computacional. Esos artículos serían los puentes que sostienen la circularidad: eliminar cualquiera de ellos rompería el bucle y reduciría <span class="math inline">\(\beta_1\)</span> a cero.</p>
+</div>
+<div class="solucion" id="sol-sec-manos-tda-17">
+<p><a class="solucion-num" href="#q-sec-manos-tda-17"><strong>2.17.</strong></a> Una esfera <span class="math inline">\(S^2\)</span> tiene <span class="math inline">\(\beta_1 = 0\)</span> — sin 1-ciclos — y <span class="math inline">\(\beta_2 = 1\)</span> (una cavidad). Un toro tridimensional <span class="math inline">\(T^3 = S^1 \times S^1 \times S^1\)</span> tiene <span class="math inline">\(\beta_0 = 1\)</span>, <span class="math inline">\(\beta_1 = 3\)</span> (tres ciclos independientes, uno por cada factor <span class="math inline">\(S^1\)</span>), <span class="math inline">\(\beta_2 = 3\)</span> y <span class="math inline">\(\beta_3 = 1\)</span>. En general, <span class="math inline">\(T^n\)</span> tiene <span class="math inline">\(\beta_k = \binom{n}{k}\)</span>. Con la reducción UMAP+<code>ripser</code> de la Receta 7, la esfera daría <span class="math inline">\(H_1\)</span> vacío y una característica persistente en <span class="math inline">\(H_2\)</span>; <span class="math inline">\(T^3\)</span> requiere reducir a dimensión <span class="math inline">\(\geq 3\)</span> para que los tres 1-ciclos sean visibles.</p>
+</div>
+<div class="solucion" id="sol-sec-manos-tda-18">
+<p><a class="solucion-num" href="#q-sec-manos-tda-18"><strong>2.18.</strong></a> Con <span class="math inline">\(k=5\)</span> (vecindad pequeña), UMAP construye vecindades muy locales y puede fragmentar ciclos grandes en arcos disjuntos; a menudo detecta solo 1 ciclo en lugar de 2. Con <span class="math inline">\(k=15\)</span> (valor por defecto), ambos ciclos del toro se recuperan de forma consistente. Con <span class="math inline">\(k=50\)</span> (vecindad amplia), los ciclos siguen siendo robustos pero se difumina la distinción entre ciclo mayor y menor en zonas de alta curvatura. El resultado es moderadamente robusto para <span class="math inline">\(k \in [10, 25]\)</span> — el mismo rango que proporcionaba resultados fiables en el experimento de la Receta 7.</p>
+</div>
+<div class="solucion" id="sol-sec-manos-tda-19">
+<p><a class="solucion-num" href="#q-sec-manos-tda-19"><strong>2.19.</strong></a> Una respuesta correcta del LLM debe indicar que UMAP minimiza la entropía cruzada entre el complejo simplicial difuso construido en el espacio original y el del espacio reducido (véase <a class="quarto-xref" href="05.html#sec-umap-fundamentos"><span>UMAP y los complejos simpliciales difusos</span></a>). Esto preserva explícitamente la conectividad local —qué puntos son vecinos de qué— que es exactamente lo que <code>ripser</code> medirá después. PCA maximiza varianza proyectada sin ninguna garantía topológica: puede aplanar la variedad sobre un subespacio lineal y romper ciclos que no estén alineados con los ejes de máxima varianza.</p>
+</div>
+<div class="solucion" id="sol-sec-manos-tda-20">
+<p><a class="solucion-num" href="#q-sec-manos-tda-20"><strong>2.20.</strong></a> Con lente UMAP 2D en la Receta 8, los caminos de retorno siguen cruzando buena parte del grafo, confirmando que la ausencia de circularidad narrativa es robusta a la elección de la función lente. En el corpus arXiv, la variante UMAP con DBSCAN coseno en <span class="math inline">\(\mathbb{R}^{384}\)</span> produce 101 nodos y 236 aristas — frente a 88 nodos y 296 aristas con PCA 2D y clustering PCA 20D. La diferencia visible es combinatoria y geográfica, no una diferencia de homología: ambos nervios siguen siendo conexos y sin ciclos persistentes.</p>
+</div>
+<div class="solucion" id="sol-sec-manos-tda-21">
+<p><a class="solucion-num" href="#q-sec-manos-tda-21"><strong>2.21.</strong></a> Reutilizar la lente UMAP 2D como espacio de clustering mezclaría dos objetivos distintos: una buena lente debe organizar la cubierta global, mientras que DBSCAN necesita una métrica local donde la noción de vecino tenga significado semántico. Usar DBSCAN con distancia coseno sobre los embeddings originales evita introducir una segunda distorsión no lineal: UMAP decide qué puntos comparten parche, y DBSCAN decide dentro de ese parche qué puntos son angularmente cercanos. La cautela es que el parámetro <code>eps</code> sigue siendo delicado en alta dimensión.</p>
+</div>
+<div class="solucion" id="sol-sec-manos-tda-22">
+<p><a class="solucion-num" href="#q-sec-manos-tda-22"><strong>2.22.</strong></a> Los números de Betti <span class="math inline">\(\beta_0 = 1\)</span> y <span class="math inline">\(\beta_1 = 0\)</span> son invariantes topológicos gruesos: confirmar que ambos nervios son conexos y acíclicos no discrimina entre ellos. Para distinguirlos hace falta comparar los <em>diagramas de persistencia completos</em> —usando la distancia <em>bottleneck</em> o Wasserstein— o los <em>paisajes de persistencia</em> completos, que son vectores en <span class="math inline">\(L^p\)</span> y admiten estadística funcional. Dos grafos pueden tener <span class="math inline">\(\beta_k\)</span> idénticos y diferir completamente en el número de nodos, los pesos Jaccard de las aristas o la distribución geográfica de los campos.</p>
+</div>
+<div class="solucion" id="sol-sec-manos-tda-23">
+<p><a class="solucion-num" href="#q-sec-manos-tda-23"><strong>2.23.</strong></a> Usar las categorías arXiv como etiqueta independiente. <strong>Test 1 (pureza):</strong> auditar <span class="math inline">\(m \approx 60\)</span> nodos del UMAP-nervio (potencia 0.8 para detectar diferencia de 10 pp con el PCA-nervio); comparar <span class="math inline">\(\hat{p}_{\text{UMAP}}\)</span> con <span class="math inline">\(\hat{p}_{\text{PCA}}\)</span> con un test de proporciones de dos muestras. <strong>Test 2 (ANMI):</strong> calcular la información mutua ajustada entre la partición del nervio y las categorías arXiv top-level; con <span class="math inline">\(N=8085\)</span> y <span class="math inline">\(k \approx 100\)</span> nodos, ANMI <span class="math inline">\(&gt; 0.05\)</span> es estadísticamente significativo. <strong>Test 3 (correlación de aristas):</strong> comparar el peso Jaccard de cada arista del nervio con la fracción de pares con categoría arXiv compartida; calcular la correlación de Spearman <span class="math inline">\(\rho\)</span> con umbral <span class="math inline">\(\rho_c \approx 0.14\)</span> para <span class="math inline">\(n \approx 200\)</span> aristas. Si el UMAP-nervio supera al PCA-nervio en los tres tests, captura mejor la estructura disciplinar real del corpus.</p>
+</div>
+</div>
+<div class="solucion" data-ref="sec-aplicaciones-tda">
+<div class="solucion" id="sol-sec-aplicaciones-tda-1">
+<p><a class="solucion-num" href="#q-sec-aplicaciones-tda-1"><strong>3.1.</strong></a> Los descriptores convencionales (intensidades de imagen en diagnóstico, <em>fingerprints</em> moleculares en fármacos, correlaciones par a par en conectomas) capturan propiedades locales pero ignoran la forma global: cuántas componentes, agujeros o cavidades hay. La invarianza bajo deformaciones es especialmente valiosa porque las transformaciones de preprocesado habituales — normalización, alineamiento, cambio de resolución — no alteran los rasgos topológicos: el número de cavidades de una proteína no cambia si la rotamos o escalamos uniformemente.</p>
+</div>
+<div class="solucion" id="sol-sec-aplicaciones-tda-2">
+<p><a class="solucion-num" href="#q-sec-aplicaciones-tda-2"><strong>3.2.</strong></a> Una respuesta correcta del LLM debería mencionar <code>ripser</code> (muy rápido, binding Python de C++), <code>giotto-tda</code> (integrado con scikit-learn), <code>gudhi</code> (biblioteca INRIA, amplia) y <code>kmapper</code> para Mapper. Un ejemplo básico: <code>import ripser, persim; dgms = ripser.ripser(puntos)["dgms"]; persim.plot_diagrams(dgms)</code>.</p>
+</div>
+</div>
+<div class="solucion" data-ref="sec-limitaciones-tda">
+<div class="solucion" id="sol-sec-limitaciones-tda-1">
+<p><a class="solucion-num" href="#q-sec-limitaciones-tda-1"><strong>4.1.</strong></a> Con dimensión intrínseca 3, calcular <span class="math inline">\(H_1\)</span> para 1.000 puntos es viable: <span class="math inline">\(\binom{1000}{3} \approx 1{,}7 \times 10^8\)</span> triángulos potenciales, manejables con <em>lazy evaluation</em>. Con dimensión intrínseca 20, el problema no es computacional sino de densidad: la teoría exige <span class="math inline">\(O((1/\tau)^{d_I})\)</span> puntos para cubrir la variedad uniformemente, y con <span class="math inline">\(d_I = 20\)</span> esos 1.000 puntos son claramente insuficientes — los ciclos detectados pueden ser artefactos de submuestreo.</p>
+</div>
+<div class="solucion" id="sol-sec-limitaciones-tda-2">
+<p><a class="solucion-num" href="#q-sec-limitaciones-tda-2"><strong>4.2.</strong></a> Para <span class="math inline">\(H_2\)</span> se necesitan tetraedros: <span class="math inline">\(\binom{1000}{4} \approx 4{,}1 \times 10^{10}\)</span> — inviable incluso con <em>lazy evaluation</em>. Para <span class="math inline">\(H_1\)</span> solo hacen falta triángulos: <span class="math inline">\(\binom{1000}{3} \approx 1{,}7 \times 10^8\)</span>; <code>ripser</code> los gestiona sin materializarlos todos gracias a cohomología dual y evaluación perezosa.</p>
+</div>
+<div class="solucion" id="sol-sec-limitaciones-tda-3">
+<p><a class="solucion-num" href="#q-sec-limitaciones-tda-3"><strong>4.3.</strong></a> No necesariamente: una barra persistente en <span class="math inline">\(H_0\)</span> puede ser la señal más valiosa — en finanzas, la transacción que forma una componente aislada es exactamente la anomalía que buscamos. El proceso correcto: localizar el punto responsable con los ciclos representativos de la Receta 4; inspeccionarlo en el dominio; decidir según el contexto. El TDA localiza la ambigüedad; el experto de dominio la resuelve.</p>
+</div>
+</div>
+<div class="solucion" data-ref="sec-fundamentos-tda">
+<div class="solucion" id="sol-sec-fundamentos-tda-1">
+<p><a class="solucion-num" href="#q-sec-fundamentos-tda-1"><strong>5.1.</strong></a> El complejo de Vietoris-Rips comprueba únicamente distancias por pares — <span class="math inline">\(O(n^2)\)</span> independientemente del orden del símplice — mientras que el complejo de Čech requiere verificar la intersección de <span class="math inline">\(k\)</span> bolas en dimensión alta, lo que implica resolver un programa lineal por cada posible símplice. En <span class="math inline">\(\mathbb{R}^{100}\)</span> con <span class="math inline">\(k = 5\)</span>, esto supone varios órdenes de magnitud más trabajo por símplice que VR.</p>
+</div>
+<div class="solucion" id="sol-sec-fundamentos-tda-2">
+<p><a class="solucion-num" href="#q-sec-fundamentos-tda-2"><strong>5.2.</strong></a> Con 6 puntos: aristas = <span class="math inline">\(\binom{6}{2} = 15\)</span>; triángulos = <span class="math inline">\(\binom{6}{3} = 20\)</span>; tetraedros = <span class="math inline">\(\binom{6}{4} = 15\)</span>. Ya con tan pocos puntos, el complejo simplicial completo tiene 50 celdas de dimensión <span class="math inline">\(\leq 3\)</span> — ilustrando cómo el tamaño crece combinatoriamente.</p>
+</div>
+<div class="solucion" id="sol-sec-fundamentos-tda-3">
+<p><a class="solucion-num" href="#q-sec-fundamentos-tda-3"><strong>5.3.</strong></a> Una respuesta correcta debe destacar que un triángulo <span class="math inline">\(\{u,v,w\}\)</span> captura una relación de orden superior: los tres puntos están mutuamente dentro del umbral, lo que rellena el hueco central y elimina el ciclo <span class="math inline">\(u\text{-}v\text{-}w\)</span>. Tres aristas sin triángulo dejan ese hueco abierto (<span class="math inline">\(\beta_1 = 1\)</span>); añadir el triángulo lo anula (<span class="math inline">\(\beta_1 = 0\)</span>).</p>
+</div>
+<div class="solucion" id="sol-sec-fundamentos-tda-4">
+<p><a class="solucion-num" href="#q-sec-fundamentos-tda-4"><strong>5.4.</strong></a> Tomemos vértices <span class="math inline">\(\{a,b,c,d\}\)</span> con triángulo <span class="math inline">\(\{a,b,c\}\)</span> y aristas extra <span class="math inline">\(\{b,d\}\)</span> y <span class="math inline">\(\{a,d\}\)</span>. El ciclo <span class="math inline">\(a\)</span>-<span class="math inline">\(b\)</span>-<span class="math inline">\(d\)</span>-<span class="math inline">\(a\)</span> está formado por aristas del complejo y no puede rellenarse con el único triángulo disponible <span class="math inline">\(\{a,b,c\}\)</span> (que no contiene <span class="math inline">\(d\)</span>): es un agujero real, <span class="math inline">\(\beta_1 = 1\)</span>. Si añadiéramos <span class="math inline">\(\{a,b,d\}\)</span>, ese ciclo pasaría a ser frontera y <span class="math inline">\(\beta_1\)</span> volvería a 0.</p>
+</div>
+<div class="solucion" id="sol-sec-fundamentos-tda-5">
+<p><a class="solucion-num" href="#q-sec-fundamentos-tda-5"><strong>5.5.</strong></a> Para <span class="math inline">\(H_1\)</span> se necesitan triángulos: <span class="math inline">\(\binom{1000}{3} \approx 1{,}66 \times 10^8\)</span>, manejable con <em>lazy evaluation</em> (ripser nunca los materializa todos). Para <span class="math inline">\(H_2\)</span> se necesitan tetraedros: <span class="math inline">\(\binom{1000}{4} \approx 4{,}1 \times 10^{10}\)</span> — varios órdenes de magnitud más, lo que hace inviable la reducción de la matriz de frontera incluso con estrategias perezosas.</p>
+</div>
+<div class="solucion" id="sol-sec-fundamentos-tda-6">
+<p><a class="solucion-num" href="#q-sec-fundamentos-tda-6"><strong>5.6.</strong></a> Sí. Dos ciclos son homólogos si su diferencia simétrica es frontera de algún conjunto de triángulos, lo que permite trayectorias totalmente distintas. Ejemplo: en un toro, dos rutas que rodean el mismo agujero pueden no compartir ninguna arista si van por lados opuestos — son homólogas pero geométricamente disjuntas.</p>
+</div>
+<div class="solucion" id="sol-sec-fundamentos-tda-7">
+<p><a class="solucion-num" href="#q-sec-fundamentos-tda-7"><strong>5.7.</strong></a> El punto <span class="math inline">\((0{,}3, +\infty)\)</span> indica la última componente conexa inmortal de <span class="math inline">\(H_0\)</span> (<span class="math inline">\(\beta_0\)</span> final <span class="math inline">\(= 1\)</span>). Los puntos <span class="math inline">\((0{,}2, 0{,}8)\)</span> y <span class="math inline">\((0{,}1, 0{,}15)\)</span> representan dos características adicionales: la primera tiene persistencia <span class="math inline">\(0{,}6\)</span> (señal, lejos de la diagonal); la segunda tiene persistencia <span class="math inline">\(0{,}05\)</span> (ruido, muy cerca de la diagonal). Si los puntos finitos pertenecen a <span class="math inline">\(H_1\)</span>: hay 2 ciclos, uno significativo y uno de ruido.</p>
+</div>
+<div class="solucion" id="sol-sec-fundamentos-tda-8">
+<p><a class="solucion-num" href="#q-sec-fundamentos-tda-8"><strong>5.8.</strong></a> Sí: multiplicidad <span class="math inline">\(&gt; 1\)</span> ocurre cuando dos características distintas nacen y mueren exactamente a la misma escala, posible en datos con simetrías perfectas (p.ej., dos anillos idénticos centrados simétricamente). Significa que hay dos agujeros con el mismo historial topológico, no un único punto doble. En datos reales sin simetría exacta, la multiplicidad mayor que uno es prácticamente inexistente.</p>
+</div>
+<div class="solucion" id="sol-sec-fundamentos-tda-9">
+<p><a class="solucion-num" href="#q-sec-fundamentos-tda-9"><strong>5.9.</strong></a> La cota del teorema de estabilidad es <span class="math inline">\(W_\infty(D(X), D(Y)) \leq 2 \cdot d_H(X,Y) = 2 \times 0{,}1 = 0{,}2\)</span>. La persistencia de cualquier ciclo puede cambiar como máximo en <span class="math inline">\(0{,}2\)</span> — tanto en la coordenada de nacimiento como en la de muerte.</p>
+</div>
+<div class="solucion" id="sol-sec-fundamentos-tda-10">
+<p><a class="solucion-num" href="#q-sec-fundamentos-tda-10"><strong>5.10.</strong></a> Un <em>outlier</em> muy alejado del resto implica <span class="math inline">\(d_H(X, X \setminus \{\text{outlier}\}) \approx\)</span> distancia del <em>outlier</em> al conjunto, que puede ser grande. La cota garantiza que el diagrama cambia hasta <span class="math inline">\(2 \times\)</span> esa distancia: se crea una barra de <span class="math inline">\(H_0\)</span> cuya longitud es esa distancia, potencialmente mucho mayor que el umbral de ruido. El antídoto: usar ciclos representativos (Receta 4) para identificar el punto responsable de la barra sospechosa e inspeccionarlo en el dominio.</p>
+</div>
+<div class="solucion" id="sol-sec-fundamentos-tda-11">
+<p><a class="solucion-num" href="#q-sec-fundamentos-tda-11"><strong>5.11.</strong></a> Con ruido gaussiano <span class="math inline">\(d_H\)</span> crece solo como <span class="math inline">\(\sigma\sqrt{2\log n}\)</span>, así que la cota del teorema sigue siendo ajustada. Con Pareto de exponente <span class="math inline">\(\alpha &lt; 1\)</span>, el máximo de <span class="math inline">\(n\)</span> muestras crece como <span class="math inline">\(n^{1/\alpha}\)</span>: la distancia de Hausdorff se dispara y la cota se vuelve trivialmente grande. La filtración DTM promedia sobre los <span class="math inline">\(k\)</span> vecinos más cercanos de cada punto en lugar de depender del más lejano, de modo que un único valor extremo apenas la perturba — igual que la mediana es robusta frente a la media.</p>
+</div>
+<div class="solucion" id="sol-sec-fundamentos-tda-12">
+<p><a class="solucion-num" href="#q-sec-fundamentos-tda-12"><strong>5.12.</strong></a> Con <span class="math inline">\(d_I \approx 15\)</span> y <span class="math inline">\(\tau = 0.5\)</span>, la fórmula de Niyogi et al. requiere <span class="math inline">\(n = O(1/0.5^{15}) \approx 3 \times 10^4\)</span> puntos para garantías formales. Las Recetas 5 y 6 operan con 200–2.000 embeddings — entre 15 y 150 veces menos. Lo que sigue siendo defensible: (1) <span class="math inline">\(H_0\)</span> con bootstrap, que valida la estructura de componentes conexas cualitativamente; (2) el grafo Mapper, cuyo lema del nervio solo exige que los parches sean contráctiles; (3) resultados estadísticos validados tanto con banda bootstrap como con línea nula. Lo que exige cautela: afirmaciones sobre ciclos específicos en <span class="math inline">\(H_1\)</span> o cavidades en <span class="math inline">\(H_2\)</span>, donde la detección puede ser un artefacto de submuestreo.</p>
+</div>
+<div class="solucion" id="sol-sec-fundamentos-tda-13">
+<p><a class="solucion-num" href="#q-sec-fundamentos-tda-13"><strong>5.13.</strong></a> La diferencia la explica la <strong>concentración de distancias en alta dimensión</strong>. En <span class="math inline">\(\mathbb{R}^{384}\)</span>, la varianza relativa de las distancias entre pares de puntos decae como <span class="math inline">\(\sqrt{2/d}\)</span>: con <span class="math inline">\(d=384\)</span>, el coeficiente de variación es solo <span class="math inline">\(\approx 7\%\)</span>. Todas las aristas de la filtración de Vietoris-Rips se insertan casi al mismo tiempo, y la homología resultante no refleja estructura real sino la geometría del hipercubo de muestreo. Con UMAP en <span class="math inline">\(\mathbb{R}^{10}\)</span>, el coeficiente de variación sube a <span class="math inline">\(\approx 45\%\)</span> — las distancias son discriminativas y la filtración tiene resolución suficiente para separar aristas de señal de aristas de ruido. No es un problema de <span class="math inline">\(n\)</span>: el mismo corpus con 5.000 puntos seguiría sin estructura en <span class="math inline">\(\mathbb{R}^{384}\)</span> pero con estructura clara en <span class="math inline">\(\mathbb{R}^{10}\)</span>.</p>
+</div>
+<div class="solucion" id="sol-sec-fundamentos-tda-14">
+<p><a class="solucion-num" href="#q-sec-fundamentos-tda-14"><strong>5.14.</strong></a> Con 150 columnas numéricas independientes entre sí, la dimensión intrínseca es <span class="math inline">\(d_I \approx D = 150\)</span>. Según la <a class="quarto-xref" href="05.html#tbl-viabilidad-tda">Tabla <span>5.1</span></a>, el <span class="math inline">\(n\)</span> requerido escala como <span class="math inline">\(O(1/\tau^{150})\)</span>: para <span class="math inline">\(\tau = 0.5\)</span> supera <span class="math inline">\(10^{45}\)</span> puntos — completamente prohibitivo. Además, la concentración de distancias en <span class="math inline">\(\mathbb{R}^{150}\)</span> tiene un coeficiente de variación de <span class="math inline">\(\approx \sqrt{2/150} \approx 12\%\)</span>: las distancias ya están concentradas y UMAP no puede desplegar ninguna variedad porque no existe. La herramienta alternativa depende del objetivo: detección de anomalías (Isolation Forest, COPOD) si se buscan transacciones atípicas; PCA seguido de regresión logística si se sospecha estructura lineal; o modelos supervisados directamente sobre las 150 columnas si hay etiquetas disponibles.</p>
+</div>
+<div class="solucion" id="sol-sec-fundamentos-tda-15">
+<p><a class="solucion-num" href="#q-sec-fundamentos-tda-15"><strong>5.15.</strong></a> La función tienda de <span class="math inline">\(p_1 = (0,2)\)</span> vale <span class="math inline">\(\lambda(t) = \min(t, 2-t)\)</span> para <span class="math inline">\(t \in [0,2]\)</span>; a <span class="math inline">\(t = 1{,}5\)</span>: <span class="math inline">\(\min(1{,}5,\, 0{,}5) = 0{,}5\)</span>. La tienda de <span class="math inline">\(p_2 = (1,3)\)</span> vale <span class="math inline">\(\min(t-1,\, 3-t)\)</span> para <span class="math inline">\(t \in [1,3]\)</span>; a <span class="math inline">\(t = 1{,}5\)</span>: <span class="math inline">\(\min(0{,}5,\, 1{,}5) = 0{,}5\)</span>. Ambas tiendas están activas con altura <span class="math inline">\(0{,}5\)</span>: <span class="math inline">\(\lambda_1(1{,}5) = 0{,}5\)</span> y <span class="math inline">\(\lambda_2(1{,}5) = 0{,}5\)</span>.</p>
+</div>
+<div class="solucion" id="sol-sec-fundamentos-tda-16">
+<p><a class="solucion-num" href="#q-sec-fundamentos-tda-16"><strong>5.16.</strong></a> El espacio de diagramas de persistencia bajo distancia <em>bottleneck</em> no es un espacio de Hilbert ni de Banach: la media de dos diagramas no está en general bien definida como diagrama. El paisaje de persistencia vive en <span class="math inline">\(L^p\)</span> (funciones integrables al cuadrado), que sí es Banach: la media de paisajes es un paisaje, las operaciones vectoriales son cerradas, y el <em>bootstrap</em> estándar aplica directamente para construir intervalos de confianza funcionales.</p>
+</div>
+<div class="solucion" id="sol-sec-fundamentos-tda-17">
+<p><a class="solucion-num" href="#q-sec-fundamentos-tda-17"><strong>5.17.</strong></a> No: superar la banda bootstrap solo indica que el pico es <em>reproducible</em> entre remuestras del dataset original (precisión), pero no que supere el nivel de ruido esperable sin ninguna estructura geométrica. Para afirmar significación estadística hace falta la línea nula: se generan <span class="math inline">\(B\)</span> datasets permutados (aleatorizando las coordenadas de cada punto de forma independiente, lo que destruye la geometría conjunta pero conserva las distribuciones marginales) y se calcula el percentil 95 de sus paisajes. Solo si el pico supera esa línea nula se puede descartar que la señal sea un artefacto del tamaño o la forma del dataset.</p>
+</div>
+<div class="solucion" id="sol-sec-fundamentos-tda-18">
+<p><a class="solucion-num" href="#q-sec-fundamentos-tda-18"><strong>5.18.</strong></a> Una respuesta correcta debe indicar: (1) el vector de 10 persistencias ignora el nacimiento — dos <em>features</em> con la misma persistencia pero distintos nacimientos son indistinguibles; (2) el paisaje incorpora tanto nacimiento como muerte; (3) el paisaje es estable: si la 10.ª y la 11.ª persistencia se cruzan, el vector cambia discontinuamente mientras el paisaje cambia de forma continua; (4) el paisaje permite estadística funcional (bootstrap, regresión sobre funciones).</p>
+</div>
+<div class="solucion" id="sol-sec-fundamentos-tda-19">
+<p><a class="solucion-num" href="#q-sec-fundamentos-tda-19"><strong>5.19.</strong></a> Con lente de densidad local, los intervalos de la cubierta separarían zonas densas de zonas dispersas, no agrupaciones por campo científico. El grafo nervio mostraría un núcleo densamente conectado (los <em>papers</em> interdisciplinares con muchos vecinos) rodeado de satélites dispersos (fronteras de cada campo), sin la estructura de árbol jerárquico que refleja la taxonomía disciplinar que obteníamos con PCA como lente.</p>
+</div>
+<div class="solucion" id="sol-sec-fundamentos-tda-20">
+<p><a class="solucion-num" href="#q-sec-fundamentos-tda-20"><strong>5.20.</strong></a> Sin solapamiento, cada punto pertenece exactamente a un intervalo y por tanto a exactamente un <em>cluster</em>. Dos <em>clusters</em> de intervalos distintos nunca comparten puntos, así que nunca se genera ninguna arista entre ellos. El resultado es un grafo totalmente desconectado: sin aristas no puede haber ciclos, y el nervio no puede capturar ninguna estructura topológica global.</p>
+</div>
+<div class="solucion" id="sol-sec-fundamentos-tda-21">
+<p><a class="solucion-num" href="#q-sec-fundamentos-tda-21"><strong>5.21.</strong></a> Si <span class="math inline">\(\bar{J} = 0{,}3\)</span> los nodos no identifican subconjuntos reproducibles de papers entre remuestras: la composición concreta de cada cluster cambia mucho aunque los <span class="math inline">\(\beta_k\)</span> se mantengan. Las afirmaciones sobre topología global (número de componentes, ciclos, cavidades) siguen siendo válidas, pero cualquier interpretación que dependa de <em>qué papers</em> forman cada nodo —caracterizar disciplinas, identificar puentes interdisciplinares, etiquetar clusters— queda invalidada. La conclusión topológica es robusta; la combinatoria, no.</p>
+</div>
+<div class="solucion" id="sol-sec-fundamentos-tda-22">
+<p><a class="solucion-num" href="#q-sec-fundamentos-tda-22"><strong>5.22.</strong></a> Para detectar una diferencia de 10 puntos de pureza con <span class="math inline">\(\alpha = 0{,}05\)</span> y potencia 0,8, basta auditar <span class="math inline">\(m \approx 60\)</span> nodos por nervio (test de proporciones de dos muestras). Para el test de información mutua se usa ANMI (<code>adjusted_mutual_info_score</code> en sklearn): <span class="math inline">\(\mathbb{E}[\text{ANMI}] = 0\)</span> bajo H₀ por construcción y la varianza analítica da <span class="math inline">\(\sigma \approx 0{,}016\)</span> para este corpus, así que ANMI <span class="math inline">\(&gt; 0{,}05\)</span> es significativo sin permutaciones. Para la correlación de aristas se puede usar la fracción de pares con coautoría — disponible en los metadatos de arXiv y completamente independiente del embedding semántico — calculando la correlación de Spearman <span class="math inline">\(\rho\)</span> entre el peso Jaccard de cada arista y la tasa de coautoría; la significación se evalúa con <span class="math inline">\(t = \rho\sqrt{(n-2)/(1-\rho^2)} \sim t_{n-2}\)</span>, con umbral <span class="math inline">\(\rho_c \approx 0{,}14\)</span> para <span class="math inline">\(n \approx 250\)</span> aristas.</p>
+</div>
+<div class="solucion" id="sol-sec-fundamentos-tda-23">
+<p><a class="solucion-num" href="#q-sec-fundamentos-tda-23"><strong>5.23.</strong></a> Las categorías arXiv son auto-asignadas por los autores, multilíquetas (un paper puede aparecer en cs.LG y stat.ML simultáneamente), y reflejan tanto contenido como convenciones sociológicas del campo. Como cada nodo del nervio tiene una sola etiqueta «mayoritaria», la pureza máxima posible es estructuralmente menor que 1 incluso para particiones perfectas: papers genuinamente interdisciplinares contribuyen como «impurezas» a cualquier nodo. La interpretación correcta de <span class="math inline">\(\hat{p}\)</span> no es como fracción absoluta, sino comparativa entre nervios sobre el mismo corpus: <span class="math inline">\(\hat{p}_{\text{UMAP}} &gt; \hat{p}_{\text{PCA}}\)</span> con <span class="math inline">\(m = 60\)</span> nodos significa que UMAP captura mejor la categorización auto-declarada, sin pretender que sea la verdad fundamental.</p>
+</div>
+<div class="solucion" id="sol-sec-fundamentos-tda-24">
+<p><a class="solucion-num" href="#q-sec-fundamentos-tda-24"><strong>5.24.</strong></a> Una señal con dos frecuencias incomensurables <span class="math inline">\(f_1/f_2 \notin \mathbb{Q}\)</span> tiene un atractor homeomorfo a un toro <span class="math inline">\(T^2 = S^1 \times S^1\)</span>. El toro tiene <span class="math inline">\(\beta_1 = 2\)</span> (dos ciclos independientes: uno para cada frecuencia) y <span class="math inline">\(\beta_2 = 1\)</span> (una cavidad encerrada). Por tanto, <code>ripser</code> sobre el atractor reconstruido debería detectar 2 ciclos muy persistentes en <span class="math inline">\(H_1\)</span> y 1 cavidad persistente en <span class="math inline">\(H_2\)</span>. La trayectoria llena densamente el toro sin cerrarse, lo que hace que ambos ciclos sean persistentes en lugar de efímeros.</p>
+</div>
+<div class="solucion" id="sol-sec-fundamentos-tda-25">
+<p><a class="solucion-num" href="#q-sec-fundamentos-tda-25"><strong>5.25.</strong></a> Si <span class="math inline">\(\tau = T\)</span> (período exacto de la oscilación), entonces <span class="math inline">\(s(t) = s(t+T)\)</span> para todo <span class="math inline">\(t\)</span>, y el <em>embedding</em> <span class="math inline">\(\Phi(t) = (s(t), s(t+T)) = (s(t), s(t))\)</span> es la diagonal de <span class="math inline">\(\mathbb{R}^2\)</span> — un segmento, no un círculo. <code>ripser</code> vería <span class="math inline">\(\beta_1 = 0\)</span>: la información de periodicidad se ha colapsado. El criterio del primer mínimo de información mutua identifica automáticamente los retardos resonantes que hay que evitar.</p>
+</div>
+<div class="solucion" id="sol-sec-fundamentos-tda-26">
+<p><a class="solucion-num" href="#q-sec-fundamentos-tda-26"><strong>5.26.</strong></a> «Genéricamente» significa «para un conjunto de parámetros de medida completa», es decir, salvo un conjunto de excepciones de medida cero. En la práctica equivale a «casi todo <span class="math inline">\(\tau\)</span> y casi toda función de observación funcionan». Solo retardos que sean múltiplos exactos del período de la dinámica pueden causar problemas, y se identifican fácilmente con el criterio de información mutua antes de aplicar el teorema.</p>
+</div>
 </div>
 </section></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -2412,15 +2592,7 @@ Data.”</span> <em>Bulletin of the American Mathematical Society</em> 45
     }
   });
   </script>
-<nav class="page-navigation">
-<div class="nav-page nav-page-previous">
-</div>
-<div class="nav-page nav-page-next">
-<a aria-label="Prólogo" class="pagination-link" href="./00-prologo.html">
-<span class="nav-page-text">Prólogo</span> <i class="bi bi-arrow-right-short"></i>
-</a>
-</div>
-</nav>
+
 </div> <!-- /content -->
 <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script><script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script><script type="text/javascript">
 const typesetMath = (el) => {
