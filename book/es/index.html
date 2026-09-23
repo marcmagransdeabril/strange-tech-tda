@@ -2,14 +2,11 @@
 
 <html lang="es" xml:lang="es" xmlns="http://www.w3.org/1999/xhtml"><head>
 <meta charset="utf-8"/>
-<meta content="quarto-1.9.36" name="generator"/>
+<meta content="quarto-1.5.57" name="generator"/>
 <meta content="width=device-width, initial-scale=1.0, user-scalable=yes" name="viewport"/>
 <meta content="Marc Magrans de Abril" name="author"/>
 <title>Tecnologías Extrañas: Análisis Topológico de Datos</title>
 <style>
-/* Default styles provided by pandoc.
-** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
-*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -26,19 +23,18 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-nav/headroom.min.js"></script>
 
 <script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet"/>
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" id="quarto-text-highlighting-styles" rel="stylesheet"/>
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" id="quarto-text-highlighting-styles" rel="stylesheet"/>
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet"/>
-<link append-hash="true" data-mode="light" href="site_libs/bootstrap/bootstrap-9e09d2eb63ca372e5c6aa0cd7f5bad22.min.css" id="quarto-bootstrap" rel="stylesheet"/>
+<link data-mode="light" href="site_libs/bootstrap/bootstrap.min.css" id="quarto-bootstrap" rel="stylesheet"/>
 <script id="quarto-search-options" type="application/json">{
   "language": {
-    "search-no-results-text": "No se han encontrado resultados",
+    "search-no-results-text": "Sin resultados",
     "search-matching-documents-text": "documentos encontrados",
     "search-copy-link-title": "Copiar el enlace en la búsqueda",
     "search-hide-matches-text": "Ocultar resultados adicionales",
@@ -51,7 +47,7 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Buscar"
   }
 }</script>
-</head><body class="nav-sidebar floating quarto-light"><a class="lang-switch-badge" href="../en/index.html">EN</a>
+</head><body class="nav-sidebar floating"><a class="lang-switch-badge" href="../en/index.html">EN</a>
 <link href="templates/styles.css" rel="stylesheet"/>
 <link href="templates/standalone-book.css" rel="stylesheet"/>
 <div id="quarto-search-results"></div>
@@ -224,7 +220,7 @@ ul.task-list li input[type="checkbox"] {
 <p>Esa pregunta llegó en 2002. El problema con aplicar homología a datos reales era que el resultado dependía enteramente de un parámetro de escala: conecta los puntos demasiado pronto y todo es una masa amorfa; demasiado tarde y nada está conectado. Herbert Edelsbrunner, David Letscher y Afra Zomorodian propusieron la solución obvia en retrospectiva: calcular la homología en <em>todas</em> las escalas simultáneamente y registrar a qué escala cada rasgo nace y a qué escala muere. El nombre — <em>homología persistente</em> — captura exactamente la idea: lo que persiste durante un rango amplio de escalas es señal; lo efímero es ruido. Dos años después, Zomorodian y Carlsson completaron el algoritmo práctico, y los <em>barcodes</em> — barras horizontales donde la longitud representa cuánto persiste cada rasgo — convirtieron un cálculo abstracto en algo que se puede leer de un vistazo.</p>
 <p>En 2009, Gunnar Carlsson publicó «Topology and Data» en el <em>Bulletin of the American Mathematical Society</em> <span class="citation" data-cites="carlsson2009topology">(<a href="07.html#ref-carlsson2009topology" role="doc-biblioref">Carlsson 2009</a>)</span>, el texto que actuó como manifiesto del campo. Su argumento central era que la topología ofrecía a los datos algo que ni la estadística ni el álgebra lineal podían dar: descriptores de forma invariantes bajo deformaciones continuas, que funcionan en cualquier dimensión y que son matemáticamente estables — una pequeña perturbación en los datos produce una pequeña perturbación en el barcode, no un resultado completamente distinto. El artículo llegó cuando el aprendizaje automático empezaba a ahogarse en datos de alta dimensión y consolidó el TDA como disciplina con nombre propio.</p>
 <p>Las primeras aplicaciones que respaldaron el entusiasmo llegaron pronto: en 2011, Nicolau, Levine y Carlsson identificaron un subgrupo de cáncer de mama con perfil mutacional distintivo — y pronóstico excelente — que los métodos de clustering convencionales habían ignorado durante años; en 2013, el algoritmo Mapper reveló estructuras en datos de baloncesto y encuestas políticas que no cabían en ninguna segmentación preexistente. La llegada de librerías eficientes — GUDHI (INRIA, 2014) y sobre todo Ripser (2016), que redujo el tiempo de cálculo en varios órdenes de magnitud — completó la transición del laboratorio matemático al análisis de datos aplicado. ¿Cómo luce, en la práctica, ese barcode que codifica los agujeros de una nube de puntos real? Antes de la teoría, la mejor respuesta es verlo con código.</p>
-<div class="references csl-bib-body hanging-indent" id="refs" role="list" style="display: none">
+<div class="references csl-bib-body hanging-indent" data-entry-spacing="0" id="refs" role="list" style="display: none">
 <div class="csl-entry" id="ref-carlsson2009topology" role="listitem">
 Carlsson, Gunnar. 2009. <span>«Topology and Data»</span>. <em>Bulletin of the American Mathematical Society</em> 46 (2): 255-308. <a href="https://doi.org/10.1090/S0273-0979-09-01249-X">https://doi.org/10.1090/S0273-0979-09-01249-X</a>.
 </div>
@@ -244,7 +240,7 @@ Carlsson, Gunnar. 2009. <span>«Topology and Data»</span>. <em>Bulletin of the 
 <h2 class="anchored" data-anchor-id="sec-tda-tres-islas" data-number="2.1"><span class="header-section-number">2.1</span> Receta 1: Tres islas</h2>
 <p>Empezaremos con el caso más sencillo posible: tres grupos de puntos aleatorios bien separados en un plano. La pregunta es: ¿cuántos «grupos» hay, y a qué distancia se fusionan?</p>
 <p>Primero generamos los puntos con una distribución normal:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a aria-hidden="true" href="#cb1-1" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a aria-hidden="true" href="#cb1-1" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-2"><a aria-hidden="true" href="#cb1-2" tabindex="-1"></a><span class="im">from</span> ripser <span class="im">import</span> ripser</span>
 <span id="cb1-3"><a aria-hidden="true" href="#cb1-3" tabindex="-1"></a></span>
 <span id="cb1-4"><a aria-hidden="true" href="#cb1-4" tabindex="-1"></a><span class="co"># Tres clusters gaussianos separados por 3 unidades</span></span>
@@ -254,17 +250,17 @@ Carlsson, Gunnar. 2009. <span>«Topology and Data»</span>. <em>Bulletin of the 
 <span id="cb1-8"><a aria-hidden="true" href="#cb1-8" tabindex="-1"></a>    rng.normal(loc<span class="op">=</span>c, scale<span class="op">=</span><span class="fl">0.3</span>, size<span class="op">=</span>(<span class="dv">50</span>, <span class="dv">2</span>))</span>
 <span id="cb1-9"><a aria-hidden="true" href="#cb1-9" tabindex="-1"></a>    <span class="cf">for</span> c <span class="kw">in</span> centros</span>
 <span id="cb1-10"><a aria-hidden="true" href="#cb1-10" tabindex="-1"></a>])</span>
-<span id="cb1-11"><a aria-hidden="true" href="#cb1-11" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Puntos: </span><span class="sc">{</span><span class="bu">len</span>(puntos)<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button class="code-copy-button" title="Copiar al portapapeles"><i class="bi"></i></button></div>
+<span id="cb1-11"><a aria-hidden="true" href="#cb1-11" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Puntos: </span><span class="sc">{</span><span class="bu">len</span>(puntos)<span class="sc">}</span><span class="ss">"</span>)</span></code><button class="code-copy-button" title="Copiar al portapapeles"><i class="bi"></i></button></pre></div>
 <p>Calculamos solo el rango de <span class="math inline">\(H_0\)</span> — el grupo homológico cero, que cuenta el número de piezas o componentes conexas:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a aria-hidden="true" href="#cb2-1" tabindex="-1"></a>resultado <span class="op">=</span> ripser(puntos, maxdim<span class="op">=</span><span class="dv">0</span>)</span>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a aria-hidden="true" href="#cb2-1" tabindex="-1"></a>resultado <span class="op">=</span> ripser(puntos, maxdim<span class="op">=</span><span class="dv">0</span>)</span>
 <span id="cb2-2"><a aria-hidden="true" href="#cb2-2" tabindex="-1"></a>dgms <span class="op">=</span> resultado[<span class="st">"dgms"</span>]</span>
-<span id="cb2-3"><a aria-hidden="true" href="#cb2-3" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Componentes H0: </span><span class="sc">{</span><span class="bu">len</span>(dgms[<span class="dv">0</span>])<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button class="code-copy-button" title="Copiar al portapapeles"><i class="bi"></i></button></div>
+<span id="cb2-3"><a aria-hidden="true" href="#cb2-3" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Componentes H0: </span><span class="sc">{</span><span class="bu">len</span>(dgms[<span class="dv">0</span>])<span class="sc">}</span><span class="ss">"</span>)</span></code><button class="code-copy-button" title="Copiar al portapapeles"><i class="bi"></i></button></pre></div>
 <p><code>ripser</code> reporta 150 características en <span class="math inline">\(H_0\)</span>. ¿Por qué 150 si solo hay 3 clusters? Porque <code>ripser</code> trabaja con una <strong>filtración</strong>: empieza con cada punto aislado (150 componentes) y, a medida que aumenta un parámetro de escala <span class="math inline">\(\varepsilon\)</span> (el radio de la filtración), conecta puntos cercanos en relación a <span class="math inline">\(\varepsilon\)</span>. Cada vez que dos componentes se fusionan, una «muere». El <strong>diagrama de persistencia</strong> de <span class="math inline">\(H_0\)</span> registra cuándo nace y cuándo muere cada componente:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a aria-hidden="true" href="#cb3-1" tabindex="-1"></a><span class="co"># Componentes con muerte finita (las que se fusionaron)</span></span>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a aria-hidden="true" href="#cb3-1" tabindex="-1"></a><span class="co"># Componentes con muerte finita (las que se fusionaron)</span></span>
 <span id="cb3-2"><a aria-hidden="true" href="#cb3-2" tabindex="-1"></a>finitos <span class="op">=</span> dgms[<span class="dv">0</span>][np.isfinite(dgms[<span class="dv">0</span>][:, <span class="dv">1</span>])]</span>
 <span id="cb3-3"><a aria-hidden="true" href="#cb3-3" tabindex="-1"></a>muertes <span class="op">=</span> np.sort(finitos[:, <span class="dv">1</span>])[::<span class="op">-</span><span class="dv">1</span>]</span>
 <span id="cb3-4"><a aria-hidden="true" href="#cb3-4" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Las 2 fusiones más tardías: "</span></span>
-<span id="cb3-5"><a aria-hidden="true" href="#cb3-5" tabindex="-1"></a>      <span class="ss">f"ε = </span><span class="sc">{</span>muertes[<span class="dv">0</span>]<span class="sc">:.2f}</span><span class="ss">, </span><span class="sc">{</span>muertes[<span class="dv">1</span>]<span class="sc">:.2f}</span><span class="ss">"</span>)</span></code></pre></div><button class="code-copy-button" title="Copiar al portapapeles"><i class="bi"></i></button></div>
+<span id="cb3-5"><a aria-hidden="true" href="#cb3-5" tabindex="-1"></a>      <span class="ss">f"ε = </span><span class="sc">{</span>muertes[<span class="dv">0</span>]<span class="sc">:.2f}</span><span class="ss">, </span><span class="sc">{</span>muertes[<span class="dv">1</span>]<span class="sc">:.2f}</span><span class="ss">"</span>)</span></code><button class="code-copy-button" title="Copiar al portapapeles"><i class="bi"></i></button></pre></div>
 <p>Las últimas dos fusiones ocurren a <span class="math inline">\(\varepsilon \approx 2.5\)</span> y <span class="math inline">\(\varepsilon \approx 2.1\)</span> — los momentos en que los tres clusters se unen en dos, y después en uno. Las 147 fusiones anteriores ocurren a escalas mucho menores: son puntos <em>dentro</em> de cada cluster que se conectan. La diferencia entre estas escalas — grande para la estructura real, pequeña para el ruido interno — es exactamente lo que distingue señal de ruido. Veremos este mecanismo con más detalle cuando expliquemos la filtración de Vietoris-Rips en <a class="quarto-xref" href="05.html"><span>Capítulo 5</span></a>.</p>
 <p>Computacionalmente, calcular solo <span class="math inline">\(H_0\)</span> es barato: el coste está dominado por las <span class="math inline">\(O(n^2)\)</span> distancias entre pares de puntos, seguido de un algoritmo de unión–búsqueda (<em>union-find</em>) para rastrear las fusiones. Para nuestros 150 puntos en <span class="math inline">\(\mathbb{R}^2\)</span>, el cálculo es instantáneo.</p>
 <p>La <a class="quarto-xref" href="#fig-tres-islas">Figura <span>2.1</span></a> muestra tres formas de visualizar la misma información topológica de <span class="math inline">\(H_0\)</span> (componentes conexas). El <strong>diagrama de persistencia</strong> (arriba derecha) representa cada componente como un punto con coordenadas (nacimiento, muerte); los puntos alejados de la diagonal son señal. Las tres estrellas rojas marcan los 3 clusters: dos fusiones tardías a <span class="math inline">\(\varepsilon \approx 2.1\)</span> y <span class="math inline">\(2.5\)</span>, más la componente inmortal que nunca muere (indicada con <span class="math inline">\(\infty\)</span>). El <strong>código de barras</strong> (abajo izquierda) muestra la misma información como barras horizontales — las tres barras rojas (incluyendo la que se extiende a <span class="math inline">\(\infty\)</span>) son los clusters reales y sobresalen respecto las otras barras de nacimiento y muerte. El <strong>paisaje de persistencia</strong> (<em>persistence landscape</em>, abajo derecha) transforma el diagrama de puntos en un conjunto de funciones matemáticas continuas, lo que facilita enormemente el análisis estadístico directo. El proceso es intuitivo:</p>
@@ -309,15 +305,15 @@ Figura 2.2: Control negativo: 150 puntos uniformes (sin estructura). El diagram
 <p>Si en la primera receta aprendimos a detectar componentes conexas —topológicamente equivalentes a un punto—, en esta segunda receta aprenderemos a detectar ciclos unidimensionales — intuitivamente, anillos o bucles — que forman el <span class="math inline">\(H_1\)</span>, el primer grupo de homología.</p>
 <p>Un análisis estadístico tradicional calcularía la media (el centro) y la varianza (la dispersión radial) de estos puntos — exactamente lo mismo que obtendríamos de un disco relleno. El TDA, en cambio, detecta que hay un agujero: distingue un donut de una galleta.</p>
 <p>En este ejemplo, generamos puntos con forma de círculo y buscamos el agujero central:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a aria-hidden="true" href="#cb4-1" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a aria-hidden="true" href="#cb4-1" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb4-2"><a aria-hidden="true" href="#cb4-2" tabindex="-1"></a><span class="im">from</span> ripser <span class="im">import</span> ripser</span>
 <span id="cb4-3"><a aria-hidden="true" href="#cb4-3" tabindex="-1"></a></span>
 <span id="cb4-4"><a aria-hidden="true" href="#cb4-4" tabindex="-1"></a>np.random.seed(<span class="dv">42</span>)</span>
 <span id="cb4-5"><a aria-hidden="true" href="#cb4-5" tabindex="-1"></a>theta <span class="op">=</span> np.random.uniform(<span class="dv">0</span>, <span class="dv">2</span> <span class="op">*</span> np.pi, <span class="dv">100</span>)</span>
 <span id="cb4-6"><a aria-hidden="true" href="#cb4-6" tabindex="-1"></a>ruido <span class="op">=</span> np.random.normal(<span class="dv">0</span>, <span class="fl">0.1</span>, (<span class="dv">100</span>, <span class="dv">2</span>))</span>
-<span id="cb4-7"><a aria-hidden="true" href="#cb4-7" tabindex="-1"></a>puntos <span class="op">=</span> np.column_stack([np.cos(theta), np.sin(theta)]) <span class="op">+</span> ruido</span></code></pre></div><button class="code-copy-button" title="Copiar al portapapeles"><i class="bi"></i></button></div>
+<span id="cb4-7"><a aria-hidden="true" href="#cb4-7" tabindex="-1"></a>puntos <span class="op">=</span> np.column_stack([np.cos(theta), np.sin(theta)]) <span class="op">+</span> ruido</span></code><button class="code-copy-button" title="Copiar al portapapeles"><i class="bi"></i></button></pre></div>
 <p>Ahora pedimos tanto <span class="math inline">\(H_0\)</span> como <span class="math inline">\(H_1\)</span> estableciendo la máxima dimensión a 1:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a aria-hidden="true" href="#cb5-1" tabindex="-1"></a>resultado <span class="op">=</span> ripser(puntos, maxdim<span class="op">=</span><span class="dv">1</span>)</span>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a aria-hidden="true" href="#cb5-1" tabindex="-1"></a>resultado <span class="op">=</span> ripser(puntos, maxdim<span class="op">=</span><span class="dv">1</span>)</span>
 <span id="cb5-2"><a aria-hidden="true" href="#cb5-2" tabindex="-1"></a>diagramas <span class="op">=</span> resultado[<span class="st">"dgms"</span>]</span>
 <span id="cb5-3"><a aria-hidden="true" href="#cb5-3" tabindex="-1"></a></span>
 <span id="cb5-4"><a aria-hidden="true" href="#cb5-4" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Características H0 (componentes): </span><span class="sc">{</span><span class="bu">len</span>(diagramas[<span class="dv">0</span>])<span class="sc">}</span><span class="ss">"</span>)</span>
@@ -330,7 +326,7 @@ Figura 2.2: Control negativo: 150 puntos uniformes (sin estructura). El diagram
 <span id="cb5-11"><a aria-hidden="true" href="#cb5-11" tabindex="-1"></a>    nace <span class="op">=</span> diagramas[<span class="dv">1</span>][idx, <span class="dv">0</span>]</span>
 <span id="cb5-12"><a aria-hidden="true" href="#cb5-12" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Agujero principal: nace en </span><span class="sc">{</span>nace<span class="sc">:.3f}</span><span class="ss">, "</span></span>
 <span id="cb5-13"><a aria-hidden="true" href="#cb5-13" tabindex="-1"></a>          <span class="ss">f"muere en </span><span class="sc">{</span>diagramas[<span class="dv">1</span>][idx, <span class="dv">1</span>]<span class="sc">:.3f}</span><span class="ss">, "</span></span>
-<span id="cb5-14"><a aria-hidden="true" href="#cb5-14" tabindex="-1"></a>          <span class="ss">f"persistencia: </span><span class="sc">{</span>persistencias[idx]<span class="sc">:.3f}</span><span class="ss">"</span>)</span></code></pre></div><button class="code-copy-button" title="Copiar al portapapeles"><i class="bi"></i></button></div>
+<span id="cb5-14"><a aria-hidden="true" href="#cb5-14" tabindex="-1"></a>          <span class="ss">f"persistencia: </span><span class="sc">{</span>persistencias[idx]<span class="sc">:.3f}</span><span class="ss">"</span>)</span></code><button class="code-copy-button" title="Copiar al portapapeles"><i class="bi"></i></button></pre></div>
 <p><span class="math inline">\(H_0\)</span> muestra lo mismo que en la Receta 1: 100 componentes iniciales que se fusionan hasta quedar una sola — la que sobrevive con muerte infinita, confirmando que el anillo es una única pieza conexa. A diferencia de la Receta 1, donde las tres fusiones tardías producían picos prominentes en el paisaje de <span class="math inline">\(H_0\)</span>, aquí todas las fusiones ocurren rápidamente (los puntos del círculo están cerca entre sí), de modo que el diagrama de persistencia de <span class="math inline">\(H_0\)</span> muestra solo puntos pegados a la diagonal y el paisaje no supera el umbral nulo — no hay estructura de clustering. La novedad es <span class="math inline">\(H_1\)</span>: entre las decenas de características, hay <em>una</em> con persistencia muy alta (<span class="math inline">\(\approx 1.4\)</span>) y el resto cerca de cero. Esa característica persistente es el agujero central del círculo — una señal topológica real. Las demás son artefactos efímeros que nacen y mueren rápidamente a medida que crece <span class="math inline">\(\varepsilon\)</span>.</p>
 <p>El precio de pasar de <span class="math inline">\(H_0\)</span> a <span class="math inline">\(H_1\)</span> es computacional: <code>ripser</code> necesita considerar triángulos además de aristas, y la reducción de la matriz de frontera tiene coste <span class="math inline">\(O(n^3)\)</span> en el peor caso para <span class="math inline">\(n\)</span> puntos. Para nuestros 100 puntos es instantáneo, pero este coste cúbico limita estos algoritmos de TDA a datasets de tamaño moderado. Además, cada dimensión homológica adicional es dramáticamente más cara — <span class="math inline">\(O(n^4)\)</span> para <span class="math inline">\(H_2\)</span>, y así sucesivamente. Analizaremos en detalle esta escalabilidad en la <a class="quarto-xref" href="04.html"><span>Capítulo 4</span></a>.</p>
 <div class="quarto-float quarto-figure quarto-figure-center anchored" id="fig-anillo">
@@ -369,7 +365,7 @@ Figura 2.4: Invarianza topológica: un óvalo, un cuadrado y una curva aleatori
 <section class="level3" data-number="2.3.1" id="estabilidad-frente-al-ruido">
 <h3 class="anchored" data-anchor-id="estabilidad-frente-al-ruido" data-number="2.3.1"><span class="header-section-number">2.3.1</span> Estabilidad frente al ruido</h3>
 <p>Repitamos la Receta 2 pero ahora con niveles crecientes de ruido gaussiano (<span class="math inline">\(\sigma\)</span>):</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a aria-hidden="true" href="#cb6-1" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a aria-hidden="true" href="#cb6-1" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb6-2"><a aria-hidden="true" href="#cb6-2" tabindex="-1"></a><span class="im">from</span> ripser <span class="im">import</span> ripser</span>
 <span id="cb6-3"><a aria-hidden="true" href="#cb6-3" tabindex="-1"></a></span>
 <span id="cb6-4"><a aria-hidden="true" href="#cb6-4" tabindex="-1"></a>niveles <span class="op">=</span> [<span class="fl">0.05</span>, <span class="fl">0.15</span>, <span class="fl">0.3</span>, <span class="fl">0.5</span>]</span>
@@ -388,7 +384,7 @@ Figura 2.4: Invarianza topológica: un óvalo, un cuadrado y una curva aleatori
 <span id="cb6-17"><a aria-hidden="true" href="#cb6-17" tabindex="-1"></a>    <span class="cf">else</span>:</span>
 <span id="cb6-18"><a aria-hidden="true" href="#cb6-18" tabindex="-1"></a>        pers_h1 <span class="op">=</span> [<span class="dv">0</span>]</span>
 <span id="cb6-19"><a aria-hidden="true" href="#cb6-19" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"σ = </span><span class="sc">{</span>sigma<span class="sc">:.2f}</span><span class="ss">  →  "</span></span>
-<span id="cb6-20"><a aria-hidden="true" href="#cb6-20" tabindex="-1"></a>          <span class="ss">f"max H1 = </span><span class="sc">{</span><span class="bu">max</span>(pers_h1)<span class="sc">:.3f}</span><span class="ss">"</span>)</span></code></pre></div><button class="code-copy-button" title="Copiar al portapapeles"><i class="bi"></i></button></div>
+<span id="cb6-20"><a aria-hidden="true" href="#cb6-20" tabindex="-1"></a>          <span class="ss">f"max H1 = </span><span class="sc">{</span><span class="bu">max</span>(pers_h1)<span class="sc">:.3f}</span><span class="ss">"</span>)</span></code><button class="code-copy-button" title="Copiar al portapapeles"><i class="bi"></i></button></pre></div>
 <p>El resultado muestra una degradación suave: con <span class="math inline">\(\sigma = 0.05\)</span> la persistencia es alta (<span class="math inline">\(\approx 1.5\)</span>), con <span class="math inline">\(\sigma = 0.3\)</span> baja significativamente, y con <span class="math inline">\(\sigma = 0.5\)</span> el agujero casi desaparece — el ruido es tan grande como el radio del círculo. Pero lo importante es que el cambio es gradual: un poco más de ruido produce un cambio proporcionalmente pequeño en el diagrama. Esta propiedad se formalizará como el teorema de estabilidad en <a class="quarto-xref" href="05.html"><span>Capítulo 5</span></a>, y es la razón matemática por la que el TDA es robusto frente a perturbaciones.</p>
 <p>La <a class="quarto-xref" href="#fig-ruido">Figura <span>2.5</span></a> muestra el efecto con tres representaciones simultáneas. Arriba, las nubes de puntos con ruido creciente. En el centro, los diagramas de persistencia de <span class="math inline">\(H_1\)</span>: la estrella marca el agujero principal, que se acerca a la diagonal a medida que <span class="math inline">\(\sigma\)</span> crece. Abajo, los paisajes de persistencia <span class="math inline">\(\lambda_1\)</span>: el pico dominante se aplana gradualmente, pero nunca desaparece de golpe. Comparemos con el umbral del 95% (línea discontinua): incluso con <span class="math inline">\(\sigma = 0.3\)</span>, el pico todavía supera el umbral — el agujero sigue siendo detectable estadísticamente.</p>
 <div class="quarto-float quarto-figure quarto-figure-center anchored" id="fig-ruido">
@@ -407,7 +403,7 @@ Figura 2.5: Receta 3 — estabilidad: arriba, el mismo círculo con cuatro nive
 <p>La estabilidad frente al ruido es solo la mitad de la historia. La otra mitad es cómo se comporta el TDA cuando los datos viven en espacios de alta dimensión, que es el caso habitual en la práctica: imágenes, genómica, texto — todo vive en cientos o miles de dimensiones.</p>
 <p>Al crecer la dimensión <span class="math inline">\(d\)</span>, un fenómeno conocido como <strong>concentración de la medida</strong> hace que las distancias euclídeas entre puntos converjan a un mismo valor. Si tenemos un círculo de radio <span class="math inline">\(R\)</span> con ruido gaussiano de desviación típica <span class="math inline">\(\sigma\)</span> en las <span class="math inline">\(d\)</span> coordenadas, la distancia típica entre dos puntos se aproxima a <span class="math inline">\(\sigma\sqrt{2d}\)</span>. Cuando <span class="math inline">\(\sigma\sqrt{2d}\)</span> supera el diámetro del círculo (<span class="math inline">\(\sigma\sqrt{2d} \gtrsim 2R\)</span>), el complejo de Vietoris-Rips no puede recuperar la estructura circular de forma fiable: la señal topológica se aproxima al nivel del ruido.</p>
 <p>Para visualizarlo, generamos un círculo de radio <span class="math inline">\(R = 1.5\)</span> embebido en <span class="math inline">\(\mathbb{R}^d\)</span> con ruido gaussiano <span class="math inline">\(\sigma = 0.2\)</span> en todas las coordenadas:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a aria-hidden="true" href="#cb7-1" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a aria-hidden="true" href="#cb7-1" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb7-2"><a aria-hidden="true" href="#cb7-2" tabindex="-1"></a><span class="im">from</span> ripser <span class="im">import</span> ripser</span>
 <span id="cb7-3"><a aria-hidden="true" href="#cb7-3" tabindex="-1"></a></span>
 <span id="cb7-4"><a aria-hidden="true" href="#cb7-4" tabindex="-1"></a><span class="kw">def</span> generar_circulo_ruidoso(n<span class="op">=</span><span class="dv">200</span>, dim<span class="op">=</span><span class="dv">2</span>,</span>
@@ -428,7 +424,7 @@ Figura 2.5: Receta 3 — estabilidad: arriba, el mismo círculo con cuatro nive
 <span id="cb7-19"><a aria-hidden="true" href="#cb7-19" tabindex="-1"></a>    h1 <span class="op">=</span> dgms[<span class="dv">1</span>]</span>
 <span id="cb7-20"><a aria-hidden="true" href="#cb7-20" tabindex="-1"></a>    pers <span class="op">=</span> (h1[:, <span class="dv">1</span>] <span class="op">-</span> h1[:, <span class="dv">0</span>]).<span class="bu">max</span>() <span class="cf">if</span> <span class="bu">len</span>(h1) <span class="op">&gt;</span> <span class="dv">0</span> <span class="cf">else</span> <span class="dv">0</span></span>
 <span id="cb7-21"><a aria-hidden="true" href="#cb7-21" tabindex="-1"></a>    disp <span class="op">=</span> sigma <span class="op">*</span> (<span class="dv">2</span> <span class="op">*</span> dim) <span class="op">**</span> <span class="fl">0.5</span></span>
-<span id="cb7-22"><a aria-hidden="true" href="#cb7-22" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"ℝ^</span><span class="sc">{</span>dim<span class="sc">}</span><span class="ss">  σ√(2d)=</span><span class="sc">{</span>disp<span class="sc">:.2f}</span><span class="ss">  H1=</span><span class="sc">{</span>pers<span class="sc">:.2f}</span><span class="ss">"</span>)</span></code></pre></div><button class="code-copy-button" title="Copiar al portapapeles"><i class="bi"></i></button></div>
+<span id="cb7-22"><a aria-hidden="true" href="#cb7-22" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"ℝ^</span><span class="sc">{</span>dim<span class="sc">}</span><span class="ss">  σ√(2d)=</span><span class="sc">{</span>disp<span class="sc">:.2f}</span><span class="ss">  H1=</span><span class="sc">{</span>pers<span class="sc">:.2f}</span><span class="ss">"</span>)</span></code><button class="code-copy-button" title="Copiar al portapapeles"><i class="bi"></i></button></pre></div>
 <p>Con <span class="math inline">\(d = 2\)</span>, la dispersión de ruido es <span class="math inline">\(\sigma\sqrt{2d} \approx 0.57\)</span>, pequeña frente al diámetro <span class="math inline">\(2R = 3\)</span>: el TDA detecta el agujero con claridad. Con <span class="math inline">\(d = 128\)</span> la dispersión alcanza <span class="math inline">\(\sigma\sqrt{2d} \approx 3.2\)</span>, comparable al diámetro: las distancias concentran alrededor de un valor y la señal topológica del círculo, aunque presente, se hace difícilmente distinguible del nivel de ruido.</p>
 <p>La <a class="quarto-xref" href="#fig-invarianza-dimension">Figura <span>2.6</span></a> muestra el contraste. La primera fila proyecta los puntos en <span class="math inline">\((x_1, x_{d/2+1})\)</span>: en alta dimensión, <span class="math inline">\(x_{d/2+1}\)</span> es ruido puro y el círculo desaparece. La segunda fila muestra la proyección PCA a 2D, que recupera el círculo en todos los casos. Las filas tercera y cuarta cuentan la historia del TDA: el diagrama <span class="math inline">\(H_1\)</span> muestra cómo la estrella más persistente se acerca a la diagonal al crecer <span class="math inline">\(d\)</span>, y el paisaje <span class="math inline">\(\lambda_1\)</span> refleja cómo la razón señal/ruido se degrada gradualmente — el umbral de la hipótesis nula (permutación de coordenadas) opera a la misma escala de distancias que los datos reales, de modo que en <span class="math inline">\(d = 128\)</span> algunos picos de <span class="math inline">\(H_1\)</span> quedan cerca o por debajo del umbral.</p>
 <div class="quarto-float quarto-figure quarto-figure-center anchored" id="fig-invarianza-dimension">
@@ -458,7 +454,7 @@ Figura 2.6: Maldición de la dimensionalidad: círculo de <span class="math inl
 <p>Hasta ahora hemos detectado agujeros, pero no hemos respondido a la pregunta más natural: <em>¿dónde está el agujero?</em> ¿Cuáles son los puntos y aristas concretos que lo forman? Esto es el problema inverso del TDA: dado un generador de homología, encontrar un <strong>ciclo representativo</strong> — una cadena cerrada de aristas que delimita la característica topológica detectada.</p>
 <p>La librería GUDHI resuelve este problema con la función <code>flag_persistence_generators()</code>: para cada característica persistente en <span class="math inline">\(H_1\)</span> devuelve la <strong>arista de nacimiento</strong> — la arista cuya inserción en la filtración creó el ciclo. ¿Por qué esto es suficiente? Porque si la arista <span class="math inline">\((u, v)\)</span> crea un ciclo al ser insertada, es que ya existía un camino de <span class="math inline">\(u\)</span> a <span class="math inline">\(v\)</span> formado por aristas anteriores. Ese camino, más la arista de nacimiento, forma el ciclo completo.</p>
 <p>Reutilicemos el anillo de la Receta 2:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a aria-hidden="true" href="#cb8-1" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a aria-hidden="true" href="#cb8-1" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb8-2"><a aria-hidden="true" href="#cb8-2" tabindex="-1"></a><span class="im">import</span> gudhi</span>
 <span id="cb8-3"><a aria-hidden="true" href="#cb8-3" tabindex="-1"></a><span class="im">import</span> networkx <span class="im">as</span> nx</span>
 <span id="cb8-4"><a aria-hidden="true" href="#cb8-4" tabindex="-1"></a></span>
@@ -472,24 +468,24 @@ Figura 2.6: Maldición de la dimensionalidad: círculo de <span class="math inl
 <span id="cb8-12"><a aria-hidden="true" href="#cb8-12" tabindex="-1"></a>rips <span class="op">=</span> gudhi.RipsComplex(</span>
 <span id="cb8-13"><a aria-hidden="true" href="#cb8-13" tabindex="-1"></a>    points<span class="op">=</span>puntos, max_edge_length<span class="op">=</span><span class="fl">2.5</span>)</span>
 <span id="cb8-14"><a aria-hidden="true" href="#cb8-14" tabindex="-1"></a>st <span class="op">=</span> rips.create_simplex_tree(max_dimension<span class="op">=</span><span class="dv">2</span>)</span>
-<span id="cb8-15"><a aria-hidden="true" href="#cb8-15" tabindex="-1"></a>st.compute_persistence(homology_coeff_field<span class="op">=</span><span class="dv">2</span>)</span></code></pre></div><button class="code-copy-button" title="Copiar al portapapeles"><i class="bi"></i></button></div>
+<span id="cb8-15"><a aria-hidden="true" href="#cb8-15" tabindex="-1"></a>st.compute_persistence(homology_coeff_field<span class="op">=</span><span class="dv">2</span>)</span></code><button class="code-copy-button" title="Copiar al portapapeles"><i class="bi"></i></button></pre></div>
 <p>Ahora extraemos los generadores de <span class="math inline">\(H_1\)</span>. Cada fila contiene cuatro vértices: los dos de la arista de nacimiento y los dos de la arista de muerte:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a aria-hidden="true" href="#cb9-1" tabindex="-1"></a>gens <span class="op">=</span> st.flag_persistence_generators()</span>
+<div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a aria-hidden="true" href="#cb9-1" tabindex="-1"></a>gens <span class="op">=</span> st.flag_persistence_generators()</span>
 <span id="cb9-2"><a aria-hidden="true" href="#cb9-2" tabindex="-1"></a>h1_gens <span class="op">=</span> gens[<span class="dv">1</span>][<span class="dv">0</span>]  <span class="co"># shape (m, 4)</span></span>
 <span id="cb9-3"><a aria-hidden="true" href="#cb9-3" tabindex="-1"></a><span class="co"># Fila más persistente (primera):</span></span>
 <span id="cb9-4"><a aria-hidden="true" href="#cb9-4" tabindex="-1"></a>u, v <span class="op">=</span> <span class="bu">int</span>(h1_gens[<span class="dv">0</span>, <span class="dv">0</span>]), <span class="bu">int</span>(h1_gens[<span class="dv">0</span>, <span class="dv">1</span>])</span>
 <span id="cb9-5"><a aria-hidden="true" href="#cb9-5" tabindex="-1"></a>birth_scale <span class="op">=</span> st.filtration([u, v])</span>
 <span id="cb9-6"><a aria-hidden="true" href="#cb9-6" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Arista de nacimiento: (</span><span class="sc">{</span>u<span class="sc">}</span><span class="ss">, </span><span class="sc">{</span>v<span class="sc">}</span><span class="ss">) "</span></span>
-<span id="cb9-7"><a aria-hidden="true" href="#cb9-7" tabindex="-1"></a>      <span class="ss">f"a escala </span><span class="sc">{</span>birth_scale<span class="sc">:.4f}</span><span class="ss">"</span>)</span></code></pre></div><button class="code-copy-button" title="Copiar al portapapeles"><i class="bi"></i></button></div>
+<span id="cb9-7"><a aria-hidden="true" href="#cb9-7" tabindex="-1"></a>      <span class="ss">f"a escala </span><span class="sc">{</span>birth_scale<span class="sc">:.4f}</span><span class="ss">"</span>)</span></code><button class="code-copy-button" title="Copiar al portapapeles"><i class="bi"></i></button></pre></div>
 <p>Para reconstruir el ciclo completo, buscamos el camino más corto de <span class="math inline">\(u\)</span> a <span class="math inline">\(v\)</span> usando solo aristas insertadas <em>antes</em> de la arista de nacimiento:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a aria-hidden="true" href="#cb10-1" tabindex="-1"></a><span class="co"># Grafo con aristas anteriores a la de nacimiento</span></span>
+<div class="sourceCode" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a aria-hidden="true" href="#cb10-1" tabindex="-1"></a><span class="co"># Grafo con aristas anteriores a la de nacimiento</span></span>
 <span id="cb10-2"><a aria-hidden="true" href="#cb10-2" tabindex="-1"></a>G <span class="op">=</span> nx.Graph()</span>
 <span id="cb10-3"><a aria-hidden="true" href="#cb10-3" tabindex="-1"></a><span class="cf">for</span> simplex, filt <span class="kw">in</span> st.get_filtration():</span>
 <span id="cb10-4"><a aria-hidden="true" href="#cb10-4" tabindex="-1"></a>    <span class="cf">if</span> <span class="bu">len</span>(simplex) <span class="op">==</span> <span class="dv">2</span> <span class="kw">and</span> filt <span class="op">&lt;</span> birth_scale:</span>
 <span id="cb10-5"><a aria-hidden="true" href="#cb10-5" tabindex="-1"></a>        G.add_edge(simplex[<span class="dv">0</span>], simplex[<span class="dv">1</span>])</span>
 <span id="cb10-6"><a aria-hidden="true" href="#cb10-6" tabindex="-1"></a></span>
 <span id="cb10-7"><a aria-hidden="true" href="#cb10-7" tabindex="-1"></a>ciclo <span class="op">=</span> nx.shortest_path(G, u, v)</span>
-<span id="cb10-8"><a aria-hidden="true" href="#cb10-8" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Ciclo: </span><span class="sc">{</span><span class="bu">len</span>(ciclo)<span class="sc">}</span><span class="ss"> vértices"</span>)</span></code></pre></div><button class="code-copy-button" title="Copiar al portapapeles"><i class="bi"></i></button></div>
+<span id="cb10-8"><a aria-hidden="true" href="#cb10-8" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Ciclo: </span><span class="sc">{</span><span class="bu">len</span>(ciclo)<span class="sc">}</span><span class="ss"> vértices"</span>)</span></code><button class="code-copy-button" title="Copiar al portapapeles"><i class="bi"></i></button></pre></div>
 <p>El resultado es un camino cerrado de 28 vértices que recorre el anillo, cubriendo 350° de arco angular — exactamente la cadena de puntos que encierra el agujero central. Al visualizarlo sobre la nube de puntos (en rojo sobre la <a class="quarto-xref" href="#fig-ciclo-representativo">Figura <span>2.7</span></a>), vemos un polígono cerrado que delimita la región vacía.</p>
 <p>El coste computacional tiene dos fases. La primera — construir el árbol de símplices y calcular la persistencia — es el mismo <span class="math inline">\(O(n^3)\)</span> de las recetas anteriores. La segunda — reconstruir el ciclo — es comparativamente barata: construir el subgrafo de aristas anteriores al nacimiento es <span class="math inline">\(O(|E|)\)</span> donde <span class="math inline">\(|E|\)</span> es el número de aristas del complejo, y el camino más corto en el grafo (BFS) es <span class="math inline">\(O(n + |E|)\)</span>. Para 100 puntos, ambas fases son instantáneas.</p>
 <p>¿Por qué importa esto? Porque en aplicaciones reales — redes neuronales, expresión génica, finanzas — detectar que «hay un ciclo» es solo el primer paso. Lo que el investigador necesita saber es <em>cuáles son los genes, neuronas o activos concretos</em> que forman ese ciclo. El ciclo representativo proporciona exactamente esa información: convierte una abstracción topológica en una lista concreta de entidades del dominio.</p>
@@ -530,7 +526,7 @@ Figura 2.7: Receta 4: ciclo representativo del agujero principal. Izquierda: lo
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Nota</span>DBSCAN: clustering por densidad local
+DBSCAN: clustering por densidad local
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -550,7 +546,7 @@ Figura 2.7: Receta 4: ciclo representativo del agujero principal. Izquierda: lo
 <p>Una primera intuición sería usar la <strong>posición narrativa</strong> (del 0% al 100%): dividir la novela en franjas temporales y agrupar los pasajes de cada franja por similitud. Con una lente temporal, una cadena lineal indicaría una narrativa sin retorno, y un bucle indicaría que el final se parece al principio. Sin embargo, esta elección tiene un problema fundamental: la lente temporal fuerza una topología casi lineal. Si los intervalos cubren franjas de tiempo, los clusters de franjas no adyacentes raramente comparten puntos (el solapamiento solo ocurre entre intervalos contiguos), produciendo necesariamente una cadena — independientemente de si la historia es circular o no. La lente temporal <em>asume</em> la estructura que queremos detectar.</p>
 <p>La alternativa es usar una <strong>lente semántica</strong>: las dos primeras componentes principales (PCA) de los embeddings. Esta lente agrupa los pasajes por <em>significado</em>, no por orden temporal. Si el final de una novela se parece semánticamente al principio, ambos caerán en los mismos intervalos de la lente PCA y acabarán en los mismos clusters — creando aristas entre nodos «tempranos» y «tardíos». Con una lente PCA, el grafo refleja la estructura semántica real de la narrativa, y cualquier circularidad detectada es genuina.</p>
 <p>Hemos descargado nueve novelas clásicas de Project Gutenberg (todas de dominio público) y aplicado este proceso de chunking + embedding. Los resultados pre-calculados están en <code>code/tda/data/hero_books.npz</code>.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a aria-hidden="true" href="#cb11-1" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<div class="sourceCode" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a aria-hidden="true" href="#cb11-1" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb11-2"><a aria-hidden="true" href="#cb11-2" tabindex="-1"></a><span class="im">import</span> kmapper <span class="im">as</span> km</span>
 <span id="cb11-3"><a aria-hidden="true" href="#cb11-3" tabindex="-1"></a><span class="im">from</span> sklearn.decomposition <span class="im">import</span> PCA</span>
 <span id="cb11-4"><a aria-hidden="true" href="#cb11-4" tabindex="-1"></a><span class="im">from</span> sklearn.cluster <span class="im">import</span> DBSCAN</span>
@@ -560,9 +556,9 @@ Figura 2.7: Receta 4: ciclo representativo del agujero principal. Izquierda: lo
 <span id="cb11-8"><a aria-hidden="true" href="#cb11-8" tabindex="-1"></a>embeddings <span class="op">=</span> data[<span class="st">"embeddings"</span>]   <span class="co"># (6147, 384)</span></span>
 <span id="cb11-9"><a aria-hidden="true" href="#cb11-9" tabindex="-1"></a>positions <span class="op">=</span> data[<span class="st">"positions"</span>]     <span class="co"># posición narrativa [0, 1]</span></span>
 <span id="cb11-10"><a aria-hidden="true" href="#cb11-10" tabindex="-1"></a>book_ids <span class="op">=</span> data[<span class="st">"book_ids"</span>]       <span class="co"># índice del libro</span></span>
-<span id="cb11-11"><a aria-hidden="true" href="#cb11-11" tabindex="-1"></a>book_names <span class="op">=</span> [<span class="bu">str</span>(n) <span class="cf">for</span> n <span class="kw">in</span> data[<span class="st">"book_names"</span>]]</span></code></pre></div><button class="code-copy-button" title="Copiar al portapapeles"><i class="bi"></i></button></div>
+<span id="cb11-11"><a aria-hidden="true" href="#cb11-11" tabindex="-1"></a>book_names <span class="op">=</span> [<span class="bu">str</span>(n) <span class="cf">for</span> n <span class="kw">in</span> data[<span class="st">"book_names"</span>]]</span></code><button class="code-copy-button" title="Copiar al portapapeles"><i class="bi"></i></button></pre></div>
 <p>Aplicamos Mapper a cada novela con dos reducciones independientes: una PCA 2D para la lente (que organiza la cuadrícula de cobertura) y una PCA 20D para el clustering. Los 20 componentes cubren el rango medio de la dimensión intrínseca estimada de los embeddings de frases (~10–30 dimensiones), con un coeficiente de variación de distancias euclídeas del ~32% que hace a DBSCAN discriminativo; si usáramos distancia euclídea directamente sobre los 384 componentes originales, todas las distancias se concentrarían alrededor del mismo valor y DBSCAN no podría distinguir vecinos de no-vecinos:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a aria-hidden="true" href="#cb12-1" tabindex="-1"></a>mapper <span class="op">=</span> km.KeplerMapper(verbose<span class="op">=</span><span class="dv">0</span>)</span>
+<div class="sourceCode" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a aria-hidden="true" href="#cb12-1" tabindex="-1"></a>mapper <span class="op">=</span> km.KeplerMapper(verbose<span class="op">=</span><span class="dv">0</span>)</span>
 <span id="cb12-2"><a aria-hidden="true" href="#cb12-2" tabindex="-1"></a></span>
 <span id="cb12-3"><a aria-hidden="true" href="#cb12-3" tabindex="-1"></a><span class="cf">for</span> i, name <span class="kw">in</span> <span class="bu">enumerate</span>(book_names):</span>
 <span id="cb12-4"><a aria-hidden="true" href="#cb12-4" tabindex="-1"></a>    mask <span class="op">=</span> book_ids <span class="op">==</span> i</span>
@@ -589,7 +585,7 @@ Figura 2.7: Receta 4: ciclo representativo del agujero principal. Izquierda: lo
 <span id="cb12-25"><a aria-hidden="true" href="#cb12-25" tabindex="-1"></a>    n_edges <span class="op">=</span> <span class="bu">sum</span>(</span>
 <span id="cb12-26"><a aria-hidden="true" href="#cb12-26" tabindex="-1"></a>        <span class="bu">len</span>(v) <span class="cf">for</span> v <span class="kw">in</span> graph[<span class="st">"links"</span>].values())</span>
 <span id="cb12-27"><a aria-hidden="true" href="#cb12-27" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"  </span><span class="sc">{</span>name<span class="sc">:20s}</span><span class="ss">  "</span></span>
-<span id="cb12-28"><a aria-hidden="true" href="#cb12-28" tabindex="-1"></a>          <span class="ss">f"nodos=</span><span class="sc">{</span>n_nodes<span class="sc">}</span><span class="ss">, aristas=</span><span class="sc">{</span>n_edges<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button class="code-copy-button" title="Copiar al portapapeles"><i class="bi"></i></button></div>
+<span id="cb12-28"><a aria-hidden="true" href="#cb12-28" tabindex="-1"></a>          <span class="ss">f"nodos=</span><span class="sc">{</span>n_nodes<span class="sc">}</span><span class="ss">, aristas=</span><span class="sc">{</span>n_edges<span class="sc">}</span><span class="ss">"</span>)</span></code><button class="code-copy-button" title="Copiar al portapapeles"><i class="bi"></i></button></pre></div>
 <p>El resultado produce grafos con entre 32 y 45 nodos para todas las novelas. Cada nodo es un cluster de pasajes temáticamente similares, y cada arista indica solapamiento entre clusters — puntos que pertenecen a más de un cluster gracias al solapamiento de la cubierta. Los grafos son tan densos que la mera presencia de ciclos no indica nada — la circularidad es un artefacto combinatorio de la densidad, no una firma narrativa.</p>
 </section>
 <section class="level3" data-number="2.5.2" id="el-retorno-como-distancia-en-el-grafo">
@@ -758,7 +754,7 @@ Tabla 2.1: Distancia de retorno en el grafo Mapper para nueve novelas. <span cl
 <p>Para responderla con rigor, descargamos 8.085 artículos de arXiv en 2025 usando <strong>muestreo estratificado proporcional</strong>: asignamos un presupuesto de 10.000 extracciones a 29 categorías en proporción a su volumen de publicación ese año — las 29 categorías suman aproximadamente 200.000 envíos en 2025, así que el corpus resultante de 8.085 artículos representa en torno al 4% de la producción disponible. Los datos pre-calculados están en <code>code/tda/data/arxiv_ciencia.npz</code>.</p>
 <p>El corpus cubre siete campos macro: Informática (3,181 papers), Física (2,455), Matemáticas (978), Estadística (432), Biología (432), Economía (283) y Otros (324).</p>
 <p>Cargamos los datos y aplicamos una reducción dimensional previa. Los embeddings viven en <span class="math inline">\(\mathbb{R}^{384}\)</span>, pero como vimos en la sección de limitaciones, a esa dimensionalidad las distancias euclídeas se concentran — todos los pares de puntos quedan a una distancia similar — y <code>ripser</code> pierde resolución para distinguir separaciones reales de ruido. Reducir a 50 componentes principales conserva el 58% de la varianza explicada — suficiente para preservar las diferencias semánticas entre disciplinas — mientras recupera la discriminación geométrica necesaria para <code>ripser</code>:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a aria-hidden="true" href="#cb13-1" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<div class="sourceCode" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a aria-hidden="true" href="#cb13-1" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb13-2"><a aria-hidden="true" href="#cb13-2" tabindex="-1"></a><span class="im">from</span> sklearn.decomposition <span class="im">import</span> PCA</span>
 <span id="cb13-3"><a aria-hidden="true" href="#cb13-3" tabindex="-1"></a></span>
 <span id="cb13-4"><a aria-hidden="true" href="#cb13-4" tabindex="-1"></a>data    <span class="op">=</span> np.load(<span class="st">"code/tda/data/arxiv_ciencia.npz"</span>,</span>
@@ -772,12 +768,12 @@ Tabla 2.1: Distancia de retorno en el grafo Mapper para nueve novelas. <span cl
 <span id="cb13-12"><a aria-hidden="true" href="#cb13-12" tabindex="-1"></a></span>
 <span id="cb13-13"><a aria-hidden="true" href="#cb13-13" tabindex="-1"></a>emb_red <span class="op">=</span> PCA(</span>
 <span id="cb13-14"><a aria-hidden="true" href="#cb13-14" tabindex="-1"></a>    n_components<span class="op">=</span><span class="dv">50</span>, random_state<span class="op">=</span><span class="dv">42</span></span>
-<span id="cb13-15"><a aria-hidden="true" href="#cb13-15" tabindex="-1"></a>).fit_transform(emb)</span></code></pre></div><button class="code-copy-button" title="Copiar al portapapeles"><i class="bi"></i></button></div>
+<span id="cb13-15"><a aria-hidden="true" href="#cb13-15" tabindex="-1"></a>).fit_transform(emb)</span></code><button class="code-copy-button" title="Copiar al portapapeles"><i class="bi"></i></button></pre></div>
 <section class="level3" data-number="2.6.1" id="cuáles-son-las-ramas-de-la-ciencia">
 <h3 class="anchored" data-anchor-id="cuáles-son-las-ramas-de-la-ciencia" data-number="2.6.1"><span class="header-section-number">2.6.1</span> ¿Cuáles son las ramas de la ciencia?</h3>
 <p>La pregunta más directa que puede hacerse sobre el corpus es cuántas ramas independientes tiene la ciencia: ¿hay una sola variedad continua, o existen comunidades topológicamente aisladas — islas — que no comparten puentes con el resto? Para responderla necesitamos dos pasos: medir la separación geométrica entre los campos (para saber si hay candidatos a islas) y luego aplicar la prueba topológica (para saber si esa separación supera el umbral estadístico del ruido).</p>
 <p>Comprobamos primero las distancias geométricas entre los centroides de cada campo en el espacio de embeddings:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a aria-hidden="true" href="#cb14-1" tabindex="-1"></a>field_names <span class="op">=</span> <span class="bu">list</span>(np.unique(fields))</span>
+<div class="sourceCode" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a aria-hidden="true" href="#cb14-1" tabindex="-1"></a>field_names <span class="op">=</span> <span class="bu">list</span>(np.unique(fields))</span>
 <span id="cb14-2"><a aria-hidden="true" href="#cb14-2" tabindex="-1"></a>centroids <span class="op">=</span> {f: emb_red[fields <span class="op">==</span> f].mean(axis<span class="op">=</span><span class="dv">0</span>)</span>
 <span id="cb14-3"><a aria-hidden="true" href="#cb14-3" tabindex="-1"></a>             <span class="cf">for</span> f <span class="kw">in</span> field_names}</span>
 <span id="cb14-4"><a aria-hidden="true" href="#cb14-4" tabindex="-1"></a></span>
@@ -785,10 +781,10 @@ Tabla 2.1: Distancia de retorno en el grafo Mapper para nueve novelas. <span cl
 <span id="cb14-6"><a aria-hidden="true" href="#cb14-6" tabindex="-1"></a><span class="cf">for</span> i, f1 <span class="kw">in</span> <span class="bu">enumerate</span>(field_names):</span>
 <span id="cb14-7"><a aria-hidden="true" href="#cb14-7" tabindex="-1"></a>    <span class="cf">for</span> f2 <span class="kw">in</span> field_names[i<span class="op">+</span><span class="dv">1</span>:]:</span>
 <span id="cb14-8"><a aria-hidden="true" href="#cb14-8" tabindex="-1"></a>        d <span class="op">=</span> np.linalg.norm(centroids[f1] <span class="op">-</span> centroids[f2])</span>
-<span id="cb14-9"><a aria-hidden="true" href="#cb14-9" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"  </span><span class="sc">{</span>f1<span class="sc">}</span><span class="ss"> – </span><span class="sc">{</span>f2<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>d<span class="sc">:.4f}</span><span class="ss">"</span>)</span></code></pre></div><button class="code-copy-button" title="Copiar al portapapeles"><i class="bi"></i></button></div>
+<span id="cb14-9"><a aria-hidden="true" href="#cb14-9" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"  </span><span class="sc">{</span>f1<span class="sc">}</span><span class="ss"> – </span><span class="sc">{</span>f2<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>d<span class="sc">:.4f}</span><span class="ss">"</span>)</span></code><button class="code-copy-button" title="Copiar al portapapeles"><i class="bi"></i></button></pre></div>
 <p>Las distancias van de 0.31 (Informática–Estadística, los más cercanos) a 0.60 (Física–Biología, los más lejanos). Hay separación geométrica real entre disciplinas, lo que abre la posibilidad de que existan varias ramas. La pregunta topológica es si esa separación supera el umbral del ruido: si lo supera, hay más de una rama; si no, la ciencia es un único continente conectado.</p>
 <p>Calculamos <span class="math inline">\(H_0\)</span> con <code>ripser</code> sobre el corpus reducido y estimamos el umbral de significación al 95% por bootstrap (200 permutaciones de 500 puntos aleatorios uniformes en el bounding-box; el protocolo completo se desarrollará en la <a class="quarto-xref" href="05.html#sec-h0-clustering"><span>Sección 5.2.1</span></a>):</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a aria-hidden="true" href="#cb15-1" tabindex="-1"></a><span class="im">from</span> ripser <span class="im">import</span> ripser</span>
+<div class="sourceCode" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a aria-hidden="true" href="#cb15-1" tabindex="-1"></a><span class="im">from</span> ripser <span class="im">import</span> ripser</span>
 <span id="cb15-2"><a aria-hidden="true" href="#cb15-2" tabindex="-1"></a></span>
 <span id="cb15-3"><a aria-hidden="true" href="#cb15-3" tabindex="-1"></a>dgms <span class="op">=</span> ripser(emb_red, maxdim<span class="op">=</span><span class="dv">0</span>)[<span class="st">"dgms"</span>]</span>
 <span id="cb15-4"><a aria-hidden="true" href="#cb15-4" tabindex="-1"></a>h0   <span class="op">=</span> dgms[<span class="dv">0</span>]</span>
@@ -809,7 +805,7 @@ Tabla 2.1: Distancia de retorno en el grafo Mapper para nueve novelas. <span cl
 <span id="cb15-19"><a aria-hidden="true" href="#cb15-19" tabindex="-1"></a>N_RAMAS   <span class="op">=</span> <span class="bu">int</span>((pers_h0 <span class="op">&gt;</span> thresh).<span class="bu">sum</span>()) <span class="op">+</span> <span class="dv">1</span></span>
 <span id="cb15-20"><a aria-hidden="true" href="#cb15-20" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Umbral 95% = </span><span class="sc">{</span>thresh<span class="sc">:.4f}</span><span class="ss">"</span>)</span>
 <span id="cb15-21"><a aria-hidden="true" href="#cb15-21" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Barra más larga = </span><span class="sc">{</span>pers_h0<span class="sc">.</span><span class="bu">max</span>()<span class="sc">:.4f}</span><span class="ss">"</span>)</span>
-<span id="cb15-22"><a aria-hidden="true" href="#cb15-22" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"N_RAMAS = </span><span class="sc">{</span>N_RAMAS<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button class="code-copy-button" title="Copiar al portapapeles"><i class="bi"></i></button></div>
+<span id="cb15-22"><a aria-hidden="true" href="#cb15-22" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"N_RAMAS = </span><span class="sc">{</span>N_RAMAS<span class="sc">}</span><span class="ss">"</span>)</span></code><button class="code-copy-button" title="Copiar al portapapeles"><i class="bi"></i></button></pre></div>
 <p>El resultado es contundente: <strong>N_RAMAS = 1</strong>. El umbral bootstrap al 95% se sitúa en 1.67; la barra <span class="math inline">\(H_0\)</span> más larga apenas alcanza 0.70 — solo el 42% del umbral. Aunque las disciplinas están geométricamente separadas, la brecha más profunda entre cualquier par de campos es menos de la mitad de lo que sería necesario para constituir una isla topológicamente significativa.</p>
 <p>La interpretación es precisa: existe siempre un camino continuo de papers a través del espacio semántico que conecta cualquier par de disciplinas sin cruzar un vacío estadísticamente significativo. Informática y Física no son islas; son regiones densas de una misma variedad continua, unidas por papers de física computacional, simulación cuántica y aprendizaje automático para materia condensada.</p>
 <p>La <a class="quarto-xref" href="#fig-ciencia-h0">Figura <span>2.9</span></a> muestra el resultado. El diagrama de persistencia <span class="math inline">\(H_0\)</span> (izquierda) concentra todos los puntos cerca de la diagonal — ninguna barra supera el umbral nulo (línea discontinua). El paisaje <span class="math inline">\(\lambda_1\)</span> (derecha) se queda por debajo del umbral en todo el rango. Compárese con la Receta 1 (tres islas separadas): allí <span class="math inline">\(\lambda_1\)</span> superaba claramente la línea nula. Aquí, la ciencia es un continuo.</p>
@@ -852,7 +848,7 @@ Figura 2.10: Comparación de lentes Mapper sobre el corpus arXiv 2025 (8.085 ar
 </figcaption>
 </figure>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a aria-hidden="true" href="#cb16-1" tabindex="-1"></a><span class="im">import</span> kmapper <span class="im">as</span> km</span>
+<div class="sourceCode" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a aria-hidden="true" href="#cb16-1" tabindex="-1"></a><span class="im">import</span> kmapper <span class="im">as</span> km</span>
 <span id="cb16-2"><a aria-hidden="true" href="#cb16-2" tabindex="-1"></a><span class="im">from</span> sklearn.cluster <span class="im">import</span> DBSCAN</span>
 <span id="cb16-3"><a aria-hidden="true" href="#cb16-3" tabindex="-1"></a></span>
 <span id="cb16-4"><a aria-hidden="true" href="#cb16-4" tabindex="-1"></a><span class="co"># Lente: PCA 2D independiente</span></span>
@@ -876,7 +872,7 @@ Figura 2.10: Comparación de lentes Mapper sobre el corpus arXiv 2025 (8.085 ar
 <span id="cb16-22"><a aria-hidden="true" href="#cb16-22" tabindex="-1"></a></span>
 <span id="cb16-23"><a aria-hidden="true" href="#cb16-23" tabindex="-1"></a>n_nodes <span class="op">=</span> <span class="bu">len</span>(graph[<span class="st">"nodes"</span>])</span>
 <span id="cb16-24"><a aria-hidden="true" href="#cb16-24" tabindex="-1"></a>n_edges <span class="op">=</span> <span class="bu">sum</span>(<span class="bu">len</span>(v) <span class="cf">for</span> v <span class="kw">in</span> graph[<span class="st">"links"</span>].values())</span>
-<span id="cb16-25"><a aria-hidden="true" href="#cb16-25" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Mapper: </span><span class="sc">{</span>n_nodes<span class="sc">}</span><span class="ss"> nodos, </span><span class="sc">{</span>n_edges<span class="sc">}</span><span class="ss"> aristas"</span>)</span></code></pre></div><button class="code-copy-button" title="Copiar al portapapeles"><i class="bi"></i></button></div>
+<span id="cb16-25"><a aria-hidden="true" href="#cb16-25" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Mapper: </span><span class="sc">{</span>n_nodes<span class="sc">}</span><span class="ss"> nodos, </span><span class="sc">{</span>n_edges<span class="sc">}</span><span class="ss"> aristas"</span>)</span></code><button class="code-copy-button" title="Copiar al portapapeles"><i class="bi"></i></button></pre></div>
 <p>El resultado son <strong>88 nodos y 296 aristas</strong> — un grafo 2D con ciclos y ramificaciones, muy distinto de la cadena que habría producido una lente 1D. Cada nodo es un cluster de papers temáticamente similares dentro de un parche de la cuadrícula PCA; cada arista indica que dos clusters comparten papers en la zona de solapamiento. Los nodos coloreados por campo revelan la geografía del corpus: Informática y Física ocupan regiones densas en el centro; Matemáticas y Estadística forman una franja intermedia; Biología y Economía aparecen en las periferias. Los nodos con sectores de varios colores son los puentes interdisciplinares: papers que caen en la frontera entre regiones y que conectan vocabularios de dos o más disciplinas.</p>
 <div class="quarto-float quarto-figure quarto-figure-center anchored" id="fig-mapper-ciencia">
 <figure class="quarto-float quarto-float-fig figure">
@@ -915,7 +911,7 @@ Figura 2.11: Grafo Mapper del corpus multi-campo arXiv 2025 (8.085 artículos, 
 <p>Esta receta usa un objeto cuya topología conocemos a priori — un toro con <span class="math inline">\(\beta_1 = 2\)</span> — para comparar PCA y UMAP como pasos de reducción dimensional antes de aplicar homología persistente. Con la respuesta correcta conocida de antemano, podemos evaluar el protocolo de validación de <a class="quarto-xref" href="05.html#sec-validacion-mapper"><span>Sección 5.8</span></a> en condiciones de control: si UMAP supera el protocolo y PCA falla, tenemos evidencia de que el protocolo discrimina correctamente entre una reducción fiel y una infiel.</p>
 <p>Un <strong>toro</strong> (la superficie de un donut) es el ejemplo perfecto: su topología tiene dos ciclos independientes — uno «alrededor del agujero» y otro «a través del tubo» — que se manifiestan como un rango 2 en <span class="math inline">\(H_1\)</span>, o en otras palabras, un número de Betti <span class="math inline">\(\beta_1=2\)</span>. Si generamos 1.000 puntos sobre un toro y los incrustamos en <span class="math inline">\(\mathbb{R}^{50}\)</span> mediante una <strong>transformación no lineal</strong> aleatoria — concretamente, <span class="math inline">\(\mathbf{p} = \sin(\mathbf{x}_{3D} \cdot W + \phi)\)</span> donde <span class="math inline">\(W\)</span> es una matriz aleatoria — la pregunta es: ¿qué método de reducción dimensional preserva mejor estos dos ciclos? La no linealidad es esencial: con una simple rotación ortogonal, PCA podría invertirla exactamente y recuperar ambos ciclos sin dificultad. Al usar una transformación no lineal, bloqueamos esa salida fácil y ponemos a prueba la capacidad real de cada método para navegar una variedad deformada.</p>
 <p>Primero generamos un toro tridimensional con radios <span class="math inline">\(R=2\)</span> y <span class="math inline">\(r=1\)</span> — una proporción 2:1 que hace que los dos ciclos sean comparables en tamaño — y lo incrustamos en <span class="math inline">\(\mathbb{R}^{50}\)</span> con la transformación no lineal descrita:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a aria-hidden="true" href="#cb17-1" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<div class="sourceCode" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a aria-hidden="true" href="#cb17-1" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb17-2"><a aria-hidden="true" href="#cb17-2" tabindex="-1"></a></span>
 <span id="cb17-3"><a aria-hidden="true" href="#cb17-3" tabindex="-1"></a><span class="kw">def</span> generar_toro(n<span class="op">=</span><span class="dv">1000</span>, R<span class="op">=</span><span class="fl">2.0</span>, r<span class="op">=</span><span class="fl">1.0</span>,</span>
 <span id="cb17-4"><a aria-hidden="true" href="#cb17-4" tabindex="-1"></a>                 dim_ambiente<span class="op">=</span><span class="dv">50</span>, ruido<span class="op">=</span><span class="fl">0.08</span>, seed<span class="op">=</span><span class="dv">42</span>):</span>
@@ -941,9 +937,9 @@ Figura 2.11: Grafo Mapper del corpus multi-campo arXiv 2025 (8.085 artículos, 
 <span id="cb17-24"><a aria-hidden="true" href="#cb17-24" tabindex="-1"></a>    <span class="cf">return</span> puntos, theta, phi</span>
 <span id="cb17-25"><a aria-hidden="true" href="#cb17-25" tabindex="-1"></a></span>
 <span id="cb17-26"><a aria-hidden="true" href="#cb17-26" tabindex="-1"></a>puntos, theta, phi <span class="op">=</span> generar_toro(n<span class="op">=</span><span class="dv">1000</span>, dim_ambiente<span class="op">=</span><span class="dv">50</span>)</span>
-<span id="cb17-27"><a aria-hidden="true" href="#cb17-27" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Toro: </span><span class="sc">{</span>puntos<span class="sc">.</span>shape<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button class="code-copy-button" title="Copiar al portapapeles"><i class="bi"></i></button></div>
+<span id="cb17-27"><a aria-hidden="true" href="#cb17-27" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Toro: </span><span class="sc">{</span>puntos<span class="sc">.</span>shape<span class="sc">}</span><span class="ss">"</span>)</span></code><button class="code-copy-button" title="Copiar al portapapeles"><i class="bi"></i></button></pre></div>
 <p>Reducimos la dimensión con dos métodos — PCA y UMAP — y calculamos <span class="math inline">\(H_1\)</span> sobre cada reducción a 3 dimensiones:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a aria-hidden="true" href="#cb18-1" tabindex="-1"></a><span class="im">from</span> sklearn.decomposition <span class="im">import</span> PCA</span>
+<div class="sourceCode" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a aria-hidden="true" href="#cb18-1" tabindex="-1"></a><span class="im">from</span> sklearn.decomposition <span class="im">import</span> PCA</span>
 <span id="cb18-2"><a aria-hidden="true" href="#cb18-2" tabindex="-1"></a><span class="im">import</span> umap</span>
 <span id="cb18-3"><a aria-hidden="true" href="#cb18-3" tabindex="-1"></a><span class="im">from</span> ripser <span class="im">import</span> ripser</span>
 <span id="cb18-4"><a aria-hidden="true" href="#cb18-4" tabindex="-1"></a></span>
@@ -964,7 +960,7 @@ Figura 2.11: Grafo Mapper del corpus multi-campo arXiv 2025 (8.085 artículos, 
 <span id="cb18-19"><a aria-hidden="true" href="#cb18-19" tabindex="-1"></a>    umbral <span class="op">=</span> <span class="fl">0.3</span> <span class="op">*</span> pers_fin.<span class="bu">max</span>()</span>
 <span id="cb18-20"><a aria-hidden="true" href="#cb18-20" tabindex="-1"></a>    n_ciclos <span class="op">=</span> <span class="bu">int</span>((pers_fin <span class="op">&gt;</span> umbral).<span class="bu">sum</span>())</span>
 <span id="cb18-21"><a aria-hidden="true" href="#cb18-21" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>nombre<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>n_ciclos<span class="sc">}</span><span class="ss"> ciclos "</span></span>
-<span id="cb18-22"><a aria-hidden="true" href="#cb18-22" tabindex="-1"></a>          <span class="ss">f"(max pers = </span><span class="sc">{</span>pers_fin<span class="sc">.</span><span class="bu">max</span>()<span class="sc">:.3f}</span><span class="ss">)"</span>)</span></code></pre></div><button class="code-copy-button" title="Copiar al portapapeles"><i class="bi"></i></button></div>
+<span id="cb18-22"><a aria-hidden="true" href="#cb18-22" tabindex="-1"></a>          <span class="ss">f"(max pers = </span><span class="sc">{</span>pers_fin<span class="sc">.</span><span class="bu">max</span>()<span class="sc">:.3f}</span><span class="ss">)"</span>)</span></code><button class="code-copy-button" title="Copiar al portapapeles"><i class="bi"></i></button></pre></div>
 <p>Los resultados obtenidos son:</p>
 <div class="quarto-float quarto-figure quarto-figure-center anchored" id="tbl-umap-comparacion">
 <figure class="quarto-float quarto-float-tbl figure">
@@ -1048,7 +1044,7 @@ Figura 2.12: Receta 7: reducción de un toro (<span class="math inline">\(\beta
 <h3 class="anchored" data-anchor-id="el-camino-del-héroe-con-lente-umap" data-number="2.8.1"><span class="header-section-number">2.8.1</span> El Camino del Héroe con lente UMAP</h3>
 <p>Retomamos los embeddings de las nueve novelas de la Receta 5 y cambiamos solo la función lente. La lente pasa de <code>PCA(2)</code> a <code>UMAP(2)</code>: en lugar de proyectar sobre los dos ejes de máxima varianza lineal, Mapper organiza su cuadrícula sobre la variedad semántica no lineal aprendida por UMAP. El clustering local, en cambio, se hace con DBSCAN directamente sobre los embeddings originales en <span class="math inline">\(\mathbb{R}^{384}\)</span>, usando distancia coseno. La separación es deliberada: UMAP decide qué parches cubren la nube; DBSCAN decide, dentro de cada parche, qué pasajes son vecinos en el espacio semántico original.</p>
 <p>Esta elección evita aplicar una segunda proyección no lineal antes del clustering. La distancia coseno es la métrica habitual para embeddings de frases porque compara dirección semántica más que longitud del vector, pero no elimina la cautela de la caja anterior: en 384 dimensiones DBSCAN sigue dependiendo de <code>eps</code> y de que las distancias conserven suficiente contraste local. La posición narrativa sigue siendo la base de la visualización en espiral, pero no forma parte de la lente.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a aria-hidden="true" href="#cb19-1" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<div class="sourceCode" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a aria-hidden="true" href="#cb19-1" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb19-2"><a aria-hidden="true" href="#cb19-2" tabindex="-1"></a><span class="im">import</span> kmapper <span class="im">as</span> km</span>
 <span id="cb19-3"><a aria-hidden="true" href="#cb19-3" tabindex="-1"></a><span class="im">import</span> umap</span>
 <span id="cb19-4"><a aria-hidden="true" href="#cb19-4" tabindex="-1"></a><span class="im">from</span> sklearn.cluster <span class="im">import</span> DBSCAN</span>
@@ -1080,7 +1076,7 @@ Figura 2.12: Receta 7: reducción de un toro (<span class="math inline">\(\beta
 <span id="cb19-30"><a aria-hidden="true" href="#cb19-30" tabindex="-1"></a>    )</span>
 <span id="cb19-31"><a aria-hidden="true" href="#cb19-31" tabindex="-1"></a>    n_nodes <span class="op">=</span> <span class="bu">len</span>(graph[<span class="st">"nodes"</span>])</span>
 <span id="cb19-32"><a aria-hidden="true" href="#cb19-32" tabindex="-1"></a>    n_edges <span class="op">=</span> <span class="bu">sum</span>(<span class="bu">len</span>(v) <span class="cf">for</span> v <span class="kw">in</span> graph[<span class="st">"links"</span>].values())</span>
-<span id="cb19-33"><a aria-hidden="true" href="#cb19-33" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"  </span><span class="sc">{</span>name<span class="sc">:20s}</span><span class="ss">  nodos=</span><span class="sc">{</span>n_nodes<span class="sc">}</span><span class="ss">, aristas=</span><span class="sc">{</span>n_edges<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button class="code-copy-button" title="Copiar al portapapeles"><i class="bi"></i></button></div>
+<span id="cb19-33"><a aria-hidden="true" href="#cb19-33" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"  </span><span class="sc">{</span>name<span class="sc">:20s}</span><span class="ss">  nodos=</span><span class="sc">{</span>n_nodes<span class="sc">}</span><span class="ss">, aristas=</span><span class="sc">{</span>n_edges<span class="sc">}</span><span class="ss">"</span>)</span></code><button class="code-copy-button" title="Copiar al portapapeles"><i class="bi"></i></button></pre></div>
 <p>La conclusión no varía respecto a la Receta 5: los valores <span class="math inline">\(d/\text{trav}\)</span> no indican circularidad en ninguna novela. Lo que cambia es la geometría del grafo: la lente UMAP 2D captura la variedad semántica no lineal de los pasajes, y DBSCAN agrupa dentro de cada parche usando la similitud angular de los embeddings originales. En lugar de cuadrar la cubierta sobre los ejes de máxima varianza, Mapper la cuadra sobre la topología aprendida por UMAP; en lugar de volver a reducir el espacio para el clustering, conserva la métrica semántica original. La visualización como espiral sigue ordenando los nodos por posición narrativa media, igual que en la Receta 5. La <a class="quarto-xref" href="#fig-mapper-heroe-umap">Figura <span>2.13</span></a> muestra los nueve hipergrafos en espiral con esta lente, con grafos de 39 a 46 nodos.</p>
 <div class="quarto-float quarto-figure quarto-figure-center anchored" id="fig-mapper-heroe-umap">
 <figure class="quarto-float quarto-float-fig figure">
@@ -1096,7 +1092,7 @@ Figura 2.13: Receta 8 (camino del héroe): hipergrafo en espiral con lente UMAP
 <section class="level3" data-number="2.8.2" id="el-árbol-de-la-ciencia-con-lente-umap">
 <h3 class="anchored" data-anchor-id="el-árbol-de-la-ciencia-con-lente-umap" data-number="2.8.2"><span class="header-section-number">2.8.2</span> El árbol de la ciencia con lente UMAP</h3>
 <p>Para el corpus arXiv aplicamos la misma lógica: UMAP organiza la cubierta, y DBSCAN decide los clusters locales en el espacio semántico original. La reducción <code>PCA(50)</code> de la Receta 6 se mantiene solo para el cálculo de <span class="math inline">\(H_0\)</span> con <code>ripser</code>; no se usa como entrada del Mapper de esta receta. Aquí la lente <code>UMAP(2)</code> se ajusta directamente sobre los embeddings en <span class="math inline">\(\mathbb{R}^{384}\)</span>, y el clustering se hace con DBSCAN y distancia coseno sobre esos mismos embeddings:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a aria-hidden="true" href="#cb20-1" tabindex="-1"></a><span class="im">import</span> kmapper <span class="im">as</span> km</span>
+<div class="sourceCode" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a aria-hidden="true" href="#cb20-1" tabindex="-1"></a><span class="im">import</span> kmapper <span class="im">as</span> km</span>
 <span id="cb20-2"><a aria-hidden="true" href="#cb20-2" tabindex="-1"></a><span class="im">import</span> umap</span>
 <span id="cb20-3"><a aria-hidden="true" href="#cb20-3" tabindex="-1"></a><span class="im">from</span> sklearn.cluster <span class="im">import</span> DBSCAN</span>
 <span id="cb20-4"><a aria-hidden="true" href="#cb20-4" tabindex="-1"></a></span>
@@ -1113,7 +1109,7 @@ Figura 2.13: Receta 8 (camino del héroe): hipergrafo en espiral con lente UMAP
 <span id="cb20-15"><a aria-hidden="true" href="#cb20-15" tabindex="-1"></a>)</span>
 <span id="cb20-16"><a aria-hidden="true" href="#cb20-16" tabindex="-1"></a>n_nodes <span class="op">=</span> <span class="bu">len</span>(graph[<span class="st">"nodes"</span>])</span>
 <span id="cb20-17"><a aria-hidden="true" href="#cb20-17" tabindex="-1"></a>n_edges <span class="op">=</span> <span class="bu">sum</span>(<span class="bu">len</span>(v) <span class="cf">for</span> v <span class="kw">in</span> graph[<span class="st">"links"</span>].values())</span>
-<span id="cb20-18"><a aria-hidden="true" href="#cb20-18" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Mapper UMAP: </span><span class="sc">{</span>n_nodes<span class="sc">}</span><span class="ss"> nodos, </span><span class="sc">{</span>n_edges<span class="sc">}</span><span class="ss"> aristas"</span>)</span></code></pre></div><button class="code-copy-button" title="Copiar al portapapeles"><i class="bi"></i></button></div>
+<span id="cb20-18"><a aria-hidden="true" href="#cb20-18" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Mapper UMAP: </span><span class="sc">{</span>n_nodes<span class="sc">}</span><span class="ss"> nodos, </span><span class="sc">{</span>n_edges<span class="sc">}</span><span class="ss"> aristas"</span>)</span></code><button class="code-copy-button" title="Copiar al portapapeles"><i class="bi"></i></button></pre></div>
 <p>La diferencia respecto a la Receta 6 es conceptual antes que técnica. Con lente PCA 2D, el Mapper organiza los parches a lo largo de los ejes de máxima varianza global. Con lente UMAP, los parches se organizan a lo largo de la variedad no lineal que los datos habitan: UMAP detecta que ciertos papers de biología computacional y física estadística viven más cerca entre sí de lo que los dos primeros ejes PCA indicarían, y esa proximidad se traduce en aristas nuevas en el grafo. El árbol de la ciencia resultante tiene más conexiones transversales visibles — más fiel a la topología real del corpus que la proyección lineal.</p>
 <div class="quarto-float quarto-figure quarto-figure-center anchored" id="fig-mapper-ciencia-umap">
 <figure class="quarto-float quarto-float-fig figure">
@@ -1976,7 +1972,7 @@ Figura 5.9: Embedding de retardos de <span class="math inline">\(s(t) = \sin(t)
 <p>Teniendo en cuenta esta contradicción fundamental, y la dificultad a la que nos enfrentamos, el punto de entrada más accesible al campo es <span class="citation" data-cites="ghrist2008barcodes">Ghrist (<a href="07.html#ref-ghrist2008barcodes" role="doc-biblioref">2008</a>)</span>: en doce páginas, Ghrist explica la homología persistente mediante la metáfora de los códigos de barras con una claridad excepcional — es la lectura recomendada antes de enfrentarse a ningún código. Para quien quiera profundizar en los fundamentos matemáticos y ver el TDA aplicado a problemas reales de datos, <span class="citation" data-cites="carlsson2009topology">Carlsson (<a href="07.html#ref-carlsson2009topology" role="doc-biblioref">2009</a>)</span> es el artículo de referencia que lanzó el campo; accesible para alguien con álgebra lineal, sin exigir topología algebraica formal.</p>
 <p>Para situar el TDA en el paisaje más amplio del análisis de datos — y entender <em>cuándo</em> y <em>por qué</em> usarlo frente a alternativas como el clustering, la estimación de densidad o la reducción de dimensión — <span class="citation" data-cites="chazal2021introduction">Chazal y Michel (<a href="07.html#ref-chazal2021introduction" role="doc-biblioref">2021</a>)</span> es la referencia más orientadora: escrita explícitamente para científicos de datos sin formación en topología algebraica, explica cómo integrar la homología persistente y Mapper en pipelines de ML y en qué casos capturan algo que los métodos estadísticos convencionales no pueden.</p>
 <p>Finalmente, el TDA y el aprendizaje profundo son campos hermanos que se están mezclando dentro del aprendizaje geométrico profundo: mientras el TDA estudia la topología de los <em>datos</em>, las arquitecturas del capítulo sobre aprendizaje profundo geométrico aprenden funciones que respetan esa misma estructura. Leer ambos capítulos en conjunto da una visión coherente de cómo la geometría y la topología están transformando el ML moderno.</p>
-<div class="references csl-bib-body hanging-indent" id="refs-7" role="list" style="display: none">
+<div class="references csl-bib-body hanging-indent" data-entry-spacing="0" id="refs-7" role="list" style="display: none">
 <div class="csl-entry" id="ref-carlsson2009topology-7" role="listitem">
 Carlsson, Gunnar. 2009. <span>«Topology and Data»</span>. <em>Bulletin of the American Mathematical Society</em> 46 (2): 255-308. <a href="https://doi.org/10.1090/S0273-0979-09-01249-X">https://doi.org/10.1090/S0273-0979-09-01249-X</a>.
 </div>
@@ -1995,7 +1991,7 @@ Ghrist, Robert. 2008. <span>«Barcodes: The Persistent Topology of Data»</span>
 <div class="quarto-title-meta">
 </div>
 </header>
-<div class="references csl-bib-body hanging-indent" id="refs-8" role="list">
+<div class="references csl-bib-body hanging-indent" data-entry-spacing="0" id="refs-8" role="list">
 <div class="csl-entry" id="ref-carlsson2009topology-8" role="listitem">
 Carlsson, Gunnar. 2009. <span>“Topology and Data.”</span> <em>Bulletin
 of the American Mathematical Society</em> 46 (2): 255–308. <a href="https://doi.org/10.1090/S0273-0979-09-01249-X">https://doi.org/10.1090/S0273-0979-09-01249-X</a>.
@@ -2077,7 +2073,7 @@ Data.”</span> <em>Bulletin of the American Mathematical Society</em> 45
 <p><a class="solucion-num" href="#q-sec-manos-tda-18"><strong>2.18.</strong></a> Con <span class="math inline">\(k=5\)</span> (vecindad pequeña), UMAP construye vecindades muy locales y puede fragmentar ciclos grandes en arcos disjuntos; a menudo detecta solo 1 ciclo en lugar de 2. Con <span class="math inline">\(k=15\)</span> (valor por defecto), ambos ciclos del toro se recuperan de forma consistente. Con <span class="math inline">\(k=50\)</span> (vecindad amplia), los ciclos siguen siendo robustos pero se difumina la distinción entre ciclo mayor y menor en zonas de alta curvatura. El resultado es moderadamente robusto para <span class="math inline">\(k \in [10, 25]\)</span> — el mismo rango que proporcionaba resultados fiables en el experimento de la Receta 7.</p>
 </div>
 <div class="solucion" id="sol-sec-manos-tda-19">
-<p><a class="solucion-num" href="#q-sec-manos-tda-19"><strong>2.19.</strong></a> Una respuesta correcta del LLM debe indicar que UMAP minimiza la entropía cruzada entre el complejo simplicial difuso construido en el espacio original y el del espacio reducido (véase <a class="quarto-xref" href="05.html#sec-umap-fundamentos"><span>UMAP y los complejos simpliciales difusos</span></a>). Esto preserva explícitamente la conectividad local —qué puntos son vecinos de qué— que es exactamente lo que <code>ripser</code> medirá después. PCA maximiza varianza proyectada sin ninguna garantía topológica: puede aplanar la variedad sobre un subespacio lineal y romper ciclos que no estén alineados con los ejes de máxima varianza.</p>
+<p><a class="solucion-num" href="#q-sec-manos-tda-19"><strong>2.19.</strong></a> Una respuesta correcta del LLM debe indicar que UMAP minimiza la entropía cruzada entre el complejo simplicial difuso construido en el espacio original y el del espacio reducido (véase <a class="quarto-xref" href="05.html#sec-umap-fundamentos"><span>5.9 UMAP y los complejos simpliciales difusos</span></a>). Esto preserva explícitamente la conectividad local —qué puntos son vecinos de qué— que es exactamente lo que <code>ripser</code> medirá después. PCA maximiza varianza proyectada sin ninguna garantía topológica: puede aplanar la variedad sobre un subespacio lineal y romper ciclos que no estén alineados con los ejes de máxima varianza.</p>
 </div>
 <div class="solucion" id="sol-sec-manos-tda-20">
 <p><a class="solucion-num" href="#q-sec-manos-tda-20"><strong>2.20.</strong></a> Con lente UMAP 2D en la Receta 8, los caminos de retorno siguen cruzando buena parte del grafo, confirmando que la ausencia de circularidad narrativa es robusta a la elección de la función lente. En el corpus arXiv, la variante UMAP con DBSCAN coseno en <span class="math inline">\(\mathbb{R}^{384}\)</span> produce 101 nodos y 236 aristas — frente a 88 nodos y 296 aristas con PCA 2D y clustering PCA 20D. La diferencia visible es combinatoria y geográfica, no una diferencia de homología: ambos nervios siguen siendo conexos y sin ciclos persistentes.</p>
@@ -2193,243 +2189,239 @@ Data.”</span> <em>Bulletin of the American Mathematical Society</em> 45
 </div>
 </section></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
-  window.document.addEventListener("DOMContentLoaded", function (event) {
-    const icon = "";
-    const anchorJS = new window.AnchorJS();
-    anchorJS.options = {
-      placement: 'right',
-      icon: icon
-    };
-    anchorJS.add('.anchored');
-    const isCodeAnnotation = (el) => {
-      for (const clz of el.classList) {
-        if (clz.startsWith('code-annotation-')) {                     
-          return true;
-        }
-      }
-      return false;
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
     }
-    const onCopySuccess = function(e) {
-      // button target
-      const button = e.trigger;
-      // don't keep focus
-      button.blur();
-      // flash "checked"
-      button.classList.add('code-copy-button-checked');
-      var currentTitle = button.getAttribute("title");
-      button.setAttribute("title", "Copiado");
-      let tooltip;
-      if (window.bootstrap) {
-        button.setAttribute("data-bs-toggle", "tooltip");
-        button.setAttribute("data-bs-placement", "left");
-        button.setAttribute("data-bs-title", "Copiado");
-        tooltip = new bootstrap.Tooltip(button, 
-          { trigger: "manual", 
-            customClass: "code-copy-button-tooltip",
-            offset: [0, -8]});
-        tooltip.show();    
-      }
-      setTimeout(function() {
-        if (tooltip) {
-          tooltip.hide();
-          button.removeAttribute("data-bs-title");
-          button.removeAttribute("data-bs-toggle");
-          button.removeAttribute("data-bs-placement");
-        }
-        button.setAttribute("title", currentTitle);
-        button.classList.remove('code-copy-button-checked');
-      }, 1000);
-      // clear code selection
-      e.clearSelection();
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
     }
-    const getTextToCopy = function(trigger) {
-      const outerScaffold = trigger.parentElement.cloneNode(true);
-      const codeEl = outerScaffold.querySelector('code');
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copiado");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copiado");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
       for (const childEl of codeEl.children) {
         if (isCodeAnnotation(childEl)) {
           childEl.remove();
         }
       }
       return codeEl.innerText;
-    }
-    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-      text: getTextToCopy
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
     });
-    clipboard.on('success', onCopySuccess);
-    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-        text: getTextToCopy,
-        container: window.document.getElementById('quarto-embedded-source-code-modal')
-      });
-      clipboardModal.on('success', onCopySuccess);
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
-      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-      var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp('/' + window.location.host + '/');
-      var isInternal = (href) => {
-          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
-      }
-      // Inspect non-navigation links and adorn them if external
-     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
-      for (var i=0; i<links.length; i++) {
-        const link = links[i];
-        if (!isInternal(link.href)) {
-          // undo the damage that might have been done by quarto-nav.js in the case of
-          // links that we want to consider external
-          if (link.dataset.originalHref !== undefined) {
-            link.href = link.dataset.originalHref;
-          }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
         }
       }
-    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
-      const config = {
-        allowHTML: true,
-        maxWidth: 500,
-        delay: 100,
-        arrow: false,
-        appendTo: function(el) {
-            return el.parentElement;
-        },
-        interactive: true,
-        interactiveBorder: 10,
-        theme: 'quarto',
-        placement: 'bottom-start',
-      };
-      if (contentFn) {
-        config.content = contentFn;
-      }
-      if (onTriggerFn) {
-        config.onTrigger = onTriggerFn;
-      }
-      if (onUntriggerFn) {
-        config.onUntrigger = onUntriggerFn;
-      }
-      window.tippy(el, config); 
     }
-    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
-    for (var i=0; i<noterefs.length; i++) {
-      const ref = noterefs[i];
-      tippyHover(ref, function() {
-        // use id or data attribute instead here
-        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
-        try { href = new URL(href).hash; } catch {}
-        const id = href.replace(/^#\/?/, "");
-        const note = window.document.getElementById(id);
-        if (note) {
-          return note.innerHTML;
-        } else {
-          return "";
-        }
-      });
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
     }
-    const xrefs = window.document.querySelectorAll('a.quarto-xref');
-    const processXRef = (id, note) => {
-      // Strip column container classes
-      const stripColumnClz = (el) => {
-        el.classList.remove("page-full", "page-columns");
-        if (el.children) {
-          for (const child of el.children) {
-            stripColumnClz(child);
-          }
-        }
-      }
-      stripColumnClz(note)
-      if (id === null || id.startsWith('sec-')) {
-        // Special case sections, only their first couple elements
-        const container = document.createElement("div");
-        if (note.children && note.children.length > 2) {
-          container.appendChild(note.children[0].cloneNode(true));
-          for (let i = 1; i < note.children.length; i++) {
-            const child = note.children[i];
-            if (child.tagName === "P" && child.innerText === "") {
-              continue;
-            } else {
-              container.appendChild(child.cloneNode(true));
-              break;
-            }
-          }
-          if (window.Quarto?.typesetMath) {
-            window.Quarto.typesetMath(container);
-          }
-          return container.innerHTML
-        } else {
-          if (window.Quarto?.typesetMath) {
-            window.Quarto.typesetMath(note);
-          }
-          return note.innerHTML;
-        }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
       } else {
-        // Remove any anchor links if they are present
-        const anchorLink = note.querySelector('a.anchorjs-link');
-        if (anchorLink) {
-          anchorLink.remove();
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
         }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
         if (window.Quarto?.typesetMath) {
           window.Quarto.typesetMath(note);
         }
-        if (note.classList.contains("callout")) {
-          return note.outerHTML;
-        } else {
-          return note.innerHTML;
-        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
       }
     }
-    for (var i=0; i<xrefs.length; i++) {
-      const xref = xrefs[i];
-      tippyHover(xref, undefined, function(instance) {
-        instance.disable();
-        let url = xref.getAttribute('href');
-        let hash = undefined; 
-        if (url.startsWith('#')) {
-          hash = url;
-        } else {
-          try { hash = new URL(url).hash; } catch {}
-        }
-        if (hash) {
-          const id = hash.replace(/^#\/?/, "");
-          const note = window.document.getElementById(id);
-          if (note !== null) {
-            try {
-              const html = processXRef(id, note.cloneNode(true));
-              instance.setContent(html);
-            } finally {
-              instance.enable();
-              instance.show();
-            }
-          } else {
-            // See if we can fetch this
-            fetch(url.split('#')[0])
-            .then(res => res.text())
-            .then(html => {
-              const parser = new DOMParser();
-              const htmlDoc = parser.parseFromString(html, "text/html");
-              const note = htmlDoc.getElementById(id);
-              if (note !== null) {
-                const html = processXRef(id, note);
-                instance.setContent(html);
-              } 
-            }).finally(() => {
-              instance.enable();
-              instance.show();
-            });
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
           }
         } else {
-          // See if we can fetch a full url (with no hash to target)
-          // This is a special case and we should probably do some content thinning / targeting
-          fetch(url)
+          // See if we can fetch this
+          fetch(url.split('#')[0])
           .then(res => res.text())
           .then(html => {
             const parser = new DOMParser();
             const htmlDoc = parser.parseFromString(html, "text/html");
-            const note = htmlDoc.querySelector('main.content');
+            const note = htmlDoc.getElementById(id);
             if (note !== null) {
-              // This should only happen for chapter cross references
-              // (since there is no id in the URL)
-              // remove the first header
-              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
-                note.children[0].remove();
-              }
-              const html = processXRef(null, note);
+              const html = processXRef(id, note);
               instance.setContent(html);
             } 
           }).finally(() => {
@@ -2437,164 +2429,188 @@ Data.”</span> <em>Bulletin of the American Mathematical Society</em> 45
             instance.show();
           });
         }
-      }, function(instance) {
-      });
-    }
-        let selectedAnnoteEl;
-        const selectorForAnnotation = ( cell, annotation) => {
-          let cellAttr = 'data-code-cell="' + cell + '"';
-          let lineAttr = 'data-code-annotation="' +  annotation + '"';
-          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
-          return selector;
-        }
-        const selectCodeLines = (annoteEl) => {
-          const doc = window.document;
-          const targetCell = annoteEl.getAttribute("data-target-cell");
-          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
-          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
-          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
-          const lineIds = lines.map((line) => {
-            return targetCell + "-" + line;
-          })
-          let top = null;
-          let height = null;
-          let parent = null;
-          if (lineIds.length > 0) {
-              //compute the position of the single el (top and bottom and make a div)
-              const el = window.document.getElementById(lineIds[0]);
-              top = el.offsetTop;
-              height = el.offsetHeight;
-              parent = el.parentElement.parentElement;
-            if (lineIds.length > 1) {
-              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
-              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
-              height = bottom - top;
-            }
-            if (top !== null && height !== null && parent !== null) {
-              // cook up a div (if necessary) and position it 
-              let div = window.document.getElementById("code-annotation-line-highlight");
-              if (div === null) {
-                div = window.document.createElement("div");
-                div.setAttribute("id", "code-annotation-line-highlight");
-                div.style.position = 'absolute';
-                parent.appendChild(div);
-              }
-              div.style.top = top - 2 + "px";
-              div.style.height = height + 4 + "px";
-              div.style.left = 0;
-              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
-              if (gutterDiv === null) {
-                gutterDiv = window.document.createElement("div");
-                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
-                gutterDiv.style.position = 'absolute';
-                const codeCell = window.document.getElementById(targetCell);
-                const gutter = codeCell.querySelector('.code-annotation-gutter');
-                gutter.appendChild(gutterDiv);
-              }
-              gutterDiv.style.top = top - 2 + "px";
-              gutterDiv.style.height = height + 4 + "px";
-            }
-            selectedAnnoteEl = annoteEl;
-          }
-        };
-        const unselectCodeLines = () => {
-          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
-          elementsIds.forEach((elId) => {
-            const div = window.document.getElementById(elId);
-            if (div) {
-              div.remove();
-            }
-          });
-          selectedAnnoteEl = undefined;
-        };
-          // Handle positioning of the toggle
-      window.addEventListener(
-        "resize",
-        throttle(() => {
-          elRect = undefined;
-          if (selectedAnnoteEl) {
-            selectCodeLines(selectedAnnoteEl);
-          }
-        }, 10)
-      );
-      function throttle(fn, ms) {
-      let throttle = false;
-      let timer;
-        return (...args) => {
-          if(!throttle) { // first call gets through
-              fn.apply(this, args);
-              throttle = true;
-          } else { // all the others get throttled
-              if(timer) clearTimeout(timer); // cancel #2
-              timer = setTimeout(() => {
-                fn.apply(this, args);
-                timer = throttle = false;
-              }, ms);
-          }
-        };
-      }
-        // Attach click handler to the DT
-        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
-        for (const annoteDlNode of annoteDls) {
-          annoteDlNode.addEventListener('click', (event) => {
-            const clickedEl = event.target;
-            if (clickedEl !== selectedAnnoteEl) {
-              unselectCodeLines();
-              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
-              if (activeEl) {
-                activeEl.classList.remove('code-annotation-active');
-              }
-              selectCodeLines(clickedEl);
-              clickedEl.classList.add('code-annotation-active');
-            } else {
-              // Unselect the line
-              unselectCodeLines();
-              clickedEl.classList.remove('code-annotation-active');
-            }
-          });
-        }
-    const findCites = (el) => {
-      const parentEl = el.parentElement;
-      if (parentEl) {
-        const cites = parentEl.dataset.cites;
-        if (cites) {
-          return {
-            el,
-            cites: cites.split(' ')
-          };
-        } else {
-          return findCites(el.parentElement)
-        }
       } else {
-        return undefined;
-      }
-    };
-    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
-    for (var i=0; i<bibliorefs.length; i++) {
-      const ref = bibliorefs[i];
-      const citeInfo = findCites(ref);
-      if (citeInfo) {
-        tippyHover(citeInfo.el, function() {
-          var popup = window.document.createElement('div');
-          citeInfo.cites.forEach(function(cite) {
-            var citeDiv = window.document.createElement('div');
-            citeDiv.classList.add('hanging-indent');
-            citeDiv.classList.add('csl-entry');
-            var biblioDiv = window.document.getElementById('ref-' + cite);
-            if (biblioDiv) {
-              citeDiv.innerHTML = biblioDiv.innerHTML;
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
             }
-            popup.appendChild(citeDiv);
-          });
-          return popup.innerHTML;
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
         });
       }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
     }
-  });
-  </script>
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
 
 </div> <!-- /content -->
-<script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script><script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script><script type="text/javascript">
+<script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script><script type="text/javascript">
 const typesetMath = (el) => {
   if (window.MathJax) {
     // MathJax Typeset
@@ -2605,7 +2621,7 @@ const typesetMath = (el) => {
     var macros = [];
     for (var i = 0; i < mathElements.length; i++) {
       var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+      if (mathElements[i].tagName == "SPAN") {
         window.katex.render(texText.data, mathElements[i], {
           displayMode: mathElements[i].classList.contains('display'),
           throwOnError: false,
