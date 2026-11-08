@@ -30,10 +30,16 @@ Topological Data Analysis (TDA) applies tools from algebraic topology to discove
 
 Executable code accompanying this chapter lives in [`code/tda/`](code/tda/), with unit tests in [`tests/tda/code/`](tests/tda/code/).
 
+The code requires **Python 3** (use `python3` and `pip3` if `python` points to Python 2 on your system). Create and activate a virtual environment first so the dependencies don't pollute your system installation:
+
 ```bash
+python3 -m venv .venv
+source .venv/bin/activate        # On Windows: .venv\Scripts\activate
 pip install -r requirements.txt
 pytest tests/
 ```
+
+When you are done, leave the environment with `deactivate`.
 
 ## About the Series
 
